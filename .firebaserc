@@ -1,0 +1,18 @@
+{
+  "projects": {
+    "default": "newlife-cloudgenz"
+  },
+  "targets": {
+    "newlife-cloudgenz": {
+      "hosting": {
+        "dev-site": [
+          "newlife-dev-cloudgenz"
+        ],
+        "stage-site": [
+          "newlife-stage-cloudgenz"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
