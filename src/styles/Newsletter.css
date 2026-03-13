@@ -1,75 +1,241 @@
-/* NEWSLETTER SECTION */
+/* NEWSLETTER SECTION - MODERN GLASSMORPHISM DESIGN */
 .newsletter-section {
-  background: var(--primary-green);
-  padding: 60px 0;
+  padding: 120px 0;
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8f5e9 100%);
   width: 100vw;
   max-width: 100vw;
-  overflow-x: hidden;
+  overflow: hidden;
   margin: 0;
   box-sizing: border-box;
+  position: relative;
 }
 
-.newsletter-content {
+/* Animated background shapes */
+.newsletter-bg-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(76, 175, 80, 0.05));
+  animation: float 20s ease-in-out infinite;
+}
+
+.shape-1 {
+  width: 400px;
+  height: 400px;
+  top: -100px;
+  left: -100px;
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  width: 300px;
+  height: 300px;
+  bottom: -80px;
+  right: 10%;
+  animation-delay: 5s;
+}
+
+.shape-3 {
+  width: 250px;
+  height: 250px;
+  top: 40%;
+  right: -50px;
+  animation-delay: 10s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -30px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+/* Glassmorphism card */
+.newsletter-glass-card {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 60px 50px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
   text-align: center;
-  color: var(--white);
+  position: relative;
+  z-index: 1;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.newsletter-text h3 {
-  font-size: 2rem;
-  margin-bottom: 10px;
+.newsletter-glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+}
+
+.newsletter-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  display: inline-block;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.newsletter-glass-card h3 {
   font-family: var(--ff);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--dark-gray);
+  margin-bottom: 15px;
+  letter-spacing: -0.02em;
 }
 
-.newsletter-text p {
+.newsletter-glass-card p {
   font-size: 1.1rem;
-  margin-bottom: 30px;
+  color: var(--text-gray);
+  line-height: 1.7;
+  margin-bottom: 35px;
+  max-width: 550px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .newsletter-form {
-  max-width: 500px;
+  margin-bottom: 25px;
+}
+
+.input-wrapper {
+  display: flex;
+  gap: 12px;
+  max-width: 550px;
   margin: 0 auto;
 }
 
-.form-group {
-  display: flex;
-  gap: 0;
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.form-group input {
+.input-wrapper input {
   flex: 1;
-  padding: 15px 20px;
-  border: none;
+  padding: 16px 24px;
+  border: 2px solid rgba(76, 175, 80, 0.2);
+  border-radius: 12px;
   font-size: 16px;
   outline: none;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--dark-gray);
+  transition: all 0.3s ease;
+}
+
+.input-wrapper input:focus {
+  border-color: var(--primary-green);
+  background: var(--white);
+  box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.1);
+}
+
+.input-wrapper input::placeholder {
+  color: var(--muted);
 }
 
 .subscribe-btn {
-  background: var(--green-dark);
+  padding: 16px 32px;
+  background: var(--primary-green);
   color: var(--white);
   border: none;
-  padding: 15px 25px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 16px;
   cursor: pointer;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: background 0.3s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
 }
 
 .subscribe-btn:hover {
-  background: #558B2F;
+  background: var(--green-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(76, 175, 80, 0.4);
+}
+
+.subscribe-btn:active {
+  transform: translateY(0);
+}
+
+.newsletter-trust {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.newsletter-trust span {
+  font-size: 0.9rem;
+  color: var(--text-gray);
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 @media (max-width: 768px) {
-  .form-group {
+  .newsletter-section {
+    padding: 80px 0;
+  }
+
+  .newsletter-glass-card {
+    padding: 40px 30px;
+    margin: 0 20px;
+  }
+
+  .newsletter-glass-card h3 {
+    font-size: 2rem;
+  }
+
+  .newsletter-glass-card p {
+    font-size: 1rem;
+  }
+
+  .input-wrapper {
     flex-direction: column;
+    gap: 12px;
+  }
+
+  .subscribe-btn {
+    width: 100%;
+  }
+
+  .newsletter-trust {
+    flex-direction: column;
+    gap: 12px;
   }
 }
 
 @media (max-width: 480px) {
-  .newsletter-form {
-    padding: 0 10px;
+  .newsletter-glass-card {
+    padding: 35px 25px;
+  }
+
+  .newsletter-icon {
+    font-size: 3rem;
+  }
+
+  .newsletter-glass-card h3 {
+    font-size: 1.8rem;
   }
 }

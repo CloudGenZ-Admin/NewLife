@@ -103,6 +103,62 @@
   padding: 5px 10px;
 }
 
+/* DROPDOWN MENU */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.dropdown-arrow {
+  font-size: 10px;
+  transition: transform 0.3s ease;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--white);
+  min-width: 200px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border-radius: 4px;
+  padding: 8px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  margin-top: 10px;
+}
+
+.dropdown-menu.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 12px 20px;
+  color: var(--dark-gray);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.dropdown-menu a:hover {
+  background: var(--green-lighter);
+  color: var(--primary-green);
+  border-left-color: var(--primary-green);
+}
+
 /* MOBILE OVERRIDES ONLY */
 @media (max-width: 768px) {
   .nav-links {
@@ -121,7 +177,7 @@
     gap: 0;
     height: auto;
     max-height: calc(100vh - 70px);
-    box-sizing: border-box; /* Ensures padding doesn't widen container */
+    box-sizing: border-box;
   }
 
   .nav-links.open {
@@ -143,12 +199,67 @@
     width: 90%;
   }
 
+  /* Mobile Dropdown */
+  .nav-dropdown {
+    width: 100%;
+  }
+
+  .nav-dropdown-trigger {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-light);
+    text-align: center;
+    font-size: 16px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--dark-gray);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    background: var(--green-lighter);
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: max-height 0.3s ease;
+  }
+
+  .dropdown-menu.open {
+    max-height: 200px;
+  }
+
+  .dropdown-menu a {
+    padding: 14px 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(139, 195, 74, 0.2);
+    border-left: none;
+    font-size: 15px;
+  }
+
+  .dropdown-menu a:last-child {
+    border-bottom: none;
+  }
+
+  .dropdown-menu a:hover {
+    background: var(--primary-green);
+    color: var(--white);
+  }
+
   /* Fixed Mobile Donate Button */
   .nav-donate {
     margin: 15px 20px 0 20px;
     width: calc(100% - 40px); 
     padding: 12px 16px;
-    box-sizing: border-box; /* <--- THIS PREVENTS THE HORIZONTAL SCROLL */
+    box-sizing: border-box;
     display: block;
   }
 

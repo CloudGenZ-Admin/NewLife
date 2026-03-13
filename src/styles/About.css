@@ -1,0 +1,70 @@
+/* ABOUT PAGE - AWARD-WINNING MODERN DESIGN */
+.about-page {
+  width: 100%;
+  overflow-x: hidden;
+  background: var(--white);
+}
+
+/* Split text animation support */
+.about-hero-title .char,
+.about-hero-subtitle .word {
+  display: inline-block;
+  transform-origin: bottom;
+}
+
+.about-hero-subtitle .word {
+  margin-right: 0.3em;
+}
+
+.about-hero {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  position: relative;
+  margin-top: 70px;
+  padding: 60px 40px;
+  overflow: hidden;
+}
+
+.about-hero-title {
+  font-family: var(--ff);
+  font-size: clamp(5rem, 12vw, 10rem);
+  font-weight: 300;
+  color: var(--dark-gray);
+  margin-bottom: 2.5rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  perspective: 1000px;
+}
+
+.about-hero-subtitle {
+  font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+  color: var(--text-gray);
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .about-hero {
+    min-height: 50vh;
+    padding: 60px 30px;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-hero {
+    min-height: 45vh;
+    padding: 50px 20px;
+  }
+}

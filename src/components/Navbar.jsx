@@ -1,11 +1,14 @@
 import { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import '../styles/Navbar.css'
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isVisible, setIsVisible] = useState(true)
+  const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false)
   const navRef = useRef(null)
+  const dropdownRef = useRef(null)
   
   // useRef prevents unnecessary re-renders on every scroll tick
   const lastScrollY = useRef(0) 
@@ -63,6 +66,12 @@ const Navbar = () => {
 
   const handleLinkClick = () => {
     setIsMobileMenuOpen(false)
+    setIsAboutDropdownOpen(false)
+  }
+
+  const toggleAboutDropdown = (e) => {
+    e.preventDefault()
+    setIsAboutDropdownOpen(!isAboutDropdownOpen)
   }
 
   return (
@@ -70,13 +79,28 @@ const Navbar = () => {
       {/* Main Navigation */}
       <nav ref={navRef} className={`nav ${isScrolled ? 'scrolled' : ''} ${isVisible ? 'visible' : 'hidden'}`}>
         <div className="nav-inner">
-          <a href="#" className="brand">
+          <Link to="/" className="brand">
             <img src="https://newlifeprojectinc.org/cdn/shop/files/newlife-logo_025x-1_140x@2x.png?v=1613631269" alt="NewLife Projects Inc." className="logo" />
             <span className="brand-text">NewLife Projects Inc.</span>
-          </a>
+          </Link>
           <div className={`nav-links ${isMobileMenuOpen ? 'open' : ''}`}>
-            <a href="#home" onClick={handleLinkClick}>Home</a>
-            <a href="#about" onClick={handleLinkClick}>About</a>
+            <Link to="/" onClick={handleLinkClick}>Home</Link>
+            
+            {/* About Dropdown */}
+            <div className="nav-dropdown" ref={dropdownRef}>
+              <a 
+                href="#about" 
+                className="nav-dropdown-trigger"
+                onClick={toggleAboutDropdown}
+              >
+                About <span className="dropdown-arrow">{isAboutDropdownOpen ? '▲' : '▼'}</span>
+              </a>
+              <div className={`dropdown-menu ${isAboutDropdownOpen ? 'open' : ''}`}>
+                <Link to="/about" onClick={handleLinkClick}>Learn about us</Link>
+                <Link to="/about#founder" onClick={handleLinkClick}>Our Africa</Link>
+              </div>
+            </div>
+            
             <a href="#programs" onClick={handleLinkClick}>Programs</a>
             <a href="#get-involved" onClick={handleLinkClick}>Get Involved</a>
             <a href="#contact" onClick={handleLinkClick}>Contact</a>

@@ -1,12 +1,61 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import '../styles/Mission.css'
 
+gsap.registerPlugin(ScrollTrigger)
+
 const Mission = () => {
+  const sectionRef = useRef(null)
+  const imageRef = useRef(null)
+  const textRef = useRef(null)
+
+  useEffect(() => {
+    // Set elements visible
+    gsap.set([textRef.current.children, imageRef.current], { opacity: 1 })
+
+    // Text reveal animation - no opacity change
+    gsap.from(textRef.current.children, {
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: 'top 75%',
+        toggleActions: 'play none none none'
+      },
+      y: 60,
+      duration: 1,
+      stagger: 0.2,
+      ease: 'power3.out'
+    })
+
+    // Image parallax and reveal - no opacity change
+    gsap.from(imageRef.current, {
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: 'top 75%',
+        toggleActions: 'play none none none'
+      },
+      scale: 0.85,
+      duration: 1.2,
+      ease: 'power3.out'
+    })
+
+    // Continuous parallax on scroll
+    gsap.to(imageRef.current, {
+      y: -40,
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 1
+      }
+    })
+  }, [])
+
   return (
-    <section className="mission-section" id="about">
+    <section className="mission-section" id="about" ref={sectionRef}>
       <div className="container">
         <div className="mission-content">
-          <div className="mission-text">
+          <div className="mission-text" ref={textRef}>
             <h3>NewLife Project Inc.</h3>
             <span className="section-subtitle">Our Story</span>
             <p>
@@ -27,11 +76,14 @@ const Mission = () => {
               <span className="arrow">→</span>
             </a>
           </div>
-          <div className="mission-image">
-            <img 
-              src="https://newlifeprojectinc.org/cdn/shop/files/Untitled_design.jpg?v=1705364217" 
-              alt="NewLife Project Mission" 
-            />
+          <div className="mission-image" ref={imageRef}>
+            <div className="image-wrapper">
+              <img 
+                src="https://newlifeprojectinc.org/cdn/shop/files/Untitled_design.jpg?v=1705364217" 
+                alt="NewLife Project Mission" 
+              />
+              <div className="image-overlay"></div>
+            </div>
           </div>
         </div>
       </div>
