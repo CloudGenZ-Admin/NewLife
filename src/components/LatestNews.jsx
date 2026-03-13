@@ -1,4 +1,5 @@
 import React from 'react'
+import '../styles/LatestNews.css'
 
 const LatestNews = () => {
   const newsItems = [

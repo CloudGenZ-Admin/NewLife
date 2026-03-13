@@ -1,0 +1,70 @@
+/* NewLife Project - Original Website Color Scheme */
+:root {
+  --primary-green: #8BC34A;
+  --green-dark: #689F38; 
+  --green-light: #DCEDC8;
+  --green-lighter: #F1F8E9;
+  --accent-green: #4CAF50;
+  --white: #FFFFFF; 
+  --cream: #fefdf8;
+  --light-gray: #F5F5F5;
+  --dark-gray: #333333;
+  --text-gray: #666666;
+  --muted: #4a5e4d;
+  --border-light: #E0E0E0;
+  --ff: 'Cormorant Garamond', Georgia, serif;
+  --fb: 'Plus Jakarta Sans', Arial, sans-serif;
+}
+
+*,*::before,*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  font-family: var(--fb);
+  background: var(--cream);
+  color: var(--dark-gray);
+  line-height: 1.6;
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.App {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 10px;
+  }
+}

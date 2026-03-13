@@ -1,0 +1,19 @@
+/* TOP BANNER */
+.top-banner {
+  background: var(--primary-green);
+  color: var(--white);
+  padding: 8px 0;
+  text-align: center;
+  font-size: 14px;
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.banner-cta {
+  color: var(--white);
+  text-decoration: underline;
+  margin-left: 10px;
+}

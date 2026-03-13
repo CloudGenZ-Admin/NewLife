@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import '../styles/Gallery.css'
 
 const Gallery = () => {
   const [activeIndex, setActiveIndex] = useState(0)
