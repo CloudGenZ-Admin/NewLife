@@ -15,7 +15,7 @@ const Navbar = () => {
   const menuTl = useRef(null)
   const mobileMenuRef = useRef(null)
   
-  const lastScrollY = useRef(0) 
+  const lastScrollY = useRef(window.scrollY) 
 
   useEffect(() => {
     // Setup mobile menu animation timeline
@@ -57,6 +57,9 @@ const Navbar = () => {
       setIsScrolled(currentScrollY > 50)
       lastScrollY.current = currentScrollY
     }
+    
+    // Check initial state
+    handleScroll()
     
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)

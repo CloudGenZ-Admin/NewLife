@@ -1,12 +1,30 @@
-import React from 'react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import React, { useEffect } from 'react';
+import Lenis from 'lenis';
 import '../styles/Policies.css';
 
 const TermsOfService = () => {
+    useEffect(() => {
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smooth: true,
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+        window.lenis = lenis;
+
+        return () => {
+            lenis.destroy();
+            window.lenis = null;
+        };
+    }, []);
+
     return (
         <div className="policy-page">
-            <Navbar />
             <header className="policy-hero">
                 <div className="container">
                     <h1>Terms of Service</h1>
@@ -62,7 +80,6 @@ const TermsOfService = () => {
                     </div>
                 </div>
             </main>
-            <Footer />
         </div>
     );
 };

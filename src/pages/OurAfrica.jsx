@@ -3,8 +3,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitType from 'split-type';
 import Lenis from 'lenis';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import '../styles/OurAfrica.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -97,8 +95,6 @@ const OurAfrica = () => {
 
   return (
     <div className="our-africa-page">
-      <Navbar />
-      
       <section className="our-africa-section" ref={sectionRef} id="our-africa">
         {/* HERO INTRO */}
         <div className="africa-hero-section">
@@ -194,8 +190,6 @@ const OurAfrica = () => {
           </div>
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 };

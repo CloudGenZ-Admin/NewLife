@@ -10,6 +10,8 @@ import ShippingPolicy from './pages/ShippingPolicy'
 import TermsOfService from './pages/TermsOfService'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import RefundPolicy from './pages/RefundPolicy'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
 
 function App() {
@@ -17,6 +19,7 @@ function App() {
     <Router>
       <ScrollToTop />
       <div className="App">
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -29,6 +32,7 @@ function App() {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/refund-policy" element={<RefundPolicy />} />
         </Routes>
+        <Footer />
       </div>
     </Router>
   )

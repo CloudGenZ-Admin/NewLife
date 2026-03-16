@@ -3,8 +3,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitType from 'split-type';
 import Lenis from 'lenis';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import '../styles/GetInvolved.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -94,8 +92,6 @@ const GetInvolved = () => {
 
     return (
         <div className="get-involved-page" ref={containerRef}>
-            <Navbar />
-
             <header className="get-involved-hero">
                 <div className="hero-visual-accent"></div>
                 <div className="container">
@@ -214,8 +210,6 @@ const GetInvolved = () => {
                     </div>
                 </div>
             </section>
-
-            <Footer />
         </div>
     );
 };

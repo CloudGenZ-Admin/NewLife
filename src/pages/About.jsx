@@ -3,8 +3,6 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import SplitType from 'split-type'
 import Lenis from 'lenis'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
 import FounderStory from '../components/about/FounderStory'
 import OurStory from '../components/about/OurStory'
 import Timeline from '../components/about/Timeline'
@@ -86,7 +84,6 @@ const About = () => {
 
   return (
     <div className="about-page">
-      <Navbar />
       
       <section className="about-hero" ref={heroRef}>
         <div className="container">
@@ -122,8 +119,6 @@ const About = () => {
 
 
       <AboutGallery />
-
-      <Footer />
     </div>
   )
 }

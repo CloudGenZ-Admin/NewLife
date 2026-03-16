@@ -3,8 +3,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitType from 'split-type';
 import Lenis from 'lenis';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import '../styles/Programs.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -71,8 +69,6 @@ const Programs = () => {
 
   return (
     <div className="programs-page" ref={containerRef}>
-      <Navbar />
-
       <header className="programs-hero">
         <div className="container">
           <span className="label">Our Initiatives</span>
@@ -283,8 +279,6 @@ const Programs = () => {
           <a href="#contact" className="btn-primary">Get Involved</a>
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 };

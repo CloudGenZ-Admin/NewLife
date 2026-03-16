@@ -3,8 +3,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitType from 'split-type';
 import Lenis from 'lenis';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import '../styles/Contact.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -73,14 +71,13 @@ const Contact = () => {
 
         return () => {
             lenis.destroy();
+            window.lenis = null;
             ctx.revert();
         };
     }, []);
 
     return (
         <div className="contact-page" ref={containerRef}>
-            <Navbar />
-
             <header className="contact-hero">
                 <div className="container">
                     <span className="label">Contact</span>
@@ -186,8 +183,6 @@ const Contact = () => {
                     </div>
                 </div>
             </section>
-
-            <Footer />
         </div>
     );
 };
