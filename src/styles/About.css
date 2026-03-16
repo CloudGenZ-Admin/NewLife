@@ -1,8 +1,8 @@
-/* ABOUT PAGE - AWARD-WINNING MODERN DESIGN */
+/* ABOUT PAGE - PREMIUM EDITORIAL DESIGN */
 .about-page {
   width: 100%;
   overflow-x: hidden;
-  background: var(--white);
+  background: var(--cream);
 }
 
 /* Split text animation support */
@@ -10,61 +10,135 @@
 .about-hero-subtitle .word {
   display: inline-block;
   transform-origin: bottom;
-}
-
-.about-hero-subtitle .word {
-  margin-right: 0.3em;
+  backface-visibility: hidden;
 }
 
 .about-hero {
-  min-height: 50vh;
+  height: 85vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--white);
+  background: var(--cream);
   position: relative;
-  margin-top: 70px;
-  padding: 60px 40px;
   overflow: hidden;
+  border-bottom: 1px solid rgba(139, 195, 74, 0.1);
+}
+
+.about-hero .container {
+  max-width: 1440px;
 }
 
 .about-hero-title {
   font-family: var(--ff);
-  font-size: clamp(5rem, 12vw, 10rem);
+  font-size: clamp(4rem, 15vw, 12rem);
   font-weight: 300;
   color: var(--dark-gray);
-  margin-bottom: 2.5rem;
+  margin-bottom: 1rem;
   text-align: center;
-  position: relative;
-  z-index: 1;
   line-height: 0.85;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.06em;
   perspective: 1000px;
 }
 
 .about-hero-subtitle {
-  font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+  font-family: var(--fb);
+  font-size: clamp(1rem, 2.5vw, 1.6rem);
   color: var(--text-gray);
   text-align: center;
-  max-width: 900px;
+  max-width: 800px;
   margin: 0 auto;
-  position: relative;
-  z-index: 1;
-  font-weight: 300;
+  font-weight: 400;
+  line-height: 1.4;
   letter-spacing: 0.01em;
-  line-height: 1.5;
+}
+
+.about-hero-subtitle em {
+  font-family: var(--ff);
+  font-style: italic;
+  color: var(--primary-green);
+  font-weight: 400;
+}
+
+/* Scroll Indicator */
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  opacity: 1;
+}
+
+.scroll-text {
+  font-family: var(--fb);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--primary-green);
+}
+
+.scroll-line {
+  width: 1px;
+  height: 60px;
+  background: rgba(139, 195, 74, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-green);
+  animation: scroll-anim 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes scroll-anim {
+  0% { transform: translateY(-100%); }
+  50% { transform: translateY(0); }
+  100% { transform: translateY(100%); }
+}
+
+@media (max-width: 992px) {
+  .about-hero {
+    height: 75vh;
+  }
+  .about-hero-title {
+    font-size: clamp(4rem, 18vw, 8rem);
+  }
 }
 
 @media (max-width: 768px) {
   .about-hero {
-    min-height: 50vh;
-    padding: 60px 30px;
+    height: 65vh;
+  }
+  .about-hero-title {
+    font-size: clamp(3.5rem, 20vw, 7rem);
+    line-height: 1;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 480px) {
   .about-hero {
-    min-height: 45vh;
-    padding: 50px 20px;
+    height: 60vh;
+  }
+  .about-hero-title {
+    font-size: 4rem;
+    line-height: 1.1;
+  }
+  .about-hero-subtitle {
+    font-size: 1.1rem;
+    padding: 0 20px;
+    line-height: 1.5;
+  }
+  .hero-scroll-indicator {
+    bottom: 20px;
   }
 }

@@ -58,7 +58,7 @@
 .partnership-card:hover {
   background: var(--white);
   transform: translateY(-8px);
-  box-shadow: 0 18px 45px rgba(0,0,0,0.09);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.09);
 }
 
 .partnership-icon {
@@ -121,7 +121,7 @@
   background: transparent;
   color: var(--white);
   transform: translateY(-2px);
-  box-shadow: 0 9px 28px rgba(0,0,0,0.18);
+  box-shadow: 0 9px 28px rgba(0, 0, 0, 0.18);
 }
 
 @media (max-width: 968px) {
@@ -196,6 +196,7 @@
     opacity: 0;
     transform: scale(0.9) translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: scale(1) translateY(0);
@@ -206,13 +207,13 @@
   background: var(--white);
   padding: 30px 20px;
   border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 120px;
-  border: 1px solid rgba(0,0,0,0.04);
+  border: 1px solid rgba(0, 0, 0, 0.04);
   aspect-ratio: 3/2;
   animation: fadeInScale 0.6s ease-out forwards;
   opacity: 0;
@@ -232,7 +233,7 @@
 
 .partner-logo:hover {
   transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
   border-color: var(--primary-green);
 }
 
@@ -256,16 +257,16 @@
   .partner-logos {
     padding: 0 30px;
   }
-  
+
   .partner-logos-grid {
     grid-template-columns: 1fr;
     gap: 16px;
   }
-  
+
   .partner-logos-title {
     font-size: 1.8rem;
   }
-  
+
   .partner-logo {
     min-height: 90px;
     aspect-ratio: 2/1;

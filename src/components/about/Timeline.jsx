@@ -67,9 +67,9 @@ const Timeline = () => {
 
         <div className="timeline-wrapper" ref={timelineRef}>
           <div className="timeline-line"></div>
-          
+
           {timelineData.map((item, index) => (
-            <div 
+            <div
               key={index}
               className={`timeline-item ${activeIndex >= index ? 'active' : ''}`}
               data-index={index}

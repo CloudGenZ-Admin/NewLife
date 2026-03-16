@@ -9,6 +9,7 @@ import FounderStory from '../components/about/FounderStory'
 import OurStory from '../components/about/OurStory'
 import Timeline from '../components/about/Timeline'
 import Partnerships from '../components/about/Partnerships'
+import AboutGallery from '../components/about/AboutGallery'
 import '../styles/About.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -19,7 +20,7 @@ const About = () => {
   useEffect(() => {
     // Initialize Lenis smooth scroll
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.5,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smooth: true,
     })
@@ -30,29 +31,37 @@ const About = () => {
     }
     requestAnimationFrame(raf)
 
-    // Cool text animations for hero
-    const heroTitle = new SplitType('.about-hero-title', { types: 'chars' })
-    const heroSubtitle = new SplitType('.about-hero-subtitle', { types: 'words' })
+    // Advanced stagger entrance for Hero
+    const ctx = gsap.context(() => {
+      const heroTitle = new SplitType('.about-hero-title', { types: 'chars' })
+      const heroSubtitle = new SplitType('.about-hero-subtitle', { types: 'words' })
 
-    // Animate title characters with stagger and rotation
-    gsap.from(heroTitle.chars, {
-      opacity: 0,
-      y: 100,
-      rotateX: -90,
-      stagger: 0.03,
-      duration: 1,
-      ease: 'back.out(1.7)',
-      delay: 0.2
-    })
+      gsap.from(heroTitle.chars, {
+        opacity: 0,
+        y: 120,
+        rotateX: -100,
+        stagger: 0.02,
+        duration: 1.4,
+        ease: 'power4.out',
+        delay: 0.3
+      })
 
-    // Animate subtitle words sliding in from bottom
-    gsap.from(heroSubtitle.words, {
-      opacity: 0,
-      y: 50,
-      stagger: 0.05,
-      duration: 0.8,
-      ease: 'power3.out',
-      delay: 0.8
+      gsap.from(heroSubtitle.words, {
+        opacity: 0,
+        y: 40,
+        stagger: 0.04,
+        duration: 1,
+        ease: 'power2.out',
+        delay: 1.2
+      })
+
+      gsap.from('.hero-scroll-indicator', {
+        opacity: 0,
+        y: -20,
+        duration: 1,
+        delay: 2,
+        ease: 'power2.out'
+      })
     })
 
     // Smooth scroll to section if hash exists
@@ -63,38 +72,55 @@ const About = () => {
         if (element) {
           lenis.scrollTo(element, { offset: -100 })
         }
-      }, 100)
+      }, 300)
     }
 
     return () => {
+      ctx.revert()
       lenis.destroy()
       ScrollTrigger.getAll().forEach(trigger => trigger.kill())
     }
   }, [])
+
   return (
     <div className="about-page">
       <Navbar />
-      <div className="about-hero">
+      
+      <section className="about-hero" ref={heroRef}>
         <div className="container">
-          <h1 className="about-hero-title">About Us</h1>
-          <p className="about-hero-subtitle">
-            For over two decades, we've been transforming lives through education, mentorship, and empowerment. 
-            This is our story.
-          </p>
+          <div className="hero-content">
+            <h1 className="about-hero-title">Our <br /> Story</h1>
+            <p className="about-hero-subtitle">
+              Redefining lives through faith, education, and unwavering <em>commitment</em> for over two decades.
+            </p>
+          </div>
         </div>
-      </div>
+        
+        <div className="hero-scroll-indicator">
+          <span className="scroll-line"></span>
+          <span className="scroll-text">Explore Our Story</span>
+        </div>
+      </section>
+
       <div id="founder">
         <FounderStory />
       </div>
+
       <div id="mission">
         <OurStory />
       </div>
+
       <div id="timeline">
         <Timeline />
       </div>
+
       <div id="partnerships">
         <Partnerships />
       </div>
+
+
+      <AboutGallery />
+
       <Footer />
     </div>
   )

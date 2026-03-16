@@ -7,6 +7,7 @@
   margin: 0;
   box-sizing: border-box;
   background: var(--light-gray);
+  scroll-snap-align: start;
 }
 
 .gallery-interactive {
@@ -152,8 +153,8 @@
   }
 
   .gallery-option.active {
-    flex: 3 !important;
-    min-height: 250px;
+    flex: 4 !important;
+    min-height: 450px; /* Vertically big as requested */
   }
 
   .option-label {

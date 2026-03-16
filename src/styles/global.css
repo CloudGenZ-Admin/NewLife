@@ -1,11 +1,11 @@
 /* NewLife Project - Original Website Color Scheme */
 :root {
   --primary-green: #8BC34A;
-  --green-dark: #689F38; 
+  --green-dark: #689F38;
   --green-light: #DCEDC8;
   --green-lighter: #F1F8E9;
   --accent-green: #4CAF50;
-  --white: #FFFFFF; 
+  --white: #FFFFFF;
   --cream: #fefdf8;
   --light-gray: #F5F5F5;
   --dark-gray: #333333;
@@ -16,7 +16,9 @@
   --fb: 'Plus Jakarta Sans', Arial, sans-serif;
 }
 
-*,*::before,*::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -25,7 +27,11 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
-  width: 100%;
+  width: 100vw;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: 80px; /* Offset for fixed navbar */
 }
 
 body {
@@ -34,7 +40,7 @@ body {
   color: var(--dark-gray);
   line-height: 1.6;
   overflow-x: hidden;
-  width: 100%;
+  width: 100vw;
   margin: 0;
   padding: 0;
 }

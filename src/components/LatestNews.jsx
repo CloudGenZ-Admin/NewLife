@@ -13,58 +13,57 @@ const LatestNews = () => {
     {
       id: 1,
       date: "Mar 09, 2026",
+      category: "EVENTS",
       title: "Women With Purpose Event",
-      description: "Join us for an inspiring evening celebrating women leaders in our community.",
-      link: "/blogs/news/women-with-purpose-event",
-      color: "#4CAF50"
+      description: "Join us for an inspiring evening celebrating women leaders and visionaries in our community.",
+      image: "https://newlifeprojectinc.org/cdn/shop/files/fundraiser_1.png?v=1666309940",
+      link: "/blogs/news/women-with-purpose-event"
     },
     {
       id: 2,
       date: "Mar 02, 2026", 
-      title: "Menopause & Me: Thriving through the transition",
-      description: "A supportive workshop focused on health, wellness, and community.",
-      link: "/blogs/news/menopause-me-thriving-through-the-transition",
-      color: "#66BB6A"
+      category: "WELLNESS",
+      title: "Menopause & Me: Thriving through Transition",
+      description: "A supportive workshop focused on holistic health, wellness, and community connection.",
+      image: "https://newlifeprojectinc.org/cdn/shop/files/fundraiser_1a705eb4-c772-43e8-a300-e90b7d125dad.png?v=1666154809",
+      link: "/blogs/news/menopause-me-thriving-through-the-transition"
     },
     {
       id: 3,
       date: "Feb 26, 2026",
-      title: "Lunch & Learn",
-      description: "Monthly gathering featuring guest speakers and networking opportunities.",
-      link: "/blogs/news/lunch-learn",
-      color: "#81C784"
+      category: "COMMUNITY",
+      title: "Lunch & Learn Sessions",
+      description: "Monthly gathering featuring guest speakers, shared wisdom, and networking opportunities.",
+      image: "https://newlifeprojectinc.org/cdn/shop/files/2_9e088462-4d09-47e8-bac0-b576b8f135b8.jpg?v=1705279646",
+      link: "/blogs/news/lunch-learn"
     }
   ]
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Header animation
-      gsap.from('.news-header', {
+      // Header Animation
+      gsap.from('.news-header-content', {
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 75%',
-          toggleActions: 'play none none none'
+          start: 'top 80%',
         },
-        y: 50,
-        duration: 1,
-        ease: 'power3.out'
+        y: 60,
+        opacity: 0,
+        duration: 1.2,
+        ease: 'power4.out'
       })
 
-      // Staggered card animations
-      cardsRef.current.forEach((card, index) => {
-        if (card) {
-          gsap.from(card, {
-            scrollTrigger: {
-              trigger: card,
-              start: 'top 85%',
-              toggleActions: 'play none none none'
-            },
-            y: 60,
-            duration: 0.8,
-            delay: index * 0.15,
-            ease: 'power3.out'
-          })
-        }
+      // Card Stagger
+      gsap.from('.news-card-editorial', {
+        scrollTrigger: {
+          trigger: '.news-grid-editorial',
+          start: 'top 75%',
+        },
+        y: 80,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.2,
+        ease: 'power3.out'
       })
     }, sectionRef)
 
@@ -72,30 +71,35 @@ const LatestNews = () => {
   }, [])
 
   return (
-    <section className="latest-news-section" ref={sectionRef}>
+    <section className="latest-news-editorial" ref={sectionRef}>
       <div className="container">
-        <div className="news-header">
-          <span className="news-label">Latest Updates</span>
-          <h3>What's Happening at NewLife</h3>
-          <p>Stay informed about our latest events, programs, and community initiatives</p>
+        <div className="news-header-content">
+          <span className="editorial-label">Community Updates</span>
+          <h2 className="editorial-title">What's Happening at NewLife</h2>
+          <div className="editorial-line"></div>
         </div>
-        <div className="news-grid">
+
+        <div className="news-grid-editorial">
           {newsItems.map((item, index) => (
-            <article 
-              key={item.id} 
-              className="news-card-modern"
-              ref={el => cardsRef.current[index] = el}
-            >
-              <div className="news-card-header" style={{ background: item.color }}>
-                <span className="news-date-badge">{item.date}</span>
+            <article key={item.id} className="news-card-editorial">
+              <div className="card-visual">
+                <div className="card-image-wrapper">
+                  <img src={item.image} alt={item.title} className="card-bg-img" />
+                  <div className="card-overlay"></div>
+                </div>
+                <div className="card-top-info">
+                  <span className="card-category">{item.category}</span>
+                  <span className="card-date">{item.date}</span>
+                </div>
               </div>
-              <div className="news-card-body">
-                <h4>{item.title}</h4>
-                <p>{item.description}</p>
-                <a href={item.link} className="news-link">
-                  Read More
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M6 3L11 8L6 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              
+              <div className="card-details">
+                <h4 className="card-title">{item.title}</h4>
+                <p className="card-summary">{item.description}</p>
+                <a href={item.link} className="card-cta-link">
+                  Read Full Story
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </a>
               </div>
@@ -107,4 +111,4 @@ const LatestNews = () => {
   )
 }
 
-export default LatestNews
+export default LatestNews

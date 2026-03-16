@@ -8,7 +8,7 @@ const OurStory = () => {
         <div className="story-header">
           <h2>Our Story & Mission</h2>
           <p className="story-intro">
-            NewLife Project was founded to create practical pathways toward dignity, confidence, and economic 
+            NewLife Project was founded to create practical pathways toward dignity, confidence, and economic
             independence for women and youth facing social and economic barriers.
           </p>
         </div>
@@ -18,7 +18,7 @@ const OurStory = () => {
             <div className="card-icon">🎯</div>
             <h3>Our Mission</h3>
             <p>
-              To support women and youth in building skills, confidence, and opportunities that enable them 
+              To support women and youth in building skills, confidence, and opportunities that enable them
               to thrive personally, professionally, and socially.
             </p>
           </div>
@@ -27,7 +27,7 @@ const OurStory = () => {
             <div className="card-icon">🌍</div>
             <h3>Our Vision</h3>
             <p>
-              A world where women and young people have equitable access to education, leadership opportunities, 
+              A world where women and young people have equitable access to education, leadership opportunities,
               and economic participation.
             </p>
           </div>
@@ -62,10 +62,10 @@ const OurStory = () => {
         <div className="impact-section">
           <h3>Our Impact</h3>
           <p className="impact-intro">
-            Over the years, NewLife Project has supported hundreds of individuals across continents through 
+            Over the years, NewLife Project has supported hundreds of individuals across continents through
             education, vocational training, mentorship, and leadership initiatives.
           </p>
-          
+
           <div className="impact-list">
             <div className="impact-item">
               <span className="impact-bullet">→</span>
@@ -94,7 +94,7 @@ const OurStory = () => {
           </div>
 
           <p className="impact-result">
-            Through these programs, participants have secured employment, launched small businesses, continued 
+            Through these programs, participants have secured employment, launched small businesses, continued
             their education, and strengthened their role as leaders within their communities.
           </p>
         </div>

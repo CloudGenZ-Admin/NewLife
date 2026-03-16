@@ -78,7 +78,7 @@
 .story-card:hover {
   background: var(--white);
   transform: translateY(-8px);
-  box-shadow: 0 18px 50px rgba(0,0,0,0.09);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.09);
 }
 
 .card-icon {
@@ -159,7 +159,7 @@
 .value-item:hover {
   background: var(--white);
   transform: scale(1.04);
-  box-shadow: 0 14px 38px rgba(0,0,0,0.09);
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.09);
 }
 
 .value-item:hover .value-text {
@@ -229,7 +229,7 @@
 .impact-item:hover {
   border-left-color: var(--primary-green);
   transform: translateX(8px);
-  box-shadow: 0 9px 28px rgba(0,0,0,0.07);
+  box-shadow: 0 9px 28px rgba(0, 0, 0, 0.07);
 }
 
 .impact-bullet {
