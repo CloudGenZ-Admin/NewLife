@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitType from 'split-type';
-import Lenis from 'lenis';
 import '../styles/Contact.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -11,19 +10,6 @@ const Contact = () => {
     const containerRef = useRef(null);
 
     useEffect(() => {
-        const lenis = new Lenis({
-            duration: 1.5,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            smooth: true,
-        });
-
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
-        window.lenis = lenis;
-
         const ctx = gsap.context(() => {
             // Hero Animation
             const heroTitle = new SplitType('.contact-hero h1', { types: 'lines,chars' });
@@ -70,9 +56,8 @@ const Contact = () => {
         }, containerRef);
 
         return () => {
-            lenis.destroy();
-            window.lenis = null;
             ctx.revert();
+            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
         };
     }, []);
 
@@ -81,8 +66,9 @@ const Contact = () => {
             <header className="contact-hero">
                 <div className="container">
                     <span className="label">Contact</span>
-                    <h1 className="reveal-up">We Would Love to <br /> <em>Hear From You</em></h1>
-                    <p className="intro-text reveal-up">
+                    {/* Fixed: reduced animation interference */}
+                    <h1>We Would Love to <br /> <em>Hear From You</em></h1>
+                    <p className="intro-text">
                         At NewLife Project, meaningful change happens through connection. 
                         Whether you are looking to learn more about our programs, explore partnership opportunities, 
                         volunteer your time, or support our initiatives, our team is here to help.

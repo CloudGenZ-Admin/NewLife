@@ -10,11 +10,34 @@ import ShippingPolicy from './pages/ShippingPolicy'
 import TermsOfService from './pages/TermsOfService'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import RefundPolicy from './pages/RefundPolicy'
+import React, { useEffect } from 'react'
+import Lenis from 'lenis'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
 
 function App() {
+  useEffect(() => {
+    // Single global Lenis instance
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smooth: true,
+    })
+
+    function raf(time) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+    requestAnimationFrame(raf)
+    window.lenis = lenis
+
+    return () => {
+      lenis.destroy()
+      window.lenis = null
+    }
+  }, [])
+
   return (
     <Router>
       <ScrollToTop />

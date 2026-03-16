@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import SplitType from 'split-type'
-import Lenis from 'lenis'
 import FounderStory from '../components/about/FounderStory'
 import OurStory from '../components/about/OurStory'
 import Timeline from '../components/about/Timeline'
@@ -16,20 +15,6 @@ const About = () => {
   const heroRef = useRef(null)
 
   useEffect(() => {
-    // Initialize Lenis smooth scroll
-    const lenis = new Lenis({
-      duration: 1.5,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smooth: true,
-    })
-
-    function raf(time) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
-    }
-    requestAnimationFrame(raf)
-    window.lenis = lenis;
-
     // Advanced stagger entrance for Hero
     const ctx = gsap.context(() => {
       const heroTitle = new SplitType('.about-hero-title', { types: 'chars' })
@@ -65,19 +50,17 @@ const About = () => {
 
     // Smooth scroll to section if hash exists
     const hash = window.location.hash
-    if (hash) {
+    if (hash && window.lenis) {
       setTimeout(() => {
         const element = document.querySelector(hash)
         if (element) {
-          lenis.scrollTo(element, { offset: -100 })
+          window.lenis.scrollTo(element, { offset: -100 })
         }
       }, 300)
     }
 
     return () => {
       ctx.revert()
-      lenis.destroy()
-      window.lenis = null;
       ScrollTrigger.getAll().forEach(trigger => trigger.kill())
     }
   }, [])

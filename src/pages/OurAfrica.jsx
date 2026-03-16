@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitType from 'split-type';
-import Lenis from 'lenis';
 import '../styles/OurAfrica.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -11,20 +10,6 @@ const OurAfrica = () => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    // Initialize Lenis smooth scroll
-    const lenis = new Lenis({
-      duration: 1.5,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smooth: true,
-    });
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-    window.lenis = lenis;
-
     const ctx = gsap.context(() => {
       // Split text for cinematic reveals
       const titleLines = new SplitType('.africa-hero-title', { types: 'lines' });
@@ -88,8 +73,7 @@ const OurAfrica = () => {
 
     return () => {
       ctx.revert();
-      lenis.destroy();
-      window.lenis = null;
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     }
   }, []);
 

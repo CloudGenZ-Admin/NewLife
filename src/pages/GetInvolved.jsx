@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitType from 'split-type';
-import Lenis from 'lenis';
 import '../styles/GetInvolved.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -11,21 +10,8 @@ const GetInvolved = () => {
     const containerRef = useRef(null);
 
     useEffect(() => {
-        const lenis = new Lenis({
-            duration: 1.5,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            smooth: true,
-        });
-
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
-        window.lenis = lenis;
-
         const ctx = gsap.context(() => {
-            // 1. Hero Animation
+            // 1. Hero Animation - Using unique selection to prevent double-animation
             const heroTitle = new SplitType('.get-involved-hero h1', { types: 'lines,chars' });
             if (heroTitle.chars) {
                 gsap.from(heroTitle.chars, {
@@ -38,6 +24,7 @@ const GetInvolved = () => {
                 });
             }
 
+            // Fixed: removed .reveal-up from intro-text in JSX and here to prevent double-animation
             gsap.from('.get-involved-hero .intro-text', {
                 y: 30,
                 opacity: 0,
@@ -46,7 +33,7 @@ const GetInvolved = () => {
                 delay: 0.8
             });
 
-            // 2. Generic Reveals (using the reveal-up class)
+            // 2. Generic Reveals
             const reveals = gsap.utils.toArray('.reveal-up');
             reveals.forEach((el) => {
                 gsap.from(el, {
@@ -62,7 +49,7 @@ const GetInvolved = () => {
                 });
             });
 
-            // 3. Special handling for split-view modules (which might not have reveal-up on everything)
+            // 3. Special handling for split-view modules
             const splitItems = gsap.utils.toArray('.split-item');
             splitItems.forEach((item) => {
                 gsap.from(item, {
@@ -78,15 +65,13 @@ const GetInvolved = () => {
                 });
             });
 
-            // Refresh ScrollTrigger after a short delay to ensure layout is ready
             setTimeout(() => ScrollTrigger.refresh(), 500);
 
         }, containerRef);
 
         return () => {
-            lenis.destroy();
-            window.lenis = null;
             ctx.revert();
+            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
         };
     }, []);
 
@@ -96,8 +81,9 @@ const GetInvolved = () => {
                 <div className="hero-visual-accent"></div>
                 <div className="container">
                     <span className="label">Get Involved</span>
-                    <h1 className="reveal-up">Explore Ways to <br /> <em>Get Involved</em></h1>
-                    <p className="intro-text reveal-up">
+                    {/* Fixed: removed reveal-up from h1/p that are handled by specific hero animations */}
+                    <h1>Explore Ways to <br /> <em>Get Involved</em></h1>
+                    <p className="intro-text">
                         At NewLife Project, every act of support helps create opportunities for women and youth to grow, learn, and thrive.
                         Whether you give your time, share your resources, or partner with us, you become part of a community committed to lasting change.
                     </p>
