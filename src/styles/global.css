@@ -25,13 +25,10 @@
 }
 
 html {
-  scroll-behavior: smooth;
   overflow-x: hidden;
   width: 100vw;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  scroll-snap-type: y mandatory;
-  scroll-padding-top: 80px; /* Offset for fixed navbar */
 }
 
 body {

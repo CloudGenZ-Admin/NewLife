@@ -96,12 +96,12 @@ const Navbar = () => {
               </div>
             </div>
             
-            <a href="#programs" onClick={handleLinkClick}>Programs</a>
-            <a href="#get-involved" onClick={handleLinkClick}>Get Involved</a>
-            <a href="#contact" onClick={handleLinkClick}>Contact</a>
+            <Link to="/programs" onClick={handleLinkClick}>Programs</Link>
+            <Link to="/get-involved" onClick={handleLinkClick}>Get Involved</Link>
+            <Link to="/contact" onClick={handleLinkClick}>Contact</Link>
             <a href="#shop" onClick={handleLinkClick}>Shop</a>
             <a href="#blogs" onClick={handleLinkClick}>Blogs</a>
-            <a href="https://zeffy.com/en-CA/donation-form/your-donation-link" target="_blank" rel="noopener noreferrer" className="nav-donate" onClick={handleLinkClick}>DONATE</a>
+            <a href="#" target="_blank" rel="noopener noreferrer" className="nav-donate" onClick={handleLinkClick}>DONATE</a>
           </div>
 
           <button 
@@ -122,9 +122,9 @@ const Navbar = () => {
           <Link to="/" onClick={handleLinkClick}>Home</Link>
           <Link to="/about" onClick={handleLinkClick}>About Us</Link>
           <Link to="/our-africa" onClick={handleLinkClick}>Our Africa</Link>
-          <a href="#programs" onClick={handleLinkClick}>Programs</a>
-          <a href="#get-involved" onClick={handleLinkClick}>Get Involved</a>
-          <a href="#contact" onClick={handleLinkClick}>Contact</a>
+          <Link to="/programs" onClick={handleLinkClick}>Programs</Link>
+          <Link to="/get-involved" onClick={handleLinkClick}>Get Involved</Link>
+          <Link to="/contact" onClick={handleLinkClick}>Contact</Link>
           <a href="#shop" onClick={handleLinkClick}>Shop</a>
           <a href="#blogs" onClick={handleLinkClick}>Blogs</a>
           <a href="https://zeffy.com/en-CA/donation-form/your-donation-link" target="_blank" rel="noopener noreferrer" className="mobile-donate" onClick={handleLinkClick}>Make a Donation</a>

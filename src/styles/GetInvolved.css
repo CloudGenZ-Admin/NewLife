@@ -1,0 +1,448 @@
+/* GET INVOLVED - PREMIUM EDITORIAL DESIGN */
+.get-involved-page {
+    background: var(--cream);
+    color: var(--dark-gray);
+    overflow-x: hidden;
+}
+
+/* ==================== HERO ==================== */
+.get-involved-hero {
+    padding: 220px 0 140px;
+    background: var(--white);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-visual-accent {
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(var(--primary-green-rgb), 0.05) 0%, transparent 70%);
+    z-index: 0;
+}
+
+.get-involved-hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+.get-involved-page .label {
+    font-family: var(--fb);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    color: var(--primary-green);
+    display: block;
+    margin-bottom: 2rem;
+}
+
+.get-involved-hero h1 {
+    font-family: var(--ff);
+    font-size: clamp(4rem, 10vw, 9rem);
+    line-height: 0.85;
+    font-weight: 300;
+    letter-spacing: -0.04em;
+    margin-bottom: 3.5rem;
+    color: var(--dark-gray);
+}
+
+.get-involved-hero h1 em {
+    font-style: italic;
+    color: var(--primary-green);
+    font-weight: 300;
+}
+
+.get-involved-page .intro-text {
+    font-family: var(--fb);
+    font-size: 1.4rem;
+    line-height: 1.6;
+    max-width: 800px;
+    color: var(--text-gray);
+}
+
+/* ==================== MODULES GLOBAL ==================== */
+.involved-module {
+    padding: 160px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.module-bg-accent {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, rgba(var(--primary-green-rgb), 0.02), transparent);
+    pointer-events: none;
+}
+
+.involved-module:nth-child(even) {
+    background: var(--white);
+}
+
+.involved-module .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.module-title {
+    font-family: var(--ff);
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 5rem;
+    color: var(--dark-gray);
+}
+
+/* ==================== WAYS TO GIVE GRID ==================== */
+.involved-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.involved-card {
+    padding: 5rem;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    min-height: 520px;
+}
+
+.involved-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.12);
+}
+
+.card-category {
+    font-family: var(--fb);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    display: block;
+    opacity: 0.6;
+}
+
+.involved-card.theme-green {
+    background: var(--primary-green);
+    color: white;
+}
+
+.involved-card.theme-green .card-category {
+    color: white;
+    opacity: 0.8;
+}
+
+.card-glass-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+    pointer-events: none;
+}
+
+.involved-card.theme-glass {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+}
+
+.involved-card h3 {
+    font-family: var(--ff);
+    font-size: 3.2rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    line-height: 1;
+}
+
+.involved-card p {
+    font-family: var(--fb);
+    font-size: 1.15rem;
+    line-height: 1.7;
+    opacity: 0.9;
+    margin-bottom: 3.5rem;
+    max-width: 440px;
+}
+
+.card-btn-premium {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 1.4rem 3.5rem;
+    background: white;
+    color: var(--primary-green);
+    border-radius: 100px;
+    font-family: var(--fb);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    text-decoration: none;
+    font-size: 0.95rem;
+    width: fit-content;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-btn-premium:hover {
+    background: var(--cream);
+    transform: scale(1.05);
+    padding-right: 4rem;
+}
+
+.card-btn-minimal {
+    font-family: var(--fb);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--primary-green);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.card-btn-minimal::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-green);
+    transition: width 0.3s ease;
+}
+
+.card-btn-minimal:hover::after {
+    width: 100%;
+}
+
+.card-btn-minimal {
+    font-family: var(--fb);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--primary-green);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    font-size: 0.9rem;
+    transition: letter-spacing 0.3s ease;
+}
+
+.card-btn-minimal:hover {
+    letter-spacing: 0.15em;
+}
+
+/* ==================== SPLIT VIEW (VOLUNTEER & EVENTS) ==================== */
+.split-view {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+}
+
+.split-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.split-item p {
+    font-family: var(--fb);
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: var(--text-gray);
+    margin-bottom: 2.5rem;
+    max-width: 500px;
+}
+
+.action-link {
+    font-family: var(--fb);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--dark-gray);
+    text-decoration: none;
+    display: inline-block;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--primary-green);
+    transition: color 0.3s ease;
+}
+
+.action-link:hover {
+    color: var(--primary-green);
+}
+
+/* ==================== NEWSLETTER HUB ==================== */
+.newsletter-card {
+    background: var(--primary-green);
+    color: white;
+    padding: 6rem;
+    border-radius: 20px;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.15);
+}
+
+.newsletter-card .module-title {
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.newsletter-card .card-header p {
+    font-family: var(--fb);
+    font-size: 1.25rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin-bottom: 4rem;
+}
+
+.newsletter-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 80px;
+    align-items: flex-start;
+    padding-top: 4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.archive-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.archive-box a {
+    color: white;
+    text-decoration: none;
+    font-family: var(--ff);
+    font-size: 1.8rem;
+    font-weight: 300;
+    opacity: 0.7;
+    transition: opacity 0.3s ease, padding-left 0.3s ease;
+}
+
+.archive-box a:hover {
+    opacity: 1;
+    padding-left: 10px;
+}
+
+.subscribe-box h3 {
+    font-family: var(--ff);
+    font-size: 2.2rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+}
+
+.subscribe-box p {
+    font-family: var(--fb);
+    font-size: 1rem;
+    opacity: 0.8;
+    margin-bottom: 2rem;
+}
+
+.mini-subscribe {
+    display: flex;
+    gap: 15px;
+    max-width: 500px;
+}
+
+.mini-subscribe input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1.2rem 1.5rem;
+    border-radius: 100px;
+    color: white;
+    font-family: var(--fb);
+    outline: none;
+}
+
+.mini-subscribe input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.mini-subscribe button {
+    background: white;
+    color: var(--primary-green);
+    border: none;
+    padding: 0 2.5rem;
+    border-radius: 100px;
+    font-family: var(--fb);
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.mini-subscribe button:hover {
+    transform: scale(1.05);
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 1024px) {
+    .involved-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .split-view {
+        grid-template-columns: 1fr;
+        gap: 80px;
+    }
+
+    .newsletter-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    .newsletter-card {
+        padding: 4rem 3rem;
+    }
+
+    .involved-card {
+        padding: 3rem;
+        min-height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .get-involved-hero {
+        padding: 120px 0 60px;
+    }
+
+    .get-involved-hero h1 {
+        font-size: 3.2rem;
+    }
+
+    .involved-module {
+        padding: 80px 0;
+    }
+
+    .module-title {
+        font-size: 2.5rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .involved-card h3 {
+        font-size: 2rem;
+    }
+
+    .mini-subscribe {
+        flex-direction: column;
+    }
+
+    .mini-subscribe button {
+        padding: 1.2rem;
+    }
+
+    .archive-box a {
+        font-size: 1.4rem;
+    }
+}

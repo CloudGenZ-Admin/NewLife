@@ -77,7 +77,6 @@ const Mission = () => {
             />
             {/* Visual Accents */}
             <div className="cinematic-overlay"></div>
-            <div className="floating-badge">Est. 1994</div>
           </div>
         </div>
 
@@ -136,4 +135,4 @@ const Mission = () => {
   )
 }
 
-export default Mission
+export default Mission

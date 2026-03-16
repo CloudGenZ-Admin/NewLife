@@ -1,7 +1,6 @@
 /* LATEST NEWS - EDITORIAL GRID REDESIGN */
 
 .latest-news-editorial {
-  padding: 140px 0;
   background-color: var(--white);
   position: relative;
   scroll-snap-align: start;

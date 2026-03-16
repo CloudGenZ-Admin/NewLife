@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import '../styles/Footer.css'
 
 const Footer = () => {
@@ -17,20 +18,21 @@ const Footer = () => {
             <div className="nav-col">
               <h5 className="nav-title">Organization</h5>
               <ul className="nav-links">
-                <li><a href="/pages/about-us-1">Our Story</a></li>
-                <li><a href="/pages/women-s-world">Women's Forum</a></li>
-                <li><a href="/pages/gallery">Visual Gallery</a></li>
-                <li><a href="/blogs/news">Latest News</a></li>
+                <li><Link to="/about">Our Story</Link></li>
+                <li><Link to="/our-africa">Our Africa</Link></li>
+                <li><Link to="/programs">Programs</Link></li>
+                <li><Link to="/get-involved">Get Involved</Link></li>
               </ul>
             </div>
             
             <div className="nav-col">
               <h5 className="nav-title">Community</h5>
               <ul className="nav-links">
-                <li><a href="/pages/shipping-policy">Shipping</a></li>
-                <li><a href="/pages/terms-of-service">Terms</a></li>
-                <li><a href="/pages/privacy-policy">Privacy</a></li>
-                <li><a href="/pages/contact-us">Contact</a></li>
+                <li><Link to="/shipping-policy">Shipping</Link></li>
+                <li><Link to="/terms-of-service">Terms</Link></li>
+                <li><Link to="/privacy-policy">Privacy</Link></li>
+                <li><Link to="/refund-policy">Refunds</Link></li>
+                <li><Link to="/contact">Contact</Link></li>
               </ul>
             </div>
 
@@ -51,7 +53,7 @@ const Footer = () => {
             <p className="copyright">© 2026 NewLife Project Inc. All rights reserved.</p>
           </div>
           <div className="bottom-right">
-            <p className="studio-credit">Site by <span>456 GLOBAL</span></p>
+            <p className="studio-credit">Site by <span>Cloudgenz</span></p>
           </div>
         </div>
       </div>
@@ -59,4 +61,4 @@ const Footer = () => {
   )
 }
 
-export default Footer
+export default Footer

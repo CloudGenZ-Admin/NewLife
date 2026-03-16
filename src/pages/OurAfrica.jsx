@@ -25,6 +25,7 @@ const OurAfrica = () => {
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
+    window.lenis = lenis;
 
     const ctx = gsap.context(() => {
       // Split text for cinematic reveals
@@ -87,7 +88,11 @@ const OurAfrica = () => {
 
     }, sectionRef);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      lenis.destroy();
+      window.lenis = null;
+    }
   }, []);
 
   return (

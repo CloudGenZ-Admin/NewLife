@@ -30,6 +30,7 @@ const About = () => {
       requestAnimationFrame(raf)
     }
     requestAnimationFrame(raf)
+    window.lenis = lenis;
 
     // Advanced stagger entrance for Hero
     const ctx = gsap.context(() => {
@@ -78,6 +79,7 @@ const About = () => {
     return () => {
       ctx.revert()
       lenis.destroy()
+      window.lenis = null;
       ScrollTrigger.getAll().forEach(trigger => trigger.kill())
     }
   }, [])
