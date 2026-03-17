@@ -12,7 +12,7 @@ const Hero = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: 'power4.out', duration: 1.5 } })
+      const tl = gsap.timeline({ defaults: { ease: 'power4.out', duration: 1 } })
 
       // Text Reveal Animation
       tl.fromTo('.hero-label', 
@@ -44,7 +44,7 @@ const Hero = () => {
         gsap.set(slides[0], { opacity: 1 })
 
         // Create infinite carousel
-        const carousel = gsap.timeline({ repeat: -1, delay: 2 })
+        const carousel = gsap.timeline({ repeat: -1, delay: 1 })
         
         slides.forEach((slide, index) => {
           const nextIndex = (index + 1) % slides.length
@@ -52,12 +52,12 @@ const Hero = () => {
           carousel
             .to(slide, { 
               opacity: 0, 
-              duration: 1.5, 
+              duration: 1, 
               ease: 'power2.inOut' 
             }, index * 6)
             .to(slides[nextIndex], { 
               opacity: 1, 
-              duration: 1.5, 
+              duration: 1, 
               ease: 'power2.inOut' 
             }, index * 6 + 1.5)
         })

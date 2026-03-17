@@ -8,79 +8,91 @@ import Timeline from '../components/about/Timeline'
 import Partnerships from '../components/about/Partnerships'
 import AboutGallery from '../components/about/AboutGallery'
 import '../styles/About.css'
+import '../styles/ArchitectHero.css'
 
 gsap.registerPlugin(ScrollTrigger)
+
 
 const About = () => {
   const heroRef = useRef(null)
 
   useEffect(() => {
-    // Advanced stagger entrance for Hero
     const ctx = gsap.context(() => {
-      const heroTitle = new SplitType('.about-hero-title', { types: 'chars' })
-      const heroSubtitle = new SplitType('.about-hero-subtitle', { types: 'words' })
+      // Snappier defaults for faster first-paint feel
+      const tl = gsap.timeline({ defaults: { ease: 'power4.out', duration: 1.2 } });
 
-      gsap.from(heroTitle.chars, {
-        opacity: 0,
-        y: 120,
-        rotateX: -100,
-        stagger: 0.02,
-        duration: 1.4,
-        ease: 'power4.out',
-        delay: 0.3
+      // 1. Grid Construction (Faster)
+      tl.to('.grid-line', {
+        height: '100%',
+        stagger: 0.03, // Reduced from 0.05
+        duration: 0.8,
+        ease: 'expo.inOut'
       })
+      .to('.architect-decoration', {
+        opacity: 0.1,
+        scale: 1,
+        duration: 1.5
+      }, '-=0.4')
 
-      gsap.from(heroSubtitle.words, {
-        opacity: 0,
-        y: 40,
-        stagger: 0.04,
-        duration: 1,
-        ease: 'power2.out',
-        delay: 1.2
-      })
+      // 2. Titles start much earlier
+      tl.to('.architect-hero-title', {
+        y: 0,
+        stagger: 0.15,
+        duration: 1.1,
+        ease: 'power3.out'
+      }, 0.2) // Start relative to absolute 0.2s mark
 
-      gsap.from('.hero-scroll-indicator', {
-        opacity: 0,
-        y: -20,
-        duration: 1,
-        delay: 2,
-        ease: 'power2.out'
-      })
-    })
+      // 3. Technical Detail & Meta (Snap in sooner)
+      tl.to('.architect-detail', {
+        opacity: 0.5,
+        x: 0,
+        rotate: -90,
+        duration: 0.8
+      }, '-=0.6')
+      .to('.architect-meta', {
+        opacity: 1,
+        y: 0,
+        duration: 0.8
+      }, '-=0.6')
+      .to('.architect-scroll-link', {
+        opacity: 1,
+        duration: 0.8
+      }, '-=0.4')
 
-    // Smooth scroll to section if hash exists
-    const hash = window.location.hash
-    if (hash && window.lenis) {
-      setTimeout(() => {
-        const element = document.querySelector(hash)
-        if (element) {
-          window.lenis.scrollTo(element, { offset: -100 })
-        }
-      }, 300)
-    }
+    }, heroRef);
 
-    return () => {
-      ctx.revert()
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
-    }
+    return () => ctx.revert();
   }, [])
 
   return (
     <div className="about-page">
-      
-      <section className="about-hero" ref={heroRef}>
-        <div className="container">
-          <div className="hero-content">
-            <h1 className="about-hero-title">Our <br /> Story</h1>
-            <p className="about-hero-subtitle">
-              Redefining lives through faith, education, and unwavering <em>commitment</em> for over two decades.
-            </p>
+      <section className="architect-hero" ref={heroRef}>
+        {/* Grid Visualization */}
+        <div className="architect-grid">
+          {[...Array(12)].map((_, i) => (
+            <div key={i} className="grid-line"></div>
+          ))}
+        </div>
+
+        <div className="architect-decoration"></div>
+        <div className="architect-detail">EST. 2004 — MISSION DRIVEN</div>
+
+        <div className="architect-wrapper">
+          <div className="architect-title-group">
+            <div className="architect-title-line line-1">
+              <h1 className="architect-hero-title">Redefining</h1>
+            </div>
+            <div className="architect-title-line line-2">
+              <h1 className="architect-hero-title">Lives Through</h1>
+            </div>
+            <div className="architect-title-line line-3">
+              <h1 className="architect-hero-title"><em>Faith & Commitment</em>.</h1>
+            </div>
           </div>
         </div>
-        
-        <div className="hero-scroll-indicator">
-          <span className="scroll-line"></span>
-          <span className="scroll-text">Explore Our Story</span>
+
+        <div className="architect-meta">
+          <p>Over two decades of empowering women and youth through education, skills training, and unwavering support.</p>
         </div>
       </section>
 
