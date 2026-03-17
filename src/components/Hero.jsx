@@ -15,56 +15,62 @@ const Hero = () => {
       const tl = gsap.timeline({ defaults: { ease: 'power4.out', duration: 1 } })
 
       // Text Reveal Animation
-      tl.fromTo('.hero-label', 
-        { y: 30, opacity: 0 }, 
+      tl.fromTo('.hero-label',
+        { y: 30, opacity: 0 },
         { y: 0, opacity: 1, duration: 1 }
       )
-      .fromTo('.hero-headline .line-inner', 
-        { y: '110%', rotate: 2 }, 
-        { y: '0%', rotate: 0, stagger: 0.15 }, 
-        '-=0.8'
-      )
-      .fromTo('.hero-desc', 
-        { y: 20, opacity: 0 }, 
-        { y: 0, opacity: 1, duration: 1 }, 
-        '-=1'
-      )
-      .fromTo('.hero-actions', 
-        { y: 20, opacity: 0 }, 
-        { y: 0, opacity: 1, duration: 1 }, 
-        '-=0.9'
-      )
+        .fromTo('.hero-headline .line-inner',
+          { y: '100%', rotate: 2 },
+          { y: '0%', rotate: 0, stagger: 0.15 },
+          '-=0.8'
+        )
+        .fromTo('.hero-desc',
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, duration: 1 },
+          '-=1'
+        )
+        .fromTo('.hero-actions',
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, duration: 1 },
+          '-=0.9'
+        )
 
       // Background Carousel Animation
       const slides = gsap.utils.toArray('.carousel-slide')
-      
+
       if (slides.length > 0) {
         // Initial setup - hide all slides except first
         gsap.set(slides, { opacity: 0 })
         gsap.set(slides[0], { opacity: 1 })
 
-        // Create infinite carousel
-        const carousel = gsap.timeline({ repeat: -1, delay: 1 })
-        
+        // Create infinite carousel with seamless cross-fade
+        const carousel = gsap.timeline({ repeat: -1 })
+
         slides.forEach((slide, index) => {
           const nextIndex = (index + 1) % slides.length
-          
-          carousel
-            .to(slide, { 
-              opacity: 0, 
-              duration: 1, 
-              ease: 'power2.inOut' 
-            }, index * 6)
-            .to(slides[nextIndex], { 
-              opacity: 1, 
-              duration: 1, 
-              ease: 'power2.inOut' 
-            }, index * 6 + 1.5)
+
+          carousel.to({}, { duration: 2 })
+
+          // Fade in next slide over 1s
+          carousel.to(slides[nextIndex], {
+            opacity: 1,
+            duration: 1,
+            ease: 'power1.inOut',
+            onStart: () => gsap.set(slides[nextIndex], { zIndex: 1 })
+          })
+
+          // Reset previous slide
+          carousel.set(slide, {
+            opacity: 0,
+            zIndex: 1
+          })
+
+          // Normalize zIndex
+          carousel.set(slides[nextIndex], { zIndex: 1 })
         })
 
         // Subtle parallax effect on scroll
         gsap.to('.carousel-slide', {
-          yPercent: -20,
           ease: 'none',
           scrollTrigger: {
             trigger: heroRef.current,
@@ -101,8 +107,8 @@ const Hero = () => {
       <div className="hero-carousel" ref={carouselRef}>
         {images.map((image, index) => (
           <div key={index} className="carousel-slide">
-            <img 
-              src={image.src} 
+            <img
+              src={image.src}
               alt={image.alt}
               loading={index === 0 ? "eager" : "lazy"}
             />
@@ -116,18 +122,18 @@ const Hero = () => {
         <div className="hero-content" ref={textRef}>
           <div className="hero-content-inner">
             <span className="hero-label">Since 1994</span>
-            
+
             <h1 className="hero-headline">
               <div className="line-mask"><span className="line-inner">Empowering</span></div>
               <div className="line-mask"><span className="line-inner italic-accent">Communities,</span></div>
               <div className="line-mask"><span className="line-inner">Changing Lives.</span></div>
             </h1>
-            
+
             <p className="hero-desc">
-              Dedicated to bringing new life to at-risk women and children across Sierra Leone, 
+              Dedicated to bringing new life to at-risk women and children across Sierra Leone,
               Côte d'Ivoire, Ghana, and Canada through education, health, and vocational training.
             </p>
-            
+
             <div className="hero-actions">
               <a href="#programs" className="cta-editorial primary">
                 Our Programs

@@ -2,14 +2,15 @@
 
 .hero-editorial {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   box-sizing: border-box;
+  background: #000;
+  /* Prevent grey flash */
 }
 
 /* BACKGROUND CAROUSEL */
@@ -29,15 +30,26 @@
   width: 100%;
   height: 100%;
   opacity: 0;
-  transition: opacity 1.5s ease-in-out;
+  transition: opacity 1s ease-in-out;
 }
 
 .carousel-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
+  object-position: center 40%;
   display: block;
+  transform: scale(1);
+}
+
+/* Desktop - Fit entire image without cutting */
+@media (min-width: 1025px) {
+  .carousel-slide img {
+    object-fit: cover;
+    object-position: center 40%;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 /* PROFESSIONAL SCRIM OVERLAY */
@@ -47,12 +59,10 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.5) 0%,
-    rgba(0, 0, 0, 0.3) 50%,
-    rgba(0, 0, 0, 0.6) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.3) 50%,
+      rgba(0, 0, 0, 0.6) 100%);
   z-index: 2;
 }
 
@@ -67,7 +77,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
   text-align: center;
 }
 
@@ -246,20 +255,27 @@
 
   /* Enhanced scrim for mobile readability */
   .carousel-overlay {
-    background: linear-gradient(
-      135deg,
-      rgba(0, 0, 0, 0.6) 0%,
-      rgba(0, 0, 0, 0.4) 50%,
-      rgba(0, 0, 0, 0.7) 100%
-    );
+    background: linear-gradient(135deg,
+        rgba(0, 0, 0, 0.6) 0%,
+        rgba(0, 0, 0, 0.4) 50%,
+        rgba(0, 0, 0, 0.7) 100%);
   }
 
-  /* Ensure images don't cut on mobile */
+  /* Ensure images don't cut on mobile - Cinematic Band Style */
   .carousel-slide img {
-    object-fit: cover;
+    object-fit: contain;
     object-position: center center;
     width: 100%;
     height: 100%;
+    background: #000;
+  }
+
+  .hero-content-container {
+    padding: 0 6%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }
 
@@ -269,8 +285,9 @@
   }
 
   .hero-headline {
-    font-size: clamp(1.8rem, 8vw, 2.6rem);
-    margin-bottom: 20px;
+    font-size: clamp(2rem, 9vw, 2.8rem);
+    margin-bottom: 25px;
+    line-height: 1.1;
   }
 
   .hero-desc {

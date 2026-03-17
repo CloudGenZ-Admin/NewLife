@@ -121,7 +121,7 @@ const GetInvolved = () => {
                                 <span className="card-category">Growth</span>
                                 <h3>Become a Corporate Partner</h3>
                                 <p>Organizations can support NewLife by sponsoring programs, events, or leadership initiatives that create measurable community impact.</p>
-                                <a href="#contact" className="card-btn-minimal">Learn About Corporate Partnerships &rarr;</a>
+                                <a href="https://docs.google.com/forms/d/e/1FAIpQLSf9dSsOqSvfjECakLFVDB84Fa6NtkzVMoy5OlorjRMrDsXj5g/viewform?usp=dialog" className="card-btn-minimal" target="_blank" rel="noopener noreferrer">Learn About Corporate Partnerships &rarr;</a>
                             </div>
                         </div>
 
@@ -130,7 +130,7 @@ const GetInvolved = () => {
                                 <span className="card-category">Sustainability</span>
                                 <h3>Legacy Giving</h3>
                                 <p>Support the long-term sustainability of NewLife Project by including the organization in your future giving plans.</p>
-                                <a href="#contact" className="card-btn-minimal">Learn More About Legacy Giving &rarr;</a>
+                                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdWqBbJbbuDxyA_85ZoXuGJfcZplVPIzH5LqwKADUK2TigRsw/viewform?usp=dialog" className="card-btn-minimal" target="_blank" rel="noopener noreferrer">Learn More About Legacy Giving &rarr;</a>
                             </div>
                         </div>
 
@@ -139,7 +139,7 @@ const GetInvolved = () => {
                                 <span className="card-category">Community</span>
                                 <h3>Host a Fundraiser</h3>
                                 <p>Community members can organize fundraising activities such as cultural events or workplace campaigns to support NewLife programs.</p>
-                                <a href="#contact" className="card-btn-minimal">Start a Fundraiser &rarr;</a>
+                                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdrL2wrcj_i2U4S4SK54lwaVrzlyM0yXuHOffqtnXcgO_ZqIQ/viewform?usp=dialog" className="card-btn-minimal" target="_blank" rel="noopener noreferrer">Start a Fundraiser &rarr;</a>
                             </div>
                         </div>
                     </div>
@@ -154,7 +154,7 @@ const GetInvolved = () => {
                             <h2 className="module-title">Ways to Volunteer</h2>
                             <div className="module-content">
                                 <p>Volunteers play an essential role in supporting program delivery, events, and community outreach. Your time and skills can help strengthen our impact.</p>
-                                <a href="/contact" className="action-link">Explore Volunteer Opportunities</a>
+                                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeFfaklz51yrV-IZ5d4re6tRvXOHR3bavl91THiWoN-H-OoLQ/viewform?usp=dialog" className="action-link" target="_blank" rel="noopener noreferrer">Explore Volunteer Opportunities</a>
                             </div>
                         </div>
 
@@ -162,7 +162,7 @@ const GetInvolved = () => {
                             <h2 className="module-title">Events</h2>
                             <div className="module-content">
                                 <p>Join us at cultural celebrations, workshops, leadership forums, and fundraising events throughout the year.</p>
-                                <a href="#calendar" className="action-link">View Event Calendar</a>
+                                <a href="#calendar-section" className="action-link">View Event Calendar</a>
                             </div>
                         </div>
                     </div>
@@ -193,6 +193,27 @@ const GetInvolved = () => {
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* CALENDAR SECTION */}
+            <section id="calendar-section" className="involved-module module-calendar reveal-up">
+                <div className="container">
+                    <div className="module-header-editorial text-center" style={{ textAlign: 'center' }}>
+                        <h2 className="module-title">Event Calendar</h2>
+                        <p>Join our upcoming community events, workshops, and gatherings.</p>
+                    </div>
+                    <div className="calendar-wrapper-premium">
+                        <iframe 
+                            src="https://calendar.google.com/calendar/embed?src=en.canadian%23holiday%40group.v.calendar.google.com&ctz=America%2FToronto" 
+                            style={{ border: 0 }} 
+                            width="100%" 
+                            height="600" 
+                            frameBorder="0" 
+                            scrolling="no"
+                            title="NewLife Community Calendar"
+                        ></iframe>
                     </div>
                 </div>
             </section>
