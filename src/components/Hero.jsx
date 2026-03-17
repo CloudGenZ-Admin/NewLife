@@ -1,17 +1,20 @@
 import React, { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import '../styles/Hero.css'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const Hero = () => {
   const heroRef = useRef(null)
   const textRef = useRef(null)
-  const visualRef = useRef(null)
+  const carouselRef = useRef(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power4.out', duration: 1.5 } })
 
-      // Text Reveal
+      // Text Reveal Animation
       tl.fromTo('.hero-label', 
         { y: 30, opacity: 0 }, 
         { y: 0, opacity: 1, duration: 1 }
@@ -31,45 +34,85 @@ const Hero = () => {
         { y: 0, opacity: 1, duration: 1 }, 
         '-=0.9'
       )
+
+      // Background Carousel Animation
+      const slides = gsap.utils.toArray('.carousel-slide')
       
-      // Visual Stack Reveal
-      .fromTo('.stack-item',
-        { 
-          opacity: 0, 
-          scale: 0.8, 
-          y: 40,
-          clipPath: 'inset(100% 0% 0% 0%)'
-        },
-        { 
-          opacity: 1, 
-          scale: 1, 
-          y: 0,
-          clipPath: 'inset(0% 0% 0% 0%)',
-          stagger: 0.2,
-          duration: 1.8,
-          ease: 'power3.inOut'
-        },
-        '-=1.5'
-      )
-      
-      // Floating animation for extra premium feel
-      gsap.to('.stack-item', {
-        y: (i) => (i % 2 === 0 ? '-10px' : '10px'),
-        duration: 3,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut',
-        delay: 2
-      })
+      if (slides.length > 0) {
+        // Initial setup - hide all slides except first
+        gsap.set(slides, { opacity: 0 })
+        gsap.set(slides[0], { opacity: 1 })
+
+        // Create infinite carousel
+        const carousel = gsap.timeline({ repeat: -1, delay: 2 })
+        
+        slides.forEach((slide, index) => {
+          const nextIndex = (index + 1) % slides.length
+          
+          carousel
+            .to(slide, { 
+              opacity: 0, 
+              duration: 1.5, 
+              ease: 'power2.inOut' 
+            }, index * 6)
+            .to(slides[nextIndex], { 
+              opacity: 1, 
+              duration: 1.5, 
+              ease: 'power2.inOut' 
+            }, index * 6 + 1.5)
+        })
+
+        // Subtle parallax effect on scroll
+        gsap.to('.carousel-slide', {
+          yPercent: -20,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: heroRef.current,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true
+          }
+        })
+      }
+
     }, heroRef)
 
     return () => ctx.revert()
   }, [])
 
+  const images = [
+    {
+      src: "https://newlifeprojectinc.org/cdn/shop/files/2_94ee0891-8aef-40f6-83d8-1c15e2424f5d.jpg?v=1705363525",
+      alt: "Impact Story"
+    },
+    {
+      src: "https://newlifeprojectinc.org/cdn/shop/files/french_3_7dde1af4-b8f9-4ac5-9508-1b3f58b324e4.jpg?v=1705364012",
+      alt: "Growth & Education"
+    },
+    {
+      src: "https://newlifeprojectinc.org/cdn/shop/files/1_f092f01c-826a-4e49-b768-6f3410bdf2c0.jpg?v=1705363525",
+      alt: "Sanctuary"
+    }
+  ]
+
   return (
     <section className="hero-editorial" ref={heroRef} id="home">
-      <div className="hero-grid">
-        {/* Left Column: Typography */}
+      {/* Background Carousel */}
+      <div className="hero-carousel" ref={carouselRef}>
+        {images.map((image, index) => (
+          <div key={index} className="carousel-slide">
+            <img 
+              src={image.src} 
+              alt={image.alt}
+              loading={index === 0 ? "eager" : "lazy"}
+            />
+          </div>
+        ))}
+        <div className="carousel-overlay"></div>
+      </div>
+
+      {/* Content Container */}
+      <div className="hero-content-container">
         <div className="hero-content" ref={textRef}>
           <div className="hero-content-inner">
             <span className="hero-label">Since 1994</span>
@@ -94,34 +137,6 @@ const Hero = () => {
                 Make a Donation
               </a>
             </div>
-            
-            {/* Removed Stats Section */}
-          </div>
-        </div>
-
-        {/* Right Column: Premium Image Stack */}
-        <div className="hero-visual" ref={visualRef}>
-          <div className="hero-stack-container">
-            {/* Main Center Image */}
-            <div className="stack-item item-main">
-              <img src="https://newlifeprojectinc.org/cdn/shop/files/french_2.jpg?v=1705199991" alt="Community Support" />
-            </div>
-            {/* Top Right Floating */}
-            <div className="stack-item item-top-right">
-              <img src="https://newlifeprojectinc.org/cdn/shop/files/2_94ee0891-8aef-40f6-83d8-1c15e2424f5d.jpg?v=1705363525" alt="Impact Story" />
-            </div>
-            {/* Bottom Left Overlapping */}
-            <div className="stack-item item-bottom-left">
-              <img src="https://newlifeprojectinc.org/cdn/shop/files/french_3_7dde1af4-b8f9-4ac5-9508-1b3f58b324e4.jpg?v=1705364012" alt="Growth & Education" />
-            </div>
-            {/* Accent Small Image */}
-            <div className="stack-item item-accent">
-              <img src="https://newlifeprojectinc.org/cdn/shop/files/1_f092f01c-826a-4e49-b768-6f3410bdf2c0.jpg?v=1705363525" alt="Sanctuary" />
-            </div>
-            
-            {/* Decorative Elements */}
-            <div className="stack-decoration shape-circle"></div>
-            <div className="stack-decoration shape-dots"></div>
           </div>
         </div>
       </div>

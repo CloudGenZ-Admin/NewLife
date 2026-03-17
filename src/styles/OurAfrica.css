@@ -1,7 +1,7 @@
 /* OUR AFRICA - CINEMATIC EDITORIAL DESIGN */
 .our-africa-section {
-  padding: 180px 0;
-  background: var(--cream);
+  padding: 100px 0;
+  background: var(--white);
   color: var(--dark-gray);
   overflow: hidden;
 }
@@ -14,7 +14,7 @@
 
 /* HERO SECTION */
 .africa-hero-section {
-  margin-bottom: 200px;
+  margin-bottom: 100px;
 }
 
 .africa-hero-content {
@@ -94,7 +94,12 @@
 
 /* CHAPTER MODULES */
 .africa-chapter {
-  margin-bottom: 220px;
+  margin-bottom: 0px;
+  padding: 80px 0;
+}
+
+.africa-chapter:nth-child(even) {
+  background: var(--green-light);
 }
 
 .split-layout {
@@ -116,7 +121,8 @@
   font-family: var(--ff);
   font-size: 8rem;
   font-weight: 300;
-  color: rgba(var(--primary-green-rgb), 0.1);
+  color: var(--primary-green);
+  opacity: 0.15;
   position: absolute;
   top: -60px;
   left: -20px;
@@ -220,13 +226,13 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  border: 10px solid var(--cream);
+  border: 10px solid var(--white);
   box-shadow: 0 40px 80px rgba(0,0,0,0.15);
 }
 
 /* OUTRO SECTION */
 .africa-outro {
-  padding-top: 100px;
+  padding-top: 60px;
 }
 
 .outro-card {

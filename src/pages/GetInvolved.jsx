@@ -154,7 +154,7 @@ const GetInvolved = () => {
                             <h2 className="module-title">Ways to Volunteer</h2>
                             <div className="module-content">
                                 <p>Volunteers play an essential role in supporting program delivery, events, and community outreach. Your time and skills can help strengthen our impact.</p>
-                                <a href="/contact" className="action-link">👉 Explore Volunteer Opportunities</a>
+                                <a href="/contact" className="action-link">Explore Volunteer Opportunities</a>
                             </div>
                         </div>
 
@@ -162,7 +162,7 @@ const GetInvolved = () => {
                             <h2 className="module-title">Events</h2>
                             <div className="module-content">
                                 <p>Join us at cultural celebrations, workshops, leadership forums, and fundraising events throughout the year.</p>
-                                <a href="#calendar" className="action-link">👉 View Event Calendar</a>
+                                <a href="#calendar" className="action-link">View Event Calendar</a>
                             </div>
                         </div>
                     </div>

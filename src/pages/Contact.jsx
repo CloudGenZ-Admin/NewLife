@@ -76,68 +76,55 @@ const Contact = () => {
                 </div>
             </header>
 
-            <section className="contact-info-section">
+            <section className="contact-main-section">
                 <div className="container">
-                    <div className="contact-methods-grid">
-                        <div className="contact-method-card">
-                            <span className="card-num">01</span>
-                            <h3>Visit Us</h3>
-                            <p><strong>NewLife Project Inc.</strong><br />Head Office<br />Ottawa, Ontario, Canada</p>
-                            <span className="note">(Full address to be added)</span>
-                        </div>
+                    <div className="contact-layout-grid">
+                        {/* LEFT SIDE: CONTACT CARDS */}
+                        <div className="contact-methods-stack reveal-up">
+                            <div className="contact-method-card">
+                                <span className="card-num">01</span>
+                                <h3>Visit Us</h3>
+                                <p><strong>NewLife Project Inc.</strong><br />Head Office<br />Ottawa, Ontario, Canada</p>
+                                <span className="note">(Full address to be added)</span>
+                            </div>
 
-                        <div className="contact-method-card highlighting">
-                            <span className="card-num">02</span>
-                            <h3>Email Us</h3>
-                            <div className="email-links">
-                                <div className="email-item">
-                                    <span>General Inquiries</span>
-                                    <a href="mailto:info@newlifeproject.org">info@newlifeproject.org</a>
+                            <div className="contact-method-card highlighting">
+                                <span className="card-num">02</span>
+                                <h3>Email Us</h3>
+                                <div className="email-links">
+                                    <div className="email-item">
+                                        <span>General Inquiries</span>
+                                        <a href="mailto:info@newlifeproject.org">info@newlifeproject.org</a>
+                                    </div>
+                                    <div className="email-item">
+                                        <span>Program Inquiries</span>
+                                        <a href="mailto:programs@newlifeproject.org">programs@newlifeproject.org</a>
+                                    </div>
+                                    <div className="email-item">
+                                        <span>Partnership & Sponsorship</span>
+                                        <a href="mailto:partnerships@newlifeproject.org">partnerships@newlifeproject.org</a>
+                                    </div>
                                 </div>
-                                <div className="email-item">
-                                    <span>Program Inquiries</span>
-                                    <a href="mailto:programs@newlifeproject.org">programs@newlifeproject.org</a>
-                                </div>
-                                <div className="email-item">
-                                    <span>Partnership & Sponsorship</span>
-                                    <a href="mailto:partnerships@newlifeproject.org">partnerships@newlifeproject.org</a>
+                            </div>
+
+                            <div className="contact-method-card">
+                                <span className="card-num">03</span>
+                                <h3>Call Us</h3>
+                                <p>Phone: (Add phone number)</p>
+                                <div className="hours">
+                                    <strong>Office Hours:</strong>
+                                    <p>Monday – Friday<br />9:00 AM – 5:00 PM</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="contact-method-card">
-                            <span className="card-num">03</span>
-                            <h3>Call Us</h3>
-                            <p>Phone: (Add phone number)</p>
-                            <div className="hours">
-                                <strong>Office Hours:</strong>
-                                <p>Monday – Friday<br />9:00 AM – 5:00 PM</p>
+                        {/* RIGHT SIDE: FORM */}
+                        <div className="contact-form-container reveal-up">
+                            <div className="form-info">
+                                <h2 className="module-title">Send Us a <br /> <em>Message</em></h2>
+                                <p>We welcome individuals, organizations, educators, community leaders, and supporters who share our vision.</p>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
-            <section className="contact-form-section">
-                <div className="container">
-                    <div className="form-layout">
-                        <div className="form-info reveal-up">
-                            <h2 className="module-title">Send Us a <br /> <em>Message</em></h2>
-                            <p>We welcome individuals, organizations, educators, community leaders, and supporters who share our vision.</p>
-                            
-                            <div className="stay-connected">
-                                <h3>Stay Connected</h3>
-                                <p>Follow NewLife Project on social media to stay updated on program activities, upcoming events, and impact stories.</p>
-                                <div className="social-links-minimal">
-                                    <a href="#" className="social-ico">FB</a>
-                                    <a href="#" className="social-ico">IG</a>
-                                    <a href="#" className="social-ico">LI</a>
-                                    <a href="#" className="social-ico">TW</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="form-container reveal-up">
                             <form className="premium-contact-form" onSubmit={(e) => e.preventDefault()}>
                                 <div className="form-group">
                                     <input type="text" id="name" placeholder="Full Name" required />
@@ -165,6 +152,10 @@ const Contact = () => {
                                     Send Message <span>&rarr;</span>
                                 </button>
                             </form>
+
+                            <div className="stay-connected-alt">
+                                <h3>Stay Connected</h3>
+                            </div>
                         </div>
                     </div>
                 </div>

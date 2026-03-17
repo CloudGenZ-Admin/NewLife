@@ -108,7 +108,6 @@ const OurAfrica = () => {
         <div className="africa-chapter africa-chapter-left">
           <div className="africa-container split-layout">
             <div className="africa-chapter-text">
-              <span className="chapter-num">01</span>
               <h3 className="chapter-title">The Relief Program</h3>
               <div className="africa-reveal-text">
                 <p>
@@ -144,7 +143,6 @@ const OurAfrica = () => {
               </div>
             </div>
             <div className="africa-chapter-text">
-              <span className="chapter-num">02</span>
               <h3 className="chapter-title">Brookfields Learning Centre</h3>
               <div className="africa-reveal-text">
                 <p>

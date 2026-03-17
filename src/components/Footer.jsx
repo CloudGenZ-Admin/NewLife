@@ -20,7 +20,11 @@ const Footer = () => {
               <ul className="nav-links">
                 <li><Link to="/about">Our Story</Link></li>
                 <li><Link to="/our-africa">Our Africa</Link></li>
-                <li><Link to="/programs">Programs</Link></li>
+                <li><Link to="/programs/empowerment">Empowerment</Link></li>
+                <li><Link to="/programs/language">Language Training</Link></li>
+                <li><Link to="/programs/sewing">Sewing Skills</Link></li>
+                <li><Link to="/programs/internship">Internships</Link></li>
+                <li><Link to="/programs/relief">Relief Program</Link></li>
                 <li><Link to="/get-involved">Get Involved</Link></li>
               </ul>
             </div>

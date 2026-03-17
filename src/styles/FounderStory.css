@@ -10,7 +10,7 @@
   grid-template-columns: repeat(12, 1fr);
   gap: 60px;
   align-items: center;
-  margin-bottom: 15rem;
+  margin-bottom: 3rem;
   position: relative;
 }
 
@@ -138,8 +138,8 @@
 
 /* Board Preview */
 .founder-board-preview {
-  margin-top: 8rem;
-  padding: 60px;
+  margin-top: 1rem;
+  padding: 10px;
   background: white;
   border-radius: 12px;
 }
@@ -164,7 +164,7 @@
 
 /* CTA */
 .founder-call-to-action {
-  margin-top: 6rem;
+  margin-top: 1rem;
 }
 
 .editorial-btn {

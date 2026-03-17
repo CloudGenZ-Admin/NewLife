@@ -3,7 +3,9 @@ import '../styles/Gallery.css'
 
 const Gallery = () => {
   const [activeIndex, setActiveIndex] = useState(0)
+  const [isAutoCycle, setIsAutoCycle] = useState(true)
   const [animatedOptions, setAnimatedOptions] = useState([])
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0)
 
   const galleryItems = [
     {
@@ -23,7 +25,7 @@ const Gallery = () => {
     {
       id: 3,
       title: "Education and Vocational Training",
-      subtitle: "",
+      subtitle: "Skill-building for the future",
       image: "https://newlifeprojectinc.org/cdn/shop/files/2_9e088462-4d09-47e8-bac0-b576b8f135b8.jpg?v=1705279646",
       link: "/pages/classes"
     },
@@ -37,12 +39,16 @@ const Gallery = () => {
   ]
 
   const handleOptionClick = (index) => {
-    if (index !== activeIndex) {
-      setActiveIndex(index)
-    }
+    setActiveIndex(index)
+    setIsAutoCycle(false) // Pause auto-cycle on manual interaction
   }
 
   useEffect(() => {
+    setWindowWidth(window.innerWidth)
+    const handleResize = () => setWindowWidth(window.innerWidth)
+    window.addEventListener('resize', handleResize)
+    
+    // Initial reveal animation
     const timers = []
     galleryItems.forEach((_, i) => {
       const timer = setTimeout(() => {
@@ -50,10 +56,23 @@ const Gallery = () => {
       }, 180 * i)
       timers.push(timer)
     })
+
     return () => {
+      window.removeEventListener('resize', handleResize)
       timers.forEach(timer => clearTimeout(timer))
     }
-  }, [])
+  }, [galleryItems.length])
+
+  // Auto-cycle logic for mobile
+  useEffect(() => {
+    let interval
+    if (isAutoCycle && windowWidth <= 768) {
+      interval = setInterval(() => {
+        setActiveIndex((prev) => (prev + 1) % galleryItems.length)
+      }, 4000)
+    }
+    return () => clearInterval(interval)
+  }, [isAutoCycle, windowWidth, galleryItems.length])
 
   return (
     <section className="gallery-section" id="gallery">
@@ -66,6 +85,7 @@ const Gallery = () => {
               style={{
                 backgroundImage: `url('${item.image}')`,
               }}
+              onMouseEnter={() => windowWidth > 768 && handleOptionClick(index)}
               onClick={() => handleOptionClick(index)}
             >
               <div className="option-shadow"></div>
@@ -86,4 +106,4 @@ const Gallery = () => {
   )
 }
 
-export default Gallery
+export default Gallery

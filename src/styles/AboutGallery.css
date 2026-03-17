@@ -1,7 +1,7 @@
 /* ABOUT GALLERY V2 - AWWARDS-LEVEL CINEMATIC DESIGN */
 .v2-about-gallery {
-  padding: 180px 0;
-  background: var(--cream); /* Brand-aligned light theme */
+  padding: 60px 0;
+  background: var(--white); /* Brand-aligned light theme */
   color: var(--dark-gray);
   overflow: hidden;
 }
@@ -14,7 +14,7 @@
 
 .v2-gallery-header {
   text-align: left;
-  margin-bottom: 120px;
+  margin-bottom: 50px;
   max-width: 900px;
 }
 
@@ -211,12 +211,62 @@
 }
 
 @media (max-width: 768px) {
-  .v2-about-gallery { padding: 100px 0; }
-  .v2-gallery-header { margin-bottom: 60px; }
+  .v2-about-gallery { 
+    padding: 80px 0; 
+  }
+  .v2-container {
+    padding: 0 0 0 24px; /* Bleed to edge on right for scroll feel */
+  }
+  .v2-gallery-header { 
+    margin-bottom: 40px; 
+    padding-right: 24px;
+  }
   .v2-premium-title { font-size: 3.5rem; }
-  .v2-gallery-asymmetric-grid { gap: 30px; }
-  .v-large, .v-medium, .v-small { grid-column: span 12; height: 400px; }
-  .v2-item-caption { font-size: 1.45rem; }
+  
+  /* CAROUSEL MODE */
+  .v2-gallery-asymmetric-grid { 
+    display: flex;
+    overflow-x: hidden; /* Prevent manual fight with GSAP */
+    overflow-y: hidden;
+    gap: 20px;
+    padding-bottom: 30px;
+    padding-right: 24px;
+    scrollbar-width: none; /* Hide scrollbar for clean look */
+    -webkit-overflow-scrolling: auto; /* Disable elastic scroll */
+    grid-template-columns: none; /* Disable grid */
+  }
+
+  .v2-gallery-asymmetric-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .v2-gallery-item {
+    flex: 0 0 85vw; /* Each card takes 85% of screen width */
+    height: 50vh !important;
+    min-height: 400px;
+    scroll-snap-align: start;
+    opacity: 1 !important; /* Visible on scroll */
+    transform: none !important;
+    clip-path: none !important;
+    margin: 0 !important;
+  }
+
+  .v-large, .v-medium, .v-small { 
+    width: 100%; 
+    height: 100% !important; 
+  }
+
+  .v2-img-container {
+    height: 100%;
+    background: #f8f8f8; /* Contrast for contain fit */
+  }
+
+  .v2-gallery-item img {
+    height: 100%;
+    object-fit: contain !important; /* NO CROP on mobile */
+  }
+
+  .v2-item-caption { font-size: 1.3rem; }
   .v2-gallery-lightbox { padding: 20px; }
 }
 

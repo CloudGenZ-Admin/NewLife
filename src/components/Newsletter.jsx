@@ -12,15 +12,27 @@ const Newsletter = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(contentRef.current.children, {
+      gsap.from('.newsletter-header > *', {
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 80%',
+          start: 'top 85%',
         },
-        y: 40,
+        y: 60,
         opacity: 0,
-        duration: 1,
-        stagger: 0.15,
+        duration: 1.5,
+        stagger: 0.2,
+        ease: 'power4.out'
+      })
+
+      gsap.from('.newsletter-form-centered', {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 75%',
+        },
+        y: 30,
+        opacity: 0,
+        duration: 1.2,
+        delay: 0.4,
         ease: 'power3.out'
       })
     }, sectionRef)
@@ -36,42 +48,28 @@ const Newsletter = () => {
   }
 
   return (
-    <section className="newsletter-premium" ref={sectionRef}>
-      <div className="newsletter-grain"></div>
+    <section className="newsletter-centered" ref={sectionRef}>
       <div className="container">
-        <div className="newsletter-layout" ref={contentRef}>
-          <div className="newsletter-info">
-            <span className="newsletter-overtitle">Become a Partner</span>
-            <h2 className="newsletter-main-title">Stay Inspired with Our <em>Monthly Stories.</em></h2>
-            <p className="newsletter-lead">
-              Join our community and get the latest updates, impact stories, 
-              and exclusive community content delivered to your inbox.
-            </p>
+        <div className="newsletter-vertical-stack" ref={contentRef}>
+          <div className="newsletter-header">
+            <span className="newsletter-mini-label">Direct Impact</span>
+            <h2 className="newsletter-display-title">Become a <em>Partner.</em></h2>
           </div>
           
-          <div className="newsletter-action">
-            <form className="premium-form" onSubmit={handleSubmit}>
-              <div className="premium-input-group">
-                <input
-                  type="email"
-                  placeholder="Your Email Address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="premium-input"
-                />
-                <button type="submit" className="premium-submit-btn">
-                  <span>Sign Up Now</span>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </button>
-              </div>
-              <p className="form-privacy">
-                <span className="lock-icon">🔒</span> Your privacy is our priority. No spam, ever.
-              </p>
-            </form>
-          </div>
+          <form className="newsletter-form-centered" onSubmit={handleSubmit}>
+            <div className="input-field-wrapper">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <button type="submit" className="minimal-arrow-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </section>

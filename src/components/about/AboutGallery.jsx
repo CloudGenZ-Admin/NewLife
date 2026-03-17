@@ -27,14 +27,34 @@ const AboutGallery = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      const isMobile = window.innerWidth <= 768;
       const items = gsap.utils.toArray('.v2-gallery-item');
       
+      if (isMobile) {
+        const grid = document.querySelector('.v2-gallery-asymmetric-grid');
+        const totalWidth = grid.scrollWidth - grid.offsetWidth;
+        
+        gsap.to(grid, {
+          scrollLeft: totalWidth,
+          duration: 30, // Slow, cinematic scroll
+          ease: 'none',
+          repeat: -1,
+          yoyo: true, // Go back and forth for an infinite feel without cloning
+        });
+      }
+
       items.forEach((item, i) => {
         const img = item.querySelector('img');
         const depth = images[i].depth || 0.1;
+        const isMobileItem = window.innerWidth <= 768;
 
         // Optimization: Wait for image to decode before triggering reveal
         const startReveal = () => {
+          if (isMobileItem) {
+            gsap.set(item, { clipPath: 'inset(0% 0% 0% 0%)', opacity: 1, y: 0 });
+            return;
+          }
+
           gsap.to(item, {
             scrollTrigger: {
               trigger: item,

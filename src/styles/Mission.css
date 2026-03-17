@@ -89,15 +89,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 100px 0;
+  padding: 20px 0;
 }
 
-.story-block.first {
-  padding-top: 150px;
-}
 
 .story-block.last {
-  padding-bottom: 200px;
+  padding-bottom: 80px;
 }
 
 .narrative-label {
@@ -239,10 +236,6 @@
 }
 
 @media (max-width: 480px) {
-  .mission-visual-side {
-    height: 40vh;
-  }
-
   .narrative-title {
     font-size: 2.4rem;
   }

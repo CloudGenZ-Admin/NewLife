@@ -15,7 +15,6 @@ const OurStory = () => {
 
         <div className="story-grid">
           <div className="story-card mission-card">
-            <div className="card-icon">🎯</div>
             <h3>Our Mission</h3>
             <p>
               To support women and youth in building skills, confidence, and opportunities that enable them
@@ -24,7 +23,6 @@ const OurStory = () => {
           </div>
 
           <div className="story-card vision-card">
-            <div className="card-icon">🌍</div>
             <h3>Our Vision</h3>
             <p>
               A world where women and young people have equitable access to education, leadership opportunities,

@@ -62,7 +62,6 @@ const FounderStory = () => {
             </div>
           </div>
           <div className="chapter-content">
-            <span className="chapter-number">01</span>
             <h2 className="chapter-title">The Promise.</h2>
             <div className="chapter-text">
               <p className="lead">
@@ -87,7 +86,6 @@ const FounderStory = () => {
         {/* CHAPTER 2: THE REACH */}
         <div className="story-chapter chapter-right">
           <div className="chapter-content">
-            <span className="chapter-number">02</span>
             <h2 className="chapter-title">Building Bridges.</h2>
             <div className="chapter-text">
               <p>
@@ -126,7 +124,6 @@ const FounderStory = () => {
             </div>
           </div>
           <div className="chapter-content">
-            <span className="chapter-number">03</span>
             <h2 className="chapter-title">The Resilience.</h2>
             <div className="chapter-text">
               <p>
@@ -150,7 +147,6 @@ const FounderStory = () => {
         {/* CHAPTER 4: THE LEGACY */}
         <div className="story-chapter chapter-center">
           <div className="chapter-content">
-            <span className="chapter-number">04</span>
             <h2 className="chapter-title">A Lasting Impact.</h2>
             <div className="chapter-text">
               <p>
