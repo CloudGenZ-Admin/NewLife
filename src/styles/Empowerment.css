@@ -1,0 +1,245 @@
+/* src/styles/Empowerment.css */
+/* BESPOKE DESIGN: "The Impact Grid" - Refined Editorial style (No Black/Lime). */
+
+:root {
+  --emp-bg: #fdfdfb; /* Cream paper */
+  --emp-green: #2d5a27; /* Primary Dark Green */
+  --emp-light-green: #e8efe7; /* Soft pastel green */
+  --emp-accent: #3a7533; /* Mid green */
+  --emp-dark: #152812; /* Deepest forest green */
+  --emp-font: 'Plus Jakarta Sans', sans-serif;
+  --emp-display: 'Cormorant Garamond', serif; /* Elegant serif */
+}
+
+.emp-page {
+  background-color: var(--emp-bg);
+  color: var(--emp-dark);
+  font-family: var(--emp-font);
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* 1. ELEGANT MARQUEE HEADER */
+.emp-marquee-wrap {
+  position: relative;
+  width: 100%;
+  background: var(--emp-green);
+  color: var(--emp-bg);
+  padding: 1.5rem 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  margin-top: 10vh;
+}
+
+.emp-marquee {
+  display: flex;
+  white-space: nowrap;
+}
+
+.emp-marquee h1 {
+  font-family: var(--emp-display);
+  font-size: 3.5rem;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  margin: 0;
+  padding-right: 3rem;
+}
+
+/* 2. EDITORIAL HERO GRID */
+.emp-swiss-hero {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  grid-auto-rows: minmax(70vh, auto);
+  border-bottom: 1px solid rgba(45, 90, 39, 0.2);
+}
+
+.emp-hero-text {
+  padding: 10vw 5vw;
+  background: var(--emp-bg);
+  border-right: 1px solid rgba(45, 90, 39, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.emp-badge {
+  display: inline-block;
+  border: 1px solid var(--emp-accent);
+  color: var(--emp-accent);
+  border-radius: 50px;
+  padding: 0.5rem 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  margin-bottom: 2.5rem;
+  align-self: flex-start;
+  letter-spacing: 0.1em;
+}
+
+.emp-hero-text h2 {
+  font-family: var(--emp-display);
+  font-size: clamp(3.5rem, 6vw, 6rem);
+  font-weight: 500;
+  line-height: 1;
+  color: var(--emp-dark);
+  margin-bottom: 2rem;
+}
+
+.emp-hero-text p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  max-width: 500px;
+  color: #4a5d43;
+}
+
+.emp-hero-img {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  padding: 3vw;
+  background: var(--emp-light-green);
+}
+
+.emp-hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(45, 90, 39, 0.1);
+}
+
+/* 3. ELEGANT IMPACT BLOCKS */
+.emp-impact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-bottom: 1px solid rgba(45, 90, 39, 0.2);
+}
+
+.emp-block {
+  padding: 6vw 4vw;
+  border-right: 1px solid rgba(45, 90, 39, 0.2);
+  position: relative;
+  transition: background 0.4s;
+}
+
+.emp-block:last-child { border-right: none; }
+
+.emp-block.green { background: var(--emp-green); color: #fff; }
+.emp-block.light { background: var(--emp-bg); color: var(--emp-dark); }
+.emp-block.soft { background: var(--emp-light-green); color: var(--emp-dark); }
+
+.emp-block h3 {
+  font-family: var(--emp-display);
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.emp-block p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+/* 4. GALLERY (No Cropping) */
+.emp-doc-gallery {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr;
+  grid-auto-rows: 60vh;
+  border-bottom: 1px solid rgba(45, 90, 39, 0.2);
+  background: var(--emp-light-green);
+}
+
+.emp-doc-item {
+  position: relative;
+  border-right: 1px solid rgba(45, 90, 39, 0.2);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.emp-doc-item:last-child { border-right: none; }
+
+.emp-doc-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 40px rgba(45, 90, 39, 0.15));
+}
+
+.emp-doc-label {
+  position: absolute;
+  top: 2rem; left: 2rem;
+  background: #fff;
+  color: var(--emp-dark);
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+/* 5. COMPONENTS LIST */
+.emp-components {
+  padding: 10vw 5vw;
+  background: var(--emp-dark);
+  color: #fff;
+}
+
+.emp-comp-title {
+  font-family: var(--emp-display);
+  font-size: 4rem;
+  font-weight: 400;
+  margin-bottom: 5rem;
+  text-align: center;
+  color: var(--emp-light-green);
+}
+
+.emp-comp-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.emp-comp-item {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  padding: 3rem 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.emp-comp-item h4 {
+  font-family: var(--emp-font);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.emp-comp-item p {
+  font-family: var(--emp-display);
+  font-size: 1.8rem;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.7);
+  font-style: italic;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .emp-swiss-hero { grid-template-columns: 1fr; grid-auto-rows: auto; }
+  .emp-hero-text { border-right: none; border-bottom: 1px solid rgba(45, 90, 39, 0.2); }
+  .emp-hero-img { height: 60vh; padding: 5vw; }
+  
+  .emp-impact-grid { grid-template-columns: 1fr; }
+  .emp-block { border-right: none; border-bottom: 1px solid rgba(45, 90, 39, 0.2); }
+  
+  .emp-doc-gallery { grid-template-columns: 1fr; grid-auto-rows: 50vh; }
+  .emp-doc-item { border-right: none; border-bottom: 1px solid rgba(45, 90, 39, 0.2); padding: 2rem; }
+  
+  .emp-comp-item { grid-template-columns: 1fr; gap: 1rem; padding: 2rem 0; }
+  .emp-comp-item p { font-size: 1.4rem; }
+}

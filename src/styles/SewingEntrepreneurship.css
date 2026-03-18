@@ -1,0 +1,276 @@
+/* src/styles/SewingEntrepreneurship.css */
+/* BESPOKE DESIGN: "The Lookbook" - Fashion, editorial, asymmetrical. */
+
+:root {
+  --sew-bg: #f5f2eb; /* Warm canvas */
+  --sew-dark: #2d5a27; /* Deep forest green */
+  --sew-accent: #d4a373; /* Earthy gold/tan */
+  --sew-light: #fffcf5;
+  --sew-text: #4a4a4a;
+  --sew-font: 'Plus Jakarta Sans', sans-serif;
+  --sew-display: 'Cormorant Garamond', serif;
+}
+
+.sewing-page {
+  background-color: var(--sew-bg);
+  color: var(--sew-text);
+  font-family: var(--sew-font);
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* 1. LOOKBOOK HERO */
+.sew-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 15vh 5vw 5vh;
+}
+
+.sew-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 5vw;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.sew-hero-text {
+  position: relative;
+  z-index: 2;
+}
+
+.sew-pill {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid var(--sew-dark);
+  color: var(--sew-dark);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+  border-radius: 50px;
+}
+
+.sew-hero-text h1 {
+  font-family: var(--sew-display);
+  font-size: clamp(4rem, 8vw, 7rem);
+  line-height: 0.9;
+  color: var(--sew-dark);
+  margin-bottom: 2rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.sew-hero-text h1 em {
+  font-style: italic;
+  font-weight: 300;
+  display: block;
+  margin-left: 2rem;
+  color: var(--sew-accent);
+}
+
+.sew-hero-text p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  max-width: 450px;
+  margin-left: 2rem;
+}
+
+.sew-hero-img-wrap {
+  position: relative;
+  border-radius: 200px 200px 0 0; /* Arch window effect */
+  overflow: hidden;
+  height: 80vh;
+  box-shadow: 0 40px 100px rgba(45, 90, 39, 0.15);
+}
+
+.sew-hero-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 2. CREATIVE PATHWAYS (Asymmetrical Text/Img Overlap) */
+.sew-pathways {
+  padding: 20vh 5vw;
+  position: relative;
+  background: var(--sew-light);
+}
+
+.sew-pathways-wrap {
+  display: flex;
+  align-items: flex-start;
+  gap: 8vw;
+  position: relative;
+}
+
+.sew-pathways-title {
+  width: 40%;
+  position: sticky;
+  top: 20vh;
+}
+
+.sew-pathways-title h2 {
+  font-family: var(--sew-display);
+  font-size: clamp(3rem, 6vw, 5rem);
+  line-height: 1;
+  color: var(--sew-dark);
+  margin-bottom: 2rem;
+}
+
+.sew-pathways-title p {
+  font-size: 1.25rem;
+  line-height: 1.8;
+}
+
+.sew-pathways-content {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 15vh;
+}
+
+.sew-goal-card {
+  position: relative;
+  padding: 4rem;
+  background: var(--sew-bg);
+  border-left: 1px solid var(--sew-dark);
+}
+
+.sew-goal-card h3 {
+  font-family: var(--sew-display);
+  font-size: 2.5rem;
+  color: var(--sew-dark);
+  margin-bottom: 1rem;
+}
+
+.sew-goal-card p {
+  font-size: 1.15rem; line-height: 1.7;
+}
+
+/* 3. THE POLAROID FLYER GALLERY (Absolute custom masonry) */
+.sew-lookbook-gallery {
+  padding: 15vh 5vw 25vh;
+  background: var(--sew-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.sew-lookbook-gallery::before {
+  content: 'STITCHES';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--sew-display);
+  font-size: 25vw;
+  color: rgba(255,255,255,0.03);
+  font-weight: 700;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.sew-lookbook-title {
+  text-align: center;
+  font-family: var(--sew-display);
+  font-size: 4rem;
+  color: var(--sew-bg);
+  margin-bottom: 10vh;
+  position: relative;
+  z-index: 2;
+}
+
+.sew-lookbook-title em { font-style: italic; color: var(--sew-accent); }
+
+.sew-polaroid-grid {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3vw;
+}
+
+/* Physical polaroid/flyer effect */
+.polaroid {
+  background: #fff;
+  padding: 15px 15px 50px 15px; /* Bottom heavy */
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  margin-bottom: 5vh;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.polaroid:hover {
+  transform: scale(1.05) translateZ(0) !important;
+  z-index: 10;
+}
+
+.polaroid img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.polaroid.tall {
+  width: 35%;
+  padding: 20px;
+}
+.polaroid.square {
+  width: 25%;
+}
+.polaroid.wide {
+  width: 45%;
+}
+
+/* 4. SKILLS GRID (Elegant bottom section) */
+.sew-skills {
+  padding: 15vh 5vw;
+  background: var(--sew-bg);
+}
+
+.sew-skills-title {
+  font-family: var(--sew-display);
+  font-size: 3.5rem;
+  color: var(--sew-dark);
+  text-align: center;
+  margin-bottom: 8vh;
+}
+
+.sew-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+}
+
+.sew-skill-item {
+  text-align: center;
+  padding: 3rem;
+  border-top: 1px solid rgba(45, 90, 39, 0.2);
+  transition: border-color 0.4s;
+}
+
+.sew-skill-item:hover {
+  border-top-color: var(--sew-dark);
+}
+
+.sew-skill-item h3 {
+  font-family: var(--sew-display);
+  font-size: 1.8rem; margin-bottom: 1rem; color: var(--sew-dark);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .sew-hero-grid { grid-template-columns: 1fr; gap: 5vh; }
+  .sew-hero-text h1 { font-size: 5rem; }
+  .sew-hero-img-wrap { height: 60vh; border-radius: 100px 100px 0 0; }
+  
+  .sew-pathways-wrap { flex-direction: column; }
+  .sew-pathways-title, .sew-pathways-content { width: 100%; position: relative; top: 0; }
+  
+  .polaroid.tall, .polaroid.square, .polaroid.wide { width: 80%; }
+  
+  .sew-skills-grid { grid-template-columns: 1fr; }
+}

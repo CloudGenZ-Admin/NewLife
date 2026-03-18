@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import '../styles/IndividualProgram.css';
+import SplitType from 'split-type';
+import '../styles/Relief.css'; // The new Typography Manifesto CSS
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -9,98 +10,148 @@ const ReliefProgram = () => {
   const pageRef = useRef(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Header Animation
-      gsap.from('.program-hero-clean > *', {
-        y: 40, opacity: 0, duration: 1, stagger: 0.2, ease: 'power3.out'
+    let ctx = gsap.context(() => {
+      
+      // Massive Hero Typography Animation
+      const heroTitleSplit = new SplitType('.tp-hero h1', { types: 'words, chars' });
+      const heroIntroSplit = new SplitType('.tp-hero p.lead', { types: 'lines, words' });
+
+      gsap.from(heroTitleSplit.chars, {
+        opacity: 0, y: 100, rotateX: -90,
+        stagger: 0.02, duration: 1.2, ease: 'back.out(1.5)', delay: 0.2
       });
 
-      // Bento Gallery Animation
-      gsap.from('.bento-item', {
-        scale: 0.9, opacity: 0, duration: 1, stagger: 0.1, ease: 'back.out(1.2)',
-        scrollTrigger: { trigger: '.program-gallery-bento', start: 'top 80%' }
+      gsap.from(heroIntroSplit.lines, {
+        opacity: 0, y: 30, stagger: 0.1, duration: 1.2, ease: 'power3.out', delay: 0.8
       });
 
-      // Section Reveals
-      gsap.utils.toArray('.program-section').forEach((section) => {
-        gsap.from(section, {
-          scrollTrigger: { trigger: section, start: 'top 80%' },
-          y: 60, opacity: 0, duration: 1, ease: 'power3.out'
+      gsap.from('.tp-hero-intro', {
+        opacity: 0, y: 30, duration: 1.2, ease: 'power3.out', delay: 1.2
+      });
+
+      // Section Sticky Fade
+      gsap.utils.toArray('.tp-section').forEach(section => {
+        gsap.from(section.querySelector('.tp-section-sticky'), {
+          scrollTrigger: { trigger: section, start: 'top 70%' },
+          y: 50, opacity: 0, duration: 1.2, ease: 'power3.out'
         });
+
+        // Stagger list items
+        const listItems = section.querySelectorAll('.tp-list li');
+        if(listItems.length > 0) {
+          gsap.from(listItems, {
+            scrollTrigger: { trigger: section, start: 'top 60%' },
+            y: 40, opacity: 0, duration: 1, stagger: 0.15, ease: 'power2.out'
+          });
+        }
       });
+
+      // Footer Reveal
+      gsap.from('.tp-footer h2, .tp-footer p', {
+        scrollTrigger: { trigger: '.tp-footer', start: 'top 80%' },
+        y: 60, opacity: 0, duration: 1.2, stagger: 0.2, ease: 'power3.out'
+      });
+
     }, pageRef);
+
     return () => ctx.revert();
   }, []);
 
   return (
-    <div className="individual-program-page" ref={pageRef}>
-      <header className="program-hero-clean">
-        <div className="container">
-          <span className="program-label">Pillar 05</span>
-          <h1>Relief Program & <br /> <em>Diaspora Impact</em></h1>
-          <p>Honouring roots through global transformation and community support.</p>
-        </div>
+    <div className="relief-page" ref={pageRef}>
+      
+      {/* 1. TYPOGRAPHY HERO */}
+      <header className="tp-hero">
+        <h1>Diaspora <br/><em>Impact Program</em></h1>
+        
+        <p className="lead">
+          For many people living abroad, giving back to their country of origin is deeply personal. It is about honouring family roots, supporting future generations, and helping communities grow stronger.
+        </p>
+
+        <p className="tp-hero-intro">
+          Through the Diaspora Impact Program, you have the opportunity to support specific initiatives creating real change for women, youth, and families. For the past four years, NewLife Project Inc. has been meeting the needs of at-risk communities in <span className="tp-highlight">Sierra Leone, Côte d’Ivoire, and Ghana</span>. 
+          <br/><br/>
+          We have organized clothing, backpack, and household good drives within the Ottawa community and directed generous donations directly to students who need them.
+        </p>
       </header>
 
-      <section className="program-main-section">
-        <div className="container">
-          <div className="program-split">
-            <div className="program-text">
-              <h2 className="section-title">A Global Legacy</h2>
-              <p>Honouring family roots and supporting future generations in Sierra Leone, Côte d'Ivoire, and Ghana. We bridge the diaspora with local needs to create lasting change.</p>
 
-              <div className="program-goals">
-                <div className="goal-item">
-                  <h3>Educational Relief</h3>
-                  <p>Backpacks, books, and essential school supplies for students in need across West Africa.</p>
-                </div>
-                <div className="goal-item">
-                  <h3>Learning Centres</h3>
-                  <p>Building and supporting safe classrooms specifically for girls' education and literacy.</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="program-visual-standalone">
-              <img className="main-program-img" src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/Violet_and_Green_Lavender_Photo_Collage_Instagram_Post.png?v=1746253578" alt="Relief Distribution" />
-            </div>
+      {/* 2. THE SCROLLING MANIFESTO */}
+      <section className="tp-sections-wrap">
+        
+        {/* Section 1: Learning Centre */}
+        <div className="tp-section">
+          <div className="tp-section-sticky">
+            <h2>Building <em>Project</em></h2>
+            <p>Our education center serves as an opportunity to give back to the community that inspired the vision for Newlife. Designed for all-weather conditions.</p>
+          </div>
+          <div className="tp-section-content">
+            <ul className="tp-list">
+              <li>Safe classrooms where girls can learn without fear.</li>
+              <li>Access to books, technology, and educational resources.</li>
+              <li>A computer lab that prepares youth for modern careers.</li>
+              <li>Opportunities for girls to stay in school and build brighter futures.</li>
+            </ul>
           </div>
         </div>
-      </section>
 
-      <section className="program-gallery-section">
-        <div className="container">
-          <h2 className="section-title centered">Global <em>Solidarity</em></h2>
-          <div className="program-gallery-bento gallery-2">
-            <div className="bento-item full-image">
-              <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/IMG_6657.jpg?v=1755714448" alt="Aid Distribution" />
-            </div>
-            <div className="bento-item large">
-              <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/04103EC8-69BD-4266-ADC4-2F9F12E42ACF.jpg?v=1713204114" alt="Community Smile" />
-            </div>
+        {/* Section 2: Education Relief */}
+        <div className="tp-section">
+          <div className="tp-section-sticky">
+            <h2>Education <em>Relief</em></h2>
+            <p>Direct school support empowering the next generation.</p>
+          </div>
+          <div className="tp-section-content">
+            <ul className="tp-list">
+              <li>Backpacks filled with school supplies for students in need.</li>
+              <li>Financial sponsorships ensuring continuous enrollment.</li>
+              <li>Learning materials that guarantee academic success.</li>
+              <li>Encouragement for families to prioritize continued education.</li>
+            </ul>
           </div>
         </div>
-      </section>
 
-      <section className="program-section green-light-bg">
-        <div className="container">
-          <h2 className="section-title centered">Our Global Reach</h2>
-          <div className="components-grid">
-            <div className="component-card">
-              <h3>Sierra Leone</h3>
-              <p>Focused on rural education and classroom infrastructure for primary students.</p>
-            </div>
-            <div className="component-card">
-              <h3>Côte d'Ivoire</h3>
-              <p>Community health, basic supplies, and mentorship for local youth groups.</p>
-            </div>
-            <div className="component-card">
-              <h3>Ghana</h3>
-              <p>Entrepreneurship support for local women's cooperatives and vocational kits.</p>
-            </div>
+        {/* Section 3: Women's Rehab */}
+        <div className="tp-section">
+          <div className="tp-section-sticky">
+            <h2>Rehabilitation <em>& Support</em></h2>
+            <p>Empowerment initiatives to restore dignity and independence.</p>
+          </div>
+          <div className="tp-section-content">
+            <ul className="tp-list">
+              <li>Vocational training for women rebuilding their lives.</li>
+              <li>Crucial skills that support income generation.</li>
+              <li>Rehabilitative programs that rebuild confidence.</li>
+              <li>Pathways toward small business and employment.</li>
+            </ul>
           </div>
         </div>
+
+        {/* Section 4: Cultural Engagement */}
+        <div className="tp-section">
+          <div className="tp-section-sticky">
+            <h2>Cultural <em>Engagement</em></h2>
+            <p>Grassroots community fundraising to sustain our global impact.</p>
+          </div>
+          <div className="tp-section-content">
+            <ul className="tp-list">
+              <li>Cultural events that bring diaspora communities together.</li>
+              <li>Community campaigns that raise vital resources.</li>
+              <li>Platforms that celebrate heritage through impact.</li>
+              <li>Ongoing initiatives connecting supporters to change.</li>
+            </ul>
+          </div>
+        </div>
+
       </section>
+
+
+      {/* 3. THE CLOSING STATEMENT */}
+      <footer className="tp-footer">
+        <h2>Be Part of the Change</h2>
+        <p>When you support the NewLife Project, you are not only making a contribution — you are investing in education, empowerment, and opportunity. Join us in creating pathways to hope, dignity, and lasting transformation.</p>
+      </footer>
+
     </div>
   );
 };
