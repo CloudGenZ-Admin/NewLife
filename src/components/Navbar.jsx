@@ -188,19 +188,23 @@ const Navbar = () => {
           <div className={`mobile-dropdown-parent ${isAboutDropdownOpen ? 'expanded' : ''}`}>
             <a href="#" onClick={toggleAboutDropdown}>About <span className="arrow">{isAboutDropdownOpen ? '−' : '+'}</span></a>
             <div className="mobile-dropdown-children">
-              <Link to="/about" onClick={handleLinkClick}>Our Story</Link>
-              <Link to="/our-africa" onClick={handleLinkClick}>Our Africa</Link>
+              <div className="mobile-dropdown-inner">
+                <Link to="/about" onClick={handleLinkClick}>Our Story</Link>
+                <Link to="/our-africa" onClick={handleLinkClick}>Our Africa</Link>
+              </div>
             </div>
           </div>
 
           <div className={`mobile-dropdown-parent ${isProgramsDropdownOpen ? 'expanded' : ''}`}>
             <a href="#" onClick={toggleProgramsDropdown}>Programs <span className="arrow">{isProgramsDropdownOpen ? '−' : '+'}</span></a>
             <div className="mobile-dropdown-children">
-              <Link to="/programs/empowerment" onClick={handleLinkClick}>Empowerment</Link>
-              <Link to="/programs/language" onClick={handleLinkClick}>Language</Link>
-              <Link to="/programs/sewing" onClick={handleLinkClick}>Sewing</Link>
-              <Link to="/programs/internship" onClick={handleLinkClick}>Internship</Link>
-              <Link to="/programs/relief" onClick={handleLinkClick}>Relief</Link>
+              <div className="mobile-dropdown-inner">
+                <Link to="/programs/empowerment" onClick={handleLinkClick}>Empowerment</Link>
+                <Link to="/programs/language" onClick={handleLinkClick}>Language</Link>
+                <Link to="/programs/sewing" onClick={handleLinkClick}>Sewing</Link>
+                <Link to="/programs/internship" onClick={handleLinkClick}>Internship</Link>
+                <Link to="/programs/relief" onClick={handleLinkClick}>Relief</Link>
+              </div>
             </div>
           </div>
 
