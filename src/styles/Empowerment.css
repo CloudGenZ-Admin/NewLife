@@ -1,245 +1,516 @@
-/* src/styles/Empowerment.css */
-/* BESPOKE DESIGN: "The Impact Grid" - Refined Editorial style (No Black/Lime). */
-
 :root {
-  --emp-bg: #fdfdfb; /* Cream paper */
-  --emp-green: #2d5a27; /* Primary Dark Green */
-  --emp-light-green: #e8efe7; /* Soft pastel green */
-  --emp-accent: #3a7533; /* Mid green */
-  --emp-dark: #152812; /* Deepest forest green */
-  --emp-font: 'Plus Jakarta Sans', sans-serif;
-  --emp-display: 'Cormorant Garamond', serif; /* Elegant serif */
+  --em-bg: var(--green-light);
+  /* BRAND LIGHT GREEN */
+  --em-green: #2d5a27;
+  --em-light: var(--green-lighter);
+  --em-mid: #3a7533;
+  --em-dark: #152812;
+  --em-border: rgba(45, 90, 39, 0.12);
+  --em-ff: 'Cormorant Garamond', serif;
+  --em-fb: 'Plus Jakarta Sans', sans-serif;
 }
 
 .emp-page {
-  background-color: var(--emp-bg);
-  color: var(--emp-dark);
-  font-family: var(--emp-font);
+  background: white;
+  color: var(--em-dark);
+  font-family: var(--em-fb);
   overflow-x: hidden;
-  width: 100%;
 }
 
-/* 1. ELEGANT MARQUEE HEADER */
-.emp-marquee-wrap {
-  position: relative;
-  width: 100%;
-  background: var(--emp-green);
-  color: var(--emp-bg);
-  padding: 1.5rem 0;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid rgba(255,255,255,0.2);
-  margin-top: 10vh;
-}
-
-.emp-marquee {
-  display: flex;
-  white-space: nowrap;
-}
-
-.emp-marquee h1 {
-  font-family: var(--emp-display);
-  font-size: 3.5rem;
-  font-weight: 400;
-  font-style: italic;
-  letter-spacing: 0.02em;
-  margin: 0;
-  padding-right: 3rem;
-}
-
-/* 2. EDITORIAL HERO GRID */
-.emp-swiss-hero {
+/* ----------------------------------------------------------------
+   1. HERO: COMPACT SPLIT (No full-screen emptiness)
+---------------------------------------------------------------- */
+.emp-hero {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  grid-auto-rows: minmax(70vh, auto);
-  border-bottom: 1px solid rgba(45, 90, 39, 0.2);
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 140px 8% 80px;
+  border-bottom: 1px solid var(--em-border);
+  align-items: center;
+  background: var(--green-light);
+  /* Start with Green */
+  min-height: 80vh;
 }
 
-.emp-hero-text {
-  padding: 10vw 5vw;
-  background: var(--emp-bg);
-  border-right: 1px solid rgba(45, 90, 39, 0.2);
+.emp-hero-content {
   display: flex;
   flex-direction: column;
+  gap: 1.5rem;
+  padding-right: 6%;
+}
+
+.emp-hero-tag {
+  font-family: var(--em-fb);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--em-green);
+  background: white;
+  border: 1px solid var(--em-border);
+  padding: 0.5rem 1.2rem;
+  border-radius: 100px;
+  display: inline-block;
+  width: fit-content;
+}
+
+.emp-hero-heading {
+  font-family: var(--em-ff);
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--em-dark);
+  margin: 0;
+}
+
+.emp-hero-heading em {
+  font-style: italic;
+  color: var(--em-green);
+}
+
+.emp-hero-body {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: rgba(21, 40, 18, 0.65);
+  max-width: 480px;
+  margin: 0;
+}
+
+/* Stats Row */
+.emp-hero-stats {
+  display: flex;
+  gap: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--em-border);
+}
+
+.emp-stat strong {
+  display: block;
+  font-family: var(--em-ff);
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--em-green);
+  line-height: 1;
+}
+
+.emp-stat span {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(21, 40, 18, 0.5);
+}
+
+/* Image Panel */
+.emp-hero-img-block {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
   justify-content: center;
 }
 
-.emp-badge {
-  display: inline-block;
-  border: 1px solid var(--emp-accent);
-  color: var(--emp-accent);
-  border-radius: 50px;
-  padding: 0.5rem 1.5rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  margin-bottom: 2.5rem;
-  align-self: flex-start;
-  letter-spacing: 0.1em;
-}
-
-.emp-hero-text h2 {
-  font-family: var(--emp-display);
-  font-size: clamp(3.5rem, 6vw, 6rem);
-  font-weight: 500;
-  line-height: 1;
-  color: var(--emp-dark);
-  margin-bottom: 2rem;
-}
-
-.emp-hero-text p {
-  font-size: 1.2rem;
-  line-height: 1.8;
-  max-width: 500px;
-  color: #4a5d43;
-}
-
-.emp-hero-img {
+.emp-img-pill {
   width: 100%;
-  height: 100%;
-  position: relative;
+  height: 65vh;
+  border-radius: 24px;
   overflow: hidden;
-  padding: 3vw;
-  background: var(--emp-light-green);
+  box-shadow: 0 30px 80px rgba(45, 90, 39, 0.15);
 }
 
-.emp-hero-img img {
+.emp-img-pill img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 20px;
-  box-shadow: 0 20px 50px rgba(45, 90, 39, 0.1);
 }
 
-/* 3. ELEGANT IMPACT BLOCKS */
-.emp-impact-grid {
+.emp-img-tag {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: var(--em-green);
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 0.6rem 1.4rem;
+  border-radius: 100px;
+}
+
+/* ----------------------------------------------------------------
+   2. BENTO GRID: 3 PROGRAM PILLARS
+---------------------------------------------------------------- */
+.emp-bento {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border-bottom: 1px solid rgba(45, 90, 39, 0.2);
+  border-bottom: 1px solid var(--em-border);
+  background: white;
+  /* White */
+  padding: 0;
 }
 
-.emp-block {
-  padding: 6vw 4vw;
-  border-right: 1px solid rgba(45, 90, 39, 0.2);
-  position: relative;
-  transition: background 0.4s;
-}
-
-.emp-block:last-child { border-right: none; }
-
-.emp-block.green { background: var(--emp-green); color: #fff; }
-.emp-block.light { background: var(--emp-bg); color: var(--emp-dark); }
-.emp-block.soft { background: var(--emp-light-green); color: var(--emp-dark); }
-
-.emp-block h3 {
-  font-family: var(--emp-display);
-  font-size: 2.5rem;
-  font-weight: 500;
-  margin-bottom: 1.5rem;
-  font-style: italic;
-}
-
-.emp-block p {
-  font-size: 1.1rem;
-  line-height: 1.7;
-}
-
-/* 4. GALLERY (No Cropping) */
-.emp-doc-gallery {
-  display: grid;
-  grid-template-columns: 2fr 1.5fr;
-  grid-auto-rows: 60vh;
-  border-bottom: 1px solid rgba(45, 90, 39, 0.2);
-  background: var(--emp-light-green);
-}
-
-.emp-doc-item {
-  position: relative;
-  border-right: 1px solid rgba(45, 90, 39, 0.2);
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 3rem;
-}
-
-.emp-doc-item:last-child { border-right: none; }
-
-.emp-doc-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  filter: drop-shadow(0 20px 40px rgba(45, 90, 39, 0.15));
-}
-
-.emp-doc-label {
-  position: absolute;
-  top: 2rem; left: 2rem;
-  background: #fff;
-  color: var(--emp-dark);
-  padding: 0.5rem 1.2rem;
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: 0.8rem;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-}
-
-/* 5. COMPONENTS LIST */
-.emp-components {
-  padding: 10vw 5vw;
-  background: var(--emp-dark);
-  color: #fff;
-}
-
-.emp-comp-title {
-  font-family: var(--emp-display);
-  font-size: 4rem;
-  font-weight: 400;
-  margin-bottom: 5rem;
-  text-align: center;
-  color: var(--emp-light-green);
-}
-
-.emp-comp-list {
+.bento-card {
+  padding: 4rem 3rem;
+  border-right: 1px solid var(--em-border);
   display: flex;
   flex-direction: column;
+  gap: 1.2rem;
+  transition: transform 0.3s ease;
 }
 
-.emp-comp-item {
+.bento-card:last-child {
+  border-right: none;
+}
+
+.bento-card:hover {
+  transform: translateY(-4px);
+}
+
+.bento-green {
+  background: var(--em-green);
+  color: white;
+}
+
+.bento-light {
+  background: white;
+}
+
+.bento-cream {
+  background: var(--em-light);
+}
+
+.bento-index {
+  font-family: var(--em-ff);
+  font-size: 1rem;
+  font-weight: 700;
+  opacity: 0.4;
+}
+
+.bento-green .bento-index {
+  color: #b5d4b1;
+}
+
+.bento-light .bento-index,
+.bento-cream .bento-index {
+  color: var(--em-green);
+}
+
+.bento-card h3 {
+  font-family: var(--em-ff);
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.bento-card p {
+  font-size: 1rem;
+  line-height: 1.65;
+  opacity: 0.75;
+  flex-grow: 1;
+}
+
+.bento-pill {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 0.4rem 1.2rem;
+  border-radius: 100px;
+  width: fit-content;
+}
+
+.bento-green .bento-pill {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+.bento-light .bento-pill {
+  background: var(--em-light);
+  color: var(--em-green);
+}
+
+.bento-cream .bento-pill {
+  background: white;
+  color: var(--em-green);
+}
+
+/* ----------------------------------------------------------------
+   3. PHOTO EDITORIAL SPLIT
+---------------------------------------------------------------- */
+.emp-editorial {
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  padding: 3rem 0;
-  border-top: 1px solid rgba(255,255,255,0.1);
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--em-border);
+  background: var(--green-light);
+  /* Green */
 }
 
-.emp-comp-item h4 {
-  font-family: var(--emp-font);
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: #fff;
+.editorial-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 4rem;
+  background: var(--em-light);
 }
 
-.emp-comp-item p {
-  font-family: var(--emp-display);
-  font-size: 1.8rem;
-  line-height: 1.5;
-  color: rgba(255,255,255,0.7);
+.gallery-main,
+.gallery-sub {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.gallery-main {
+  grid-row: span 2;
+}
+
+.gallery-main img,
+.gallery-sub img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-label {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.4rem 0.9rem;
+  border-radius: 100px;
+  color: var(--em-dark);
+}
+
+.editorial-text {
+  padding: 5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.editorial-eyebrow {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--em-green);
+}
+
+.editorial-text h2 {
+  font-family: var(--em-ff);
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 300;
+  margin: 0;
+  line-height: 1.15;
+}
+
+.editorial-text h2 em {
   font-style: italic;
+  color: var(--em-green);
 }
 
-/* RESPONSIVE */
-@media (max-width: 1024px) {
-  .emp-swiss-hero { grid-template-columns: 1fr; grid-auto-rows: auto; }
-  .emp-hero-text { border-right: none; border-bottom: 1px solid rgba(45, 90, 39, 0.2); }
-  .emp-hero-img { height: 60vh; padding: 5vw; }
-  
-  .emp-impact-grid { grid-template-columns: 1fr; }
-  .emp-block { border-right: none; border-bottom: 1px solid rgba(45, 90, 39, 0.2); }
-  
-  .emp-doc-gallery { grid-template-columns: 1fr; grid-auto-rows: 50vh; }
-  .emp-doc-item { border-right: none; border-bottom: 1px solid rgba(45, 90, 39, 0.2); padding: 2rem; }
-  
-  .emp-comp-item { grid-template-columns: 1fr; gap: 1rem; padding: 2rem 0; }
-  .emp-comp-item p { font-size: 1.4rem; }
+.editorial-text>p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  opacity: 0.65;
+}
+
+.editorial-facts {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-top: 1px solid var(--em-border);
+  padding-top: 1.5rem;
+}
+
+.fact-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.fact-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.fact-dot.green {
+  background: var(--em-green);
+}
+
+.fact-row p {
+  font-size: 1rem;
+  margin: 0;
+  opacity: 0.7;
+}
+
+/* ----------------------------------------------------------------
+   4. PROGRAM COMPONENTS: DENSE LIST
+---------------------------------------------------------------- */
+.emp-components {
+  padding: 80px 8%;
+  background: white;
+  /* White */
+  color: black;
+}
+
+.comp-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  align-items: end;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 3rem;
+}
+
+.comp-header h2 {
+  font-family: var(--em-ff);
+  font-size: 3rem;
+  font-weight: 300;
+  line-height: 1;
+  margin: 0;
+}
+
+.comp-header h2 em {
+  font-style: italic;
+  color: #000000;
+}
+
+.comp-header p {
+  font-size: 1.1rem;
+  opacity: 0.55;
+  line-height: 1.6;
+}
+
+.comp-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 2rem;
+}
+
+.comp-item {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 3rem;
+  padding: 3rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  align-items: start;
+  transition: background 0.3s ease;
+}
+
+.comp-item:hover {
+  background: rgba(255, 255, 255, 0.03);
+  padding-left: 1rem;
+}
+
+.comp-num {
+  font-family: var(--em-ff);
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: #6ea666;
+  line-height: 1;
+  padding-top: 0.3rem;
+}
+
+.comp-info h4 {
+  font-family: var(--em-fb);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: rgb(0, 0, 0);
+  margin: 0 0 0.8rem;
+}
+
+.comp-info p {
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.55);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ----------------------------------------------------------------
+   RESPONSIVE
+---------------------------------------------------------------- */
+.emp-fade {
+  opacity: 1;
+  /* GSAP controls this */
+}
+
+@media (max-width: 1100px) {
+  .emp-hero {
+    grid-template-columns: 1fr;
+    max-height: none;
+    gap: 3rem;
+    padding: 120px 6% 60px;
+  }
+
+  .emp-hero-content {
+    padding-right: 0;
+  }
+
+  .emp-img-pill {
+    height: 45vh;
+  }
+
+  .emp-bento {
+    grid-template-columns: 1fr;
+  }
+
+  .bento-card {
+    border-right: none;
+    border-bottom: 1px solid var(--em-border);
+    padding: 3rem 8%;
+  }
+
+  .emp-editorial {
+    grid-template-columns: 1fr;
+  }
+
+  .editorial-gallery {
+    padding: 3rem 8%;
+  }
+
+  .editorial-text {
+    padding: 4rem 8%;
+  }
+
+  .comp-header {
+    grid-template-columns: 1fr;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .emp-hero {
+    padding: 80px 5% 40px;
+  }
+
+  .emp-hero-stats {
+    gap: 1.5rem;
+  }
+
+  .emp-components {
+    padding: 60px 5%;
+  }
+
+  .comp-item {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .comp-header h2 {
+    font-size: 2.2rem;
+  }
 }

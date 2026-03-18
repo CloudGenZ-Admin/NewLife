@@ -52,7 +52,6 @@ const InternshipEngagement = () => {
         <div className="int-hero-grid">
           
           <div className="int-hero-card">
-            <span className="int-pill">Pillar 04</span>
             <h1>Internship & <br/>Experiential Learning</h1>
             <p>Connecting academic excellence with real-world community impact through professional, structured partnerships.</p>
           </div>
@@ -71,7 +70,7 @@ const InternshipEngagement = () => {
         <div className="int-bento-layout">
           
           {/* Big Text Box */}
-          <div className="int-bento-box bento-text span-2">
+          <div className="int-bento-box bento-text span-2 span-row-2">
             <h3>Academic Partners</h3>
             <p>Since 2012, NewLife Project Inc. has partnered with top-tier universities and colleges to provide students with meaningful experiential learning placements that challenge and grow future leaders.</p>
             

@@ -79,7 +79,6 @@ const SewingEntrepreneurship = () => {
       <header className="sew-hero">
         <div className="sew-hero-grid">
           <div className="sew-hero-text">
-            <span className="sew-pill">Pillar 03</span>
             <h1>Sewing & <em>Entrepreneurship</em></h1>
             <p>Crafting independence and economic empowerment through vocational excellence. Transforming talents into tools for sustainable growth.</p>
           </div>

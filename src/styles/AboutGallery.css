@@ -96,10 +96,16 @@
   filter: saturate(1.1) contrast(1.05);
 }
 
-/* Bento Sizing V2 */
-.v-large { grid-column: span 8; height: 750px; }
-.v-medium { grid-column: span 4; height: 500px; margin-top: 100px; }
-.v-small { grid-column: span 3; height: 350px; margin-top: -50px; }
+/* Bento Sizing V2 — height is on the IMAGE CONTAINER, not the item */
+/* This ensures captions always have space below regardless of zoom level */
+.v-large { grid-column: span 8; }
+.v-large .v2-img-container { height: 750px; }
+
+.v-medium { grid-column: span 4; margin-top: 100px; }
+.v-medium .v2-img-container { height: 500px; }
+
+.v-small { grid-column: span 3; margin-top: -50px; }
+.v-small .v2-img-container { height: 350px; }
 
 /* Staggered offsets for feeling of depth */
 .v2-gallery-item:nth-child(even) { margin-top: 60px; }
@@ -211,9 +217,6 @@
 }
 
 @media (max-width: 768px) {
-  .v2-about-gallery { 
-    padding: 80px 0; 
-  }
   .v2-container {
     padding: 0 0 0 24px; /* Bleed to edge on right for scroll feel */
   }
@@ -223,21 +226,29 @@
   }
   .v2-premium-title { font-size: 3.5rem; }
   
-  /* CAROUSEL MODE */
-  .v2-gallery-asymmetric-grid { 
-    display: flex;
-    overflow-x: hidden; /* Prevent manual fight with GSAP */
-    overflow-y: hidden;
-    gap: 20px;
-    padding-bottom: 30px;
-    padding-right: 24px;
-    scrollbar-width: none; /* Hide scrollbar for clean look */
-    -webkit-overflow-scrolling: auto; /* Disable elastic scroll */
-    grid-template-columns: none; /* Disable grid */
+  /* MOBILE AUTO-SCROLL (CSS-based, works on iOS + Android) */
+  .v2-gallery-scroll-wrapper {
+    width: 100%;
+    overflow: hidden; /* Clip the scrolling track */
+    position: relative;
   }
 
-  .v2-gallery-asymmetric-grid::-webkit-scrollbar {
-    display: none;
+  .v2-gallery-scroll-wrapper.is-mobile-scroll .v2-gallery-asymmetric-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 16px;
+    width: max-content; /* Expand to fit all items */
+    animation: galleryAutoScroll 40s linear infinite;
+    overflow: visible;
+  }
+
+  .v2-gallery-scroll-wrapper.is-mobile-scroll:hover .v2-gallery-asymmetric-grid {
+    animation-play-state: paused; /* Pause on touch/hover */
+  }
+
+  @keyframes galleryAutoScroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* Move exactly half (original set) then loop */
   }
 
   .v2-gallery-item {

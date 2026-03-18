@@ -2,11 +2,11 @@
 /* BESPOKE DESIGN: "The Lookbook" - Fashion, editorial, asymmetrical. */
 
 :root {
-  --sew-bg: #f5f2eb; /* Warm canvas */
-  --sew-dark: #2d5a27; /* Deep forest green */
-  --sew-accent: #d4a373; /* Earthy gold/tan */
-  --sew-light: #fffcf5;
-  --sew-text: #4a4a4a;
+  --sew-bg: var(--green-light); /* BRAND LIGHT GREEN */
+  --sew-dark: #2d5a27;
+  --sew-accent: #d4a373;
+  --sew-light: var(--green-lighter);
+  --sew-text: #3a4a35;
   --sew-font: 'Plus Jakarta Sans', sans-serif;
   --sew-display: 'Cormorant Garamond', serif;
 }
@@ -97,7 +97,7 @@
 .sew-pathways {
   padding: 20vh 5vw;
   position: relative;
-  background: var(--sew-light);
+  background: white;
 }
 
 .sew-pathways-wrap {
@@ -153,8 +153,7 @@
 
 /* 3. THE POLAROID FLYER GALLERY (Absolute custom masonry) */
 .sew-lookbook-gallery {
-  padding: 15vh 5vw 25vh;
-  background: var(--sew-dark);
+  padding: 5vh 5vw 25vh;
   position: relative;
   overflow: hidden;
 }
@@ -177,7 +176,6 @@
   font-family: var(--sew-display);
   font-size: 4rem;
   color: var(--sew-bg);
-  margin-bottom: 10vh;
   position: relative;
   z-index: 2;
 }
@@ -220,6 +218,7 @@
 }
 .polaroid.square {
   width: 25%;
+  height: 100%;
 }
 .polaroid.wide {
   width: 45%;
@@ -228,7 +227,7 @@
 /* 4. SKILLS GRID (Elegant bottom section) */
 .sew-skills {
   padding: 15vh 5vw;
-  background: var(--sew-bg);
+  background: white;
 }
 
 .sew-skills-title {

@@ -8,6 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 const AboutGallery = () => {
   const [selectedImg, setSelectedImg] = useState(null);
   const [decodedImages, setDecodedImages] = useState({});
+  const [isMobile, setIsMobile] = useState(false);
   const galleryRef = useRef(null);
 
   const images = [
@@ -26,74 +27,55 @@ const AboutGallery = () => {
   ];
 
   useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
     const ctx = gsap.context(() => {
-      const isMobile = window.innerWidth <= 768;
       const items = gsap.utils.toArray('.v2-gallery-item');
-      
-      if (isMobile) {
-        const grid = document.querySelector('.v2-gallery-asymmetric-grid');
-        const totalWidth = grid.scrollWidth - grid.offsetWidth;
-        
-        gsap.to(grid, {
-          scrollLeft: totalWidth,
-          duration: 30, // Slow, cinematic scroll
-          ease: 'none',
-          repeat: -1,
-          yoyo: true, // Go back and forth for an infinite feel without cloning
-        });
-      }
 
       items.forEach((item, i) => {
         const img = item.querySelector('img');
-        const depth = images[i].depth || 0.1;
-        const isMobileItem = window.innerWidth <= 768;
+        const depth = images[i % images.length].depth || 0.1;
 
-        // Optimization: Wait for image to decode before triggering reveal
-        const startReveal = () => {
-          if (isMobileItem) {
-            gsap.set(item, { clipPath: 'inset(0% 0% 0% 0%)', opacity: 1, y: 0 });
-            return;
-          }
-
-          gsap.to(item, {
-            scrollTrigger: {
-              trigger: item,
-              start: 'top 92%',
-              toggleActions: 'play none none reverse',
-            },
-            clipPath: 'inset(0% 0% 0% 0%)',
-            opacity: 1,
-            y: 0,
-            duration: 1.5,
-            ease: 'power4.inOut',
-            delay: (i % 3) * 0.1,
-            onStart: () => setDecodedImages(prev => ({ ...prev, [i]: true }))
-          });
-        };
-
-        // Async decoding to prevent main thread lag
-        if (img.decode) {
-          img.decode()
-            .then(startReveal)
-            .catch(() => startReveal()); // fallback if decode fails
-        } else {
-          img.onload = startReveal;
-        }
-
-        // Floating Parallax
-        gsap.to(img, {
+        // Reveal Animation
+        gsap.to(item, {
           scrollTrigger: {
             trigger: item,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: true,
+            start: isMobile ? 'top 100%' : 'top 92%',
+            toggleActions: 'play none none reverse',
           },
-          y: (depth * 150),
-          ease: 'none'
+          clipPath: 'inset(0% 0% 0% 0%)',
+          opacity: 1,
+          y: 0,
+          duration: isMobile ? 0.3 : 1.5,
+          ease: 'power4.inOut',
+          delay: isMobile ? 0 : (i % 3) * 0.1,
+          onStart: () => {
+            const index = i % images.length;
+            setDecodedImages(prev => ({ ...prev, [index]: true }));
+          }
         });
+
+        // Floating Parallax (desktop only)
+        if (!isMobile && img) {
+          gsap.to(img, {
+            scrollTrigger: {
+              trigger: item,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: true,
+            },
+            y: (depth * 150),
+            ease: 'none'
+          });
+        }
       });
 
-      // Magnetic Title Reveal
+      // Header Reveal
       gsap.from('.v2-gallery-header > *', {
         scrollTrigger: {
           trigger: '.v2-gallery-header',
@@ -109,7 +91,7 @@ const AboutGallery = () => {
     }, galleryRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [isMobile]);
 
   const handleLightboxOpen = (url) => {
     setSelectedImg(url);
@@ -134,27 +116,44 @@ const AboutGallery = () => {
           </p>
         </header>
 
-        <div className="v2-gallery-asymmetric-grid">
-          {images.map((img, index) => (
-            <div 
-              key={index} 
-              className={`v2-gallery-item ${img.size} ${decodedImages[index] ? 'is-decoded' : ''}`}
-              onClick={() => handleLightboxOpen(img.url)}
-            >
-              <div className="v2-item-inner">
-                <div className="v2-img-container">
-                  <img src={img.url} alt={img.caption} loading="lazy" />
-                </div>
-                <div className="v2-item-card-info">
-                  <div className="v2-info-mask">
-                    <span className="v2-item-number">{(index + 1).toString().padStart(2, '0')}</span>
-                    <h4 className="v2-item-caption">{img.caption}</h4>
+        
+        <div className={`v2-gallery-scroll-wrapper ${isMobile ? 'is-mobile-scroll' : ''}`}>
+          <div className="v2-gallery-asymmetric-grid">
+            {images.map((img, index) => (
+              <div 
+                key={index} 
+                className={`v2-gallery-item ${img.size} ${decodedImages[index] ? 'is-decoded' : ''}`}
+                onClick={() => handleLightboxOpen(img.url)}
+              >
+                <div className="v2-item-inner">
+                  <div className="v2-img-container">
+                    <img src={img.url} alt={img.caption} loading="lazy" />
                   </div>
-                  <div className="v2-card-accent"></div>
+                  <div className="v2-item-card-info">
+                    <div className="v2-info-mask">
+                      <span className="v2-item-number">{(index + 1).toString().padStart(2, '0')}</span>
+                      <h4 className="v2-item-caption">{img.caption}</h4>
+                    </div>
+                    <div className="v2-card-accent"></div>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+            {/* Clone for infinite scroll on mobile */}
+            {isMobile && images.map((img, index) => (
+              <div 
+                key={`clone-${index}`} 
+                className={`v2-gallery-item ${img.size}`}
+                aria-hidden="true"
+              >
+                <div className="v2-item-inner">
+                  <div className="v2-img-container">
+                    <img src={img.url} alt="" loading="lazy" />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 

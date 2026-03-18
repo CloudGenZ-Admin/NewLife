@@ -73,7 +73,6 @@ const LanguageTraining = () => {
         </div>
         
         <div className="lt-hero-content">
-          <span className="lt-pill">Pillar 02</span>
           <h1>ESL & FSL <br />Language Training</h1>
           <p>Breaking barriers through bilingual excellence and personalized communication strategies tailored for your professional and personal life.</p>
         </div>
@@ -141,10 +140,10 @@ const LanguageTraining = () => {
             <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/review_480x480.png?v=1665509596" alt="Review" style={{ backgroundColor: '#fff' }} />
           </div>
           <div className="lt-masonry-item">
-            <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/IMG_7239.jpg?v=1759331909" alt="Personalized" />
+             <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/french_class_pic.jpg?v=1768777914" alt="Class" />
           </div>
           <div className="lt-masonry-item">
-             <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/french_class_pic.jpg?v=1768777914" alt="Class" />
+            <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/IMG_7239.jpg?v=1759331909" alt="Personalized" />
           </div>
         </div>
       </section>

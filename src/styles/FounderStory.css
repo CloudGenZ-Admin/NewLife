@@ -256,7 +256,7 @@
   }
 }
 @media (max-width: 1024px) {
-  .story-chapter { gap: 40px; margin-bottom: 12rem; }
+  .story-chapter { gap: 40px; margin-bottom: 8rem; }
   .chapter-title { font-size: 4rem; }
 }
 
@@ -265,7 +265,7 @@
   .story-chapter {
     grid-template-columns: 1fr;
     gap: 30px;
-    margin-bottom: 8rem;
+    margin-bottom: 4rem;
   }
   
   .chapter-left .chapter-visual,
@@ -287,7 +287,7 @@
 
 @media (max-width: 480px) {
   .founder-story-editorial { padding: 60px 0; }
-  .story-chapter { margin-bottom: 6rem; }
+  .story-chapter { margin-bottom: 3rem; }
   .chapter-title { font-size: 2.8rem; margin-bottom: 1.5rem; }
   .chapter-text p { font-size: 1.05rem; line-height: 1.7; }
   .chapter-text p.lead { font-size: 1.25rem; }

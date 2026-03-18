@@ -52,8 +52,8 @@ const Newsletter = () => {
       <div className="container">
         <div className="newsletter-vertical-stack" ref={contentRef}>
           <div className="newsletter-header">
-            <span className="newsletter-mini-label">Direct Impact</span>
-            <h2 className="newsletter-display-title">Become a <em>Partner.</em></h2>
+            <span className="newsletter-mini-label">Stay Updated</span>
+            <h2 className="newsletter-display-title">Sign up for the latest <em>NewLife</em> news.</h2>
           </div>
           
           <form className="newsletter-form-centered" onSubmit={handleSubmit}>

@@ -80,7 +80,7 @@ const ReliefProgram = () => {
       <section className="tp-sections-wrap">
         
         {/* Section 1: Learning Centre */}
-        <div className="tp-section">
+        <div className="tp-section first">
           <div className="tp-section-sticky">
             <h2>Building <em>Project</em></h2>
             <p>Our education center serves as an opportunity to give back to the community that inspired the vision for Newlife. Designed for all-weather conditions.</p>

@@ -2,17 +2,17 @@
 /* BESPOKE DESIGN: "The Corporate Bento" - Professional, structured, reliable. */
 
 :root {
-  --int-bg: #fafafa;
-  --int-dark: #1f3622; /* Deep corporate green */
-  --int-border: rgba(31, 54, 34, 0.1);
+  --int-bg: var(--green-light); /* BRAND LIGHT GREEN */
+  --int-dark: #2d5a27;
+  --int-border: rgba(45, 90, 39, 0.12);
   --int-accent: #3a7533;
-  --int-text: #555555;
+  --int-text: #3a4a35;
   --int-font: 'Plus Jakarta Sans', sans-serif;
   --int-card-bg: #ffffff;
 }
 
 .intern-page {
-  background-color: var(--int-bg);
+  background-color: var(--white);
   color: var(--int-text);
   font-family: var(--int-font);
   overflow-x: hidden;
@@ -21,10 +21,11 @@
 
 /* 1. CORPORATE GRID HERO */
 .int-hero {
-  padding: 15vh 5vw 5vh;
+  padding: 15vh 5vw 10vh;
   min-height: 90vh;
   display: flex;
   align-items: center;
+  background-color: var(--green-light); /* Hero starts green */
 }
 
 .int-hero-grid {
@@ -88,7 +89,8 @@
 
 /* 2. THE PARTNER BENTO GRID */
 .int-partner-section {
-  padding: 10vh 5vw;
+  padding: 12vh 5vw;
+  background-color: var(--white); /* Second section white */
 }
 
 .int-section-title {
@@ -183,26 +185,40 @@
 .bento-highlight h3 { color: #fff; }
 .bento-highlight p { color: rgba(255,255,255,0.8); }
 
-/* Academic Tags */
+/* Academic Partners Redesign */
 .int-tags-container {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 
 .int-tag {
-  padding: 0.8rem 1.2rem;
+  padding: 1.2rem;
+  background: var(--white);
   border: 1px solid var(--int-border);
-  border-radius: 50px;
-  font-size: 0.9rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
   font-weight: 600;
   color: var(--int-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+}
+
+.int-tag:hover {
+  border-color: var(--int-accent);
+  background: rgba(45, 90, 39, 0.02);
+  transform: translateY(-2px);
 }
 
 /* 3. ENGAGEMENT LEVELS (Clean List) */
 .int-levels {
-  padding: 10vh 5vw 20vh;
+  padding: 12vh 5vw 20vh;
+  background-color: var(--green-light); /* Third section green */
 }
 
 .int-levels-grid {
@@ -226,20 +242,23 @@
 /* RESPONSIVE */
 @media (max-width: 1024px) {
   .int-hero-grid { grid-template-columns: 1fr; }
-  .int-hero-img-card { height: 50vh; }
+  .int-hero-img-card { height: 40vh; }
   
   .int-bento-layout { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 200px; }
   .int-bento-box.span-2 { grid-column: span 2; }
   .int-bento-box.span-row-2 { grid-row: span 1; grid-column: span 2; }
   
+  .int-tags-container { grid-template-columns: repeat(2, 1fr); }
   .int-levels-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 768px) {
+  .int-hero { padding: 12vh 5vw 6vh; }
   .int-hero-card { padding: 2.5rem; }
-  .int-hero-card h1 { font-size: 3rem; }
+  .int-hero-card h1 { font-size: 2.8rem; }
   .int-bento-layout { grid-template-columns: 1fr; grid-auto-rows: auto; }
   .int-bento-box.span-2 { grid-column: span 1; }
   .int-bento-box.span-row-2 { grid-column: span 1; }
   .bento-img { min-height: 250px; }
+  .int-tags-container { grid-template-columns: 1fr; }
 }

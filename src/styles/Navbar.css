@@ -66,16 +66,19 @@
   color: var(--dark-gray);
 }
 
-/* DESKTOP LINKS */
+
+/* 1. The Container (Cleaned up) */
 .nav-links.desktop-only {
-  display: flex !important;
-  flex-direction: row !important;
-  /* Force horizontal */
-  align-items: center;
+  display: flex;
+  flex-direction: row;
   gap: 32px;
+  align-items: center;
   list-style: none;
+  justify-content: flex-end;
+  /* Make sure NO translateZ or backface-visibility is hiding here! */
 }
 
+/* 2. The Links - Stripped of Buggy 3D GPU Properties */
 .nav-links.desktop-only a {
   text-decoration: none;
   color: var(--dark-gray);
@@ -83,50 +86,56 @@
   font-weight: 500;
   font-size: 0.9rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.05em !important;
   transition: color 0.3s ease;
   position: relative;
+  white-space: nowrap;
+  display: inline-block;
+  
+  /* Keep it smooth, but DO NOT add translateZ, backface-visibility, or geometricPrecision */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .nav-links.desktop-only a:hover {
   color: var(--primary-green);
 }
 
+/* 3. The Underline - CPU Animation (No Snapping) */
 .nav-links.desktop-only a::after {
   content: '';
   position: absolute;
   bottom: -6px;
   left: 0;
-  width: 100%;
   height: 2px;
   background: var(--primary-green);
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  
+  /* Start at 0% width instead of using transform scale */
+  width: 0%; 
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav-links.desktop-only a:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
+  /* Expand to 100% width on hover. The GPU ignores this, so no pixel jumping! */
+  width: 100%; 
 }
 
 /* DONATE BUTTON */
 .nav-donate {
-  background: var(--dark-gray);
+  background: var(--primary-green);
   color: white !important;
-  padding: 12px 28px;
+  padding: 12px 28px !important;
   border-radius: 50px;
   font-weight: 700 !important;
-  /* Override ALL parent transitions - only animate background */
+  /* letter-spacing: 0.05em !important; */
   transition: background 0.3s ease !important;
 }
 
 .nav-donate:hover {
-  background: var(--primary-green) !important;
-  color: white !important;
-  box-shadow: none !important;
-  transform: none !important;
-  letter-spacing: 0.05em !important;
+  /* background: var(--green-dark) !important; */
+  color: #000 !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+  transform: translateY(-1px) !important;
 }
 
 .nav-donate::after,
@@ -148,11 +157,33 @@
   align-items: center;
   gap: 6px;
   cursor: pointer;
+  padding: 0 !important;
+  margin: 0 !important;
+  flex-shrink: 0;
 }
 
-.dropdown-arrow {
-  font-size: 8px;
-  transition: transform 0.3s ease;
+.dropdown-arrow-css {
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid currentColor;
+  display: inline-block;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-left: 6px;
+  opacity: 0.7;
+  transform-origin: center;
+}
+
+.nav-dropdown:hover .dropdown-arrow-css {
+  transform: rotateX(180deg);
+  opacity: 1;
+}
+
+/* Remove legacy arrow styles */
+.dropdown-arrow,
+.nav-arrow-svg {
+  display: none !important;
 }
 
 .dropdown-menu {
@@ -336,7 +367,7 @@
     color: var(--primary-green);
   }
 
-    .mobile-donate {
+  .mobile-donate {
     margin-top: 30px;
     background: var(--primary-green);
     color: white;
@@ -430,3 +461,24 @@
   }
 }
 
+
+/* ADD THIS TO THE VERY BOTTOM OF NAVBAR.CSS */
+
+/* 1. Locks the sub-pixel text thickness so it cannot expand when turning green */
+.nav-links.desktop-only a,
+.nav-dropdown-trigger {
+  -webkit-text-stroke: 0.2px rgba(0, 0, 0, 0.01) !important;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.01) !important;
+}
+
+/* 2. Blocks any hidden global styles from bolding or spacing the text on hover */
+.nav-links.desktop-only a:hover,
+.nav-dropdown-trigger:hover {
+  font-weight: 500 !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* 3. Stops the underline from causing a 3D layout recalculation */
+.nav-links.desktop-only a::after {
+  transform-origin: left !important;
+}

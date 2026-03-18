@@ -19,44 +19,36 @@ const About = () => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Snappier defaults for faster first-paint feel
-      const tl = gsap.timeline({ defaults: { ease: 'power4.out', duration: 1.2 } });
+      const tl = gsap.timeline({ defaults: { ease: 'power4.out', duration: 1.0 } });
 
-      // 1. Grid Construction (Faster)
+      // 1. Grid Construction (Snappier)
       tl.to('.grid-line', {
         height: '100%',
-        stagger: 0.03, // Reduced from 0.05
-        duration: 0.8,
+        stagger: 0.02,
+        duration: 0.6,
         ease: 'expo.inOut'
       })
       .to('.architect-decoration', {
         opacity: 0.1,
         scale: 1,
-        duration: 1.5
-      }, '-=0.4')
+        duration: 1.2
+      }, '-=0.6')
 
-      // 2. Titles start much earlier
-      tl.to('.architect-hero-title', {
+      // 2. Content Entry (Reduced delays)
+      tl.to('.architect-detail, .architect-hero-title', {
         y: 0,
-        stagger: 0.15,
-        duration: 1.1,
+        opacity: 1,
+        stagger: 0.08,
+        duration: 0.5,
         ease: 'power3.out'
-      }, 0.2) // Start relative to absolute 0.2s mark
+      }, 0.15)
 
-      // 3. Technical Detail & Meta (Snap in sooner)
-      tl.to('.architect-detail', {
-        opacity: 0.5,
-        x: 0,
-        rotate: -90,
-        duration: 0.8
-      }, '-=0.6')
-      .to('.architect-meta', {
-        opacity: 1,
+      tl.to('.architect-meta, .footer-info-item', {
         y: 0,
-        duration: 0.8
-      }, '-=0.6')
-      .to('.architect-scroll-link', {
         opacity: 1,
-        duration: 0.8
+        stagger: 0.05,
+        duration: 0.4,
+        ease: 'power2.out'
       }, '-=0.4')
 
     }, heroRef);
@@ -66,33 +58,47 @@ const About = () => {
 
   return (
     <div className="about-page">
-      <section className="architect-hero" ref={heroRef}>
+      <section className="architect-hero arch-theme-light" ref={heroRef}>
         {/* Grid Visualization */}
         <div className="architect-grid">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="grid-line"></div>
+            <div key={`v-${i}`} className="grid-line v"></div>
+          ))}
+          {[...Array(6)].map((_, i) => (
+            <div key={`h-${i}`} className="grid-line h"></div>
           ))}
         </div>
 
         <div className="architect-decoration"></div>
-        <div className="architect-detail">EST. 2004 — MISSION DRIVEN</div>
 
         <div className="architect-wrapper">
           <div className="architect-title-group">
-            <div className="architect-title-line line-1">
-              <h1 className="architect-hero-title">Redefining</h1>
-            </div>
-            <div className="architect-title-line line-2">
-              <h1 className="architect-hero-title">Lives Through</h1>
-            </div>
-            <div className="architect-title-line line-3">
-              <h1 className="architect-hero-title"><em>Faith & Commitment</em>.</h1>
-            </div>
+            <span className="architect-detail">Est. 2004 — Mission Driven</span>
+            <h1 className="architect-hero-title">Redefining Lives <br/><em>Faith & Commitment.</em></h1>
+          </div>
+
+          <div className="architect-meta">
+            <p>Over two decades of empowering women and youth through education, skills training, and unwavering support.</p>
           </div>
         </div>
 
-        <div className="architect-meta">
-          <p>Over two decades of empowering women and youth through education, skills training, and unwavering support.</p>
+        <div className="architect-footer-info">
+          <div className="footer-info-item">
+            <h4>Vision</h4>
+            <p>Empowerment through education</p>
+          </div>
+          <div className="footer-info-item">
+            <h4>Location</h4>
+            <p>Global Impact Strategy</p>
+          </div>
+          <div className="footer-info-item">
+            <h4>Legacy</h4>
+            <p>Built on Hope & Action</p>
+          </div>
+          <div className="footer-info-item">
+            <h4>Focus</h4>
+            <p>Women & Youth Growth</p>
+          </div>
         </div>
       </section>
 

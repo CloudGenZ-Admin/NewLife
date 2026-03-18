@@ -2,14 +2,15 @@
 /* BESPOKE DESIGN: "The Floating Interface" - Clean, academic, tech-forward. */
 
 :root {
-  --lt-bg: #fdfdfb; /* Warmer cream */
-  --lt-dark: #152812; /* Deep Brand Green instead of black/blue */
-  --lt-blue: #2d5a27; /* Primary Brand Green */
-  --lt-accent: #4ade80; /* Bright Green Accent */
-  --lt-glass: rgba(253, 253, 251, 0.85); /* Frosty cream */
-  --lt-glass-border: rgba(45, 90, 39, 0.1); /* Subtle green border */
-  --lt-gray: #e8efe7; /* Light sage green instead of gray */
-  --lt-text: #3a4a35; /* Olive text */
+  --lt-bg: var(--green-light);
+  /* BRAND LIGHT GREEN */
+  --lt-dark: #152812;
+  --lt-blue: #2d5a27;
+  --lt-accent: #3a7533;
+  --lt-glass: rgba(255, 255, 255, 0.9);
+  --lt-glass-border: rgba(45, 90, 39, 0.12);
+  --lt-gray: var(--green-lighter);
+  --lt-text: #3a4a35;
   --lt-font: 'Plus Jakarta Sans', sans-serif;
   --lt-display: 'Cormorant Garamond', serif;
 }
@@ -32,10 +33,9 @@
 
 .lt-hero-bg {
   position: absolute;
-  top: 5vh;
   right: 5vw;
   width: 55vw;
-  height: 85vh;
+  height: 80vh;
   border-radius: 30px;
   overflow: hidden;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
@@ -46,7 +46,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: scale(1.05); /* GSAP parallax starting point */
+  transform: scale(1.05);
+  /* GSAP parallax starting point */
 }
 
 .lt-hero-content {
@@ -141,7 +142,7 @@
   font-size: 2rem;
   color: var(--lt-accent);
   margin-bottom: 2rem;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
 }
 
 .lt-step h3 {
@@ -174,8 +175,9 @@
   max-width: 100%;
   height: auto;
   border-radius: 16px;
-  box-shadow: 0 40px 80px rgba(0,0,0,0.15);
-  transform: rotate(-2deg); /* Casual pinned look */
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.15);
+  transform: rotate(-2deg);
+  /* Casual pinned look */
   transition: transform 0.4s ease;
 }
 
@@ -239,22 +241,22 @@
 
 /* 4. GALLERY MASONRY (Zero Cropping Edition) */
 .lt-gallery {
-  padding: 15vh 5vw;
-  background: var(--lt-dark); /* Now a beautiful deep green */
+  padding: 7vh 5vw;
+  background: white;
+  color: black !important;
   position: relative;
 }
 
 /* Subtle texture over the dark section */
 .lt-gallery::before {
-  content: ''; position: absolute; inset: 0;
-  background-image: radial-gradient(rgba(255,255,255, 0.03) 2px, transparent 2px);
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 2px, transparent 2px);
   background-size: 30px 30px;
   pointer-events: none;
 }
 
-.lt-gallery .lt-section-title {
-  color: #fff;
-}
 
 .lt-masonry {
   column-count: 3;
@@ -265,7 +267,8 @@
 .lt-masonry-item {
   break-inside: avoid;
   margin-bottom: 2rem;
-  background: rgba(255, 255, 255, 0.05); /* very subtle card background */
+  background: rgba(255, 255, 255, 0.05);
+  /* very subtle card background */
   border-radius: 16px;
   padding: 1rem;
   transition: transform 0.4s ease;
@@ -278,29 +281,74 @@
 
 .lt-masonry-item img {
   width: 100%;
-  height: auto; /* Absolutely NO CROPPING. Natural proportions. */
+  height: auto;
+  /* Absolutely NO CROPPING. Natural proportions. */
   display: block;
   border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 /* --- RESPONSIVE --- */
 @media (max-width: 1024px) {
-  .lt-hero { flex-direction: column; padding-top: 20vh; }
-  .lt-hero-bg { position: relative; width: 100%; height: 50vh; top: 0; right: 0; }
-  .lt-hero-content { width: 90%; margin-top: -10vh; padding: 2.5rem; }
-  
-  .lt-timeline-grid { grid-template-columns: 1fr; gap: 4rem; }
-  .lt-timeline-grid::before { left: 40px; top: 0; width: 2px; height: 100%; }
-  .lt-step { padding-left: 120px; position: relative; }
-  .lt-step-number { position: absolute; left: 0; top: -10px; margin-bottom: 0; }
+  .lt-hero {
+    flex-direction: column;
+    padding-top: 20vh;
+  }
 
-  .lt-impact-section { flex-direction: column; }
-  .lt-impact-flyer, .lt-impact-text { width: 100%; }
-  
-  .lt-masonry { column-count: 2; }
+  .lt-hero-bg {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    top: 0;
+    right: 0;
+  }
+
+  .lt-hero-content {
+    width: 90%;
+    margin-top: -10vh;
+    padding: 2.5rem;
+  }
+
+  .lt-timeline-grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  .lt-timeline-grid::before {
+    left: 40px;
+    top: 0;
+    width: 2px;
+    height: 100%;
+  }
+
+  .lt-step {
+    padding-left: 120px;
+    position: relative;
+  }
+
+  .lt-step-number {
+    position: absolute;
+    left: 0;
+    top: -10px;
+    margin-bottom: 0;
+  }
+
+  .lt-impact-section {
+    flex-direction: column;
+  }
+
+  .lt-impact-flyer,
+  .lt-impact-text {
+    width: 100%;
+  }
+
+  .lt-masonry {
+    column-count: 2;
+  }
 }
 
 @media (max-width: 768px) {
-  .lt-masonry { column-count: 1; }
+  .lt-masonry {
+    column-count: 1;
+  }
 }

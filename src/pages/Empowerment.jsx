@@ -1,147 +1,155 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import SplitType from 'split-type';
-import '../styles/Empowerment.css'; // Refined Brand Editorial version
+import '../styles/Empowerment.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Empowerment = () => {
-  const pageRef = useRef(null);
-  const marqueeRef = useRef(null);
+    const pageRef = useRef(null);
 
-  useEffect(() => {
-    let ctx = gsap.context(() => {
-      
-      // Infinite Marquee Animation
-      gsap.to('.emp-marquee', {
-        xPercent: -50,
-        repeat: -1,
-        duration: 15, // slower, more elegant
-        ease: 'linear'
-      });
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            // Snappy staggered entry
+            gsap.from('.emp-hero-tag, .emp-hero-heading, .emp-hero-body, .emp-hero-cta', {
+                y: 20, opacity: 0, stagger: 0.08, duration: 0.7, ease: 'power3.out', delay: 0.3
+            });
+            gsap.from('.emp-hero-img-block', {
+                x: 40, opacity: 0, duration: 1.0, ease: 'power3.out', delay: 0.2
+            });
+            gsap.from('.emp-stat', {
+                y: 15, opacity: 0, stagger: 0.06, duration: 0.5, ease: 'power2.out', delay: 0.5
+            });
 
-      // Editorial Header SplitType
-      const titleSplit = new SplitType('.emp-hero-text h2', { types: 'words, chars' });
-      
-      gsap.from(titleSplit.chars, {
-        y: 80, opacity: 0, rotateX: -90,
-        stagger: 0.03, duration: 1.2, ease: 'back.out(1.7)', delay: 0.2
-      });
+            // Bento Reveals
+            gsap.from('.bento-card', {
+                scrollTrigger: { trigger: '.emp-bento', start: 'top 85%' },
+                y: 30, opacity: 0, stagger: 0.1, duration: 0.7, ease: 'power3.out'
+            });
 
-      gsap.from('.emp-badge, .emp-hero-text p', {
-        y: 40, opacity: 0, duration: 1.2, stagger: 0.2, ease: 'power3.out', delay: 0.8
-      });
+            // Section reveals
+            gsap.utils.toArray('.emp-fade').forEach(el => {
+                gsap.from(el, {
+                    scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none reverse' },
+                    y: 25, opacity: 0, duration: 0.8, ease: 'power3.out'
+                });
+            });
+        }, pageRef);
 
-      // Image Scale
-      gsap.from('.emp-hero-img img', {
-        scale: 1.15, duration: 2.5, ease: 'power2.out'
-      });
+        return () => ctx.revert();
+    }, []);
 
-      // Impact Blocks Stagger
-      gsap.from('.emp-block', {
-        scrollTrigger: { trigger: '.emp-impact-grid', start: 'top 80%' },
-        y: 60, opacity: 0, duration: 1, stagger: 0.15, ease: 'power3.out'
-      });
+    return (
+        <div className="emp-page" ref={pageRef}>
 
-      // Documentary Gallery Reveal (no crop)
-      gsap.from('.emp-doc-item img', {
-        scrollTrigger: { trigger: '.emp-doc-gallery', start: 'top 70%' },
-        scale: 0.9, opacity: 0, duration: 1.5, stagger: 0.2, ease: 'back.out(1.2)'
-      });
+            {/* HERO: COMPACT SPLIT */}
+            <section className="emp-hero">
+                {/* Left: Content */}
+                <div className="emp-hero-content">
+                    <h1 className="emp-hero-heading">Youth & Women <em>Empowerment</em> Program</h1>
+                    <p className="emp-hero-body">Supporting young people aged 15–21 in developing the confidence, skills, and opportunities needed to succeed. We invest in youth to build resilient communities.</p>
+                    <div className="emp-hero-stats">
+                        <div className="emp-stat"><strong>500+</strong><span>Participants</span></div>
+                        <div className="emp-stat"><strong>15–21</strong><span>Age Group</span></div>
+                        <div className="emp-stat"><strong>20+</strong><span>Years Running</span></div>
+                    </div>
+                </div>
 
-      // Components List Lines
-      const listSplit = new SplitType('.emp-comp-item p', { types: 'lines' });
-      gsap.from('.emp-comp-item h4', {
-        scrollTrigger: { trigger: '.emp-components', start: 'top 70%' },
-        x: -50, opacity: 0, duration: 1, stagger: 0.15, ease: 'power3.out'
-      });
-      gsap.from(listSplit.lines, {
-        scrollTrigger: { trigger: '.emp-components', start: 'top 70%' },
-        y: 30, opacity: 0, duration: 1, stagger: 0.1, ease: 'power2.out', delay: 0.2
-      });
+                {/* Right: Image Panel */}
+                <div className="emp-hero-img-block">
+                    <div className="emp-img-pill">
+                        <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/Youth-meeting_600x600.png?v=1704735792" alt="Youth Empowerment" />
+                    </div>
+                    <div className="emp-img-tag">Est. 2004</div>
+                </div>
+            </section>
 
-    }, pageRef);
+            {/* BENTO GRID: 3 PROGRAM PILLARS */}
+            <section className="emp-bento emp-fade">
+                <div className="bento-card bento-green">
+                    <h3>School Engagement</h3>
+                    <p>Increase graduation readiness through active mentorship, tutoring, and structured academic support for at-risk youth.</p>
+                    <div className="bento-pill">Engagement</div>
+                </div>
+                <div className="bento-card bento-light">
+                    <h3>Career Employability</h3>
+                    <p>Strengthen career awareness and employability skills to prepare our youth for a competitive and evolving global market.</p>
+                    <div className="bento-pill">Employment</div>
+                </div>
+                <div className="bento-card bento-cream">
+                    <h3>Leadership Resilience</h3>
+                    <p>Build resilience and leadership capacity, empowering women and youth to lead their communities with purpose and vision.</p>
+                    <div className="bento-pill">Resilience</div>
+                </div>
+            </section>
 
-    return () => ctx.revert();
-  }, []);
+            {/* PHOTO EDITORIAL SPLIT */}
+            <section className="emp-editorial emp-fade">
+                <div className="editorial-gallery">
+                    <div className="gallery-main">
+                        <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/Mentorship_youth_empowerment_program_480x480.jpg?v=1731610890" alt="Mentorship" />
+                        <span className="gallery-label">Active Mentorship</span>
+                    </div>
+                    <div className="gallery-sub">
+                        <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/20190313_103854_600x600.jpg?v=1704992306" alt="Workshop" />
+                        <span className="gallery-label">Vocational Workshop</span>
+                    </div>
+                </div>
 
-  return (
-    <div className="emp-page" ref={pageRef}>
-      
-      {/* 1. ELEGANT MARQUEE TITLE */}
-      <div className="emp-marquee-wrap">
-        <div className="emp-marquee" ref={marqueeRef}>
-          <h1>Youths & Women Empowerment ✦ Youth & Women Empowerment ✦ Youth & Women Empowerment ✦</h1>
-          <h1>Youths & Women Empowerment ✦ Youth & Women Empowerment ✦ Youth & Women Empowerment ✦</h1>
+                <div className="editorial-text">
+                    <span className="editorial-eyebrow">Community Impact</span>
+                    <h2>Cultivating <em>Real</em> Change in Communities</h2>
+                    <p>Through a blend of structured workshops, peer mentorship, and community projects, we bridge the gap between potential and opportunity. Every session, every connection builds a stronger future.</p>
+                    <div className="editorial-facts">
+                        <div className="fact-row">
+                            <div className="fact-dot green"></div>
+                            <p>One-on-one mentorship with industry professionals</p>
+                        </div>
+                        <div className="fact-row">
+                            <div className="fact-dot green"></div>
+                            <p>Budget planning & goal-setting workshops</p>
+                        </div>
+                        <div className="fact-row">
+                            <div className="fact-dot green"></div>
+                            <p>Community volunteer initiatives</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* PROGRAM COMPONENTS: DENSE LIST */}
+            <section className="emp-components emp-fade">
+                <div className="comp-header">
+                    <h2>Program <em>Components</em></h2>
+                    <p>Three structured pillars delivered across hands-on sessions throughout the year.</p>
+                </div>
+                <div className="comp-grid">
+                    <div className="comp-item">
+                        <div className="comp-num">01</div>
+                        <div className="comp-info">
+                            <h4>Educational Workshops</h4>
+                            <p>Interactive sessions on communication, budgeting, goal setting, and academic tutoring designed to raise school performance.</p>
+                        </div>
+                    </div>
+                    <div className="comp-item">
+                        <div className="comp-num">02</div>
+                        <div className="comp-info">
+                            <h4>Active Mentorship</h4>
+                            <p>One-on-one guidance from qualified professionals to build personal confidence and long-term career vision.</p>
+                        </div>
+                    </div>
+                    <div className="comp-item">
+                        <div className="comp-num">03</div>
+                        <div className="comp-info">
+                            <h4>Community Projects</h4>
+                            <p>Active contribution through volunteer initiatives that bridge social and economic gaps in the community.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
         </div>
-      </div>
-
-      {/* 2. EDITORIAL HERO GRID */}
-      <header className="emp-swiss-hero">
-        <div className="emp-hero-text">
-          <span className="emp-badge">Pillar 04</span>
-          <h2>The Mission</h2>
-          <p>Our program is designed to support young people aged 15–21 in developing the confidence, skills, and opportunities needed to succeed. We believe investing in youth is essential to building resilient communities.</p>
-        </div>
-        <div className="emp-hero-img">
-          <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/Youth-meeting_600x600.png?v=1704735792" alt="Youth Empowerment" />
-        </div>
-      </header>
-
-      {/* 3. IMPACT COLOR BLOCKS */}
-      <section className="emp-impact-grid">
-        <div className="emp-block green">
-          <h3>Engagement</h3>
-          <p>Increase school engagement and graduation readiness through active mentorship and support systems.</p>
-        </div>
-        <div className="emp-block light">
-          <h3>Employability</h3>
-          <p>Strengthen employability skills and career awareness to prepare our youth for a competitive global market.</p>
-        </div>
-        <div className="emp-block soft">
-          <h3>Resilience</h3>
-          <p>Build resilience and leadership capacity, empowering women and youths to lead with purpose.</p>
-        </div>
-      </section>
-
-      {/* 4. DOCUMENTARY GALLERY (Zero Cropping) */}
-      <section className="emp-doc-gallery">
-        <div className="emp-doc-item">
-          <span className="emp-doc-label">Mentorship</span>
-          <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/Mentorship_youth_empowerment_program_480x480.jpg?v=1731610890" alt="Mentorship" />
-        </div>
-        <div className="emp-doc-item">
-          <span className="emp-doc-label">Workshop</span>
-          <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/20190313_103854_600x600.jpg?v=1704992306" alt="Workshop" />
-        </div>
-      </section>
-
-      {/* 5. COMPONENTS LIST */}
-      <section className="emp-components">
-        <h2 className="emp-comp-title">Program Components</h2>
-        <div className="emp-comp-list">
-          
-          <div className="emp-comp-item">
-            <h4>Workshops</h4>
-            <p>Interactive sessions on communication, budgeting, goal setting, and academic tutoring.</p>
-          </div>
-          
-          <div className="emp-comp-item">
-            <h4>Mentorship</h4>
-            <p>One-on-one guidance from professionals to build personal development and confidence.</p>
-          </div>
-          
-          <div className="emp-comp-item">
-            <h4>Projects</h4>
-            <p>Active contributors through volunteer initiatives that bridge social and economic gaps.</p>
-          </div>
-
-        </div>
-      </section>
-
-    </div>
-  );
+    );
 };
 
 export default Empowerment;

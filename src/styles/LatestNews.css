@@ -45,6 +45,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
   padding-bottom: 40px;
+  min-width: 0; /* Prevent grid blowout */
 }
 
 /* CARDS */
@@ -199,7 +200,7 @@
 
 @media (max-width: 992px) {
   .news-grid-editorial {
-    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; /* Reduce gap on mid screens, keep 3 columns */
   }
 }
 
