@@ -122,8 +122,8 @@
 .nav-donate:hover {
   background: var(--green-dark) !important;
   color: #fff !important;
-  box-shadow: 0 4px 20px rgba(76, 175, 80, 0.35) !important;
-  transform: translateY(-1px) !important;
+  box-shadow: none !important;
+  transform: none !important;
 }
 
 .nav-donate::after,
@@ -176,28 +176,30 @@
 .dropdown-menu {
   position: absolute;
   top: 100%;
-  left: -12px;
+  left: 0;
   transform: translateY(20px);
   background: rgba(255, 255, 255, 0.99);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  min-width: 200px;
+  min-width: 175px;
   padding: 8px 0;
   border-radius: var(--radius-sm);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.04);
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   border: none;
 }
 
 .dropdown-menu.dropdown-about-menu {
-  min-width: 160px;
+  min-width: 120px;
 }
 
 .dropdown-menu.open {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
   transform: translateY(8px);
 }
 
@@ -216,7 +218,7 @@
 }
 
 .dropdown-menu a:hover {
-  background: var(--green-light);
+  background: transparent !important;
   color: var(--primary-green) !important;
   padding-left: 26px !important;
 }
