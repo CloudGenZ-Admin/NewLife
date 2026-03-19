@@ -14,6 +14,8 @@ import LanguageTraining from './pages/LanguageTraining'
 import SewingEntrepreneurship from './pages/SewingEntrepreneurship'
 import InternshipEngagement from './pages/InternshipEngagement'
 import ReliefProgram from './pages/ReliefProgram'
+import FundraiserExhibitions from './pages/FundraiserExhibitions'
+import VocationalTraining from './pages/VocationalTraining'
 import React, { useEffect } from 'react'
 import Lenis from 'lenis'
 import Navbar from './components/Navbar'
@@ -62,6 +64,8 @@ function App() {
           <Route path="/programs/sewing" element={<SewingEntrepreneurship />} />
           <Route path="/programs/internship" element={<InternshipEngagement />} />
           <Route path="/programs/relief" element={<ReliefProgram />} />
+          <Route path="/fundraiser-exhibitions" element={<FundraiserExhibitions />} />
+          <Route path="/vocational-training" element={<VocationalTraining />} />
         </Routes>
         <Footer />
       </div>

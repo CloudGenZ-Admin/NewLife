@@ -125,21 +125,18 @@ const Empowerment = () => {
                 </div>
                 <div className="comp-grid">
                     <div className="comp-item">
-                        <div className="comp-num">01</div>
                         <div className="comp-info">
                             <h4>Educational Workshops</h4>
                             <p>Interactive sessions on communication, budgeting, goal setting, and academic tutoring designed to raise school performance.</p>
                         </div>
                     </div>
                     <div className="comp-item">
-                        <div className="comp-num">02</div>
                         <div className="comp-info">
                             <h4>Active Mentorship</h4>
                             <p>One-on-one guidance from qualified professionals to build personal confidence and long-term career vision.</p>
                         </div>
                     </div>
                     <div className="comp-item">
-                        <div className="comp-num">03</div>
                         <div className="comp-info">
                             <h4>Community Projects</h4>
                             <p>Active contribution through volunteer initiatives that bridge social and economic gaps in the community.</p>

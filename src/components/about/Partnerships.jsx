@@ -8,8 +8,8 @@ const Partnerships = () => {
         <div className="partnerships-header">
           <h2>Partnerships</h2>
           <p className="partnerships-intro">
-            NewLife Project collaborates with universities, government individual & institutions, community organizations,
-            and corporate partners to expand opportunities for program participants.
+            NewLife Project collaborates with universities, government individuals & institutions, 
+            community organizations, and corporate partners to expand opportunities for program participants.
           </p>
         </div>
 

@@ -73,7 +73,7 @@
   padding: 0 clamp(24px, 5%, 64px);
   gap: 56px;
   align-items: center;
-  padding-bottom: 80px;
+  padding-bottom: 40px;
 }
 
 /* ── LEFT: IMAGE PANEL ────────────────────────────── */

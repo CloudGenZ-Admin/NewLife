@@ -14,7 +14,7 @@ const Timeline = () => {
     {
       year: '2003–2009',
       title: 'Expansion and Rehabilitation Programs',
-      description: 'Programs expanded across Sierra Leone and Côte d\'Ivoire, including certification partnerships, health outreach campaigns, and rehabilitation support for trafficked women.'
+      description: 'Programs expanded across Sierra Leone and Côte d\'Ivoire. Registered in USA under the 501(C) 3 act supporting schools and institute in Sierra Leone and Côte d\'Ivoire.'
     },
     {
       year: '2014',
@@ -32,9 +32,9 @@ const Timeline = () => {
       description: 'With federal funding support, NewLife trained over 120 women and youth in vocational skills and expanded mentorship and internship programs.'
     },
     {
-      year: '2024',
+      year: '2024–2026',
       title: 'Celebrating 10 Years in Canada',
-      description: 'NewLife marked a decade of impact in Canada and continues to build global partnerships and innovative empowerment programs.'
+      description: 'NewLife marked a decade of impact in Canada. Continuing to build global partnerships and innovative empowerment programs, including the Women\'s World Forum and Entrepreneurship programs.'
     }
   ]
 

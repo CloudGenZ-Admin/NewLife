@@ -121,17 +121,17 @@ const InternshipEngagement = () => {
          
          <div className="int-levels-grid">
            <div className="int-level-card">
-              <h3>01. Academic Placement</h3>
+              <h3>Academic Placement</h3>
               <p>Formal COOP and intensive internship programs designed for university credit and strict academic requirements.</p>
            </div>
            
            <div className="int-level-card">
-              <h3>02. Volunteer Skills</h3>
+              <h3>Volunteer Skills</h3>
               <p>Short-term, high-impact projects focused on fulfilling specific, immediate organizational needs and event support.</p>
            </div>
 
            <div className="int-level-card">
-              <h3>03. Advanced Scholar</h3>
+              <h3>Advanced Scholar</h3>
               <p>Highly collaborative research and development programs focused specifically on West African community initiatives.</p>
            </div>
          </div>

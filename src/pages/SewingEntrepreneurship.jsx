@@ -62,9 +62,14 @@ const SewingEntrepreneurship = () => {
       });
 
       // Skills grid
+      gsap.from('.sew-skills-title', {
+        scrollTrigger: { trigger: '.sew-skills', start: 'top 85%' },
+        y: 40, opacity: 0, duration: 1, ease: 'power3.out'
+      });
+
       gsap.from('.sew-skill-item', {
-        scrollTrigger: { trigger: '.sew-skills', start: 'top 80%' },
-        y: 60, opacity: 0, duration: 1, stagger: 0.15, ease: 'back.out(1.4)'
+        scrollTrigger: { trigger: '.sew-skills-grid', start: 'top 90%' },
+        y: 50, opacity: 0, scale: 0.95, duration: 1, stagger: 0.2, ease: 'power2.out'
       });
 
     }, pageRef);

@@ -66,7 +66,9 @@ const FounderStory = () => {
             <div className="chapter-text">
               <p className="lead">
                 For more than twenty years, Brenda Williams has dedicated her life to uplifting women, youth, 
-                and vulnerable communities.
+                and vulnerable communities through education, mentorship, and economic empowerment. Her journey 
+                is not defined by titles or recognition, but by a deep and unwavering commitment to helping 
+                others discover their strength and potential.
               </p>
               <p>
                 Long before NewLife Project became an established organization, Brenda was simply a student at 
@@ -77,7 +79,8 @@ const FounderStory = () => {
               <p>
                 That night, six young women made the courageous decision to pursue a different path. For Brenda, 
                 this moment became the beginning of a lifelong promise to create safe spaces where women and youth 
-                could rebuild confidence, gain skills, and move toward brighter futures.
+                could rebuild confidence, gain skills, and move toward brighter futures. From this promise, 
+                NewLife Project was born.
               </p>
             </div>
           </div>
@@ -97,6 +100,10 @@ const FounderStory = () => {
               <div className="chapter-pullquote">
                 "Her journey is not defined by titles, but by the strength she helps others discover."
               </div>
+              <p>
+                She has earned several awards, including Global Community Alliance Business Achievement, 100 
+                Accomplished Black Canadian Women, Black History Ottawa Community Builders, to name a few.
+              </p>
               <p>
                 Through these efforts, hundreds found hope. Women secured employment and started small businesses. 
                 Young people returned to school with renewed motivation. Families began to believe in new possibilities.
@@ -132,13 +139,21 @@ const FounderStory = () => {
                 she faced a battle with cancer that changed everything.
               </p>
               <p>
-                The diagnosis brought uncertainty and deep emotional pain. Confronting illness with a 
-                profound sense of weight, her strength was tested daily, and her future was held upon her faith. 
+                The diagnosis brought uncertainty and deep emotional pain. During one of the most vulnerable 
+                periods of her life, Brenda found herself confronting illness with a profound sense of pain 
+                but supported by family and a few friends. She lost significant weight, her strength was 
+                tested daily, and her future was held upon her faith that God would heal her.
+              </p>
+              <p>
                 But even in these moments, she did not lose her purpose.
               </p>
               <p>
-                Today, cancer-free and deeply renewed in spirit, Brenda has strengthened NewLife Project 
+                Today, cancer-free and deeply renewed in spirit, Brenda has strengthened the NewLife Project 
                 into a vibrant space of empowerment where women and youth can grow, learn, and reclaim their confidence.
+              </p>
+              <p>
+                Her recovery marked more than a return to health — it became a powerful reminder that resilience 
+                can give birth to new beginnings.
               </p>
             </div>
           </div>

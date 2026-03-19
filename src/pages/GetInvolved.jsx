@@ -120,27 +120,23 @@ const GetInvolved = () => {
 
                     <div className="gi-grid">
                         <div className="gi-card">
-                            <span className="gi-num">01</span>
                             <h3>Donate</h3>
                             <p>Your contribution helps provide education support, skills training, mentorship, and empowerment programs for women and youth.</p>
                             <a href="https://ext.zeffy.com/en-CA/donation-form/47eb2245-0955-46fd-916c-e093fa5c156f" className="gi-btn-arch" target="_blank" rel="noopener noreferrer">Donate Now</a>
                         </div>
                         <div className="gi-card">
-                            <span className="gi-num">02</span>
                             <h3>Become a Corporate Partner</h3>
-                            <p>Organizations can support NewLife by sponsoring programs, events, or leadership initiatives that create measurable community impact. Corporate partners receive visibility opportunities and play an important role in expanding access.</p>
+                            <p>Organizations can support NewLife by sponsoring programs, events, or leadership initiatives that create measurable community impact. Corporate partners receive visibility opportunities and play an important role in expanding access to empowerment programs.</p>
                             <a href="https://docs.google.com/forms/d/e/1FAIpQLSf9dSsOqSvfjECakLFVDB84Fa6NtkzVMoy5OlorjRMrDsXj5g/viewform?usp=dialog" className="gi-link" target="_blank" rel="noopener noreferrer">Learn About Corporate Partnerships &rarr;</a>
                         </div>
                         <div className="gi-card">
-                            <span className="gi-num">03</span>
                             <h3>Legacy Giving</h3>
                             <p>Support the long-term sustainability of NewLife Project by including the organization in your future giving plans. Legacy giving helps ensure that future generations continue to benefit from education and empowerment opportunities.</p>
                             <a href="https://docs.google.com/forms/d/e/1FAIpQLSdWqBbJbbuDxyA_85ZoXuGJfcZplVPIzH5LqwKADUK2TigRsw/viewform?usp=dialog" className="gi-link" target="_blank" rel="noopener noreferrer">Learn More About Legacy Giving &rarr;</a>
                         </div>
                         <div className="gi-card">
-                            <span className="gi-num">04</span>
                             <h3>Host a Fundraiser</h3>
-                            <p>Community members can organize fundraising activities such as cultural events, workplace campaigns, or personal celebrations to support NewLife programs. Hosting a fundraiser is a meaningful way to bring people together.</p>
+                            <p>Community members can organize fundraising activities such as cultural events, workplace campaigns, or personal celebrations to support NewLife programs. Hosting a fundraiser is a meaningful way to bring people together while contributing to positive change.</p>
                             <a href="https://docs.google.com/forms/d/e/1FAIpQLSdrL2wrcj_i2U4S4SK54lwaVrzlyM0yXuHOffqtnXcgO_ZqIQ/viewform?usp=dialog" className="gi-btn-arch" target="_blank" rel="noopener noreferrer">Start a Fundraiser</a>
                         </div>
                     </div>
@@ -193,10 +189,10 @@ const GetInvolved = () => {
                         <div className="gi-calendar-box">
                             <div className="gi-frame">
                                 <iframe 
-                                    src="https://calendar.google.com/calendar/embed?src=en.canadian%23holiday%40group.v.calendar.google.com&ctz=America%2FToronto" 
+                                    src="https://calendar.google.com/calendar/embed?src=dev.cloudgenz.growth91%40gmail.com&ctz=Asia%2FKolkata" 
                                     style={{ border: 0 }} 
                                     width="100%" 
-                                    height="400" 
+                                    height="600" 
                                     frameBorder="0" 
                                     scrolling="no"
                                     title="Community Calendar"

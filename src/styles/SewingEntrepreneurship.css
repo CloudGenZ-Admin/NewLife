@@ -99,7 +99,7 @@
 
 /* 2. CREATIVE PATHWAYS */
 .sew-pathways {
-  padding: 20vh 5vw;
+  padding: 10vh 5vw;
   position: relative;
   background: var(--light-gray);
 }
@@ -162,7 +162,7 @@
 
 /* 3. THE POLAROID GALLERY */
 .sew-lookbook-gallery {
-  padding: 5vh 5vw 25vh;
+  padding: 5vh 5vw 10vh;
   position: relative;
   overflow: hidden;
   background: var(--white);
@@ -244,7 +244,7 @@
 
 /* 4. SKILLS GRID */
 .sew-skills {
-  padding: 15vh 5vw;
+  padding: 7vh 5vw;
   background: var(--light-gray);
 }
 
@@ -269,12 +269,12 @@
   border-radius: var(--radius);
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--border-light);
-  transition: all 0.4s ease;
 }
 
 .sew-skill-item:hover {
   box-shadow: var(--shadow-md);
   transform: translateY(-5px);
+  transition: all 0.4s ease;
 }
 
 .sew-skill-item h3 {

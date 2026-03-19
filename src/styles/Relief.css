@@ -194,7 +194,7 @@
 
 /* 3. CLOSING STATEMENT */
 .tp-footer {
-  padding: 20vh 5vw;
+  padding: 8vh 5vw;
   text-align: center;
   background: var(--light-gray);
   color: var(--tp-text);

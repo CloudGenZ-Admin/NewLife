@@ -1,9 +1,9 @@
 /* FOOTER — MODERN CLEAN DESIGN */
 
 .footer-studio {
-  background: var(--dark-gray);
+  background: #2d5a27;
   padding: 80px 0 40px;
-  color: var(--white);
+  color: #ffffff;
   position: relative;
   overflow: hidden;
 }
@@ -30,7 +30,7 @@
   font-family: var(--fb);
   font-size: 0.95rem;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.85);
 }
 
 /* NAV GRID */
@@ -60,7 +60,7 @@
 
 .nav-links a, .social-links-studio a {
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.8);
   font-family: var(--fb);
   font-size: 0.9rem;
   transition: all 0.3s ease;
@@ -93,11 +93,11 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.footer-social-icon img {
+.footer-social-icon svg {
   width: 20px;
   height: 20px;
-  object-fit: contain;
-  opacity: 0.6;
+  fill: currentColor;
+  opacity: 0.8;
   transition: all 0.3s ease;
 }
 
@@ -107,7 +107,7 @@
   transform: translateY(-3px);
 }
 
-.footer-social-icon:hover img {
+.footer-social-icon:hover svg {
   opacity: 1;
 }
 

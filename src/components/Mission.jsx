@@ -98,18 +98,11 @@ const Mission = () => {
         <div className="mission-story-side">
           <div className="mission-story-content">
 
-            <span className="mission-eyebrow">Who We Are</span>
-
-            <h2 className="mission-heading">
-              A New Life <em>Born from Faith</em>,<br />
-              Driven by Purpose.
-            </h2>
+            <span className="mission-eyebrow">Our Story</span>
+            <h2 className="mission-heading">NewLife Project Inc.</h2>
 
             <p className="mission-body">
-              Founded in 1994 by Brenda Williams in Freetown, Sierra Leone, NewLife Project Inc.
-              has grown from a local evangelical outreach into an international organization
-              touching lives across Africa and Canada. We empower underprivileged women and
-              children through education, health, and vocational training.
+              NewLife Project is a Non-Profit Organization which was founded by Brenda Williams in Freetown, Sierra Leone to reach out to underprivileged women. The project was born from an evangelical campaign in 1994 with a dedication to bringing new life to at-risk women and children. NewLife Project has touched the lives of over a thousand lives including women, men, and children in different communities in Cote d’Ivoire, Sierra Leone, and Ghana through our Vocational Training Programs, Women’s Forum, Rehabilitation Centre, organized Health Clinics, and Relief Programs. In 2014, we established a centre in Canada to help women and youth in our community.
             </p>
 
             {/* Feature checklist */}
@@ -147,7 +140,7 @@ const Mission = () => {
             </div>
 
             <a href="/about" className="capsule-cta">
-              Our Full Story
+              OUR JOURNEY
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>

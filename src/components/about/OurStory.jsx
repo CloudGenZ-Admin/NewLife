@@ -8,8 +8,14 @@ const OurStory = () => {
         <div className="story-header">
           <h2>Our Story & Mission</h2>
           <p className="story-intro">
-            NewLife Project was founded to create practical pathways toward dignity, confidence, and economic
-            independence for women and youth facing social and economic barriers.
+            NewLife Project is a Non-Profit Organization that was founded in Sierra Leone to create 
+            practical pathways toward dignity, confidence, and economic independence for women and 
+            youth facing social and economic barriers.
+          </p>
+          <p className="story-intro" style={{marginTop: '1rem', fontSize: '1.1rem'}}>
+            From its early grassroots initiatives in Sierra Leone and Côte d’Ivoire to its expansion 
+            into USA, & Canada, NewLife has remained committed to inspiring, educating, and empowering 
+            individuals through community-based programs and global partnerships.
           </p>
         </div>
 
@@ -71,7 +77,7 @@ const OurStory = () => {
             </div>
             <div className="impact-item">
               <span className="impact-bullet">→</span>
-              <p>Rehabilitation and livelihood support for trafficked women</p>
+              <p>Rehabilitation and livelihood support for women at-risk in Cote d”Ivoire</p>
             </div>
             <div className="impact-item">
               <span className="impact-bullet">→</span>
@@ -87,7 +93,7 @@ const OurStory = () => {
             </div>
             <div className="impact-item">
               <span className="impact-bullet">→</span>
-              <p>Community relief efforts during public health crises and natural disasters</p>
+              <p>Community relief efforts during public health crises and natural disasters in Sierra Leone</p>
             </div>
           </div>
 

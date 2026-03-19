@@ -18,33 +18,33 @@ const Gallery = () => {
       id: 1,
       category: "Fundraising",
       title: "Fundraiser Exhibitions",
-      subtitle: "Raising funds for shipment",
+      subtitle: "Taste of Africa & Community Events",
       image: "https://newlifeprojectinc.org/cdn/shop/files/fundraiser_1.png?v=1666309940",
-      link: "/pages/fundraiser-exhibitions"
+      link: "/fundraiser-exhibitions"
     },
     {
       id: 2,
       category: "Entrepreneurship",
       title: "NewLife Designs",
-      subtitle: "Entrepreneurship & Marketing",
+      subtitle: "Redesigning soon - Visit our shop",
       image: "https://newlifeprojectinc.org/cdn/shop/files/fundraiser_1a705eb4-c772-43e8-a300-e90b7d125dad.png?v=1666154809",
       link: "https://shop.newlifeprojectinc.org/collections"
     },
     {
       id: 3,
       category: "Education",
-      title: "Vocational Training",
-      subtitle: "Skill-building for the future",
-      image: "https://newlifeprojectinc.org/cdn/shop/files/2_9e088462-4d09-47e8-bac0-b576b8f135b8.jpg?v=1705279646",
-      link: "/pages/classes"
+      title: "Education & Vocational Training",
+      subtitle: "Sewing, French & Craft Classes",
+      image: "https://cdn.shopify.com/s/files/1/0506/2515/1173/files/6856C4D3-E26C-4686-B29E-9404F7CA1554_480x480.jpg?v=1703235693",
+      link: "/vocational-training"
     },
     {
       id: 4,
       category: "Relief",
       title: "Relief Program",
-      subtitle: "Help equip women and children",
-      image: "https://newlifeprojectinc.org/cdn/shop/files/fundraiser_1a705eb4-c772-43e8-a300-e90b7d125dad.png?v=1666154809",
-      link: "/pages/international-relief"
+      subtitle: "Local & International Support",
+      image: "https://cdn.shopify.com/s/files/1/0506/2515/1173/files/relief_program_1.jpg?v=1705192603",
+      link: "/programs/relief"
     }
   ]
 
