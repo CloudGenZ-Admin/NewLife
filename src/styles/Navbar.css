@@ -80,14 +80,115 @@
   font-weight: 500;
   font-size: 0.88rem;
   letter-spacing: 0.01em;
-  transition: color 0.3s ease;
   position: relative;
   white-space: nowrap;
   display: inline-block;
+  text-align: center;
+  /* Remove transition that might cause shift */
 }
 
 .nav-links.desktop-only a:hover {
   color: var(--primary-green);
+}
+
+/* Fixed widths for each link to create equal gaps */
+.nav-links.desktop-only a[href="/"] {
+  width: 60px; /* Home */
+}
+
+.nav-links.desktop-only .nav-dropdown {
+  width: 70px; /* About */
+}
+
+.nav-links.desktop-only .nav-dropdown.mega-dropdown {
+  width: 90px; /* Programs */
+}
+
+/* Static spans for Get Involved and Contact */
+.nav-static-link {
+  text-decoration: none;
+  color: var(--text-gray) !important;
+  font-family: var(--fb);
+  font-weight: 500;
+  font-size: 0.88rem;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  /* Equal width for consistent gaps */
+  width: 110px; /* Get Involved */
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.nav-static-link:nth-of-type(2) {
+  width: 80px; /* Contact */
+}
+
+/* Future widths for when Shop and Blog are uncommented */
+/* 
+.nav-links.desktop-only a[href*="shop"] {
+  width: 60px;
+}
+.nav-links.desktop-only a[href*="blog"] {
+  width: 60px;
+}
+*/
+
+.nav-links.desktop-only a[href="/get-involved"] {
+  width: 100px; /* Get Involved */
+}
+
+.nav-links.desktop-only a[href="/contact"] {
+  width: 70px; /* Contact */
+}
+
+/* Prevent text shift on Get Involved and Contact by not changing color - MUST BE LAST */
+.nav-links.desktop-only a[href="/get-involved"]:hover,
+.nav-links.desktop-only a[href="/contact"]:hover {
+  color: var(--text-gray) !important;
+  /* FORCE NO TEXT MOVEMENT */
+  font-weight: 500 !important;
+  font-size: 0.88rem !important;
+  letter-spacing: 0.01em !important;
+  transform: translate3d(0, 0, 0) !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* Green underline on hover for static links - match text width */
+.nav-static-link::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: calc(100% - 40px); /* Adjust to match text width */
+  height: 2px;
+  background: var(--primary-green);
+  transform-origin: center;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-static-link:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* Different underline width for Contact (shorter text) */
+.nav-static-link:nth-of-type(2)::after {
+  width: calc(100% - 30px); /* Contact is shorter */
+}
+
+/* NO text changes on hover - only underline */
+.nav-static-link:hover {
+  color: var(--text-gray) !important;
+  font-weight: 500 !important;
+  font-size: 0.88rem !important;
+  letter-spacing: 0.01em !important;
 }
 
 .nav-links.desktop-only a::after {
@@ -95,15 +196,16 @@
   position: absolute;
   bottom: -6px;
   left: 0;
+  right: 0;
   height: 2px;
   background: var(--primary-green);
-  width: 0%;
-  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  transform-origin: left;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav-links.desktop-only a:hover::after {
-  width: 100%;
+  transform: scaleX(1);
 }
 
 /* DONATE BUTTON */
@@ -120,7 +222,7 @@
 }
 
 .nav-donate:hover {
-  background: var(--green-dark) !important;
+  /* background: var(--green-dark) !important; */
   color: #fff !important;
   box-shadow: none !important;
   transform: none !important;
@@ -136,6 +238,18 @@
 /* DROPDOWN */
 .nav-dropdown {
   position: relative;
+}
+
+/* Invisible bridge to keep dropdown open when moving mouse to menu items */
+.nav-dropdown::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 8px;
+  background: transparent;
+  z-index: 1;
 }
 
 .nav-dropdown-trigger {
@@ -521,21 +635,4 @@
     font-size: 0.84rem;
     padding: 12px 16px;
   }
-}
-
-/* Stabilize text on hover */
-.nav-links.desktop-only a,
-.nav-dropdown-trigger {
-  -webkit-text-stroke: 0.2px rgba(0, 0, 0, 0.01) !important;
-  text-shadow: 0 0 1px rgba(0, 0, 0, 0.01) !important;
-}
-
-.nav-links.desktop-only a:hover,
-.nav-dropdown-trigger:hover {
-  font-weight: 500 !important;
-  letter-spacing: 0.01em !important;
-}
-
-.nav-links.desktop-only a::after {
-  transform-origin: left !important;
 }

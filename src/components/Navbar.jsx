@@ -162,8 +162,8 @@ const Navbar = () => {
               </div>
             </div>
 
-            <Link to="/get-involved" onClick={handleLinkClick}>Get Involved</Link>
-            <Link to="/contact" onClick={handleLinkClick}>Contact</Link>
+            <span className="nav-static-link" onClick={() => { window.location.href = '/get-involved'; }}>Get Involved</span>
+            <span className="nav-static-link" onClick={() => { window.location.href = '/contact'; }}>Contact</span>
             {/* <a href="https://shop.newlifeprojectinc.org" target="_blank" rel="noopener noreferrer" onClick={handleLinkClick}>Shop</a>
             <a href="https://blog.newlifeprojectinc.org" target="_blank" rel="noopener noreferrer" onClick={handleLinkClick}>Blogs</a> */}
             <a href="#" target="_blank" rel="noopener noreferrer" className="nav-donate" onClick={handleLinkClick}>DONATE</a>
