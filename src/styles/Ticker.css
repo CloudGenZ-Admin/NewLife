@@ -1,10 +1,9 @@
-/* TOP BANNER */
-/* RE-STYLED TICKER COMPONENT - LIGHT THEME */
+/* TOP BANNER - MODERN WHITE THEME */
 .ticker-section {
   width: 100vw;
-  background-color: var(--white);
-  border-top: 1px solid rgba(139, 195, 74, 0.2);
-  border-bottom: 1px solid rgba(139, 195, 74, 0.2);
+  background-color: var(--light-gray);
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
   padding: 18px 0;
   overflow: hidden;
   position: relative;
@@ -56,15 +55,20 @@
 }
 
 @keyframes ticker-slide {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 @media (max-width: 768px) {
   .ticker-section {
     padding: 14px 0;
   }
-  
+
   .ticker-item {
     font-size: 0.85rem;
     margin-right: 30px;

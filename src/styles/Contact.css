@@ -1,12 +1,12 @@
 /* src/styles/Contact.css */
-/* THE CONNECTION ARCHITECT - Premium V2 Redesign */
+/* MODERN WHITE THEME - Connection Architect */
 
 :root {
-  --cont-bg: #fdfdfb;
-  --cont-light-green: #e9f5e6; /* BRAND LIGHT GREEN */
+  --cont-bg: var(--white);
+  --cont-light-green: var(--green-light);
   --cont-primary: #2d5a27;
-  --cont-text: #152812;
-  --cont-border: rgba(45, 90, 39, 0.1);
+  --cont-text: #1a1a1a;
+  --cont-border: var(--border-light);
 }
 
 .contact-page {
@@ -22,14 +22,14 @@
   padding: 0 5%;
 }
 
-/* 1. HERO ARCHITECTURE (Uses ArchitectHero.css + these overrides) */
+/* 1. HERO ARCHITECTURE */
 .contact-hero-theme {
-  background: var(--cont-light-green) !important;
+  background: var(--white) !important;
 }
 
 .cont-decor {
-  background: white !important;
-  opacity: 0.2 !important;
+  background: var(--primary-green) !important;
+  opacity: 0.03 !important;
 }
 
 /* 2. MAIN SECTION */
@@ -54,16 +54,22 @@
 }
 
 .contact-method-card {
-  background: white;
+  background: var(--light-gray);
   padding: 4rem;
   border: 1px solid var(--cont-border);
+  border-radius: var(--radius);
   position: relative;
   transition: all 0.4s ease;
 }
 
-.contact-method-card:hover { border-color: var(--cont-primary); }
+.contact-method-card:hover {
+  border-color: var(--cont-primary);
+  box-shadow: var(--shadow-sm);
+}
 
-.contact-method-card.highlighting { background: var(--cont-light-green); }
+.contact-method-card.highlighting {
+  background: var(--green-light);
+}
 
 .card-num {
   font-family: var(--ff);
@@ -111,7 +117,9 @@
   transition: opacity 0.3s ease;
 }
 
-.email-item a:hover { opacity: 0.7; }
+.email-item a:hover {
+  opacity: 0.7;
+}
 
 .contact-stay-connected {
   padding: 4rem 0 0;
@@ -122,7 +130,7 @@
 .social-node-link {
   width: 50px;
   height: 50px;
-  background: white;
+  background: var(--white);
   border: 1px solid var(--cont-border);
   display: flex;
   align-items: center;
@@ -147,12 +155,15 @@
 
 /* FORM STYLING */
 .contact-form-container {
-  background: white;
+  background: var(--light-gray);
   padding: 6rem;
   border: 1px solid var(--cont-border);
+  border-radius: var(--radius);
 }
 
-.form-info { margin-bottom: 4rem; }
+.form-info {
+  margin-bottom: 4rem;
+}
 
 .module-title {
   font-family: var(--ff);
@@ -162,9 +173,16 @@
   margin-bottom: 1.5rem;
 }
 
-.module-title em { font-style: italic; color: var(--cont-primary); }
+.module-title em {
+  font-style: italic;
+  color: var(--cont-primary);
+}
 
-.form-info p { font-size: 1.1rem; opacity: 0.6; line-height: 1.6; }
+.form-info p {
+  font-size: 1.1rem;
+  opacity: 0.6;
+  line-height: 1.6;
+}
 
 .premium-contact-form {
   display: flex;
@@ -172,8 +190,8 @@
   gap: 2rem;
 }
 
-.form-group input, 
-.form-group select, 
+.form-group input,
+.form-group select,
 .form-group textarea {
   width: 100%;
   border: none;
@@ -185,8 +203,8 @@
   transition: all 0.3s ease;
 }
 
-.form-group input:focus, 
-.form-group select:focus, 
+.form-group input:focus,
+.form-group select:focus,
 .form-group textarea:focus {
   outline: none;
   border-bottom-color: var(--cont-primary);
@@ -197,6 +215,7 @@
   color: white;
   border: none;
   padding: 1.5rem 0;
+  border-radius: 100px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.2em;
@@ -206,14 +225,24 @@
   transition: all 0.3s ease;
 }
 
-.submit-btn-premium:hover { transform: scale(0.98); opacity: 0.9; }
+.submit-btn-premium:hover {
+  transform: scale(0.98);
+  opacity: 0.9;
+}
 
 /* RESPONSIVE */
 @media (max-width: 1100px) {
-  .contact-layout-grid { grid-template-columns: 1fr; }
-  .contact-form-container { padding: 4rem 2rem; }
+  .contact-layout-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form-container {
+    padding: 4rem 2rem;
+  }
 }
 
 @media (max-width: 768px) {
-  .contact-method-card { padding: 3rem 2rem; }
+  .contact-method-card {
+    padding: 3rem 2rem;
+  }
 }

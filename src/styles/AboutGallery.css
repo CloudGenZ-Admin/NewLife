@@ -1,7 +1,7 @@
-/* ABOUT GALLERY V2 - AWWARDS-LEVEL CINEMATIC DESIGN */
+/* ABOUT GALLERY - MODERN WHITE THEME */
 .v2-about-gallery {
   padding: 60px 0;
-  background: var(--white); /* Brand-aligned light theme */
+  background: var(--white);
   color: var(--dark-gray);
   overflow: hidden;
 }
@@ -23,9 +23,12 @@
   font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.4em;
-  color: var(--primary-green);
-  display: block;
+  letter-spacing: 0.2em;
+  color: var(--white);
+  background: var(--primary-green);
+  display: inline-block;
+  padding: 0.4rem 1.2rem;
+  border-radius: 50px;
   margin-bottom: 2rem;
 }
 
@@ -67,9 +70,9 @@
   cursor: pointer;
   opacity: 0;
   transform: translateY(40px);
-  clip-path: inset(100% 0% 0% 0%); /* Initial shutter state */
+  clip-path: inset(100% 0% 0% 0%);
   will-change: transform, clip-path, opacity;
-  background: #f0f0f0; /* Placeholder color */
+  background: var(--light-gray);
 }
 
 .v2-item-inner {
@@ -80,7 +83,7 @@
 .v2-img-container {
   position: relative;
   overflow: hidden;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
 }
 
 .v2-gallery-item img {
@@ -96,20 +99,41 @@
   filter: saturate(1.1) contrast(1.05);
 }
 
-/* Bento Sizing V2 — height is on the IMAGE CONTAINER, not the item */
-/* This ensures captions always have space below regardless of zoom level */
-.v-large { grid-column: span 8; }
-.v-large .v2-img-container { height: 750px; }
+/* Bento Sizing */
+.v-large {
+  grid-column: span 8;
+}
 
-.v-medium { grid-column: span 4; margin-top: 100px; }
-.v-medium .v2-img-container { height: 500px; }
+.v-large .v2-img-container {
+  height: 750px;
+}
 
-.v-small { grid-column: span 3; margin-top: -50px; }
-.v-small .v2-img-container { height: 350px; }
+.v-medium {
+  grid-column: span 4;
+  margin-top: 100px;
+}
 
-/* Staggered offsets for feeling of depth */
-.v2-gallery-item:nth-child(even) { margin-top: 60px; }
-.v2-gallery-item:nth-child(3n) { margin-top: -30px; }
+.v-medium .v2-img-container {
+  height: 500px;
+}
+
+.v-small {
+  grid-column: span 3;
+  margin-top: -50px;
+}
+
+.v-small .v2-img-container {
+  height: 350px;
+}
+
+/* Staggered offsets */
+.v2-gallery-item:nth-child(even) {
+  margin-top: 60px;
+}
+
+.v2-gallery-item:nth-child(3n) {
+  margin-top: -30px;
+}
 
 /* Info Mask Animation */
 .v2-item-card-info {
@@ -141,9 +165,10 @@
 
 .v2-card-accent {
   width: 0%;
-  height: 1px;
+  height: 2px;
   background: var(--primary-green);
   margin-top: 1.5rem;
+  border-radius: 2px;
   transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -151,7 +176,7 @@
   width: 100%;
 }
 
-/* Lightbox V2 */
+/* Lightbox */
 .v2-gallery-lightbox {
   position: fixed;
   inset: 0;
@@ -166,7 +191,7 @@
 .v2-lightbox-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.98); /* Light backdrop */
+  background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(20px);
 }
 
@@ -175,14 +200,15 @@
   z-index: 2;
   max-width: 85vw;
   max-height: 85vh;
-  box-shadow: 0 50px 100px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-sm);
 }
 
 .v2-lightbox-content img {
   max-width: 100%;
   max-height: 85vh;
   object-fit: contain;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
 }
 
 .v2-close-lightbox {
@@ -208,28 +234,49 @@
   opacity: 1;
 }
 
-/* RESPONSIVE V2 */
+/* RESPONSIVE */
 @media (max-width: 1200px) {
-  .v-large { grid-column: span 12; height: 600px; }
-  .v-medium { grid-column: span 6; height: 450px; margin-top: 0; }
-  .v-small { grid-column: span 6; height: 400px; margin-top: 0; }
-  .v2-gallery-item:nth-child(even), .v2-gallery-item:nth-child(3n) { margin-top: 0; }
+  .v-large {
+    grid-column: span 12;
+    height: 600px;
+  }
+
+  .v-medium {
+    grid-column: span 6;
+    height: 450px;
+    margin-top: 0;
+  }
+
+  .v-small {
+    grid-column: span 6;
+    height: 400px;
+    margin-top: 0;
+  }
+
+  .v2-gallery-item:nth-child(even),
+  .v2-gallery-item:nth-child(3n) {
+    margin-top: 0;
+  }
 }
 
 @media (max-width: 768px) {
   .v2-container {
-    padding: 0 0 0 24px; /* Bleed to edge on right for scroll feel */
+    padding: 0 0 0 24px;
   }
-  .v2-gallery-header { 
-    margin-bottom: 40px; 
+
+  .v2-gallery-header {
+    margin-bottom: 40px;
     padding-right: 24px;
   }
-  .v2-premium-title { font-size: 3.5rem; }
-  
-  /* MOBILE AUTO-SCROLL (CSS-based, works on iOS + Android) */
+
+  .v2-premium-title {
+    font-size: 3.5rem;
+  }
+
+  /* MOBILE AUTO-SCROLL */
   .v2-gallery-scroll-wrapper {
     width: 100%;
-    overflow: hidden; /* Clip the scrolling track */
+    overflow: hidden;
     position: relative;
   }
 
@@ -237,53 +284,78 @@
     display: flex;
     flex-wrap: nowrap;
     gap: 16px;
-    width: max-content; /* Expand to fit all items */
+    width: max-content;
     animation: galleryAutoScroll 40s linear infinite;
     overflow: visible;
   }
 
   .v2-gallery-scroll-wrapper.is-mobile-scroll:hover .v2-gallery-asymmetric-grid {
-    animation-play-state: paused; /* Pause on touch/hover */
+    animation-play-state: paused;
   }
 
   @keyframes galleryAutoScroll {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); } /* Move exactly half (original set) then loop */
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-50%);
+    }
   }
 
   .v2-gallery-item {
-    flex: 0 0 85vw; /* Each card takes 85% of screen width */
+    flex: 0 0 85vw;
     height: 50vh !important;
     min-height: 400px;
     scroll-snap-align: start;
-    opacity: 1 !important; /* Visible on scroll */
+    opacity: 1 !important;
     transform: none !important;
     clip-path: none !important;
     margin: 0 !important;
   }
 
-  .v-large, .v-medium, .v-small { 
-    width: 100%; 
-    height: 100% !important; 
+  .v-large,
+  .v-medium,
+  .v-small {
+    width: 100%;
+    height: 100% !important;
   }
 
   .v2-img-container {
     height: 100%;
-    background: #f8f8f8; /* Contrast for contain fit */
+    background: var(--light-gray);
   }
 
   .v2-gallery-item img {
     height: 100%;
-    object-fit: contain !important; /* NO CROP on mobile */
+    object-fit: contain !important;
   }
 
-  .v2-item-caption { font-size: 1.3rem; }
-  .v2-gallery-lightbox { padding: 20px; }
+  .v2-item-caption {
+    font-size: 1.3rem;
+  }
+
+  .v2-gallery-lightbox {
+    padding: 20px;
+  }
 }
 
 @media (max-width: 480px) {
-  .v2-container { padding: 0 24px; }
-  .v2-premium-title { font-size: 2.8rem; }
-  .v-large, .v-medium, .v-small { height: 320px; }
-  .v2-close-text { display: none; }
+  .v2-container {
+    padding: 0 24px;
+  }
+
+  .v2-premium-title {
+    font-size: 2.8rem;
+  }
+
+  .v-large,
+  .v-medium,
+  .v-small {
+    height: 320px;
+  }
+
+  .v2-close-text {
+    display: none;
+  }
 }

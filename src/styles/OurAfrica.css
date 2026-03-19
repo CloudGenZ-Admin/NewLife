@@ -1,4 +1,4 @@
-/* OUR AFRICA - CINEMATIC EDITORIAL DESIGN */
+/* OUR AFRICA - MODERN WHITE THEME */
 .our-africa-section {
   padding: 100px 0;
   background: var(--white);
@@ -24,12 +24,15 @@
 
 .africa-label {
   font-family: var(--fb);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.4em;
-  color: var(--primary-green);
-  display: block;
+  letter-spacing: 0.2em;
+  color: var(--white);
+  background: var(--primary-green);
+  display: inline-block;
+  padding: 0.4rem 1.2rem;
+  border-radius: 50px;
   margin-bottom: 2rem;
 }
 
@@ -61,7 +64,7 @@
   position: relative;
   width: 100%;
   height: 600px;
-  border-radius: 8px;
+  border-radius: var(--radius);
   overflow: visible;
 }
 
@@ -69,8 +72,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 8px;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
 }
 
 .africa-floating-card {
@@ -79,11 +82,11 @@
   right: -5%;
   width: 300px;
   height: 300px;
-  border-radius: 8px;
+  border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: 0 40px 80px rgba(0,0,0,0.2);
+  box-shadow: var(--shadow-lg);
   z-index: 2;
-  border: 10px solid white;
+  border: 8px solid white;
 }
 
 .africa-floating-card img {
@@ -99,7 +102,7 @@
 }
 
 .africa-chapter:nth-child(even) {
-  background: var(--green-light);
+  background: var(--light-gray);
 }
 
 .split-layout {
@@ -110,7 +113,7 @@
 }
 
 .reversed {
-  direction: ltr; /* Ensure text is right in CSS grid */
+  direction: ltr;
 }
 
 .africa-chapter-text {
@@ -122,7 +125,7 @@
   font-size: 8rem;
   font-weight: 300;
   color: var(--primary-green);
-  opacity: 0.15;
+  opacity: 0.08;
   position: absolute;
   top: -60px;
   left: -20px;
@@ -155,21 +158,20 @@
   line-height: 1.4;
   margin-top: 3rem;
   padding-left: 2rem;
-  border-left: 1px solid var(--primary-green);
+  border-left: 3px solid var(--primary-green);
 }
 
 .highlight-tag {
   display: inline-block;
-  background: var(--white);
-  padding: 1rem 1.5rem;
-  border-radius: 4px;
+  background: var(--green-light);
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
   font-family: var(--fb);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--primary-green);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
   margin-top: 2rem;
 }
 
@@ -189,17 +191,17 @@
   width: 100%;
   height: 450px;
   object-fit: cover;
-  border-radius: 4px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
 }
 
 .secondary-grid-img {
   width: 100%;
   height: 450px;
   object-fit: cover;
-  border-radius: 4px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-  margin-top: 80px; /* Stagger down */
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  margin-top: 80px;
 }
 
 .visual-stack {
@@ -213,17 +215,17 @@
   width: 100%;
   height: 450px;
   object-fit: cover;
-  border-radius: 4px;
-  margin-top: 80px; /* Stagger down */
-  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  border-radius: var(--radius);
+  margin-top: 80px;
+  box-shadow: var(--shadow-md);
 }
 
 .stack-img-2 {
   width: 100%;
   height: 450px;
   object-fit: cover;
-  border-radius: 4px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
 }
 
 /* OUTRO SECTION */
@@ -235,7 +237,7 @@
   position: relative;
   width: 100%;
   height: 500px;
-  border-radius: 8px;
+  border-radius: var(--radius);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -280,24 +282,64 @@
     grid-template-columns: 1fr;
     gap: 80px;
   }
-  
-  .africa-hero-visual { height: auto; aspect-ratio: 16/9; }
-  .africa-floating-card { width: 180px; height: 180px; }
-  .africa-container.split-layout.reversed .africa-chapter-text { order: -1; }
-  .chapter-title { font-size: 2.8rem; }
+
+  .africa-hero-visual {
+    height: auto;
+    aspect-ratio: 16/9;
+  }
+
+  .africa-floating-card {
+    width: 180px;
+    height: 180px;
+  }
+
+  .africa-container.split-layout.reversed .africa-chapter-text {
+    order: -1;
+  }
+
+  .chapter-title {
+    font-size: 2.8rem;
+  }
 }
 
 @media (max-width: 768px) {
-  .our-africa-section { padding: 100px 0; }
-  .africa-hero-title { font-size: 3.2rem; }
-  .chapter-num { font-size: 6rem; top: -40px; }
-  .impact-quote { font-size: 1.4rem; }
-  .visual-grid, .visual-stack { grid-template-columns: 1fr; gap: 20px; }
-  .main-grid-img, .secondary-grid-img, .stack-img-1, .stack-img-2 { 
-    height: auto; 
-    aspect-ratio: 4/3; 
-    margin-top: 0 !important; 
+  .our-africa-section {
+    padding: 100px 0;
   }
-  .outro-content h3 { font-size: 2.5rem; }
-  .outro-card { height: 350px; }
+
+  .africa-hero-title {
+    font-size: 3.2rem;
+  }
+
+  .chapter-num {
+    font-size: 6rem;
+    top: -40px;
+  }
+
+  .impact-quote {
+    font-size: 1.4rem;
+  }
+
+  .visual-grid,
+  .visual-stack {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .main-grid-img,
+  .secondary-grid-img,
+  .stack-img-1,
+  .stack-img-2 {
+    height: auto;
+    aspect-ratio: 4/3;
+    margin-top: 0 !important;
+  }
+
+  .outro-content h3 {
+    font-size: 2.5rem;
+  }
+
+  .outro-card {
+    height: 350px;
+  }
 }

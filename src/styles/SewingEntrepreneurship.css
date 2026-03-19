@@ -1,12 +1,12 @@
 /* src/styles/SewingEntrepreneurship.css */
-/* BESPOKE DESIGN: "The Lookbook" - Fashion, editorial, asymmetrical. */
+/* MODERN WHITE THEME - Fashion, editorial, asymmetrical. */
 
 :root {
-  --sew-bg: var(--green-light); /* BRAND LIGHT GREEN */
-  --sew-dark: #2d5a27;
+  --sew-bg: var(--white);
+  --sew-dark: #1a1a1a;
   --sew-accent: #d4a373;
-  --sew-light: var(--green-lighter);
-  --sew-text: #3a4a35;
+  --sew-light: var(--light-gray);
+  --sew-text: #555;
   --sew-font: 'Plus Jakarta Sans', sans-serif;
   --sew-display: 'Cormorant Garamond', serif;
 }
@@ -26,6 +26,7 @@
   align-items: center;
   position: relative;
   padding: 15vh 5vw 5vh;
+  background: var(--white);
 }
 
 .sew-hero-grid {
@@ -45,13 +46,15 @@
 .sew-pill {
   display: inline-block;
   padding: 0.5rem 1.5rem;
-  border: 1px solid var(--sew-dark);
-  color: var(--sew-dark);
+  border: 1px solid var(--border-light);
+  background: var(--green-light);
+  color: var(--primary-green);
   font-size: 0.75rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   margin-bottom: 3rem;
   border-radius: 50px;
+  font-weight: 600;
 }
 
 .sew-hero-text h1 {
@@ -77,14 +80,15 @@
   line-height: 1.8;
   max-width: 450px;
   margin-left: 2rem;
+  color: var(--sew-text);
 }
 
 .sew-hero-img-wrap {
   position: relative;
-  border-radius: 200px 200px 0 0; /* Arch window effect */
+  border-radius: 200px 200px 0 0;
   overflow: hidden;
   height: 80vh;
-  box-shadow: 0 40px 100px rgba(45, 90, 39, 0.15);
+  box-shadow: var(--shadow-lg);
 }
 
 .sew-hero-img-wrap img {
@@ -93,11 +97,11 @@
   object-fit: cover;
 }
 
-/* 2. CREATIVE PATHWAYS (Asymmetrical Text/Img Overlap) */
+/* 2. CREATIVE PATHWAYS */
 .sew-pathways {
   padding: 20vh 5vw;
   position: relative;
-  background: white;
+  background: var(--light-gray);
 }
 
 .sew-pathways-wrap {
@@ -124,6 +128,7 @@
 .sew-pathways-title p {
   font-size: 1.25rem;
   line-height: 1.8;
+  color: var(--sew-text);
 }
 
 .sew-pathways-content {
@@ -136,8 +141,10 @@
 .sew-goal-card {
   position: relative;
   padding: 4rem;
-  background: var(--sew-bg);
-  border-left: 1px solid var(--sew-dark);
+  background: var(--white);
+  border-left: 3px solid var(--primary-green);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
 }
 
 .sew-goal-card h3 {
@@ -148,24 +155,28 @@
 }
 
 .sew-goal-card p {
-  font-size: 1.15rem; line-height: 1.7;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--sew-text);
 }
 
-/* 3. THE POLAROID FLYER GALLERY (Absolute custom masonry) */
+/* 3. THE POLAROID GALLERY */
 .sew-lookbook-gallery {
   padding: 5vh 5vw 25vh;
   position: relative;
   overflow: hidden;
+  background: var(--white);
 }
 
 .sew-lookbook-gallery::before {
   content: 'STITCHES';
   position: absolute;
-  top: 50%; left: 50%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   font-family: var(--sew-display);
   font-size: 25vw;
-  color: rgba(255,255,255,0.03);
+  color: rgba(0, 0, 0, 0.02);
   font-weight: 700;
   z-index: 0;
   pointer-events: none;
@@ -175,12 +186,15 @@
   text-align: center;
   font-family: var(--sew-display);
   font-size: 4rem;
-  color: var(--sew-bg);
+  color: var(--sew-dark);
   position: relative;
   z-index: 2;
 }
 
-.sew-lookbook-title em { font-style: italic; color: var(--sew-accent); }
+.sew-lookbook-title em {
+  font-style: italic;
+  color: var(--sew-accent);
+}
 
 .sew-polaroid-grid {
   position: relative;
@@ -194,11 +208,12 @@
 /* Physical polaroid/flyer effect */
 .polaroid {
   background: #fff;
-  padding: 15px 15px 50px 15px; /* Bottom heavy */
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  padding: 15px 15px 50px 15px;
+  box-shadow: var(--shadow-lg);
   margin-bottom: 5vh;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
+  border-radius: var(--radius-sm);
 }
 
 .polaroid:hover {
@@ -210,24 +225,27 @@
   display: block;
   max-width: 100%;
   height: auto;
+  border-radius: 6px;
 }
 
 .polaroid.tall {
   width: 35%;
   padding: 20px;
 }
+
 .polaroid.square {
   width: 25%;
   height: 100%;
 }
+
 .polaroid.wide {
   width: 45%;
 }
 
-/* 4. SKILLS GRID (Elegant bottom section) */
+/* 4. SKILLS GRID */
 .sew-skills {
   padding: 15vh 5vw;
-  background: white;
+  background: var(--light-gray);
 }
 
 .sew-skills-title {
@@ -247,29 +265,59 @@
 .sew-skill-item {
   text-align: center;
   padding: 3rem;
-  border-top: 1px solid rgba(45, 90, 39, 0.2);
-  transition: border-color 0.4s;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+  transition: all 0.4s ease;
 }
 
 .sew-skill-item:hover {
-  border-top-color: var(--sew-dark);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-5px);
 }
 
 .sew-skill-item h3 {
   font-family: var(--sew-display);
-  font-size: 1.8rem; margin-bottom: 1rem; color: var(--sew-dark);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--sew-dark);
 }
 
 /* RESPONSIVE */
 @media (max-width: 1024px) {
-  .sew-hero-grid { grid-template-columns: 1fr; gap: 5vh; }
-  .sew-hero-text h1 { font-size: 5rem; }
-  .sew-hero-img-wrap { height: 60vh; border-radius: 100px 100px 0 0; }
-  
-  .sew-pathways-wrap { flex-direction: column; }
-  .sew-pathways-title, .sew-pathways-content { width: 100%; position: relative; top: 0; }
-  
-  .polaroid.tall, .polaroid.square, .polaroid.wide { width: 80%; }
-  
-  .sew-skills-grid { grid-template-columns: 1fr; }
+  .sew-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 5vh;
+  }
+
+  .sew-hero-text h1 {
+    font-size: 5rem;
+  }
+
+  .sew-hero-img-wrap {
+    height: 60vh;
+    border-radius: 100px 100px 0 0;
+  }
+
+  .sew-pathways-wrap {
+    flex-direction: column;
+  }
+
+  .sew-pathways-title,
+  .sew-pathways-content {
+    width: 100%;
+    position: relative;
+    top: 0;
+  }
+
+  .polaroid.tall,
+  .polaroid.square,
+  .polaroid.wide {
+    width: 80%;
+  }
+
+  .sew-skills-grid {
+    grid-template-columns: 1fr;
+  }
 }

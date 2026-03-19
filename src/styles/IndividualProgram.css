@@ -1,24 +1,26 @@
-/* INDIVIDUAL PROGRAM PAGE STYLES - IMAGE STACK REFACTOR */
+/* INDIVIDUAL PROGRAM PAGE - MODERN WHITE THEME */
 .individual-program-page {
   background: var(--white);
   padding-top: 120px;
-  /* Offset for navbar */
 }
 
-/* CLEAN HEADER (No Banner) */
+/* CLEAN HEADER */
 .program-hero-clean {
   padding: 80px 0 40px;
   text-align: left;
 }
 
 .program-label {
-  display: block;
+  display: inline-block;
   font-family: var(--fb);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: var(--primary-green);
+  color: var(--white);
+  background: var(--primary-green);
+  padding: 0.4rem 1.2rem;
+  border-radius: 50px;
   margin-bottom: 20px;
 }
 
@@ -86,10 +88,10 @@
 
 .bento-item {
   position: relative;
-  border-radius: 12px;
+  border-radius: var(--radius);
   overflow: hidden;
-  background: var(--green-light);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  background: var(--light-gray);
+  box-shadow: var(--shadow-sm);
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
 }
 
@@ -116,12 +118,12 @@
 .bento-item.full-image-item img {
   object-fit: contain !important;
   padding: 20px;
-  background: #fdfdfb; /* Subtle off-white to blend */
+  background: var(--light-gray);
 }
 
 .bento-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
 }
 
 .bento-item:hover img {
@@ -148,12 +150,12 @@
   grid-column: span 2;
 }
 
-/* STANDALONE IMAGE FALLBACK (IF NEEDED) */
+/* STANDALONE IMAGE FALLBACK */
 .program-visual-standalone {
   width: 100%;
-  border-radius: 20px;
+  border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-lg);
   background: var(--white);
 }
 
@@ -175,7 +177,7 @@
 }
 
 .green-light-bg {
-  background-color: var(--green-light);
+  background-color: var(--light-gray);
 }
 
 .centered {
@@ -192,15 +194,15 @@
 .component-card {
   background: var(--white);
   padding: 40px;
-  border-radius: 20px;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+  border-radius: var(--radius);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
   transition: all 0.4s ease;
 }
 
 .component-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-md);
   border-color: var(--primary-green);
 }
 

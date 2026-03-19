@@ -1,38 +1,12 @@
-/* ABOUT PAGE - PREMIUM EDITORIAL DESIGN */
+/* ABOUT PAGE - MODERN WHITE DESIGN */
 .about-page {
   width: 100%;
   overflow-x: hidden;
-  background: var(--cream);
+  background: var(--white);
 }
 
-/* Split text animation support */
-.about-hero-title .char,
-.about-hero-subtitle .word {
-  display: inline-block;
-  transform-origin: bottom;
-  backface-visibility: hidden;
-}
-
-.about-hero-title .char {
-  white-space: pre;
-}
-
-.about-hero {
-  height: 85vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--cream);
-  position: relative;
-  overflow: hidden;
-  border-bottom: 1px solid rgba(139, 195, 74, 0.1);
-}
-
-.about-hero .container {
-  max-width: 1440px;
-}
-
-.hero-content {
+/* About-specific hero content - scoped to avoid conflicts */
+.about-page .hero-content {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -41,34 +15,40 @@
   width: 100%;
 }
 
+.about-hero {
+  height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-hero .container {
+  max-width: 1440px;
+}
+
 .about-hero-title {
   font-family: var(--ff);
-  font-size: clamp(4rem, 12vw, 12rem);
+  font-size: clamp(4rem, 12vw, 10rem);
   font-weight: 300;
   color: var(--dark-gray);
   margin-bottom: 0;
   text-align: left;
-  line-height: 0.85;
-  letter-spacing: -0.06em;
-  perspective: 1000px;
-  flex: 0 0 auto;
-}
-
-.about-hero-title br {
-  display: block;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
 }
 
 .about-hero-subtitle {
   font-family: var(--fb);
-  font-size: clamp(1rem, 2.5vw, 1.6rem);
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
   color: var(--text-gray);
   text-align: center;
-  max-width: 800px;
+  max-width: 700px;
   margin: 0 auto;
   font-weight: 400;
-  line-height: 1.4;
-  letter-spacing: 0.01em;
-  flex: 1 1 auto;
+  line-height: 1.6;
 }
 
 .about-hero-subtitle em {
@@ -87,23 +67,23 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
   opacity: 1;
 }
 
 .scroll-text {
   font-family: var(--fb);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em;
   color: var(--primary-green);
 }
 
 .scroll-line {
   width: 1px;
-  height: 60px;
-  background: rgba(139, 195, 74, 0.2);
+  height: 50px;
+  background: var(--border-light);
   position: relative;
   overflow: hidden;
 }
@@ -126,63 +106,22 @@
 }
 
 @media (max-width: 992px) {
-  .about-hero {
-    height: 75vh;
-  }
-  
-  .hero-content {
-    gap: 1.5rem;
-  }
-  
-  .about-hero-title {
-    font-size: clamp(3rem, 14vw, 7rem);
-    line-height: 0.9;
-  }
+  .about-hero { height: 70vh; }
+  .about-page .hero-content { gap: 2rem; }
+  .about-hero-title { font-size: clamp(3rem, 12vw, 6rem); }
 }
 
 @media (max-width: 768px) {
-  .about-hero {
-    height: 65vh;
-    padding: 0 20px;
-  }
-  
-  .hero-content {
-    gap: 1.5rem;
-  }
-  
-  .about-hero-title {
-    font-size: clamp(2.5rem, 12vw, 5rem);
-    line-height: 0.95;
-  }
-  
-  .about-hero-subtitle {
-    font-size: 1rem;
-    padding: 0;
-  }
+  .about-hero { height: auto; min-height: 60vh; padding: 100px 20px 60px; }
+  .about-page .hero-content { gap: 1.5rem; flex-direction: column; }
+  .about-hero-title { font-size: clamp(2.5rem, 10vw, 4rem); text-align: center; }
+  .about-hero-subtitle { font-size: 1rem; }
 }
 
 @media (max-width: 480px) {
-  .about-hero {
-    height: 60vh;
-    padding: 0 20px;
-  }
-  
-  .hero-content {
-    gap: 1.2rem;
-  }
-  
-  .about-hero-title {
-    font-size: 2.5rem;
-    line-height: 1;
-  }
-  
-  .about-hero-subtitle {
-    font-size: 0.95rem;
-    padding: 0;
-    line-height: 1.5;
-  }
-  
-  .hero-scroll-indicator {
-    bottom: 20px;
-  }
+  .about-hero { padding: 90px 16px 40px; }
+  .about-page .hero-content { gap: 1.2rem; }
+  .about-hero-title { font-size: 2.5rem; line-height: 1; }
+  .about-hero-subtitle { font-size: 0.95rem; line-height: 1.5; }
+  .hero-scroll-indicator { bottom: 20px; }
 }

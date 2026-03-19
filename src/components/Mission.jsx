@@ -7,125 +7,152 @@ gsap.registerPlugin(ScrollTrigger)
 
 const Mission = () => {
   const sectionRef = useRef(null)
-  const pinRef = useRef(null)
-  const containerRef = useRef(null)
 
   useEffect(() => {
-    let mm = gsap.matchMedia();
-
-    mm.add("(min-width: 993px)", () => {
-      // Pin the visual side
-      ScrollTrigger.create({
-        trigger: sectionRef.current,
-        start: "top top",
-        end: "bottom bottom",
-        pin: pinRef.current,
-        pinSpacing: false,
-      });
-
-      // Animate the visuals as we scroll through text blocks
-      const stories = gsap.utils.toArray('.story-block');
-      stories.forEach((story, i) => {
-        if (i === 0) return; // Skip first
-
-        gsap.from(story, {
-          y: 100,
-          opacity: 0,
-          duration: 1,
-          scrollTrigger: {
-            trigger: story,
-            start: "top 80%",
-            toggleActions: "play none none reverse",
-          }
-        });
-      });
-      
-      return () => {
-        ScrollTrigger.getAll().forEach(t => t.kill());
-      };
-    });
-
-    // Mobile specific animations
-    mm.add("(max-width: 992px)", () => {
-      gsap.from('.story-block', {
-        y: 50,
+    const ctx = gsap.context(() => {
+      // Image panel entrance
+      gsap.from('.mission-visual-side', {
+        x: -40,
         opacity: 0,
-        stagger: 0.3,
-        duration: 1,
+        duration: 1.1,
+        ease: 'power3.out',
         scrollTrigger: {
-          trigger: '.mission-story',
-          start: "top 80%",
-          toggleActions: "play none none none"
+          trigger: sectionRef.current,
+          start: 'top 75%',
+          toggleActions: 'play none none none'
         }
-      });
-    });
+      })
 
-    return () => mm.revert();
-  }, []);
+      // Content entrance
+      gsap.from('.mission-eyebrow, .mission-heading, .mission-body, .mission-features, .mission-stats-row, .capsule-cta', {
+        y: 30,
+        opacity: 0,
+        duration: 0.9,
+        stagger: 0.1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.mission-story-side',
+          start: 'top 75%',
+          toggleActions: 'play none none none'
+        }
+      })
+
+      // Subtle image scale
+      gsap.fromTo('.cinematic-image',
+        { scale: 1.05 },
+        {
+          scale: 1,
+          duration: 1.8,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none none'
+          }
+        }
+      )
+    }, sectionRef)
+
+    return () => ctx.revert()
+  }, [])
+
+  const features = [
+    'Vocational Training & Skills Development',
+    'Women\'s Forums & Health Clinics',
+    'Language Training & Youth Programs',
+    'Cultural Pride & Community Building'
+  ]
 
   return (
     <section className="mission-cinematic" ref={sectionRef} id="about">
-      <div className="mission-grid-layout" ref={containerRef}>
-        
-        {/* LEFT SIDE: Pinned Visuals */}
-        <div className="mission-visual-side" ref={pinRef}>
+
+      {/* Section Header */}
+      <div className="mission-section-header">
+        <span className="mission-section-label">Our Mission</span>
+        <h2 className="mission-section-title">Empowering Lives Since 1994</h2>
+        <p className="mission-section-sub">
+          A faith-driven organization transforming communities through education, health, and vocational training.
+        </p>
+        <div className="mission-section-divider"></div>
+      </div>
+
+      <div className="mission-grid-layout">
+
+        {/* LEFT: Image */}
+        <div className="mission-visual-side">
           <div className="pinned-image-wrapper">
-            <img 
-              src="https://newlifeprojectinc.org/cdn/shop/files/Untitled_design.jpg?v=1705364217" 
-              alt="Mission Journey" 
+            <img
+              src="https://newlifeprojectinc.org/cdn/shop/files/Untitled_design.jpg?v=1705364217"
+              alt="Mission Journey"
               className="cinematic-image"
             />
-            {/* Visual Accents */}
             <div className="cinematic-overlay"></div>
+            <div className="image-badge">
+              <span className="image-badge-number">Since '94</span>
+              <span className="image-badge-text">Transforming lives</span>
+            </div>
           </div>
         </div>
 
-        {/* RIGHT SIDE: Scrolling Narrative */}
+        {/* RIGHT: Content */}
         <div className="mission-story-side">
           <div className="mission-story-content">
-            
-            <div className="story-block first">
-              <span className="narrative-label">Founder's Vision</span>
-              <h2 className="narrative-title">A New Life <br/><em>Born from Faith.</em></h2>
-              <p className="narrative-text">
-                NewLife Project Inc. was born from an evangelical campaign in 1994, 
-                founded by Brenda Williams in Freetown, Sierra Leone. Our mission 
-                started with a simple yet powerful goal: to reach out to 
-                underprivileged women and change the trajectory of their lives.
-              </p>
-            </div>
 
-            <div className="story-block">
-              <span className="narrative-label">Global Impact</span>
-              <h2 className="narrative-title">1,000+ Lives <br/>Transformed.</h2>
-              <p className="narrative-text">
-                Today, we have touched over a thousand lives across Sierra Leone, 
-                Cote d'Ivoire, and Ghana. Through Vocational Training, Women's Forums, 
-                and Health Clinics, we empower individuals to build their own 
-                futures with dignity and skill.
-              </p>
-            </div>
+            <span className="mission-eyebrow">Who We Are</span>
 
-            <div className="story-block last">
-              <span className="narrative-label">Our Local Reach</span>
-              <h2 className="narrative-title">Home in <br/>Canada.</h2>
-              <p className="narrative-text">
-                Since 2014, our Canadian centre has focused on the unique 
-                challenges facing local immigrant women and youth. We provide 
-                a sanctuary for growth, cultural pride, and community 
-                building in the heart of our community.
-              </p>
-              
-              <div className="narrative-footer">
-                <a href="#programs" className="capsule-cta">
-                  Explore Programs
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
-                  </svg>
-                </a>
+            <h2 className="mission-heading">
+              A New Life <em>Born from Faith</em>,<br />
+              Driven by Purpose.
+            </h2>
+
+            <p className="mission-body">
+              Founded in 1994 by Brenda Williams in Freetown, Sierra Leone, NewLife Project Inc.
+              has grown from a local evangelical outreach into an international organization
+              touching lives across Africa and Canada. We empower underprivileged women and
+              children through education, health, and vocational training.
+            </p>
+
+            {/* Feature checklist */}
+            <ul className="mission-features">
+              {features.map((feature, i) => (
+                <li key={i}>
+                  <span className="mission-feature-icon">
+                    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M2 6l3 3 5-5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </span>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+
+            {/* Stats */}
+            <div className="mission-stats-row">
+              <div className="mission-stat-item">
+                <span className="mission-stat-num">1,000+</span>
+                <span className="mission-stat-lbl">Lives Touched</span>
+              </div>
+              <div className="mission-stat-item">
+                <span className="mission-stat-num">4</span>
+                <span className="mission-stat-lbl">Countries</span>
+              </div>
+              <div className="mission-stat-item">
+                <span className="mission-stat-num">30+</span>
+                <span className="mission-stat-lbl">Years</span>
+              </div>
+              <div className="mission-stat-item">
+                <span className="mission-stat-num">10+</span>
+                <span className="mission-stat-lbl">Programs</span>
               </div>
             </div>
+
+            <a href="/about" className="capsule-cta">
+              Our Full Story
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
 
           </div>
         </div>

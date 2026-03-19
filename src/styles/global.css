@@ -1,19 +1,24 @@
-/* NewLife Project - Original Website Color Scheme */
+/* NewLife Project - Modern White Theme */
 :root {
-  --primary-green: #8BC34A;
-  --green-dark: #689F38;
-  --green-light: #DCEDC8;
+  --primary-green: #4CAF50;
+  --green-dark: #388E3C;
+  --green-light: #E8F5E9;
   --green-lighter: #F1F8E9;
-  --accent-green: #4CAF50;
+  --accent-green: #66BB6A;
   --white: #FFFFFF;
-  --cream: #fefdf8;
-  --light-gray: #F5F5F5;
-  --dark-gray: #333333;
-  --text-gray: #666666;
-  --muted: #4a5e4d;
-  --border-light: #E0E0E0;
+  --cream: #FFFFFF;
+  --light-gray: #F5F5F7;
+  --dark-gray: #1a1a2e;
+  --text-gray: #555555;
+  --muted: #999999;
+  --border-light: #EBEBEB;
   --ff: 'Cormorant Garamond', Georgia, serif;
   --fb: 'Plus Jakarta Sans', Arial, sans-serif;
+  --radius: 16px;
+  --radius-sm: 10px;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+  --shadow-md: 0 8px 30px rgba(0,0,0,0.06);
+  --shadow-lg: 0 20px 60px rgba(0,0,0,0.08);
 }
 
 *,
@@ -29,17 +34,19 @@ html {
   width: 100vw;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: var(--fb);
-  background: var(--cream);
   color: var(--dark-gray);
   line-height: 1.6;
   overflow-x: hidden;
   width: 100vw;
   margin: 0;
   padding: 0;
+  min-height: 100vh;
+  background: var(--white);
 }
 
 #root {
@@ -50,7 +57,7 @@ body {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 24px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -58,16 +65,17 @@ body {
 .App {
   width: 100%;
   overflow-x: hidden;
+  position: relative;
 }
 
 @media (max-width: 768px) {
   .container {
-    padding: 0 15px;
+    padding: 0 16px;
   }
 }
 
 @media (max-width: 480px) {
   .container {
-    padding: 0 10px;
+    padding: 0 12px;
   }
 }

@@ -41,13 +41,21 @@ const Footer = () => {
             </div>
 
             <div className="nav-col">
-              <h5 className="nav-title">Connect</h5>
-              <ul className="social-links-studio">
-                <li><a href="https://facebook.com">Facebook</a></li>
-                <li><a href="https://instagram.com">Instagram</a></li>
-                <li><a href="https://youtube.com">YouTube</a></li>
-                <li><a href="https://pinterest.ca">Pinterest</a></li>
-              </ul>
+              <h5 className="nav-title">Follow Us</h5>
+              <div className="footer-social-icons">
+                <a href="https://facebook.com" className="footer-social-icon" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.simpleicons.org/facebook/ffffff" alt="Facebook" />
+                </a>
+                <a href="https://instagram.com" className="footer-social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.simpleicons.org/instagram/ffffff" alt="Instagram" />
+                </a>
+                <a href="https://youtube.com" className="footer-social-icon" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.simpleicons.org/youtube/ffffff" alt="YouTube" />
+                </a>
+                <a href="https://pinterest.ca" className="footer-social-icon" aria-label="Pinterest" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.simpleicons.org/pinterest/ffffff" alt="Pinterest" />
+                </a>
+              </div>
             </div>
           </div>
         </div>

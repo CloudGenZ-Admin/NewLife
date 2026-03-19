@@ -1,16 +1,15 @@
 /* src/styles/LanguageTraining.css */
-/* BESPOKE DESIGN: "The Floating Interface" - Clean, academic, tech-forward. */
+/* MODERN WHITE THEME - Clean, academic, tech-forward. */
 
 :root {
-  --lt-bg: var(--green-light);
-  /* BRAND LIGHT GREEN */
-  --lt-dark: #152812;
+  --lt-bg: var(--white);
+  --lt-dark: #1a1a1a;
   --lt-blue: #2d5a27;
   --lt-accent: #3a7533;
-  --lt-glass: rgba(255, 255, 255, 0.9);
-  --lt-glass-border: rgba(45, 90, 39, 0.12);
-  --lt-gray: var(--green-lighter);
-  --lt-text: #3a4a35;
+  --lt-glass: rgba(255, 255, 255, 0.95);
+  --lt-glass-border: rgba(0, 0, 0, 0.06);
+  --lt-gray: var(--light-gray);
+  --lt-text: #555;
   --lt-font: 'Plus Jakarta Sans', sans-serif;
   --lt-display: 'Cormorant Garamond', serif;
 }
@@ -29,6 +28,7 @@
   align-items: center;
   position: relative;
   padding: 0 5vw;
+  background: var(--white);
 }
 
 .lt-hero-bg {
@@ -36,9 +36,9 @@
   right: 5vw;
   width: 55vw;
   height: 80vh;
-  border-radius: 30px;
+  border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-lg);
   z-index: 1;
 }
 
@@ -47,7 +47,6 @@
   height: 100%;
   object-fit: cover;
   transform: scale(1.05);
-  /* GSAP parallax starting point */
 }
 
 .lt-hero-content {
@@ -59,16 +58,16 @@
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--lt-glass-border);
-  border-radius: 24px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
   margin-top: 10vh;
 }
 
 .lt-pill {
   display: inline-block;
   padding: 0.5rem 1.2rem;
-  background: var(--lt-blue);
-  color: #fff;
+  background: var(--green-light);
+  color: var(--lt-accent);
   border-radius: 50px;
   font-size: 0.8rem;
   font-weight: 600;
@@ -94,7 +93,7 @@
 /* 2. THE TIMELINE / JOURNEY SECTION */
 .lt-timeline-section {
   padding: 15vh 5vw;
-  background: #fff;
+  background: var(--light-gray);
 }
 
 .lt-section-title {
@@ -120,19 +119,23 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background: var(--lt-gray);
+  background: var(--border-light);
   z-index: 0;
 }
 
 .lt-step {
   position: relative;
   z-index: 1;
+  background: var(--white);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
 }
 
 .lt-step-number {
   width: 80px;
   height: 80px;
-  background: #fff;
+  background: var(--white);
   border: 2px solid var(--lt-accent);
   border-radius: 50%;
   display: flex;
@@ -142,7 +145,7 @@
   font-size: 2rem;
   color: var(--lt-accent);
   margin-bottom: 2rem;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-sm);
 }
 
 .lt-step h3 {
@@ -159,7 +162,7 @@
 /* 3. THE FLOATING FLYER / IMPACT SECTION */
 .lt-impact-section {
   padding: 15vh 5vw;
-  background: var(--lt-gray);
+  background: var(--white);
   display: flex;
   align-items: center;
   gap: 5vw;
@@ -174,10 +177,9 @@
 .lt-impact-flyer img {
   max-width: 100%;
   height: auto;
-  border-radius: 16px;
-  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.15);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
   transform: rotate(-2deg);
-  /* Casual pinned look */
   transition: transform 0.4s ease;
 }
 
@@ -219,7 +221,7 @@
   top: 0;
   width: 24px;
   height: 24px;
-  background: var(--lt-blue);
+  background: var(--lt-accent);
   color: #fff;
   border-radius: 50%;
   display: flex;
@@ -229,34 +231,28 @@
 }
 
 .lt-notice-box {
-  background: var(--lt-blue);
-  color: #fff;
+  background: var(--light-gray);
+  color: var(--lt-dark);
   padding: 2rem;
-  border-radius: 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-light);
 }
 
 .lt-notice-box strong {
   color: var(--lt-accent);
 }
 
-/* 4. GALLERY MASONRY (Zero Cropping Edition) */
+/* 4. GALLERY MASONRY */
 .lt-gallery {
   padding: 7vh 5vw;
-  background: white;
-  color: black !important;
+  background: var(--light-gray);
+  color: var(--lt-dark);
   position: relative;
 }
 
-/* Subtle texture over the dark section */
 .lt-gallery::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 2px, transparent 2px);
-  background-size: 30px 30px;
-  pointer-events: none;
+  display: none;
 }
-
 
 .lt-masonry {
   column-count: 3;
@@ -267,25 +263,24 @@
 .lt-masonry-item {
   break-inside: avoid;
   margin-bottom: 2rem;
-  background: rgba(255, 255, 255, 0.05);
-  /* very subtle card background */
-  border-radius: 16px;
+  background: var(--white);
+  border-radius: var(--radius);
   padding: 1rem;
   transition: transform 0.4s ease;
+  box-shadow: var(--shadow-sm);
 }
 
 .lt-masonry-item:hover {
   transform: translateY(-10px);
-  background: rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-md);
 }
 
 .lt-masonry-item img {
   width: 100%;
   height: auto;
-  /* Absolutely NO CROPPING. Natural proportions. */
   display: block;
-  border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border-radius: var(--radius-sm);
+  box-shadow: none;
 }
 
 /* --- RESPONSIVE --- */

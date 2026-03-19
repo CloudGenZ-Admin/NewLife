@@ -1,37 +1,36 @@
-/* FOOTER STUDIO - PREMIUM AGENCY REDESIGN */
+/* FOOTER — MODERN CLEAN DESIGN */
 
 .footer-studio {
-  background: #2d5a27; /* Rich muted dark green */
-  padding: 100px 0 50px;
+  background: var(--dark-gray);
+  padding: 80px 0 40px;
   color: var(--white);
   position: relative;
   overflow: hidden;
-  scroll-snap-align: start; /* Sync scroll snap */
 }
 
 .footer-top-row {
   display: flex;
   justify-content: space-between;
-  gap: 80px;
-  margin-bottom: 80px;
+  gap: 64px;
+  margin-bottom: 64px;
 }
 
 /* BRAND SECTION */
 .footer-brand-studio {
   flex: 1;
-  max-width: 400px;
+  max-width: 360px;
 }
 
 .studio-logo {
-  height: 100px;
-  margin-bottom: 30px;
+  height: 80px;
+  margin-bottom: 24px;
 }
 
 .brand-statement {
   font-family: var(--fb);
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.55);
 }
 
 /* NAV GRID */
@@ -43,34 +42,73 @@
 }
 
 .nav-title {
-  font-family: var(--ff); /* Brand Serif */
-  font-size: 1.3rem;
-  font-weight: 500;
-  margin-bottom: 25px;
+  font-family: var(--fb);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
   color: var(--primary-green);
-  letter-spacing: 0.02em;
 }
 
 .nav-links, .social-links-studio {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .nav-links a, .social-links-studio a {
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.5);
   font-family: var(--fb);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   transition: all 0.3s ease;
   position: relative;
   width: fit-content;
 }
 
 .nav-links a:hover, .social-links-studio a:hover {
-  color: var(--white);
-  padding-left: 5px;
+  color: rgba(255, 255, 255, 0.9);
+  padding-left: 4px;
+}
+
+/* SOCIAL ICONS */
+.footer-social-icons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.footer-social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.06);
+  transition: all 0.3s ease;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-social-icon img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.footer-social-icon:hover {
+  background: rgba(76, 175, 80, 0.2);
+  border-color: rgba(76, 175, 80, 0.3);
+  transform: translateY(-3px);
+}
+
+.footer-social-icon:hover img {
+  opacity: 1;
 }
 
 .nav-links a::after, .social-links-studio a::after {
@@ -90,8 +128,8 @@
 
 /* FOOTER BOTTOM */
 .footer-bottom-studio {
-  padding-top: 40px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -99,24 +137,22 @@
 
 .copyright {
   font-family: var(--fb);
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.35);
 }
 
 .studio-credit {
   font-family: var(--fb);
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.35);
 }
 
 .studio-credit span {
-  color: rgba(255, 255, 255, 0.8);
-  font-weight: 700;
-  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
 }
 
 /* RESPONSIVE */
-
 @media (max-width: 1100px) {
   .footer-top-row {
     gap: 40px;
@@ -128,11 +164,11 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 60px;
+    gap: 48px;
   }
-  
+
   .footer-brand-studio {
-    max-width: 500px;
+    max-width: 480px;
   }
 
   .nav-links a, .social-links-studio a {
@@ -142,21 +178,25 @@
   .nav-links a:hover, .social-links-studio a:hover {
     padding-left: 0;
   }
+
+  .footer-social-icons {
+    justify-content: center;
+  }
 }
 
 @media (max-width: 768px) {
   .footer-studio {
-    padding: 80px 0 40px;
+    padding: 64px 0 32px;
   }
 
   .footer-nav-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 32px;
   }
 
   .footer-bottom-studio {
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
     text-align: center;
   }
 }

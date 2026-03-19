@@ -20,16 +20,17 @@ const Navbar = () => {
   const lastScrollY = useRef(window.scrollY)
 
   useEffect(() => {
-    // Setup mobile menu animation timeline
+    // Slide-in panel animation from right
     menuTl.current = gsap.timeline({ paused: true })
       .to('.mobile-overlay', {
         autoAlpha: 1,
-        duration: 0.4,
-        ease: 'power2.inOut'
+        x: 0,
+        duration: 0.42,
+        ease: 'power3.out'
       })
-      .fromTo('.mobile-nav-links a',
-        { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.4, stagger: 0.05, ease: 'power3.out' },
+      .fromTo('.mobile-nav-links > a, .mobile-dropdown-parent, .mobile-donate, .mobile-socials',
+        { x: 16, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.32, stagger: 0.04, ease: 'power3.out' },
         '-=0.2'
       )
   }, [])

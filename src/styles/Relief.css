@@ -1,13 +1,13 @@
 /* src/styles/Relief.css */
-/* BESPOKE DESIGN: "The Typography Manifesto" (Premium Light Theme) */
+/* MODERN WHITE THEME - Typography Manifesto */
 
 :root {
-  --tp-bg: var(--green-light); /* BRAND LIGHT GREEN */
-  --tp-text: #152812;
+  --tp-bg: var(--white);
+  --tp-text: #1a1a1a;
   --tp-accent: #2d5a27;
   --tp-gold: #d4a373;
-  --tp-soft: #4a5d43;
-  --tp-border: rgba(45, 90, 39, 0.15);
+  --tp-soft: #666;
+  --tp-border: var(--border-light);
   --tp-font: 'Plus Jakarta Sans', sans-serif;
   --tp-display: 'Cormorant Garamond', serif;
 }
@@ -28,16 +28,16 @@
   justify-content: center;
   padding: 15vh 5vw;
   position: relative;
-  background-color: var(--green-light); /* Start with green */
+  background-color: var(--white);
 }
 
-/* Subtle architectural/grid background texture for premium feel */
+/* Subtle dot pattern instead of grid lines */
 .tp-hero::before {
-  content: ''; position: absolute; inset: 0;
-  background-image: 
-    linear-gradient(var(--tp-border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--tp-border) 1px, transparent 1px);
-  background-size: 5vw 5vw;
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  background-size: 30px 30px;
   opacity: 0.5;
   pointer-events: none;
 }
@@ -83,7 +83,7 @@
 .tp-highlight {
   color: var(--tp-accent);
   font-weight: 700;
-  background: rgba(45, 90, 39, 0.05);
+  background: var(--green-light);
   padding: 0 0.5rem;
   border-radius: 4px;
 }
@@ -108,7 +108,7 @@
 }
 
 .tp-section:nth-of-type(even) {
-  background-color: var(--green-light);
+  background-color: var(--light-gray);
 }
 
 .tp-section:last-child {
@@ -196,16 +196,13 @@
 .tp-footer {
   padding: 20vh 5vw;
   text-align: center;
-  background: white;
-  color: #2d5a27;
+  background: var(--light-gray);
+  color: var(--tp-text);
   position: relative;
 }
 
 .tp-footer::after {
-  content: ''; position: absolute; inset: 0;
-  background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
-  background-size: 20px 20px;
-  pointer-events: none;
+  display: none;
 }
 
 .tp-footer h2 {
@@ -216,6 +213,7 @@
   line-height: 1.1;
   position: relative;
   z-index: 2;
+  color: var(--tp-text);
 }
 
 .tp-footer p {
@@ -225,13 +223,32 @@
   margin: 0 auto;
   position: relative;
   z-index: 2;
+  color: var(--tp-soft);
 }
 
 /* RESPONSIVE */
 @media (max-width: 1024px) {
-  .tp-hero::before { background-size: 10vw 10vw; }
-  .tp-section { grid-template-columns: 1fr !important; gap: 3rem; padding: 6vh 5vw; }
-  .tp-section-sticky { position: relative; top: 0; }
-  .tp-list li { font-size: 1.8rem; padding-left: 2rem; }
-  .tp-list li::before { font-size: 1.2rem; }
+  .tp-hero::before {
+    background-size: 20px 20px;
+  }
+
+  .tp-section {
+    grid-template-columns: 1fr !important;
+    gap: 3rem;
+    padding: 6vh 5vw;
+  }
+
+  .tp-section-sticky {
+    position: relative;
+    top: 0;
+  }
+
+  .tp-list li {
+    font-size: 1.8rem;
+    padding-left: 2rem;
+  }
+
+  .tp-list li::before {
+    font-size: 1.2rem;
+  }
 }

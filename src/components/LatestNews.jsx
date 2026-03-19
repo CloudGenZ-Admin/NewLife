@@ -7,7 +7,6 @@ gsap.registerPlugin(ScrollTrigger)
 
 const LatestNews = () => {
   const sectionRef = useRef(null)
-  const cardsRef = useRef([])
 
   const newsItems = [
     {
@@ -21,7 +20,7 @@ const LatestNews = () => {
     },
     {
       id: 2,
-      date: "Mar 02, 2026", 
+      date: "Mar 02, 2026",
       category: "WELLNESS",
       title: "Menopause & Me: Thriving through Transition",
       description: "A supportive workshop focused on holistic health, wellness, and community connection.",
@@ -41,28 +40,20 @@ const LatestNews = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Header Animation
       gsap.from('.news-header-content', {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 80%',
-        },
-        y: 60,
+        scrollTrigger: { trigger: sectionRef.current, start: 'top 80%' },
+        y: 30,
         opacity: 0,
-        duration: 1.2,
-        ease: 'power4.out'
+        duration: 0.9,
+        ease: 'power3.out'
       })
 
-      // Card Stagger
       gsap.from('.news-card-editorial', {
-        scrollTrigger: {
-          trigger: '.news-grid-editorial',
-          start: 'top 75%',
-        },
-        y: 80,
+        scrollTrigger: { trigger: '.news-grid-editorial', start: 'top 78%' },
+        y: 40,
         opacity: 0,
-        duration: 1,
-        stagger: 0.2,
+        duration: 0.8,
+        stagger: 0.15,
         ease: 'power3.out'
       })
     }, sectionRef)
@@ -73,14 +64,26 @@ const LatestNews = () => {
   return (
     <section className="latest-news-editorial" ref={sectionRef}>
       <div className="container">
+
+        {/* Header */}
         <div className="news-header-content">
-          <span className="editorial-label">Community Updates</span>
-          <h2 className="editorial-title">What's Happening at NewLife</h2>
-          <div className="editorial-line"></div>
+          <div className="news-header-left">
+            <span className="editorial-label">Community Updates</span>
+            <h2 className="editorial-title">What's Happening at NewLife</h2>
+          </div>
+          <div className="news-header-cta">
+            <a href="/blogs/news" className="news-view-all">
+              All Stories
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M5 12H19M19 12L12 5M19 12L12 19" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
+          </div>
         </div>
 
+        {/* 3-col equal grid */}
         <div className="news-grid-editorial">
-          {newsItems.map((item, index) => (
+          {newsItems.map((item) => (
             <article key={item.id} className="news-card-editorial">
               <div className="card-visual">
                 <div className="card-image-wrapper">
@@ -92,23 +95,23 @@ const LatestNews = () => {
                   <span className="card-date">{item.date}</span>
                 </div>
               </div>
-              
               <div className="card-details">
-                <h4 className="card-title">{item.title}</h4>
+                <h3 className="card-title">{item.title}</h3>
                 <p className="card-summary">{item.description}</p>
                 <a href={item.link} className="card-cta-link">
-                  Read Full Story
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  Read Story
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </a>
               </div>
             </article>
           ))}
         </div>
+
       </div>
     </section>
   )
 }
 
-export default LatestNews
+export default LatestNews

@@ -1,8 +1,8 @@
 :root {
-  --em-bg: var(--green-light);
-  /* BRAND LIGHT GREEN */
+  --em-bg: var(--white);
+  /* BRAND WHITE */
   --em-green: #2d5a27;
-  --em-light: var(--green-lighter);
+  --em-light: var(--light-gray);
   --em-mid: #3a7533;
   --em-dark: #152812;
   --em-border: rgba(45, 90, 39, 0.12);
@@ -27,8 +27,8 @@
   padding: 140px 8% 80px;
   border-bottom: 1px solid var(--em-border);
   align-items: center;
-  background: var(--green-light);
-  /* Start with Green */
+  background: var(--white);
+  /* Clean white */
   min-height: 80vh;
 }
 
@@ -243,8 +243,8 @@
   grid-template-columns: 1fr 1fr;
   gap: 0;
   border-bottom: 1px solid var(--em-border);
-  background: var(--green-light);
-  /* Green */
+  background: var(--light-gray);
+  /* Light gray */
 }
 
 .editorial-gallery {

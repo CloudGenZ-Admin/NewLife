@@ -1,4 +1,4 @@
-/* TIMELINE SECTION */
+/* TIMELINE SECTION - MODERN WHITE THEME */
 .timeline-section {
   padding: 40px 0;
   background: var(--white);
@@ -37,6 +37,7 @@
   width: 3px;
   background: linear-gradient(to bottom, transparent, var(--primary-green), transparent);
   transform: translateX(-50%);
+  border-radius: 3px;
 }
 
 .timeline-item {
@@ -81,20 +82,20 @@
 .timeline-item.active .timeline-dot {
   width: 20px;
   height: 20px;
-  box-shadow: 0 0 0 6px rgba(139, 195, 74, 0.2);
+  box-shadow: 0 0 0 6px rgba(139, 195, 74, 0.15);
 }
 
 .timeline-content {
   width: calc(50% - 30px);
-  background: var(--white);
+  background: var(--light-gray);
   padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-light);
   transition: all 0.4s ease;
 }
 
 .timeline-item.active .timeline-content {
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--shadow-sm);
 }
 
 .timeline-year {

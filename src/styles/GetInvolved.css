@@ -1,12 +1,12 @@
 /* src/styles/GetInvolved.css */
-/* THE IMPACT ARCHITECT - Premium V5 Redesign (Site-wide Consistency) */
+/* MODERN WHITE THEME - Impact Architect */
 
 :root {
-  --gi-bg: #fdfdfb;
-  --gi-light-green: #e9f5e6; /* BRAND LIGHT GREEN */
-  --gi-primary: #2d5a27;     /* Brand primary */
-  --gi-text: #152812;
-  --gi-border: rgba(45, 90, 39, 0.1);
+  --gi-bg: var(--white);
+  --gi-light-green: var(--green-light);
+  --gi-primary: #2d5a27;
+  --gi-text: #1a1a1a;
+  --gi-border: var(--border-light);
 }
 
 .get-involved-page {
@@ -22,14 +22,14 @@
   padding: 0 5%;
 }
 
-/* 1. HERO REFINEMENT (ArchitectHero.css is reused, this adds GI specific tweaks) */
+/* 1. HERO REFINEMENT */
 .gi-hero-theme {
-  background: var(--gi-light-green) !important;
+  background: var(--white) !important;
 }
 
 .gi-decor {
-  background: white !important;
-  opacity: 0.2 !important;
+  background: var(--primary-green) !important;
+  opacity: 0.03 !important;
 }
 
 /* 2. ARCHITECTURAL SECTIONS */
@@ -52,14 +52,17 @@
 }
 
 .gi-title {
-  font-family: var(--ff); /* Serif */
+  font-family: var(--ff);
   font-size: clamp(3rem, 7vw, 6rem);
   font-weight: 300;
   line-height: 1;
   margin: 0;
 }
 
-.gi-title em { font-style: italic; color: var(--gi-primary); }
+.gi-title em {
+  font-style: italic;
+  color: var(--gi-primary);
+}
 
 /* Ways to Give Grid */
 .gi-grid {
@@ -69,19 +72,20 @@
 }
 
 .gi-card {
-  background: white;
+  background: var(--light-gray);
   padding: 5rem 4rem;
   border: 1px solid var(--gi-border);
+  border-radius: var(--radius);
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
 }
 
 .gi-card:hover {
-  background: var(--gi-light-green);
+  background: var(--white);
   border-color: var(--gi-primary);
   transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(45, 90, 39, 0.05);
+  box-shadow: var(--shadow-md);
 }
 
 .gi-num {
@@ -171,7 +175,9 @@
   transition: transform 0.3s ease;
 }
 
-.gi-btn-arch:hover { transform: scale(1.05); }
+.gi-btn-arch:hover {
+  transform: scale(1.05);
+}
 
 /* 4. CONNECT SECTION */
 .gi-connect-grid {
@@ -181,9 +187,10 @@
 }
 
 .gi-newsletter-box {
-  background: white;
+  background: var(--light-gray);
   padding: 5rem 4rem;
   border: 1px solid var(--gi-border);
+  border-radius: var(--radius);
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -230,26 +237,44 @@
 }
 
 .gi-calendar-box {
-  background: var(--gi-light-green);
+  background: var(--light-gray);
   padding: 3rem;
   border: 1px solid var(--gi-border);
+  border-radius: var(--radius);
 }
 
 .gi-frame {
   background: white;
   padding: 20px;
-  box-shadow: 0 40px 100px rgba(0,0,0,0.05);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
 }
 
 /* RESPONSIVE */
 @media (max-width: 1200px) {
-  .gi-grid { grid-template-columns: 1fr; }
-  .gi-hub-layout { grid-template-columns: 1fr; }
-  .gi-connect-grid { grid-template-columns: 1fr; }
+  .gi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gi-hub-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .gi-connect-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 768px) {
-  .gi-arch-section { padding: 40px 0; }
-  .gi-card { padding: 3rem 2rem; }
-  .gi-newsletter-box { padding: 3rem 2rem; }
+  .gi-arch-section {
+    padding: 40px 0;
+  }
+
+  .gi-card {
+    padding: 3rem 2rem;
+  }
+
+  .gi-newsletter-box {
+    padding: 3rem 2rem;
+  }
 }

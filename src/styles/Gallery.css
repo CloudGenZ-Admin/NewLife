@@ -1,79 +1,174 @@
-/* GALLERY SECTION */
+/* GALLERY — MODERN PROGRAMS SHOWCASE */
+
 .gallery-section {
-  padding: 60px 0;
-  width: 100vw;
-  max-width: 100vw;
-  overflow-x: hidden;
-  margin: 0;
-  box-sizing: border-box;
-  background: var(--green-light);
-  scroll-snap-align: start;
+  padding: 80px 0;
+  width: 100%;
+  background: var(--light-gray);
+  overflow: hidden;
 }
 
+/* ── HEADER ────────────────────────────────────────── */
+.gallery-header {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 5%, 64px);
+  margin-bottom: 48px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.gallery-header-text {
+  flex: 1;
+}
+
+.gallery-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--fb);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary-green);
+  margin-bottom: 12px;
+  padding: 6px 16px;
+  background: var(--green-light);
+  border-radius: 50px;
+}
+
+.gallery-eyebrow::before {
+  display: none;
+}
+
+.gallery-title {
+  font-family: var(--ff);
+  font-size: clamp(2.2rem, 3.8vw, 3rem);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--dark-gray);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.gallery-title em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--primary-green);
+}
+
+/* ── ACCORDION PANEL LAYOUT ───────────────────────── */
 .gallery-interactive {
   display: flex;
   width: 100%;
-  max-width: 1200px;
-  height: 500px;
+  max-width: 1280px;
   margin: 0 auto;
-  gap: 0;
+  padding: 0 clamp(24px, 5%, 64px);
+  height: 480px;
+  gap: 12px;
   overflow: hidden;
-  border-radius: 8px;
 }
 
 .gallery-option {
   position: relative;
   flex: 1;
-  min-width: 80px;
   background-size: cover;
   background-position: center;
   cursor: pointer;
-  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: flex 0.65s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
   opacity: 0;
-  transform: translateX(-60px);
-  border: 2px solid #e0e0e0;
+  transform: translateX(-30px);
+  min-width: 68px;
+  border-radius: var(--radius);
 }
 
 .gallery-option.animated {
   opacity: 1;
   transform: translateX(0);
+  transition: flex 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.5s ease,
+              transform 0.5s ease;
 }
 
 .gallery-option.active {
   flex: 5;
-  border-color: var(--primary-green);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-  z-index: 10;
 }
 
-.gallery-option:hover {
-  filter: brightness(1.1);
-}
-
+/* Gradient scrim */
 .option-shadow {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -40px;
-  height: 150px;
-  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-  transition: all 0.7s ease;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.2) 50%,
+    rgba(0, 0, 0, 0.05) 100%
+  );
+  transition: opacity 0.4s ease;
+  border-radius: var(--radius);
+}
+
+.gallery-option:not(.active) .option-shadow {
+  background: rgba(0, 0, 0, 0.45);
+}
+
+/* Collapsed tab label (vertical) */
+.option-tab-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  white-space: nowrap;
+  font-family: var(--fb);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  opacity: 1;
+  transition: opacity 0.3s ease;
   pointer-events: none;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
 }
 
-.gallery-option.active .option-shadow {
-  bottom: 0;
+.gallery-option.active .option-tab-label {
+  opacity: 0;
 }
 
+/* Expanded content */
 .option-label {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 20px;
-  padding: 0 20px;
+  bottom: 0;
+  padding: 32px 28px;
   z-index: 2;
   pointer-events: none;
+}
+
+.option-category {
+  display: inline-block;
+  font-family: var(--fb);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--primary-green);
+  padding: 4px 12px;
+  border-radius: 50px;
+  margin-bottom: 10px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease 0.05s, transform 0.4s ease 0.05s;
+}
+
+.gallery-option.active .option-category {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .option-info {
@@ -82,69 +177,111 @@
 
 .option-title {
   font-family: var(--ff);
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 5px;
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  font-weight: 600;
+  margin-bottom: 8px;
   opacity: 0;
-  transform: translateX(25px);
-  transition: all 0.7s ease;
+  transform: translateY(14px);
+  transition: opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s;
+  line-height: 1.2;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
 .gallery-option.active .option-title {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateY(0);
 }
 
 .option-subtitle {
-  font-size: 1rem;
-  color: rgba(255,255,255,0.9);
-  margin-bottom: 10px;
+  font-family: var(--fb);
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 18px;
   opacity: 0;
-  transform: translateX(25px);
-  transition: all 0.7s ease 0.1s;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease 0.15s, transform 0.4s ease 0.15s;
 }
 
 .gallery-option.active .option-subtitle {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateY(0);
 }
 
 .option-link {
-  display: inline-block;
-  background: var(--green-light);
-  color: var(--green-dark);
-  padding: 10px 20px;
-  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--primary-green);
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 50px;
   text-decoration: none;
+  font-family: var(--fb);
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
   pointer-events: auto;
   opacity: 0;
-  transform: translateX(25px);
-  transition: all 0.7s ease 0.2s, background 0.3s ease;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease 0.2s, transform 0.4s ease 0.2s, background 0.25s ease;
 }
 
 .gallery-option.active .option-link {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateY(0);
 }
 
 .option-link:hover {
   background: var(--green-dark);
 }
 
+/* ── TABLET ────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .gallery-interactive {
+    height: 440px;
+  }
+}
+
+@media (max-width: 900px) {
+  .gallery-section {
+    padding: 64px 0;
+  }
+
+  .gallery-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    margin-bottom: 32px;
+  }
+
+  .gallery-interactive {
+    height: 400px;
+  }
+}
+
+/* ── MOBILE ────────────────────────────────────────── */
 @media (max-width: 768px) {
+  .gallery-section {
+    padding: 56px 0;
+  }
+
+  .gallery-header {
+    padding: 0 20px;
+    margin-bottom: 24px;
+  }
+
   .gallery-interactive {
     flex-direction: column;
     height: auto;
-    min-height: 500px;
-    max-height: none;
+    max-width: 100%;
+    padding: 0 20px;
+    gap: 10px;
   }
 
   .gallery-option {
-    min-height: 100px;
+    min-height: 64px;
     flex: 1 !important;
-    transform: translateY(-30px);
+    transform: translateY(-20px);
     background-size: cover;
   }
 
@@ -153,54 +290,35 @@
   }
 
   .gallery-option.active {
-    flex: 8 !important; /* Give more space to the active card */
-    min-height: 450px;
-    z-index: 5;
+    flex: none !important;
+    height: 360px;
+  }
+
+  .option-tab-label {
+    transform: translate(-50%, -50%);
+    writing-mode: horizontal-tb;
+    font-size: 0.72rem;
   }
 
   .option-label {
-    bottom: 15px;
-    padding: 0 15px;
+    padding: 24px 20px;
   }
 
   .option-title {
     font-size: 1.4rem;
-    margin-bottom: 10px;
-  }
-
-  .option-subtitle {
-    font-size: 0.9rem;
-  }
-
-  .option-link {
-    padding: 8px 16px;
-    font-size: 0.85rem;
   }
 }
 
 @media (max-width: 480px) {
-  .gallery-interactive {
-    min-height: 400px;
-  }
-
-  .gallery-option {
-    min-height: 80px;
-  }
-
   .gallery-option.active {
-    min-height: 400px; /* Increased for mobile small screens */
+    height: 320px;
   }
 
   .option-title {
-    font-size: 1rem;
+    font-size: 1.3rem;
   }
 
   .option-subtitle {
-    font-size: 0.8rem;
-  }
-
-  .option-link {
-    padding: 6px 12px;
-    font-size: 0.8rem;
+    font-size: 0.84rem;
   }
 }
