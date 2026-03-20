@@ -223,7 +223,7 @@
     color: #1e2520;
     line-height: 1.2;
     margin-bottom: 1rem;
-    font-size: clamp(1.8rem, 3.5vw, 3rem);
+    font-size: clamp(1.8rem, 2.5vw, 3rem);
 }
 
 .product-rating {
@@ -395,7 +395,7 @@
     font-weight: bold;
 }
 
-.add-to-cart-btn {
+.add-to-cart-section .add-to-cart-btn {
     flex: 1;
     height: 3.5rem;
     border-radius: 0.5rem;
