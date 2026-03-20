@@ -1,3 +1,30 @@
+@import "tailwindcss";
+
+/* Tailwind Theme Configuration */
+@theme {
+  /* Colors matching Newlife design */
+  --color-primary-green: #4CAF50;
+  --color-green-dark: #388E3C;
+  --color-green-light: #E8F5E9;
+  --color-green-lighter: #F1F8E9;
+  --color-accent-green: #66BB6A;
+  --color-dark-gray: #1a1a2e;
+  --color-text-gray: #555555;
+  --color-muted: #999999;
+  --color-light-gray: #F5F5F7;
+  --color-border-light: #EBEBEB;
+  
+  /* Brand colors for shop */
+  --color-brand-primary: #2e7d32;
+  --color-brand-secondary: #1e2520;
+  --color-brand-accent: #f5c842;
+  --color-brand-bg: #fefdf8;
+  
+  /* Fonts */
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+}
+
 /* Main reset and base styles are in global.css */
 #root {
   width: 100%;

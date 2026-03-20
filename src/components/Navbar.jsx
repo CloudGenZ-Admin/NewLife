@@ -1,6 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
+import { ShoppingCart, User, LogOut, Package } from 'lucide-react'
+import { useCart } from '../context/CartContext'
+import { useAuth } from '../context/AuthContext'
 import '../styles/Navbar.css'
 
 const Navbar = () => {
@@ -9,9 +12,18 @@ const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true)
   const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false)
   const [isProgramsDropdownOpen, setIsProgramsDropdownOpen] = useState(false)
+  const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false)
   const navRef = useRef(null)
   const aboutDropdownRef = useRef(null)
   const programsDropdownRef = useRef(null)
+  const userDropdownRef = useRef(null)
+  
+  // Cart context
+  const { cart } = useCart()
+  const cartItemCount = cart.reduce((total, item) => total + item.quantity, 0)
+
+  // Auth context
+  const { user, logout } = useAuth()
 
   // Fancy Mobile Menu Animation Context
   const menuTl = useRef(null)
@@ -97,6 +109,13 @@ const Navbar = () => {
     setIsMobileMenuOpen(false)
     setIsAboutDropdownOpen(false)
     setIsProgramsDropdownOpen(false)
+    setIsUserDropdownOpen(false)
+  }
+
+  const handleLogout = () => {
+    logout()
+    setIsUserDropdownOpen(false)
+    handleLinkClick()
   }
 
   const toggleAboutDropdown = (e) => {
@@ -164,10 +183,58 @@ const Navbar = () => {
 
             <span className="nav-static-link" onClick={() => { window.location.href = '/get-involved'; }}>Get Involved</span>
             <span className="nav-static-link" onClick={() => { window.location.href = '/contact'; }}>Contact</span>
-            {/* <a href="https://shop.newlifeprojectinc.org" target="_blank" rel="noopener noreferrer" onClick={handleLinkClick}>Shop</a>
-            <a href="https://blog.newlifeprojectinc.org" target="_blank" rel="noopener noreferrer" onClick={handleLinkClick}>Blogs</a> */}
+            <Link to="/shop" onClick={handleLinkClick}>Shop</Link>
+            
+            {/* Cart Icon */}
+            <Link to="/shop/cart" className="nav-cart-link" onClick={handleLinkClick}>
+              <ShoppingCart size={20} />
+              {cartItemCount > 0 && (
+                <span className="cart-badge">{cartItemCount}</span>
+              )}
+            </Link>
+
+            {/* User Dropdown - Only show if logged in, otherwise show Login link */}
+            {user ? (
+              <div
+                className="nav-dropdown user-dropdown"
+                ref={userDropdownRef}
+                onMouseEnter={() => window.innerWidth > 992 && setIsUserDropdownOpen(true)}
+                onMouseLeave={() => window.innerWidth > 992 && setIsUserDropdownOpen(false)}
+              >
+                <button className="nav-user-trigger">
+                  <User size={20} />
+                </button>
+                <div className={`dropdown-menu user-dropdown-menu ${isUserDropdownOpen ? 'open' : ''}`}>
+                  <div className="user-dropdown-header">
+                    <span className="user-name">Hi, {user.first_name || 'User'}!</span>
+                  </div>
+                  <Link to="/shop/account" onClick={handleLinkClick}>
+                    <User size={16} /> My Account
+                  </Link>
+                  <Link to="/shop/account" onClick={handleLinkClick}>
+                    <Package size={16} /> My Orders
+                  </Link>
+                  <button onClick={handleLogout} className="logout-btn">
+                    <LogOut size={16} /> Logout
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <Link to="/shop/auth" className="nav-login-link" onClick={handleLinkClick}>
+                Login
+              </Link>
+            )}
+            
             <a href="#" target="_blank" rel="noopener noreferrer" className="nav-donate" onClick={handleLinkClick}>DONATE</a>
           </div>
+
+          {/* Mobile Cart Icon */}
+          <Link to="/shop/cart" className="nav-cart-mobile" onClick={handleLinkClick}>
+            <ShoppingCart size={22} />
+            {cartItemCount > 0 && (
+              <span className="cart-badge">{cartItemCount}</span>
+            )}
+          </Link>
 
           <button
             className={`burger-modern ${isMobileMenuOpen ? 'active' : ''}`}
@@ -211,7 +278,31 @@ const Navbar = () => {
 
           <Link to="/get-involved" onClick={handleLinkClick}>Get Involved</Link>
           <Link to="/contact" onClick={handleLinkClick}>Contact</Link>
-          {/* <a href="https://shop.newlifeprojectinc.org" target="_blank" rel="noopener noreferrer" onClick={handleLinkClick}>Shop</a> */}
+          <Link to="/shop" onClick={handleLinkClick}>Shop</Link>
+          <Link to="/shop/cart" className="mobile-cart-link" onClick={handleLinkClick}>
+            <ShoppingCart size={20} />
+            <span>Cart {cartItemCount > 0 && `(${cartItemCount})`}</span>
+          </Link>
+          
+          {/* Mobile User Links */}
+          {user ? (
+            <>
+              <Link to="/shop/account" onClick={handleLinkClick}>
+                <User size={20} />
+                <span>My Account</span>
+              </Link>
+              <button onClick={handleLogout} className="mobile-logout-btn">
+                <LogOut size={20} />
+                <span>Logout</span>
+              </button>
+            </>
+          ) : (
+            <Link to="/shop/auth" onClick={handleLinkClick} className="mobile-auth-link">
+              <User size={20} />
+              <span>Login / Register</span>
+            </Link>
+          )}
+          
           <a href="#" target="_blank" rel="noopener noreferrer" className="mobile-donate" onClick={handleLinkClick}>Make a Donation</a>
         </div>
         <div className="mobile-socials">
