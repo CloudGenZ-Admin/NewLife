@@ -257,8 +257,7 @@ const Navbar = () => {
           </div>
 
           <div className={`mobile-dropdown-parent ${isProgramsDropdownOpen ? 'expanded' : ''}`}>
-            <Link to="/programs" onClick={handleLinkClick}>Programs</Link>
-            <a href="#" onClick={toggleProgramsDropdown} className="mobile-arrow-trigger"><span className="arrow">{isProgramsDropdownOpen ? '−' : '+'}</span></a>
+            <a href="#" onClick={toggleProgramsDropdown}>Programs <span className="arrow">{isProgramsDropdownOpen ? '−' : '+'}</span></a>
             <div className="mobile-dropdown-children">
               <div className="mobile-dropdown-inner">
                 <Link to="/programs/empowerment" onClick={handleLinkClick}>Empowerment</Link>

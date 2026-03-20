@@ -60,7 +60,7 @@ export default function Auth() {
                             <path d="M14 14L14 26" stroke="#1B5E20" strokeWidth="1.5" strokeLinecap="round" />
                         </svg>
                         <span style={{ fontFamily: 'var(--ff)', fontSize: '1.25rem', fontWeight: 'bold', color: 'var(--dark-gray)' }}>
-                            ShopGenZ<span style={{ color: 'var(--muted)', fontWeight: 'normal', fontSize: '0.95rem' }}>.store</span>
+                            NewLife Project<span style={{ color: 'var(--muted)', fontWeight: 'normal', fontSize: '0.95rem' }}>.store</span>
                         </span>
                     </div>
                     <h1>{isLogin ? "Welcome Back" : "Create an Account"}</h1>

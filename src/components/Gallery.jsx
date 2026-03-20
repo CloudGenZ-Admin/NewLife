@@ -28,7 +28,7 @@ const Gallery = () => {
       title: "NewLife Designs",
       subtitle: "Redesigning soon - Visit our shop",
       image: "https://newlifeprojectinc.org/cdn/shop/files/fundraiser_1a705eb4-c772-43e8-a300-e90b7d125dad.png?v=1666154809",
-      link: "https://shop.newlifeprojectinc.org/collections"
+      link: "/shop"
     },
     {
       id: 3,
