@@ -21,11 +21,11 @@ const GetInvolved = () => {
                 duration: 0.7,
                 ease: 'expo.inOut'
             })
-            .to('.architect-decoration', {
-                opacity: 0.15,
-                scale: 1,
-                duration: 1.2
-            }, '-=0.5');
+                .to('.architect-decoration', {
+                    opacity: 0.15,
+                    scale: 1,
+                    duration: 1.2
+                }, '-=0.5');
 
             // 2. Content Entry (Reduced delays)
             tl.to('.architect-detail, .architect-hero-title', {
@@ -82,7 +82,7 @@ const GetInvolved = () => {
                 <div className="architect-wrapper">
                     <div className="architect-title-group">
                         <span className="architect-detail">GET INVOLVED</span>
-                        <h1 className="architect-hero-title">Explore Ways to <br/><em>Get Involved.</em></h1>
+                        <h1 className="architect-hero-title">Explore Ways to <br /><em>Get Involved.</em></h1>
                     </div>
 
                     <div className="architect-meta">
@@ -178,7 +178,7 @@ const GetInvolved = () => {
                                 <a href="#" className="gi-link">Read Current Newsletter &rarr;</a>
                                 <a href="#" className="gi-link">View Newsletter Archive &rarr;</a>
                             </div>
-                            
+
                             <h4 style={{ marginTop: '3rem', fontFamily: 'var(--ff)', fontSize: '2rem' }}>Subscribe</h4>
                             <p>Join our mailing list to receive upcoming event announcements, volunteer opportunities, and ways to support our work.</p>
                             <form className="gi-form" onSubmit={(e) => e.preventDefault()}>
@@ -188,12 +188,12 @@ const GetInvolved = () => {
                         </div>
                         <div className="gi-calendar-box">
                             <div className="gi-frame">
-                                <iframe 
-                                    src="https://calendar.google.com/calendar/embed?src=dev.cloudgenz.growth91%40gmail.com&ctz=Asia%2FKolkata" 
-                                    style={{ border: 0 }} 
-                                    width="100%" 
-                                    height="600" 
-                                    frameBorder="0" 
+                                <iframe
+                                    src="https://calendar.google.com/calendar/embed?src=dev.cloudgenz.growth91%40gmail.com&ctz=Asia%2FKolkata&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=0&showCalendars=0&showTz=0"
+                                    style={{ border: 0 }}
+                                    width="100%"
+                                    height="600"
+                                    frameBorder="0"
                                     scrolling="no"
                                     title="Community Calendar"
                                 ></iframe>

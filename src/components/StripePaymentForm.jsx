@@ -100,6 +100,28 @@ export default function StripePaymentForm({ orderData, pendingOrder, finalTotal,
                     (parseFloat(pendingOrder.total) * parseFloat(coupon.amount)) / 100 : 
                     parseFloat(coupon.amount)) : 0;
                 
+                // Retrieve card details from backend
+                let cardBrand = 'UNKNOWN';
+                let cardLast4 = '';
+                
+                try {
+                    const cardDetailsResponse = await fetch(`${apiUrl}/stripe/get-payment-details`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ payment_intent_id: paymentIntent.id }),
+                    });
+                    console.log("zoro",cardDetailsResponse);
+                    
+                    if (cardDetailsResponse.ok) {
+                        const cardDetails = await cardDetailsResponse.json();
+                        cardBrand = cardDetails.cardBrand || 'UNKNOWN';
+                        cardLast4 = cardDetails.cardLast4 || '';
+                        console.log('💳 Retrieved Card Details:', cardDetails);
+                    }
+                } catch (cardError) {
+                    console.error('Failed to retrieve card details:', cardError);
+                }
+                
                 const updateData = {
                     status: 'processing',
                     set_paid: true,
@@ -107,8 +129,8 @@ export default function StripePaymentForm({ orderData, pendingOrder, finalTotal,
                     meta_data: [
                         { key: 'Stripe Payment ID', value: paymentIntent.id },
                         { key: 'Stripe Payment Status', value: paymentIntent.status },
-                        { key: 'Stripe Card Brand', value: paymentIntent.charges?.data[0]?.payment_method_details?.card?.brand || 'unknown' },
-                        { key: 'Stripe Card Last 4', value: paymentIntent.charges?.data[0]?.payment_method_details?.card?.last4 || '' },
+                        { key: 'Stripe Card Brand', value: cardBrand },
+                        { key: 'Stripe Card Last 4', value: cardLast4 },
                         { key: 'Stripe Customer Email', value: orderData.billing.email },
                         { key: 'Payment Reference', value: orderReference },
                         { key: 'Payment Date', value: new Date().toISOString() },

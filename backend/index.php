@@ -30,6 +30,7 @@ $routes = [
     '/auth/get-user' => '/api/auth/get-user.php',
     '/auth/update-profile' => '/api/auth/update-profile.php',
     '/stripe/create-payment-intent' => '/api/stripe/create-payment-intent.php',
+    '/stripe/get-payment-details' => '/api/stripe/get-payment-details.php',
 ];
 
 // Check if route exists

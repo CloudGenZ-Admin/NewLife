@@ -60,7 +60,7 @@ export default function Account() {
     });
 
     useEffect(() => {
-        if (!user) { navigate('/auth'); return; }
+        if (!user) { navigate('/shop/auth'); return; }
         
         // Initialize form data from user object
         setProfileData({

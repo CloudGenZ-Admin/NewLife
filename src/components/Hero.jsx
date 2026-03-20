@@ -102,7 +102,7 @@ const Hero = () => {
         </p>
 
         <div className="hero-actions">
-          <a href="#programs" className="hero-btn primary">
+          <a href="/programs" className="hero-btn primary">
             Our Programs
             <span className="btn-arrow">→</span>
           </a>

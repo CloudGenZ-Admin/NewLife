@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitType from 'split-type';
@@ -9,6 +9,43 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Contact = () => {
     const heroRef = useRef(null);
+    const [status, setStatus] = useState('idle'); // idle, submitting, success, error
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        inquiry: '',
+        message: ''
+    });
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.id]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setStatus('submitting');
+
+        try {
+            const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+
+            if (response.ok) {
+                setStatus('success');
+                setFormData({ name: '', email: '', phone: '', inquiry: '', message: '' });
+            } else {
+                setStatus('error');
+            }
+        } catch (error) {
+            setStatus('error');
+        }
+    };
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -21,11 +58,11 @@ const Contact = () => {
                 duration: 0.6,
                 ease: 'expo.inOut'
             })
-            .to('.architect-decoration', {
-                opacity: 0.15,
-                scale: 1,
-                duration: 1.2
-            }, '-=0.6');
+                .to('.architect-decoration', {
+                    opacity: 0.15,
+                    scale: 1,
+                    duration: 1.2
+                }, '-=0.6');
 
             // 2. Content Entry (Reduced delays)
             tl.to('.architect-detail, .architect-hero-title', {
@@ -145,7 +182,7 @@ const Contact = () => {
                                     <div className="email-item">
                                         <span>Office Hours</span>
                                         <p style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--cont-primary)', marginTop: '0.2rem' }}>
-                                            Monday – Friday <br/> 9:00 AM – 5:00 PM
+                                            Monday – Friday <br /> 9:00 AM – 5:00 PM
                                         </p>
                                     </div>
                                 </div>
@@ -159,19 +196,44 @@ const Contact = () => {
                                 <p>We welcome individuals, organizations, educators, community leaders, and supporters who share our vision.</p>
                             </div>
 
-                            <form className="premium-contact-form" onSubmit={(e) => e.preventDefault()}>
+                            <form className="premium-contact-form" onSubmit={handleSubmit}>
                                 <div className="form-group">
-                                    <input type="text" id="name" placeholder="Full Name" required />
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        placeholder="Full Name"
+                                        required
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                    />
                                 </div>
                                 <div className="form-group">
-                                    <input type="email" id="email" placeholder="Email Address" required />
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        placeholder="Email Address"
+                                        required
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                    />
                                 </div>
                                 <div className="form-group">
-                                    <input type="tel" id="phone" placeholder="Phone Number (optional)" />
+                                    <input
+                                        type="tel"
+                                        id="phone"
+                                        placeholder="Phone Number (optional)"
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                    />
                                 </div>
                                 <div className="form-group">
-                                    <select id="inquiry" required>
-                                        <option value="" disabled selected>Inquiry Type</option>
+                                    <select
+                                        id="inquiry"
+                                        required
+                                        value={formData.inquiry}
+                                        onChange={handleChange}
+                                    >
+                                        <option value="" disabled>Inquiry Type</option>
                                         <option value="general">General Question</option>
                                         <option value="program">Program Participation</option>
                                         <option value="volunteer">Volunteer</option>
@@ -180,10 +242,34 @@ const Contact = () => {
                                     </select>
                                 </div>
                                 <div className="form-group">
-                                    <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+                                    <textarea
+                                        id="message"
+                                        rows="5"
+                                        placeholder="Your Message"
+                                        required
+                                        value={formData.message}
+                                        onChange={handleChange}
+                                    ></textarea>
                                 </div>
-                                <button type="submit" className="submit-btn-premium">
-                                    Send Message <span>&rarr;</span>
+
+                                {status === 'success' && (
+                                    <div className="form-status-message success">
+                                        Thank you! Your message has been sent successfully.
+                                    </div>
+                                )}
+
+                                {status === 'error' && (
+                                    <div className="form-status-message error">
+                                        Oops! There was a problem sending your message.
+                                    </div>
+                                )}
+
+                                <button
+                                    type="submit"
+                                    className="submit-btn-premium"
+                                    disabled={status === 'submitting'}
+                                >
+                                    {status === 'submitting' ? 'Sending...' : 'Send Message'} <span>&rarr;</span>
                                 </button>
                             </form>
 

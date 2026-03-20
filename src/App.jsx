@@ -24,6 +24,7 @@ import Auth from './pages/shop/Auth'
 import Account from './pages/shop/Account'
 import Wishlist from './pages/shop/Wishlist'
 import OrderDetails from './pages/shop/OrderDetails'
+import Programs from './pages/Program'
 import React, { useEffect } from 'react'
 import Lenis from 'lenis'
 import Navbar from './components/Navbar'
@@ -80,6 +81,7 @@ function App() {
                 <Route path="/programs/relief" element={<ReliefProgram />} />
                 <Route path="/fundraiser-exhibitions" element={<FundraiserExhibitions />} />
                 <Route path="/vocational-training" element={<VocationalTraining />} />
+                <Route path="/programs" element={<Programs />} />
                 <Route path="/shop" element={<Shop />} />
                 <Route path="/shop/product/:id" element={<ProductDetails />} />
                 <Route path="/shop/cart" element={<Cart />} />

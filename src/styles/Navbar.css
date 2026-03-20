@@ -71,6 +71,7 @@
   align-items: center;
   list-style: none;
   justify-content: flex-end;
+  flex-shrink: 0;
 }
 
 .nav-links.desktop-only a {
@@ -84,7 +85,8 @@
   white-space: nowrap;
   display: inline-block;
   text-align: center;
-  /* Remove transition that might cause shift */
+  transition: color 0.3s ease;
+  flex-shrink: 0;
 }
 
 .nav-links.desktop-only a:hover {
@@ -96,10 +98,6 @@
   width: 60px; /* Home */
 }
 
-.nav-links.desktop-only .nav-dropdown {
-  width: 70px; /* About */
-}
-
 .nav-links.desktop-only .nav-dropdown.mega-dropdown {
   width: 90px; /* Programs */
 }
@@ -107,7 +105,7 @@
 /* Static spans for Get Involved and Contact */
 .nav-static-link {
   text-decoration: none;
-  color: var(--text-gray) !important;
+  color: var(--text-gray);
   font-family: var(--fb);
   font-weight: 500;
   font-size: 0.88rem;
@@ -117,16 +115,12 @@
   text-align: center;
   cursor: pointer;
   position: relative;
-  /* Equal width for consistent gaps */
-  width: 110px; /* Get Involved */
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  transition: color 0.3s ease;
+  flex-shrink: 0;
 }
 
-.nav-static-link:nth-of-type(2) {
-  width: 80px; /* Contact */
+.nav-static-link:hover {
+  color: var(--primary-green);
 }
 
 /* Future widths for when Shop and Blog are uncommented */
@@ -147,48 +141,22 @@
   width: 70px; /* Contact */
 }
 
-/* Prevent text shift on Get Involved and Contact by not changing color - MUST BE LAST */
-.nav-links.desktop-only a[href="/get-involved"]:hover,
-.nav-links.desktop-only a[href="/contact"]:hover {
-  color: var(--text-gray) !important;
-  /* FORCE NO TEXT MOVEMENT */
-  font-weight: 500 !important;
-  font-size: 0.88rem !important;
-  letter-spacing: 0.01em !important;
-  transform: translate3d(0, 0, 0) !important;
-  -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale !important;
-}
-
-/* Green underline on hover for static links - match text width */
+/* Green underline on hover for static links */
 .nav-static-link::after {
   content: '';
   position: absolute;
   bottom: -6px;
-  left: 50%;
-  transform: translateX(-50%) scaleX(0);
-  width: calc(100% - 40px); /* Adjust to match text width */
+  left: 0;
+  right: 0;
   height: 2px;
   background: var(--primary-green);
+  transform: scaleX(0);
   transform-origin: center;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav-static-link:hover::after {
-  transform: translateX(-50%) scaleX(1);
-}
-
-/* Different underline width for Contact (shorter text) */
-.nav-static-link:nth-of-type(2)::after {
-  width: calc(100% - 30px); /* Contact is shorter */
-}
-
-/* NO text changes on hover - only underline */
-.nav-static-link:hover {
-  color: var(--text-gray) !important;
-  font-weight: 500 !important;
-  font-size: 0.88rem !important;
-  letter-spacing: 0.01em !important;
+  transform: scaleX(1);
 }
 
 .nav-links.desktop-only a::after {
@@ -219,13 +187,20 @@
   letter-spacing: 0.06em !important;
   transition: all 0.3s ease !important;
   box-shadow: 0 2px 12px rgba(76, 175, 80, 0.25);
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
 }
 
 .nav-donate:hover {
-  /* background: var(--green-dark) !important; */
+  background: var(--green-dark) !important;
   color: #fff !important;
-  box-shadow: none !important;
-  transform: none !important;
+  box-shadow: 0 4px 20px rgba(76, 175, 80, 0.35) !important;
+}
+
+.nav-donate:hover::before {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .nav-donate::after,
@@ -235,16 +210,25 @@
   width: 0 !important;
 }
 
+/* Shop link - prevent shifting */
+.nav-links.desktop-only .nav-static-link:nth-of-type(3) {
+  /* Shop is the 3rd static link */
+}
+
 /* CART ICON */
 .nav-cart-link {
   position: relative;
-  display: flex !important;
+  display: inline-flex !important;
   align-items: center;
   justify-content: center;
   color: var(--text-gray);
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, background 0.3s ease;
   padding: 8px;
   border-radius: 8px;
+  min-width: 40px;
+  min-height: 40px;
+  flex-shrink: 0;
+  cursor: pointer;
 }
 
 .nav-cart-link:hover {
@@ -281,7 +265,12 @@
   color: var(--text-gray);
   padding: 8px;
   border-radius: 8px;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease, background 0.3s ease;
+  min-width: 40px;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .nav-cart-mobile:hover {
@@ -714,6 +703,18 @@
   position: relative;
 }
 
+/* Invisible bridge to keep dropdown open when moving mouse to menu items */
+.user-dropdown::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 12px;
+  background: transparent;
+  z-index: 5999;
+}
+
 .nav-login-link {
   text-decoration: none;
   color: var(--text-gray);
@@ -738,11 +739,14 @@
   color: var(--text-gray);
   cursor: pointer;
   padding: 8px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease, background 0.3s ease;
+  min-width: 40px;
+  min-height: 40px;
+  flex-shrink: 0;
 }
 
 .nav-user-trigger:hover {
@@ -752,7 +756,7 @@
 
 .user-dropdown-menu {
   position: absolute;
-  top: calc(100% + 12px);
+  top: calc(100% + 8px);
   right: 0;
   background: white;
   border: 1px solid var(--border-light);

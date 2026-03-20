@@ -226,8 +226,34 @@
 }
 
 .submit-btn-premium:hover {
-  transform: scale(0.98);
-  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(76, 175, 80, 0.2);
+}
+
+.submit-btn-premium:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.form-status-message {
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 2rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.form-status-message.success {
+  background: var(--green-light);
+  color: var(--green-dark);
+  border: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+.form-status-message.error {
+  background: #fdeaea;
+  color: #e74c3c;
+  border: 1px solid rgba(231, 76, 60, 0.2);
 }
 
 /* RESPONSIVE */

@@ -116,6 +116,7 @@ const Navbar = () => {
     logout()
     setIsUserDropdownOpen(false)
     handleLinkClick()
+    window.location.href = '/shop/auth'
   }
 
   const toggleAboutDropdown = (e) => {
@@ -144,7 +145,7 @@ const Navbar = () => {
 
           {/* Desktop Links */}
           <div className="nav-links desktop-only">
-            <Link to="/" onClick={handleLinkClick}>Home</Link>
+            <span className="nav-static-link" onClick={() => { window.location.href = '/'; }}>Home</span>
 
             {/* Desktop About Dropdown */}
             <div
@@ -169,7 +170,7 @@ const Navbar = () => {
               onMouseEnter={() => window.innerWidth > 992 && setIsProgramsDropdownOpen(true)}
               onMouseLeave={() => window.innerWidth > 992 && setIsProgramsDropdownOpen(false)}
             >
-              <Link to="#" className="nav-dropdown-trigger">
+              <Link to="/programs" className="nav-dropdown-trigger" onClick={handleLinkClick}>
                 Programs <span className="dropdown-arrow-css"></span>
               </Link>
               <div className={`dropdown-menu mega-grid-menu ${isProgramsDropdownOpen ? 'open' : ''}`}>
@@ -183,15 +184,15 @@ const Navbar = () => {
 
             <span className="nav-static-link" onClick={() => { window.location.href = '/get-involved'; }}>Get Involved</span>
             <span className="nav-static-link" onClick={() => { window.location.href = '/contact'; }}>Contact</span>
-            <Link to="/shop" onClick={handleLinkClick}>Shop</Link>
+            <span className="nav-static-link" onClick={() => { window.location.href = '/shop'; }}>Shop</span>
             
             {/* Cart Icon */}
-            <Link to="/shop/cart" className="nav-cart-link" onClick={handleLinkClick}>
+            <span className="nav-cart-link" onClick={() => { window.location.href = '/shop/cart'; }}>
               <ShoppingCart size={20} />
               {cartItemCount > 0 && (
                 <span className="cart-badge">{cartItemCount}</span>
               )}
-            </Link>
+            </span>
 
             {/* User Dropdown - Only show if logged in, otherwise show Login link */}
             {user ? (
@@ -228,14 +229,6 @@ const Navbar = () => {
             <a href="#" target="_blank" rel="noopener noreferrer" className="nav-donate" onClick={handleLinkClick}>DONATE</a>
           </div>
 
-          {/* Mobile Cart Icon */}
-          <Link to="/shop/cart" className="nav-cart-mobile" onClick={handleLinkClick}>
-            <ShoppingCart size={22} />
-            {cartItemCount > 0 && (
-              <span className="cart-badge">{cartItemCount}</span>
-            )}
-          </Link>
-
           <button
             className={`burger-modern ${isMobileMenuOpen ? 'active' : ''}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -264,7 +257,8 @@ const Navbar = () => {
           </div>
 
           <div className={`mobile-dropdown-parent ${isProgramsDropdownOpen ? 'expanded' : ''}`}>
-            <a href="#" onClick={toggleProgramsDropdown}>Programs <span className="arrow">{isProgramsDropdownOpen ? '−' : '+'}</span></a>
+            <Link to="/programs" onClick={handleLinkClick}>Programs</Link>
+            <a href="#" onClick={toggleProgramsDropdown} className="mobile-arrow-trigger"><span className="arrow">{isProgramsDropdownOpen ? '−' : '+'}</span></a>
             <div className="mobile-dropdown-children">
               <div className="mobile-dropdown-inner">
                 <Link to="/programs/empowerment" onClick={handleLinkClick}>Empowerment</Link>

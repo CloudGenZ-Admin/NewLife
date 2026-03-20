@@ -35,7 +35,7 @@ const Gallery = () => {
       category: "Education",
       title: "Education & Vocational Training",
       subtitle: "Sewing, French & Craft Classes",
-      image: "https://cdn.shopify.com/s/files/1/0506/2515/1173/files/6856C4D3-E26C-4686-B29E-9404F7CA1554_480x480.jpg?v=1703235693",
+      image: "https://newlifeprojectinc.org/cdn/shop/files/2_9e088462-4d09-47e8-bac0-b576b8f135b8.jpg?v=1705279646",
       link: "/vocational-training"
     },
     {
@@ -43,7 +43,7 @@ const Gallery = () => {
       category: "Relief",
       title: "Relief Program",
       subtitle: "Local & International Support",
-      image: "https://cdn.shopify.com/s/files/1/0506/2515/1173/files/relief_program_1.jpg?v=1705192603",
+      image: "https://newlifeprojectinc.org/cdn/shop/files/fundraiser_1.png?v=1666309940",
       link: "/programs/relief"
     }
   ]
