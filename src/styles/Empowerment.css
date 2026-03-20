@@ -1,0 +1,508 @@
+:root {
+  --em-bg: var(--white);
+  /* BRAND WHITE */
+  --em-green: #2d5a27;
+  --em-light: var(--light-gray);
+  --em-mid: #3a7533;
+  --em-dark: #152812;
+  --em-border: rgba(45, 90, 39, 0.12);
+  --em-ff: 'Cormorant Garamond', serif;
+  --em-fb: 'Plus Jakarta Sans', sans-serif;
+}
+
+.emp-page {
+  background: white;
+  color: var(--em-dark);
+  font-family: var(--em-fb);
+  overflow-x: hidden;
+}
+
+/* ----------------------------------------------------------------
+   1. HERO: COMPACT SPLIT (No full-screen emptiness)
+---------------------------------------------------------------- */
+.emp-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 140px 8% 80px;
+  border-bottom: 1px solid var(--em-border);
+  align-items: center;
+  background: var(--white);
+  /* Clean white */
+  min-height: 80vh;
+}
+
+.emp-hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-right: 6%;
+}
+
+.emp-hero-tag {
+  font-family: var(--em-fb);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--em-green);
+  background: white;
+  border: 1px solid var(--em-border);
+  padding: 0.5rem 1.2rem;
+  border-radius: 100px;
+  display: inline-block;
+  width: fit-content;
+}
+
+.emp-hero-heading {
+  font-family: var(--em-ff);
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--em-dark);
+  margin: 0;
+}
+
+.emp-hero-heading em {
+  font-style: italic;
+  color: var(--em-green);
+}
+
+.emp-hero-body {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: rgba(21, 40, 18, 0.65);
+  max-width: 480px;
+  margin: 0;
+}
+
+/* Stats Row */
+.emp-hero-stats {
+  display: flex;
+  gap: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--em-border);
+}
+
+.emp-stat strong {
+  display: block;
+  font-family: var(--em-ff);
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--em-green);
+  line-height: 1;
+}
+
+.emp-stat span {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(21, 40, 18, 0.5);
+}
+
+/* Image Panel */
+.emp-hero-img-block {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emp-img-pill {
+  width: 100%;
+  height: 65vh;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(45, 90, 39, 0.15);
+}
+
+.emp-img-pill img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.emp-img-tag {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: var(--em-green);
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 0.6rem 1.4rem;
+  border-radius: 100px;
+}
+
+/* ----------------------------------------------------------------
+   2. BENTO GRID: 3 PROGRAM PILLARS
+---------------------------------------------------------------- */
+.emp-bento {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-bottom: 1px solid var(--em-border);
+  background: white;
+  /* White */
+  padding: 0;
+}
+
+.bento-card {
+  padding: 4rem 3rem;
+  border-right: 1px solid var(--em-border);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.bento-card:last-child {
+  border-right: none;
+}
+
+.bento-card:hover {
+  transform: translateY(-4px);
+}
+
+.bento-green {
+  background: var(--em-green);
+  color: white;
+}
+
+.bento-light {
+  background: white;
+}
+
+.bento-cream {
+  background: var(--em-light);
+}
+
+.bento-index {
+  font-family: var(--em-ff);
+  font-size: 1rem;
+  font-weight: 700;
+  opacity: 0.4;
+}
+
+.bento-green .bento-index {
+  color: #b5d4b1;
+}
+
+.bento-light .bento-index,
+.bento-cream .bento-index {
+  color: var(--em-green);
+}
+
+.bento-card h3 {
+  font-family: var(--em-ff);
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.bento-card p {
+  font-size: 1rem;
+  line-height: 1.65;
+  opacity: 0.75;
+  flex-grow: 1;
+}
+
+.bento-pill {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 0.4rem 1.2rem;
+  border-radius: 100px;
+  width: fit-content;
+}
+
+.bento-green .bento-pill {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+.bento-light .bento-pill {
+  background: var(--em-light);
+  color: var(--em-green);
+}
+
+.bento-cream .bento-pill {
+  background: white;
+  color: var(--em-green);
+}
+
+/* ----------------------------------------------------------------
+   3. PHOTO EDITORIAL SPLIT
+---------------------------------------------------------------- */
+.emp-editorial {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--em-border);
+  background: var(--light-gray);
+  /* Light gray */
+}
+
+.editorial-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 4rem;
+  background: var(--em-light);
+}
+
+.gallery-main,
+.gallery-sub {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.gallery-main {
+  grid-row: span 2;
+}
+
+.gallery-main img,
+.gallery-sub img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-label {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.4rem 0.9rem;
+  border-radius: 100px;
+  color: var(--em-dark);
+}
+
+.editorial-text {
+  padding: 5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.editorial-eyebrow {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--em-green);
+}
+
+.editorial-text h2 {
+  font-family: var(--em-ff);
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 300;
+  margin: 0;
+  line-height: 1.15;
+}
+
+.editorial-text h2 em {
+  font-style: italic;
+  color: var(--em-green);
+}
+
+.editorial-text>p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  opacity: 0.65;
+}
+
+.editorial-facts {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-top: 1px solid var(--em-border);
+  padding-top: 1.5rem;
+}
+
+.fact-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.fact-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.fact-dot.green {
+  background: var(--em-green);
+}
+
+.fact-row p {
+  font-size: 1rem;
+  margin: 0;
+  opacity: 0.7;
+}
+
+/* ----------------------------------------------------------------
+   4. PROGRAM COMPONENTS: DENSE LIST
+---------------------------------------------------------------- */
+.emp-components {
+  padding: 80px 8%;
+  background: white;
+  /* White */
+  color: black;
+}
+
+.comp-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  align-items: end;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 3rem;
+}
+
+.comp-header h2 {
+  font-family: var(--em-ff);
+  font-size: 3rem;
+  font-weight: 300;
+  line-height: 1;
+  margin: 0;
+}
+
+.comp-header h2 em {
+  font-style: italic;
+  color: #000000;
+}
+
+.comp-header p {
+  font-size: 1.1rem;
+  opacity: 0.55;
+  line-height: 1.6;
+}
+
+.comp-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 2rem;
+}
+
+.comp-item {
+  display: block;
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--em-border);
+  border-left: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.comp-item:hover {
+  border-left-color: var(--em-green);
+  padding-left: 2rem;
+  background: rgba(45, 90, 39, 0.02);
+}
+
+/* comp-num removed */
+
+.comp-info h4 {
+  font-family: var(--em-fb);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: rgb(0, 0, 0);
+  margin: 0 0 0.8rem;
+}
+
+.comp-info p {
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.55);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ----------------------------------------------------------------
+   RESPONSIVE
+---------------------------------------------------------------- */
+.emp-fade {
+  opacity: 1;
+  /* GSAP controls this */
+}
+
+@media (max-width: 1100px) {
+  .emp-hero {
+    grid-template-columns: 1fr;
+    max-height: none;
+    gap: 3rem;
+    padding: 120px 6% 60px;
+  }
+
+  .emp-hero-content {
+    padding-right: 0;
+  }
+
+  .emp-img-pill {
+    height: 45vh;
+  }
+
+  .emp-bento {
+    grid-template-columns: 1fr;
+  }
+
+  .bento-card {
+    border-right: none;
+    border-bottom: 1px solid var(--em-border);
+    padding: 3rem 8%;
+  }
+
+  .emp-editorial {
+    grid-template-columns: 1fr;
+  }
+
+  .editorial-gallery {
+    padding: 3rem 8%;
+  }
+
+  .editorial-text {
+    padding: 4rem 8%;
+  }
+
+  .comp-header {
+    grid-template-columns: 1fr;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .emp-hero {
+    padding: 80px 5% 40px;
+  }
+
+  .emp-hero-stats {
+    gap: 1.5rem;
+  }
+
+  .emp-components {
+    padding: 60px 5%;
+  }
+
+  .comp-item {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .comp-header h2 {
+    font-size: 2.2rem;
+  }
+}

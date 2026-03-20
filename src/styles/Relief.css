@@ -1,0 +1,254 @@
+/* src/styles/Relief.css */
+/* MODERN WHITE THEME - Typography Manifesto */
+
+:root {
+  --tp-bg: var(--white);
+  --tp-text: #1a1a1a;
+  --tp-accent: #2d5a27;
+  --tp-gold: #d4a373;
+  --tp-soft: #666;
+  --tp-border: var(--border-light);
+  --tp-font: 'Plus Jakarta Sans', sans-serif;
+  --tp-display: 'Cormorant Garamond', serif;
+}
+
+.relief-page {
+  background-color: var(--white);
+  color: var(--tp-text);
+  font-family: var(--tp-font);
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* 1. TYPOGRAPHY HERO */
+.tp-hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 15vh 5vw;
+  position: relative;
+  background-color: var(--white);
+}
+
+/* Subtle dot pattern instead of grid lines */
+.tp-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  background-size: 30px 30px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.tp-hero h1 {
+  font-family: var(--tp-display);
+  font-size: clamp(4rem, 10vw, 9rem);
+  font-weight: 500;
+  line-height: 0.9;
+  color: var(--tp-text);
+  margin-bottom: 3rem;
+  letter-spacing: -0.02em;
+  position: relative;
+  z-index: 2;
+}
+
+.tp-hero h1 em {
+  font-style: italic;
+  color: var(--tp-accent);
+  display: block;
+}
+
+.tp-hero p.lead {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  line-height: 1.6;
+  max-width: 900px;
+  color: var(--tp-text);
+  font-weight: 400;
+  position: relative;
+  z-index: 2;
+}
+
+.tp-hero-intro {
+  margin-top: 5vh;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  max-width: 800px;
+  color: var(--tp-soft);
+  position: relative;
+  z-index: 2;
+}
+
+.tp-highlight {
+  color: var(--tp-accent);
+  font-weight: 700;
+  background: var(--green-light);
+  padding: 0 0.5rem;
+  border-radius: 4px;
+}
+
+/* 2. THE SCROLLING MANIFESTO BLOCKS */
+.tp-sections-wrap {
+  padding: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.tp-section {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 5vw;
+  padding: 15vh 5vw;
+  border-top: 1px solid var(--tp-border);
+}
+
+.tp-section:nth-of-type(odd) {
+  background-color: var(--white);
+}
+
+.tp-section:nth-of-type(even) {
+  background-color: var(--light-gray);
+}
+
+.tp-section:last-child {
+  border-bottom: 1px solid var(--tp-border);
+}
+
+.tp-section-sticky {
+  position: sticky;
+  top: 20vh;
+  align-self: start;
+}
+
+.tp-section-sticky h2 {
+  font-family: var(--tp-display);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--tp-text);
+  margin-bottom: 1.5rem;
+}
+
+.tp-section-sticky h2 em {
+  color: var(--tp-gold);
+  font-style: italic;
+  display: block;
+}
+
+.tp-section-sticky p {
+  color: var(--tp-soft);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.tp-section-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* Impact lists */
+.tp-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tp-list li {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-family: var(--tp-display);
+  color: var(--tp-text);
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px dashed var(--tp-border);
+  transition: transform 0.4s ease, color 0.4s ease;
+  position: relative;
+  padding-left: 3rem;
+}
+
+.tp-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--tp-accent);
+  font-size: 1.5rem;
+  opacity: 0.5;
+  transition: opacity 0.4s, transform 0.4s;
+}
+
+.tp-list li:hover {
+  color: var(--tp-accent);
+  transform: translateX(10px);
+}
+
+.tp-list li:hover::before {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+.tp-list li:last-child {
+  border-bottom: none;
+}
+
+/* 3. CLOSING STATEMENT */
+.tp-footer {
+  padding: 8vh 5vw;
+  text-align: center;
+  background: var(--light-gray);
+  color: var(--tp-text);
+  position: relative;
+}
+
+.tp-footer::after {
+  display: none;
+}
+
+.tp-footer h2 {
+  font-family: var(--tp-display);
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 500;
+  margin-bottom: 2rem;
+  line-height: 1.1;
+  position: relative;
+  z-index: 2;
+  color: var(--tp-text);
+}
+
+.tp-footer p {
+  font-size: 1.5rem;
+  font-weight: 500;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  color: var(--tp-soft);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .tp-hero::before {
+    background-size: 20px 20px;
+  }
+
+  .tp-section {
+    grid-template-columns: 1fr !important;
+    gap: 3rem;
+    padding: 6vh 5vw;
+  }
+
+  .tp-section-sticky {
+    position: relative;
+    top: 0;
+  }
+
+  .tp-list li {
+    font-size: 1.8rem;
+    padding-left: 2rem;
+  }
+
+  .tp-list li::before {
+    font-size: 1.2rem;
+  }
+}

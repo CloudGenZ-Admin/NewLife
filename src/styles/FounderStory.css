@@ -1,0 +1,299 @@
+/* FOUNDER STORY - MODERN WHITE CARD DESIGN */
+.founder-story-editorial {
+  padding: 100px 0;
+  background: var(--white);
+  overflow: hidden;
+}
+
+.story-chapter {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 60px;
+  align-items: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.story-chapter:last-child {
+  margin-bottom: 0;
+}
+
+/* Chapter Left Layout */
+.chapter-left .chapter-visual { grid-column: 1 / 7; }
+.chapter-left .chapter-content { grid-column: 8 / 13; }
+
+/* Chapter Right Layout */
+.chapter-right .chapter-visual { grid-column: 7 / 13; order: 2; }
+.chapter-right .chapter-content { grid-column: 1 / 6; order: 1; }
+
+/* Chapter Center Layout */
+.chapter-center {
+  display: block;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.chapter-number {
+  font-family: var(--fb);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--primary-green);
+  letter-spacing: 0.15em;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+  padding: 6px 16px;
+  background: var(--green-light);
+  border-radius: 50px;
+}
+
+.chapter-title {
+  font-family: var(--ff);
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  font-weight: 400;
+  color: var(--dark-gray);
+  margin-bottom: 2rem;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.chapter-text p {
+  font-family: var(--fb);
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--text-gray);
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+.chapter-text p.lead {
+  font-size: 1.3rem;
+  color: var(--dark-gray);
+  line-height: 1.7;
+  font-weight: 500;
+}
+
+.chapter-pullquote {
+  font-family: var(--ff);
+  font-size: 1.8rem;
+  font-style: italic;
+  color: var(--primary-green);
+  margin: 2.5rem 0;
+  line-height: 1.35;
+  padding-left: 2rem;
+  border-left: 3px solid var(--primary-green);
+}
+
+/* Chapter Visuals */
+.chapter-visual {
+  position: relative;
+}
+
+.chapter-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+}
+
+.chapter-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transform: scale(1.05);
+}
+
+.image-caption {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  font-family: var(--fb);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: white;
+  background: rgba(0,0,0,0.4);
+  padding: 8px 16px;
+  border-radius: 50px;
+  backdrop-filter: blur(8px);
+}
+
+/* Signature & Awards */
+.founder-signature-block {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.signature-text {
+  font-family: var(--ff);
+  font-size: 3.5rem;
+  font-style: italic;
+  color: var(--dark-gray);
+}
+
+.founder-awards {
+  font-family: var(--fb);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--primary-green);
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+/* Board Preview */
+.founder-board-preview {
+  margin-top: 1rem;
+  padding: 10px;
+  background: var(--light-gray);
+  border-radius: var(--radius);
+}
+
+.founder-board-preview h3 {
+  font-family: var(--ff);
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+.board-preview-image {
+  margin-top: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.board-preview-image img {
+  width: 100%;
+  border-radius: var(--radius-sm);
+}
+
+/* CTA */
+.founder-call-to-action {
+  margin-top: 1rem;
+}
+
+.editorial-btn {
+  display: inline-block;
+  padding: 16px 40px;
+  background: var(--primary-green);
+  color: white;
+  text-decoration: none;
+  font-family: var(--fb);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  border-radius: 50px;
+  margin-top: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(76, 175, 80, 0.25);
+}
+
+.editorial-btn:hover {
+  background: var(--green-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(76, 175, 80, 0.35);
+}
+
+/* Chapter Quote Feature */
+.chapter-quote-feature {
+  background: var(--dark-gray);
+  padding: 70px 50px;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 450px;
+  position: relative;
+  box-shadow: var(--shadow-lg);
+}
+
+.quote-feature-inner {
+  position: relative;
+  z-index: 2;
+}
+
+.quote-mark {
+  font-family: var(--ff);
+  font-size: 6rem;
+  color: var(--primary-green);
+  line-height: 1;
+  display: block;
+  margin-bottom: -1.5rem;
+  opacity: 0.6;
+}
+
+.big-quote {
+  font-family: var(--ff);
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  color: white;
+  line-height: 1.25;
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+
+.big-quote em {
+  color: var(--accent-green);
+  font-style: italic;
+}
+
+.quote-divider {
+  width: 40px;
+  height: 2px;
+  background: var(--primary-green);
+  margin: 0 auto 1.5rem;
+}
+
+.quote-sub {
+  font-family: var(--fb);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.5);
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .story-chapter { gap: 40px; margin-bottom: 6rem; }
+  .chapter-title { font-size: 3.5rem; }
+}
+
+@media (max-width: 768px) {
+  .founder-story-editorial { padding: 60px 0; }
+  .story-chapter {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 4rem;
+  }
+  
+  .chapter-left .chapter-visual,
+  .chapter-left .chapter-content,
+  .chapter-right .chapter-visual,
+  .chapter-right .chapter-content {
+    grid-column: 1 / -1;
+  }
+
+  .chapter-right .chapter-visual { order: 1; }
+  .chapter-right .chapter-content { order: 2; }
+  
+  .chapter-title { font-size: 2.8rem; }
+  .chapter-text p.lead { font-size: 1.2rem; }
+  .chapter-pullquote { font-size: 1.5rem; margin: 2rem 0; padding-left: 1.5rem; }
+  .signature-text { font-size: 2.8rem; }
+  .chapter-quote-feature { min-height: 350px; padding: 50px 30px; }
+}
+
+@media (max-width: 480px) {
+  .founder-story-editorial { padding: 40px 0; }
+  .story-chapter { margin-bottom: 3rem; }
+  .chapter-title { font-size: 2.2rem; margin-bottom: 1.5rem; }
+  .chapter-text p { font-size: 1rem; line-height: 1.75; }
+  .chapter-text p.lead { font-size: 1.1rem; }
+  .editorial-btn { width: 100%; text-align: center; padding: 16px 28px; }
+  .signature-text { font-size: 2.2rem; }
+  .image-caption { bottom: 10px; right: 10px; font-size: 0.65rem; }
+}
