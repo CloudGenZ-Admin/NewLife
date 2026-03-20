@@ -1,7 +1,5 @@
-@import "tailwindcss";
-
-/* Tailwind Theme Configuration */
-@theme {
+/* CSS Variables for Newlife Project */
+:root {
   /* Colors matching Newlife design */
   --color-primary-green: #4CAF50;
   --color-green-dark: #388E3C;
