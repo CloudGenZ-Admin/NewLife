@@ -516,7 +516,7 @@
 
 .continue-btn,
 .place-order-btn {
-  flex: 1;
+  width: 100%;
   padding: 1.125rem 2rem;
   background: var(--primary-green);
   color: var(--white);
@@ -531,6 +531,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
+  margin-top: 10px;
 }
 
 .continue-btn:hover,

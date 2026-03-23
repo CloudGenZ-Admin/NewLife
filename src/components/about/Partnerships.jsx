@@ -69,7 +69,7 @@ const Partnerships = () => {
             Through collaboration, NewLife strengthens its ability to deliver meaningful impact and create
             sustainable pathways for empowerment.
           </p>
-          <a href="#contact" className="partnership-cta">Become a Partner</a>
+          <a href="/contact" className="partnership-cta">Become a Partner</a>
         </div>
       </div>
     </section>

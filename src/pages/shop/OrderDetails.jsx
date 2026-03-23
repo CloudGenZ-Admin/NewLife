@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { fetchOrder } from '../../api/woocommerce';
+import { fetchOrder, fetchProduct } from '../../api/woocommerce';
 import {
     ArrowLeft, Package, CheckCircle2, Clock, Truck, AlertCircle,
     CreditCard, MapPin, User, Mail, Phone, Calendar, FileText, ChevronRight
@@ -61,6 +61,7 @@ export default function OrderDetails() {
     const [order, setOrder] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [productImages, setProductImages] = useState({}); // { productId: imageUrl }
 
     useEffect(() => {
         if (!user) { navigate('/shop/auth'); return; }
@@ -71,6 +72,22 @@ export default function OrderDetails() {
                 const data = await fetchOrder(id);
                 if (!data) throw new Error('Order not found');
                 setOrder(data);
+                
+                // Fetch product images for all line items
+                const images = {};
+                await Promise.all(
+                    data.line_items.map(async (item) => {
+                        try {
+                            const product = await fetchProduct(item.product_id);
+                            if (product?.images?.[0]?.src) {
+                                images[item.product_id] = product.images[0].src;
+                            }
+                        } catch (err) {
+                            console.warn(`Failed to fetch image for product ${item.product_id}:`, err);
+                        }
+                    })
+                );
+                setProductImages(images);
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -195,8 +212,8 @@ export default function OrderDetails() {
                                 {order.line_items?.map((item) => (
                                     <div key={item.id} className="order-item">
                                         <div className="item-image">
-                                            {item.image?.src ? (
-                                                <img src={item.image.src} alt={item.name} />
+                                            {productImages[item.product_id] ? (
+                                                <img src={productImages[item.product_id]} alt={item.name} />
                                             ) : (
                                                 <div className="item-image-placeholder">
                                                     <Package size={20} />

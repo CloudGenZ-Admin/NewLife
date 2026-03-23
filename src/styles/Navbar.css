@@ -93,14 +93,6 @@
   color: var(--primary-green);
 }
 
-/* Fixed widths for each link to create equal gaps */
-.nav-links.desktop-only a[href="/"] {
-  width: 60px; /* Home */
-}
-
-.nav-links.desktop-only .nav-dropdown.mega-dropdown {
-  width: 90px; /* Programs */
-}
 
 /* Static spans for Get Involved and Contact */
 .nav-static-link {
@@ -121,24 +113,6 @@
 
 .nav-static-link:hover {
   color: var(--primary-green);
-}
-
-/* Future widths for when Shop and Blog are uncommented */
-/* 
-.nav-links.desktop-only a[href*="shop"] {
-  width: 60px;
-}
-.nav-links.desktop-only a[href*="blog"] {
-  width: 60px;
-}
-*/
-
-.nav-links.desktop-only a[href="/get-involved"] {
-  width: 100px; /* Get Involved */
-}
-
-.nav-links.desktop-only a[href="/contact"] {
-  width: 70px; /* Contact */
 }
 
 /* Green underline on hover for static links */

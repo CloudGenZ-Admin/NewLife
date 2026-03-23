@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useCart } from '../../context/CartContext';
 import { useAuth } from '../../context/AuthContext';
-import { createOrder, validateCoupon, fetchOrder } from '../../api/woocommerce';
+import { createOrder, updateOrder, validateCoupon, fetchOrder } from '../../api/woocommerce';
+import { fetchProduct } from '../../api/woocommerce';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, CheckCircle2, AlertCircle, Tag, X, CreditCard, Lock } from 'lucide-react';
 import { loadStripe } from '@stripe/stripe-js';
@@ -49,6 +50,7 @@ export default function Checkout() {
     const [pendingOrder, setPendingOrder] = useState(null);
     const [isCreatingOrder, setIsCreatingOrder] = useState(false);
     const [isInitializingPayment, setIsInitializingPayment] = useState(false);
+    const [productImages, setProductImages] = useState({}); // { productId: imageUrl }
 
     const [couponCode, setCouponCode] = useState('');
     const [coupon, setCoupon] = useState(null);
@@ -122,6 +124,22 @@ export default function Checkout() {
                     
                     setPendingOrder(orderData);
                     setStep('payment');
+                    
+                    // Fetch product images for order items
+                    const images = {};
+                    await Promise.all(
+                        orderData.line_items.map(async (item) => {
+                            try {
+                                const product = await fetchProduct(item.product_id);
+                                if (product?.images?.[0]?.src) {
+                                    images[item.product_id] = product.images[0].src;
+                                }
+                            } catch (err) {
+                                console.warn(`Failed to fetch image for product ${item.product_id}:`, err);
+                            }
+                        })
+                    );
+                    setProductImages(images);
                 } catch (err) {
                     console.error('Error loading pending order:', err);
                     setError(err.message || 'Failed to load pending order.');
@@ -190,17 +208,41 @@ export default function Checkout() {
 
         try {
             const orderData = buildOrderData();
-            const wcOrder = await createOrder({
-                ...orderData,
-                status: 'pending',
-                payment_method: 'stripe',
-                payment_method_title: 'Credit Card (Stripe)',
-                set_paid: false,
-            });
+            let wcOrder;
+
+            if (pendingOrder?.id) {
+                // UPDATE existing order (only billing/shipping to protect line items)
+                wcOrder = await updateOrder(pendingOrder.id, {
+                    billing: orderData.billing,
+                    shipping: orderData.shipping
+                });
+            } else {
+                // CREATE new order
+                wcOrder = await createOrder({
+                    ...orderData,
+                    status: 'pending',
+                    payment_method: 'stripe',
+                    payment_method_title: 'Credit Card (Stripe)',
+                    set_paid: false,
+                });
+            }
 
             if (!wcOrder || !wcOrder.id) {
-                throw new Error('Failed to create order in WooCommerce.');
+                throw new Error('Failed to synchronize order details.');
             }
+
+            // Pre-populate images from cart/existing order
+            const images = { ...productImages };
+            const itemsSource = pendingOrder ? pendingOrder.line_items : cart;
+            
+            // For cart items, we have the src. For line_items, we might already have it in productImages.
+            if (!pendingOrder) {
+                cart.forEach(item => {
+                    const src = item.image?.src || item.images?.[0]?.src;
+                    if (src) images[item.id] = src;
+                });
+            }
+            setProductImages(images);
 
             setPendingOrder(wcOrder);
             setStep('payment');
@@ -432,12 +474,12 @@ export default function Checkout() {
                                         {isCreatingOrder ? (
                                             <>
                                                 <div className="spinner" />
-                                                Creating Order...
+                                                Processing...
                                             </>
                                         ) : (
                                             <>
                                                 <CreditCard size={18} />
-                                                Continue to Payment
+                                                Submit order and continue to payment
                                                 <ArrowRight size={16} />
                                             </>
                                         )}
@@ -473,22 +515,28 @@ export default function Checkout() {
                             <h2>Your Order</h2>
 
                             <div className="order-items">
-                                {(pendingOrder ? pendingOrder.line_items : cart).map((item) => (
-                                    <div key={item.id} className="order-item">
-                                        <img 
-                                            src={item.image?.src || item.images?.[0]?.src || '/placeholder.png'} 
-                                            alt={item.name} 
-                                            className="order-item-image"
-                                        />
-                                        <div className="order-item-details">
-                                            <div className="order-item-name">{item.name}</div>
-                                            <div className="order-item-meta">Qty: {item.quantity}</div>
+                                {(pendingOrder ? pendingOrder.line_items : cart).map((item) => {
+                                    const imageUrl = pendingOrder 
+                                        ? (productImages[item.product_id] || '/placeholder.png')
+                                        : (item.image?.src || item.images?.[0]?.src || '/placeholder.png');
+                                    
+                                    return (
+                                        <div key={item.id} className="order-item">
+                                            <img 
+                                                src={imageUrl} 
+                                                alt={item.name} 
+                                                className="order-item-image"
+                                            />
+                                            <div className="order-item-details">
+                                                <div className="order-item-name">{item.name}</div>
+                                                <div className="order-item-meta">Qty: {item.quantity}</div>
+                                            </div>
+                                            <div className="order-item-price">
+                                                ${(item.total ? parseFloat(item.total) : (item.price * item.quantity)).toFixed(2)}
+                                            </div>
                                         </div>
-                                        <div className="order-item-price">
-                                            ${(item.total ? parseFloat(item.total) : (item.price * item.quantity)).toFixed(2)}
-                                        </div>
-                                    </div>
-                                ))}
+                                    );
+                                })}
                             </div>
 
                             <div className="coupon-section">

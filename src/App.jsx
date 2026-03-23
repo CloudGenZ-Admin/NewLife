@@ -25,6 +25,8 @@ import Account from './pages/shop/Account'
 import Wishlist from './pages/shop/Wishlist'
 import OrderDetails from './pages/shop/OrderDetails'
 import Programs from './pages/Program'
+import Blog from './pages/Blog'
+import BlogPost from './pages/BlogPost'
 import React, { useEffect } from 'react'
 import Lenis from 'lenis'
 import Navbar from './components/Navbar'
@@ -90,6 +92,8 @@ function App() {
                 <Route path="/shop/account" element={<Account />} />
                 <Route path="/shop/wishlist" element={<Wishlist />} />
                 <Route path="/order/:id" element={<OrderDetails />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/:id" element={<BlogPost />} />
               </Routes>
               <Footer />
             </div>

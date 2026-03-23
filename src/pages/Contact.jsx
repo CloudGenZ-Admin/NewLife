@@ -22,29 +22,18 @@ const Contact = () => {
         setFormData({ ...formData, [e.target.id]: e.target.value });
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         setStatus('submitting');
 
-        try {
-            const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
-
-            if (response.ok) {
-                setStatus('success');
-                setFormData({ name: '', email: '', phone: '', inquiry: '', message: '' });
-            } else {
-                setStatus('error');
-            }
-        } catch (error) {
-            setStatus('error');
-        }
+        // Frontend only submission logic
+        setTimeout(() => {
+            setStatus('success');
+            setFormData({ name: '', email: '', phone: '', inquiry: '', message: '' });
+            
+            // Optional: reset to idle after some time
+            setTimeout(() => setStatus('idle'), 5000);
+        }, 800);
     };
 
     useEffect(() => {

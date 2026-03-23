@@ -3,13 +3,28 @@ import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { fetchProducts, fetchCategories } from '../../api/woocommerce';
+import { fetchProductReviews } from '../../api/woocommerce';
 import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
-import { ShoppingCart, Star, RefreshCw, Heart, Truck, ShieldCheck, RotateCcw, Headphones, ArrowRight } from 'lucide-react';
+import { ShoppingCart, Star, RefreshCw, Heart, Truck, ShieldCheck, RotateCcw, Headphones, ArrowRight, CheckCircle2, Search } from 'lucide-react';
 import '../../styles/shop/Shop.css';
 import '../../styles/ArchitectHero.css';
 
 gsap.registerPlugin(ScrollTrigger);
+
+// Custom debounce hook
+function useDebounce(value, delay) {
+    const [debouncedValue, setDebouncedValue] = useState(value);
+    useEffect(() => {
+        const handler = setTimeout(() => {
+            setDebouncedValue(value);
+        }, delay);
+        return () => {
+            clearTimeout(handler);
+        };
+    }, [value, delay]);
+    return debouncedValue;
+}
 
 const SORT_OPTIONS = [
     { label: 'Featured', value: 'featured', orderby: 'date', order: 'desc' },
@@ -31,6 +46,12 @@ export default function Shop() {
     const [view, setView] = useState('categories'); // 'categories' or 'products'
     const { addToCart } = useCart();
     const { wishlist, toggleWishlist } = useWishlist();
+    const [addedItems, setAddedItems] = useState({}); // { productId: true }
+    const [reviewCounts, setReviewCounts] = useState({}); // { productId: count }
+    const [reviewRatings, setReviewRatings] = useState({}); // { productId: averageRating }
+    
+    const [searchQuery, setSearchQuery] = useState('');
+    const debouncedSearch = useDebounce(searchQuery, 600);
 
     const loadCategories = async () => {
         try {
@@ -38,7 +59,7 @@ export default function Shop() {
             if (Array.isArray(catData)) {
                 const filtered = catData.filter(c => c.name !== 'Uncategorized');
                 setCategories(filtered);
-                
+
                 // For each category, get a representative product image
                 const images = {};
                 // First, check if categories have built-in images
@@ -48,7 +69,7 @@ export default function Shop() {
 
                 // For those without images, fetch a product image in parallel
                 const missingCats = filtered.filter(cat => !images[cat.id]);
-                
+
                 if (missingCats.length > 0) {
                     const results = await Promise.all(
                         missingCats.map(async (cat) => {
@@ -61,12 +82,12 @@ export default function Shop() {
                             }
                         })
                     );
-                    
+
                     results.forEach(res => {
                         if (res.src) images[res.id] = res.src;
                     });
                 }
-                
+
                 setCategoryImages(images);
             }
         } catch (err) {
@@ -74,7 +95,7 @@ export default function Shop() {
         }
     };
 
-    const loadProducts = async ({ orderby = 'date', order = 'desc', category = '' } = {}) => {
+    const loadProducts = async ({ orderby = 'date', order = 'desc', category = '', search = '' } = {}) => {
         setLoading(true);
         setError(null);
         try {
@@ -82,10 +103,38 @@ export default function Shop() {
                 orderby,
                 order,
                 ...(category ? { category } : {}),
+                ...(search ? { search } : {}),
                 perPage: 20,
             });
             if (Array.isArray(prodData)) {
                 setProducts(prodData);
+                
+                // Fetch actual review counts and ratings for all products
+                const counts = {};
+                const ratings = {};
+                await Promise.all(
+                    prodData.map(async (product) => {
+                        try {
+                            const reviews = await fetchProductReviews(product.id);
+                            counts[product.id] = reviews.length;
+                            
+                            // Calculate average rating from actual reviews
+                            if (reviews.length > 0) {
+                                const totalRating = reviews.reduce((sum, review) => sum + (review.rating || 0), 0);
+                                ratings[product.id] = totalRating / reviews.length;
+                                console.log(`Product ${product.id} (${product.name}): ${reviews.length} reviews, avg rating: ${ratings[product.id]}`);
+                            } else {
+                                ratings[product.id] = 0;
+                            }
+                        } catch (err) {
+                            console.warn(`Failed to fetch reviews for product ${product.id}:`, err);
+                            counts[product.id] = product.rating_count || 0;
+                            ratings[product.id] = parseFloat(product.average_rating) || 0;
+                        }
+                    })
+                );
+                setReviewCounts(counts);
+                setReviewRatings(ratings);
             } else {
                 throw new Error('Invalid response format');
             }
@@ -101,8 +150,24 @@ export default function Shop() {
     useEffect(() => {
         window.scrollTo(0, 0);
         loadCategories();
-        loadProducts();
+    }, []);
 
+    useEffect(() => {
+        const opt = SORT_OPTIONS.find(o => o.value === sortKey) || SORT_OPTIONS[0];
+        const catParam = activeCategory === 'all' ? '' : activeCategory;
+        
+        // Instant Reset
+        setLoading(true);
+        setProducts([]); 
+        
+        loadProducts({ orderby: opt.orderby, order: opt.order, category: catParam, search: debouncedSearch });
+        
+        if (view === 'categories' && debouncedSearch) {
+             setView('products');
+        }
+    }, [sortKey, activeCategory, debouncedSearch]);
+
+    useEffect(() => {
         const ctx = gsap.context(() => {
             const tl = gsap.timeline({ defaults: { ease: 'power4.out', duration: 1.0 } });
 
@@ -113,11 +178,11 @@ export default function Shop() {
                 duration: 0.6,
                 ease: 'expo.inOut'
             })
-            .to('.architect-decoration', {
-                opacity: 0.15,
-                scale: 1,
-                duration: 1.2
-            }, '-=0.5');
+                .to('.architect-decoration', {
+                    opacity: 0.15,
+                    scale: 1,
+                    duration: 1.2
+                }, '-=0.5');
 
             // 2. Content Entry
             tl.to('.architect-detail, .architect-hero-title', {
@@ -164,18 +229,12 @@ export default function Shop() {
 
     const handleSortChange = (value) => {
         setSortKey(value);
-        const opt = SORT_OPTIONS.find(o => o.value === value) || SORT_OPTIONS[0];
-        const catParam = activeCategory === 'all' ? '' : activeCategory;
-        loadProducts({ orderby: opt.orderby, order: opt.order, category: catParam });
     };
 
     const handleCategoryChange = (catId) => {
         setActiveCategory(catId);
         setView('products');
-        const opt = SORT_OPTIONS.find(o => o.value === sortKey) || SORT_OPTIONS[0];
-        const catParam = catId === 'all' ? '' : catId;
-        loadProducts({ orderby: opt.orderby, order: opt.order, category: catParam });
-        
+
         // Scroll to top of products
         setTimeout(() => {
             const mainSection = document.querySelector('.shop-main');
@@ -186,9 +245,10 @@ export default function Shop() {
     const handleBackToCategories = () => {
         setView('categories');
         setActiveCategory('all');
+        setSearchQuery('');
         // Re-animate categories with a guaranteed reset
         setTimeout(() => {
-            gsap.fromTo('.category-tile', 
+            gsap.fromTo('.category-tile',
                 { y: 30, opacity: 0 },
                 {
                     y: 0,
@@ -200,6 +260,18 @@ export default function Shop() {
                 }
             );
         }, 10);
+    };
+
+    const handleAddToCart = (product) => {
+        addToCart(product);
+        setAddedItems(prev => ({ ...prev, [product.id]: true }));
+        setTimeout(() => {
+            setAddedItems(prev => {
+                const next = { ...prev };
+                delete next[product.id];
+                return next;
+            });
+        }, 2000);
     };
 
     const isWishlisted = (id) => wishlist.some(w => w.id === id);
@@ -227,7 +299,7 @@ export default function Shop() {
 
                     <div className="architect-meta">
                         <p>We market custom-made outfits, African artifact, and accessories while displaying the richness of the Black culture and educating the community on the importance of diversity. Three-fourth of our products are made here in Canada by women and youth in our Project.</p>
-                        <p style={{ marginTop: '1rem'}}>It is an income-generating division aimed to empower women in Ottawa, assist them in establishing independence, and create self-employed opportunities for entrepreneurs. Every purchase supports our shop and our local mission.</p>
+                        <p style={{ marginTop: '1rem' }}>It is an income-generating division aimed to empower women in Ottawa, assist them in establishing independence, and create self-employed opportunities for entrepreneurs. Every purchase supports our shop and our local mission.</p>
                     </div>
                 </div>
 
@@ -266,53 +338,73 @@ export default function Shop() {
             {/* Main Content */}
             <div className="shop-main">
                 {view === 'categories' ? (
-                    <div className="category-bento-grid">
-                        {categories.map((cat, index) => (
-                            <div 
-                                key={cat.id} 
-                                className={`category-tile tile-${(index % 6) + 1} ${
-                                    ['out'].some(k => cat.name.toLowerCase().includes(k)) 
-                                        ? 'tile-vertical-extra' 
-                                        : ['acc', 'jewelry', 'pillow','bonnet'].some(k => cat.name.toLowerCase().includes(k))
+                    <div className="categories-view-wrapper">
+                        <div className="categories-header-row">
+                            <h2>Shop by Collection</h2>
+                            <button className="browse-all-btn" onClick={() => { setView('products'); setActiveCategory('all'); }}>
+                                View All Products <ArrowRight size={18} />
+                            </button>
+                        </div>
+                        <div className="category-bento-grid">
+                            {categories.map((cat, index) => (
+                                <div
+                                    key={cat.id}
+                                    className={`category-tile tile-${(index % 6) + 1} ${['out'].some(k => cat.name.toLowerCase().includes(k))
+                                        ? 'tile-vertical-extra'
+                                        : ['acc', 'jewelry', 'pillow', 'bonnet'].some(k => cat.name.toLowerCase().includes(k))
                                             ? 'tile-square-extra'
                                             : ''
-                                }`}
-                                onClick={() => handleCategoryChange(String(cat.id))}
-                            >
-                                <div className="tile-image-wrapper">
-                                    <img 
-                                        src={categoryImages[cat.id] || ''} 
-                                        alt={cat.name} 
-                                    />
-                                    <div className="tile-overlay"></div>
+                                        }`}
+                                    onClick={() => handleCategoryChange(String(cat.id))}
+                                >
+                                    <div className="tile-image-wrapper">
+                                        <img
+                                            src={categoryImages[cat.id] || ''}
+                                            alt={cat.name}
+                                        />
+                                        <div className="tile-overlay"></div>
+                                    </div>
+                                    <div className="tile-content">
+                                        <h3>{cat.name}</h3>
+                                        <span className="tile-btn">Explore Collection <ArrowRight size={16} /></span>
+                                    </div>
                                 </div>
-                                <div className="tile-content">
-                                    <h3>{cat.name}</h3>
-                                    <span className="tile-btn">Explore Collection <ArrowRight size={16} /></span>
-                                </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
                 ) : (
                     <>
                         {/* Controls */}
-                        <div className="shop-controls">
+                        <div className="shop-controls" style={{ flexWrap: 'wrap', gap: '1rem' }}>
                             <div className="shop-nav-actions">
                                 <button onClick={handleBackToCategories} className="back-btn">
                                     <ArrowRight size={16} style={{ transform: 'rotate(180deg)' }} /> Categories
                                 </button>
                                 <div className="active-cat-label">
-                                    Displaying: <span>{categories.find(c => String(c.id) === activeCategory)?.name || 'All Products'}</span>
+                                    Displaying: <span>{activeCategory === 'all' ? 'All Products' : categories.find(c => String(c.id) === activeCategory)?.name || 'Loading category...'}</span>
                                 </div>
                             </div>
+                            
+                            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center', marginLeft: 'auto' }}>
+                                <div className="shop-search" style={{ position: 'relative' }}>
+                                    <Search size={16} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--muted)' }} />
+                                    <input 
+                                        type="text" 
+                                        placeholder="Search products..." 
+                                        value={searchQuery}
+                                        onChange={(e) => setSearchQuery(e.target.value)}
+                                        style={{ padding: '0.6rem 1rem 0.6rem 2.2rem', borderRadius: '8px', border: '1px solid rgba(0,0,0,0.1)', background: 'white', width: '100%', maxWidth: '250px' }}
+                                    />
+                                </div>
 
-                            <div className="shop-sort">
-                                <label>Sort by:</label>
-                                <select value={sortKey} onChange={(e) => handleSortChange(e.target.value)}>
-                                    {SORT_OPTIONS.map(opt => (
-                                        <option key={opt.value} value={opt.value}>{opt.label}</option>
-                                    ))}
-                                </select>
+                                <div className="shop-sort">
+                                    <label>Sort by:</label>
+                                    <select value={sortKey} onChange={(e) => handleSortChange(e.target.value)}>
+                                        {SORT_OPTIONS.map(opt => (
+                                            <option key={opt.value} value={opt.value}>{opt.label}</option>
+                                        ))}
+                                    </select>
+                                </div>
                             </div>
                         </div>
 
@@ -349,7 +441,7 @@ export default function Shop() {
                                                     className="product-image"
                                                 />
                                             </Link>
-                                            
+
                                             {product.stock_status === 'outofstock' && (
                                                 <span className="product-badge">Out of Stock</span>
                                             )}
@@ -372,22 +464,27 @@ export default function Shop() {
                                             {product.categories?.[0] && (
                                                 <div className="product-category">{product.categories[0].name}</div>
                                             )}
-                                            
+
                                             <Link to={`/shop/product/${product.id}`} className="product-title">
                                                 {product.name}
                                             </Link>
 
                                             <div className="product-rating">
                                                 <div className="stars">
-                                                    {[...Array(5)].map((_, i) => (
-                                                        <Star
-                                                            key={i}
-                                                            size={14}
-                                                            className={i < Math.round(parseFloat(product.average_rating) || 5) ? 'star' : 'star empty'}
-                                                        />
-                                                    ))}
+                                                    {(() => {
+                                                        const rating = reviewRatings[product.id] ?? parseFloat(product.average_rating) ?? 0;
+                                                        const roundedRating = Math.round(rating);
+                                                        return [...Array(5)].map((_, i) => (
+                                                            <Star
+                                                                key={i}
+                                                                size={14}
+                                                                fill={i < roundedRating ? '#ffc107' : 'none'}
+                                                                className={i < roundedRating ? 'star' : 'star empty'}
+                                                            />
+                                                        ));
+                                                    })()}
                                                 </div>
-                                                <span className="rating-count">({product.rating_count || 0})</span>
+                                                <span className="rating-count">({reviewCounts[product.id] ?? product.rating_count ?? 0})</span>
                                             </div>
 
                                             <div className="product-price">
@@ -402,12 +499,21 @@ export default function Shop() {
                                             </div>
 
                                             <button
-                                                onClick={() => addToCart(product)}
+                                                onClick={() => handleAddToCart(product)}
                                                 disabled={product.stock_status === 'outofstock'}
-                                                className="add-to-cart-btn"
+                                                className={`add-to-cart-btn ${addedItems[product.id] ? 'added' : ''}`}
                                             >
-                                                <ShoppingCart size={18} />
-                                                {product.stock_status === 'outofstock' ? 'Out of Stock' : 'Add to Cart'}
+                                                {product.stock_status === 'outofstock' ? (
+                                                    'Out of Stock'
+                                                ) : addedItems[product.id] ? (
+                                                    <>
+                                                        <CheckCircle2 size={18} /> Added!
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <ShoppingCart size={18} /> Add to Cart
+                                                    </>
+                                                )}
                                             </button>
                                         </div>
                                     </div>

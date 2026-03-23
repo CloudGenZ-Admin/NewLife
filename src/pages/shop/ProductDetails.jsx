@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { fetchProduct, fetchProductReviews, submitReview, fetchRelatedProducts, fetchVariations } from '../../api/woocommerce';
 import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
@@ -12,6 +12,7 @@ export default function ProductDetails() {
     const { addToCart } = useCart();
     const { toggleWishlist, isWishlisted } = useWishlist();
     const { user } = useAuth();
+    const navigate = useNavigate();
 
     const [product, setProduct] = useState(null);
     const [variations, setVariations] = useState([]);
@@ -119,16 +120,30 @@ export default function ProductDetails() {
     return (
         <div className="product-details-page">
             <div className="product-container">
-                <div className="breadcrumb">
-                    <Link to="/shop" className="breadcrumb-link">
-                        <ArrowLeft size={14} /> Collections
-                    </Link>
-                    {product.categories?.[0] && (
-                        <>
-                            <span className="breadcrumb-separator">/</span>
-                            <span className="breadcrumb-text">{product.categories[0].name}</span>
-                        </>
-                    )}
+                <div className="product-top-actions">
+                    <div className="breadcrumb">
+                        <Link to="/shop" className="breadcrumb-link">
+                            <ArrowLeft size={14} /> Collections
+                        </Link>
+                        {product.categories?.[0] && (
+                            <>
+                                <span className="breadcrumb-separator">/</span>
+                                <span className="breadcrumb-text">{product.categories[0].name}</span>
+                            </>
+                        )}
+                    </div>
+
+                    <div className="product-page-search">
+                        <form onSubmit={(e) => { e.preventDefault(); const val = e.target.search.value; if(val) navigate(`/shop?search=${val}`); }}>
+                            <input type="text" name="search" placeholder="Search products..." className="detail-search-input" />
+                            <button type="submit" className="detail-search-btn">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
                 </div>
 
                 <div className="product-grid">
@@ -289,9 +304,6 @@ export default function ProductDetails() {
                                 {isWishlisted(product.id) ? 'In Wishlist' : 'Add to Wishlist'}
                             </button>
                             <span className="action-separator">|</span>
-                            <button className="action-btn">
-                                <Share2 size={15} /> Share
-                            </button>
                         </div>
                     </div>
                 </div>

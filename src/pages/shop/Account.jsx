@@ -108,7 +108,7 @@ export default function Account() {
                 const CONSUMER_SECRET = import.meta.env.VITE_WC_CONSUMER_SECRET;
                 const cacheBuster = `_=${Date.now()}`;
                 
-                const response = await fetch(`${WOOCOMMERCE_URL}/wp-json/wc/v3/customers/${user.woocommerce_customer_id}?${Buster}`, {
+                const response = await fetch(`${WOOCOMMERCE_URL}/wp-json/wc/v3/customers/${user.woocommerce_customer_id}?${cacheBuster}`, {
                     headers: {
                         'Authorization': `Basic ${btoa(`${CONSUMER_KEY}:${CONSUMER_SECRET}`)}`
                     }
@@ -238,7 +238,7 @@ export default function Account() {
                                                             </div>
                                                             {order.status === 'pending' && (
                                                                 <button
-                                                                    onClick={() => navigate(`/checkout?order=${order.id}`)}
+                                                                    onClick={() => navigate(`/shop/checkout?order=${order.id}`)}
                                                                     className="view-order-btn"
                                                                     style={{ padding: '0.5rem 1rem', fontSize: '0.85rem' }}
                                                                 >

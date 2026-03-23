@@ -185,6 +185,7 @@ const Navbar = () => {
             <span className="nav-static-link" onClick={() => { window.location.href = '/get-involved'; }}>Get Involved</span>
             <span className="nav-static-link" onClick={() => { window.location.href = '/contact'; }}>Contact</span>
             <span className="nav-static-link" onClick={() => { window.location.href = '/shop'; }}>Shop</span>
+            <span className="nav-static-link" onClick={() => { window.location.href = '/blog'; }}>Blog</span>
             
             {/* Cart Icon */}
             <span className="nav-cart-link" onClick={() => { window.location.href = '/shop/cart'; }}>
@@ -226,7 +227,7 @@ const Navbar = () => {
               </Link>
             )}
             
-            <a href="#" target="_blank" rel="noopener noreferrer" className="nav-donate" onClick={handleLinkClick}>DONATE</a>
+            <a href="" rel="noopener noreferrer" className="nav-donate" onClick={handleLinkClick}>DONATE</a>
           </div>
 
           <button
@@ -260,6 +261,7 @@ const Navbar = () => {
             <a href="#" onClick={toggleProgramsDropdown}>Programs <span className="arrow">{isProgramsDropdownOpen ? '−' : '+'}</span></a>
             <div className="mobile-dropdown-children">
               <div className="mobile-dropdown-inner">
+                <Link to="/programs" onClick={handleLinkClick} style={{ fontWeight: 'bold', borderBottom: '1px solid rgba(0,0,0,0.05)', paddingBottom: '0.5rem' }}>View All Programs</Link>
                 <Link to="/programs/empowerment" onClick={handleLinkClick}>Empowerment</Link>
                 <Link to="/programs/language" onClick={handleLinkClick}>Language</Link>
                 <Link to="/programs/sewing" onClick={handleLinkClick}>Sewing</Link>
@@ -272,6 +274,7 @@ const Navbar = () => {
           <Link to="/get-involved" onClick={handleLinkClick}>Get Involved</Link>
           <Link to="/contact" onClick={handleLinkClick}>Contact</Link>
           <Link to="/shop" onClick={handleLinkClick}>Shop</Link>
+          <Link to="/blog" onClick={handleLinkClick}>Blog</Link>
           <Link to="/shop/cart" className="mobile-cart-link" onClick={handleLinkClick}>
             <ShoppingCart size={20} />
             <span>Cart {cartItemCount > 0 && `(${cartItemCount})`}</span>

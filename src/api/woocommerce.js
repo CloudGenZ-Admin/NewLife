@@ -69,6 +69,7 @@ export async function fetchProducts({
     status: "publish",
     ...(category ? { category } : {}),
     ...(search ? { search } : {}),
+    _: Date.now(),
   });
   try {
     return await wooFetch(`/products?${params}`);
