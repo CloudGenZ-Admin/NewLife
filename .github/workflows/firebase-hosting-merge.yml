@@ -13,6 +13,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Create .env file
+        run: |
+          echo "VITE_WC_URL=${{ secrets.VITE_WC_URL }}" >> .env
+          echo "VITE_WC_CONSUMER_KEY=${{ secrets.VITE_WC_CONSUMER_KEY }}" >> .env
+          echo "VITE_WC_CONSUMER_SECRET=${{ secrets.VITE_WC_CONSUMER_SECRET }}" >> .env
+          echo "VITE_STRIPE_PUBLISHABLE_KEY=${{ secrets.VITE_STRIPE_PUBLISHABLE_KEY }}" >> .env
+          echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" >> .env
+      
       - name: Install & Build
         run: |
           npm ci
