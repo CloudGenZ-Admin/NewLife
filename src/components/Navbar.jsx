@@ -222,9 +222,9 @@ const Navbar = () => {
                 </div>
               </div>
             ) : (
-              <Link to="/shop/auth" className="nav-login-link" onClick={handleLinkClick}>
+              <span className="nav-static-link" onClick={() => { window.location.href = '/shop/auth'; }}>
                 Login
-              </Link>
+              </span>
             )}
             
             <a href="" rel="noopener noreferrer" className="nav-donate" onClick={handleLinkClick}>DONATE</a>
