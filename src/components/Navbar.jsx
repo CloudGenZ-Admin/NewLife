@@ -160,6 +160,7 @@ const Navbar = () => {
               <div className={`dropdown-menu dropdown-about-menu ${isAboutDropdownOpen ? 'open' : ''}`}>
                 <Link to="/about" onClick={handleLinkClick}>Our Story</Link>
                 <Link to="/our-africa" onClick={handleLinkClick}>Our Africa</Link>
+                <Link to="/womens-world" onClick={handleLinkClick}>Women's World</Link>
               </div>
             </div>
 
@@ -253,6 +254,7 @@ const Navbar = () => {
               <div className="mobile-dropdown-inner">
                 <Link to="/about" onClick={handleLinkClick}>Our Story</Link>
                 <Link to="/our-africa" onClick={handleLinkClick}>Our Africa</Link>
+                <Link to="/womens-world" onClick={handleLinkClick}>Women's World</Link>
               </div>
             </div>
           </div>

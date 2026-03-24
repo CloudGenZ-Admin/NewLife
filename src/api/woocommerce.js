@@ -214,7 +214,7 @@ export async function fetchCustomerOrders(customerId) {
   if (!customerId) return [];
   try {
     const orders = await wooFetch(
-      `/orders?customer=${customerId}&per_page=20&orderby=date&order=desc&status=any`,
+      `/orders?customer=${customerId}&per_page=20&orderby=date&order=desc&status=any&_=${Date.now()}`,
     );
     return orders;
   } catch (e) {

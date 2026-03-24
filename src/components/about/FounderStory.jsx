@@ -193,7 +193,7 @@ const FounderStory = () => {
 
             <div className="founder-call-to-action">
               <p>We invite you to be part of this journey. Help us create pathways to opportunity.</p>
-              <a href="#newsletter" className="editorial-btn">Join the Movement</a>
+              <a href="/contact" className="editorial-btn">Join the Movement</a>
             </div>
           </div>
         </div>

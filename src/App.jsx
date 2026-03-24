@@ -3,6 +3,7 @@ import './styles/global.css'
 import Home from './pages/Home'
 import About from './pages/About'
 import OurAfrica from './pages/OurAfrica'
+import WomensWorld from './pages/WomensWorld'
 import GetInvolved from './pages/GetInvolved'
 import Contact from './pages/Contact'
 import ShippingPolicy from './pages/ShippingPolicy'
@@ -70,6 +71,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/our-africa" element={<OurAfrica />} />
+                <Route path="/womens-world" element={<WomensWorld />} />
                 <Route path="/get-involved" element={<GetInvolved />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/shipping-policy" element={<ShippingPolicy />} />

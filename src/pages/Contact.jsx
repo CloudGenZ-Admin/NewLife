@@ -26,14 +26,33 @@ const Contact = () => {
         e.preventDefault();
         setStatus('submitting');
 
-        // Frontend only submission logic
-        setTimeout(() => {
-            setStatus('success');
-            setFormData({ name: '', email: '', phone: '', inquiry: '', message: '' });
-            
-            // Optional: reset to idle after some time
+        // Create FormData object
+        const form = e.target;
+        const formDataToSend = new FormData(form);
+
+        // Submit to FormSubmit.co
+        fetch('https://formsubmit.co/dev.cloudgenz.growth91@gmail.com', {
+            method: 'POST',
+            body: formDataToSend,
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                setStatus('success');
+                setFormData({ name: '', email: '', phone: '', inquiry: '', message: '' });
+                setTimeout(() => setStatus('idle'), 5000);
+            } else {
+                setStatus('error');
+                setTimeout(() => setStatus('idle'), 5000);
+            }
+        })
+        .catch(error => {
+            console.error('Form submission error:', error);
+            setStatus('error');
             setTimeout(() => setStatus('idle'), 5000);
-        }, 800);
+        });
     };
 
     useEffect(() => {
@@ -186,10 +205,16 @@ const Contact = () => {
                             </div>
 
                             <form className="premium-contact-form" onSubmit={handleSubmit}>
+                                {/* Hidden fields for FormSubmit configuration */}
+                                <input type="hidden" name="_subject" value="New Contact Form Submission - NewLife Project" />
+                                <input type="hidden" name="_captcha" value="false" />
+                                <input type="hidden" name="_template" value="table" />
+                                
                                 <div className="form-group">
                                     <input
                                         type="text"
                                         id="name"
+                                        name="name"
                                         placeholder="Full Name"
                                         required
                                         value={formData.name}
@@ -200,6 +225,7 @@ const Contact = () => {
                                     <input
                                         type="email"
                                         id="email"
+                                        name="email"
                                         placeholder="Email Address"
                                         required
                                         value={formData.email}
@@ -210,6 +236,7 @@ const Contact = () => {
                                     <input
                                         type="tel"
                                         id="phone"
+                                        name="phone"
                                         placeholder="Phone Number (optional)"
                                         value={formData.phone}
                                         onChange={handleChange}
@@ -218,6 +245,7 @@ const Contact = () => {
                                 <div className="form-group">
                                     <select
                                         id="inquiry"
+                                        name="inquiry"
                                         required
                                         value={formData.inquiry}
                                         onChange={handleChange}
@@ -233,6 +261,7 @@ const Contact = () => {
                                 <div className="form-group">
                                     <textarea
                                         id="message"
+                                        name="message"
                                         rows="5"
                                         placeholder="Your Message"
                                         required

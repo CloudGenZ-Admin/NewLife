@@ -142,6 +142,10 @@ export default function StripePaymentForm({ orderData, pendingOrder, finalTotal,
                     updateData.coupon_lines = [{ code: couponCode }];
                     updateData.discount_total = discountAmount.toFixed(2);
                     updateData.total = (parseFloat(pendingOrder.total) - discountAmount).toFixed(2);
+                } else {
+                    // Explicitly clear coupon if it was removed
+                    updateData.coupon_lines = [];
+                    updateData.discount_total = '0.00';
                 }
                 
                 const updatedOrder = await updateOrder(pendingOrder.id, updateData);

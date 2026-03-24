@@ -124,6 +124,25 @@ export default function Checkout() {
                     
                     setPendingOrder(orderData);
                     setStep('payment');
+
+                    if (orderData.coupon_lines && orderData.coupon_lines.length > 0) {
+                        const appliedCoupon = orderData.coupon_lines[0];
+                        setCouponCode(appliedCoupon.code);
+                        
+                        // Fetch actual coupon details from WooCommerce to get correct amount/type
+                        try {
+                            const couponDetails = await validateCoupon(appliedCoupon.code);
+                            setCoupon(couponDetails);
+                        } catch (err) {
+                            console.warn('Could not fetch coupon details, using order data:', err);
+                            // Fallback to order data if coupon fetch fails
+                            setCoupon({
+                                code: appliedCoupon.code,
+                                amount: appliedCoupon.discount,
+                                discount_type: 'fixed_cart'
+                            });
+                        }
+                    }
                     
                     // Fetch product images for order items
                     const images = {};
@@ -198,6 +217,25 @@ export default function Checkout() {
             setCouponError(err.message);
         } finally {
             setCouponLoading(false);
+        }
+    };
+
+    const handleRemoveCoupon = async () => {
+        setCoupon(null);
+        setCouponCode('');
+        setCouponError('');
+        
+        // If there's a pending order, update it on the server to remove the coupon
+        if (pendingOrder?.id) {
+            try {
+                const updatedOrder = await updateOrder(pendingOrder.id, {
+                    coupon_lines: [],
+                });
+                setPendingOrder(updatedOrder);
+            } catch (err) {
+                console.error('Failed to remove coupon from order:', err);
+                // Still remove from UI even if server update fails
+            }
         }
     };
 
@@ -545,7 +583,7 @@ export default function Checkout() {
                                         <span className="coupon-code">
                                             <Tag size={14} /> {coupon.code} — {coupon.discount_type === 'percent' ? `${coupon.amount}% Off` : `$${coupon.amount} Off`}
                                         </span>
-                                        <button onClick={() => { setCoupon(null); setCouponCode(''); }} className="remove-coupon-btn">
+                                        <button onClick={handleRemoveCoupon} className="remove-coupon-btn">
                                             <X size={16} />
                                         </button>
                                     </div>

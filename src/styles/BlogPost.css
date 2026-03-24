@@ -10,8 +10,77 @@
 }
 
 .blog-post-page.brand-sync-theme {
-  background: var(--nl-bg);
+  background: #fff;
   min-height: 100vh;
+}
+
+/* Loading State */
+.blog-post-loading {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.blog-post-loading .loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid var(--nl-border);
+  border-top-color: var(--nl-green);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.blog-post-loading p {
+  font-family: var(--fb);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--nl-muted);
+  letter-spacing: 0.05em;
+}
+
+/* Error State */
+.blog-post-error {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.blog-post-error p {
+  font-family: var(--fb);
+  font-size: 1.2rem;
+  color: var(--nl-muted);
+}
+
+.blog-post-error .back-to-blog {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  background: var(--nl-green);
+  color: #fff;
+  font-family: var(--fb);
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.blog-post-error .back-to-blog:hover {
+  background: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
 }
 
 /* 0. Scroll Progress Bar */
@@ -28,7 +97,7 @@
 /* 1. Brand Architectural Hero (Zero Top Gap) */
 .brand-post-hero {
   padding: 120px 0 0px !important;
-  background: var(--nl-bg);
+  background: #fff;
   border-bottom: 1px solid var(--nl-border);
 }
 
@@ -98,72 +167,17 @@
   color: var(--nl-green);
 }
 
-/* 2. Article Wrapper (Architectural Grid) */
+/* 2. Article Wrapper */
 .brand-article-wrapper {
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 140px 1fr;
-  gap: 80px;
   padding: 100px 5% 80px;
   position: relative;
 }
 
-/* Sidebar Styling */
-.article-aside {
-  position: relative;
-  z-index: 10;
-}
-
-.sticky-actions {
-  position: sticky;
-  top: 140px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  padding-right: 40px;
-  border-right: 1px solid var(--nl-border);
-}
-
-.sticky-actions::before {
-  content: "SHARE STOTY";
-  font-family: var(--fb);
-  font-size: 0.55rem;
-  font-weight: 900;
-  letter-spacing: 0.5em;
-  color: var(--nl-green);
-  transform: rotate(-90deg);
-  white-space: nowrap;
-  margin-bottom: 3.5rem;
-  opacity: 0.8;
-}
-
-.action-circle {
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #fff;
-  border: 1px solid var(--nl-border);
-  border-radius: 50%;
-  color: var(--nl-dark);
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.action-circle:hover {
-  background: var(--nl-green);
-  color: #fff;
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(76, 175, 80, 0.2);
-  border-color: var(--nl-green);
-}
-
-/* 3. Main Content Content */
+/* 3. Main Content */
 .article-main-content {
-  max-width: 820px;
+  max-width: 100%;
 }
 
 .brand-visual-frame {
@@ -308,25 +322,7 @@
 /* RESPONSIVE DESIGN */
 @media (max-width: 1024px) {
   .brand-article-wrapper {
-    grid-template-columns: 1fr;
-    gap: 40px;
     padding-top: 60px;
-  }
-  
-  .sticky-actions {
-    flex-direction: row;
-    padding-right: 0;
-    padding-bottom: 20px;
-    border-right: none;
-    border-bottom: 1px solid var(--nl-border);
-    justify-content: center;
-    position: static;
-  }
-  
-  .sticky-actions::before {
-    transform: none;
-    margin-bottom: 0;
-    margin-right: 2rem;
   }
   
   .blog-post-content img {
@@ -338,7 +334,7 @@
   
   .brand-visual-frame {
     margin-bottom: 2rem;
-    overflow: visible; /* Prevent clipping */
+    overflow: visible;
   }
 }
 

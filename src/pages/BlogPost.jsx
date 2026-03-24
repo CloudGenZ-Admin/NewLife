@@ -30,7 +30,10 @@ export default function BlogPost() {
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, [id]);
 
   // Hero Entrance & Content Animation
@@ -109,9 +112,6 @@ export default function BlogPost() {
     return post._embedded?.['wp:featuredmedia']?.[0]?.source_url || null;
   };
 
-  const getAuthorName = (post) => {
-    return post._embedded?.author?.[0]?.name || 'NewLife Project';
-  };
 
   if (loading) {
     return (
@@ -159,24 +159,12 @@ export default function BlogPost() {
               <Calendar size={18} />
               <span>{formatDate(post.date)}</span>
             </div>
-            <div className="brand-meta-item">
-              <User size={18} />
-              <span>{getAuthorName(post)}</span>
-            </div>
           </div>
         </div>
       </header>
 
       <div className="blog-post-container brand-container">
         <article className="brand-article-wrapper">
-          <aside className="article-aside">
-            <div className="sticky-actions">
-              <div className="action-circle"><Share2 size={18} /></div>
-              <div className="action-circle"><BookOpen size={18} /></div>
-              <div className="action-circle"><Clock size={18} /></div>
-            </div>
-          </aside>
-
           <div className="article-main-content">
             {featuredImage && (
               <div className="brand-visual-frame">
