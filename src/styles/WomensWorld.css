@@ -61,7 +61,7 @@
 }
 
 .ww-label-light {
-  background: rgba(255,255,255,0.15);
+  background: rgba(255, 255, 255, 0.15);
   color: #fff;
 }
 
@@ -211,7 +211,7 @@
 .ww-barrier-visual {
   border-radius: var(--ww-radius);
   overflow: hidden;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
 }
 
 .ww-barrier-visual img {
@@ -248,7 +248,7 @@
 
 .ww-barrier-card:hover {
   border-color: var(--ww-green);
-  box-shadow: 0 4px 20px rgba(76,175,80,0.08);
+  box-shadow: 0 4px 20px rgba(76, 175, 80, 0.08);
   transform: translateY(-2px);
 }
 
@@ -296,7 +296,7 @@
 .ww-initiative-visual {
   border-radius: var(--ww-radius);
   overflow: hidden;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
 }
 
 .ww-initiative-visual img {
@@ -315,7 +315,7 @@
   letter-spacing: -0.01em;
 }
 
-.ww-initiative-text > p {
+.ww-initiative-text>p {
   font-family: var(--fb);
   font-size: 1.05rem;
   line-height: 1.8;
@@ -390,7 +390,7 @@
   font-family: var(--fb);
   font-size: 1.05rem;
   line-height: 1.6;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255, 255, 255, 0.85);
   margin: 0;
 }
 
@@ -406,85 +406,30 @@
   display: block;
 }
 
-/* ═══ MEMBERSHIP TIERS ══════════════════════════ */
-.ww-tiers {
+/* ═══ MEMBERSHIP TICKETING ══════════════════════ */
+.ww-membership {
   background: #fff;
   border-top: 1px solid var(--ww-border);
 }
 
-.ww-tiers-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.ww-tier-card {
-  background: var(--ww-bg);
-  border: 1px solid var(--ww-border);
-  border-radius: 20px;
-  padding: 40px 32px;
-  text-align: center;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+.ww-membership-iframe-wrapper {
   position: relative;
+  width: 100%;
+  min-height: 1200px;
+  /* Ticketing forms need more height */
+  border-radius: var(--ww-radius);
   overflow: hidden;
-}
-
-.ww-tier-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-}
-
-.ww-tier-featured {
-  border-color: var(--ww-green);
+  border: 1px solid var(--ww-border);
   background: #fff;
-  box-shadow: 0 12px 40px rgba(76,175,80,0.1);
-  transform: scale(1.04);
 }
 
-.ww-tier-featured:hover {
-  transform: scale(1.04) translateY(-6px);
-}
-
-.ww-tier-badge {
-  display: inline-block;
-  font-family: var(--fb);
-  font-size: 0.65rem;
-  font-weight: 800;
-  letter-spacing: 0.15em;
-  color: var(--ww-green);
-  background: var(--ww-green-light);
-  padding: 6px 16px;
-  border-radius: 50px;
-  margin-bottom: 20px;
-}
-
-.ww-tier-featured .ww-tier-badge {
-  background: var(--ww-green);
-  color: #fff;
-}
-
-.ww-tier-card h3 {
-  font-family: var(--ff);
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: var(--ww-dark);
-  margin: 0 0 16px;
-}
-
-.ww-tier-price {
-  font-family: var(--ff);
-  font-size: 2.8rem;
-  font-weight: 300;
-  color: var(--ww-green);
-  margin-bottom: 16px;
-  letter-spacing: -0.02em;
-}
-
-.ww-tier-card p {
-  font-family: var(--fb);
-  font-size: 0.92rem;
-  line-height: 1.7;
-  color: var(--ww-muted);
+.ww-membership-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
 /* ═══ GALLERY ═══════════════════════════════════ */
@@ -531,6 +476,7 @@
    ═══════════════════════════════════════════════ */
 
 @media (max-width: 1024px) {
+
   .ww-split,
   .ww-barriers-grid,
   .ww-initiative-block,

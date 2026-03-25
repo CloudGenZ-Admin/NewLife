@@ -1,13 +1,15 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitType from 'split-type';
 import '../styles/SewingEntrepreneurship.css'; // The new bespoke CSS
+import ProgramRegistrationPopup from '../components/ProgramRegistrationPopup';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const SewingEntrepreneurship = () => {
   const pageRef = useRef(null);
+  const [showReg, setShowReg] = useState(false);
 
   useEffect(() => {
     let ctx = gsap.context(() => {
@@ -165,6 +167,31 @@ const SewingEntrepreneurship = () => {
         </div>
       </section>
 
+      {/* REGISTRATION CALL TO ACTION */}
+      <section className="sew-reg-cta" style={{ textAlign: 'center', padding: '100px 20px', background: 'white', borderTop: '1px solid #eee' }}>
+        <div className="container">
+          <span className="preg-label" style={{ display: 'block', marginBottom: '15px' }}>Take the next step</span>
+          <h2 style={{ fontFamily: 'var(--ff)', fontSize: '3.5rem', marginBottom: '30px' }}>Ready to <em>Join?</em></h2>
+          <button 
+            className="preg-submit-btn" 
+            style={{ padding: '20px 60px', fontSize: '1.1rem' }}
+            onClick={() => setShowReg(true)}
+          >
+            Register for this Program
+          </button>
+        </div>
+      </section>
+
+      <ProgramRegistrationPopup 
+        show={showReg} 
+        onClose={() => setShowReg(false)} 
+        programName="Sewing & Skills"
+        formAction="https://docs.google.com/forms/d/e/1FAIpQLSfeIx4ftvUiY0TtApb3nZDLmA0wz58Pf44JTvIyzjFSvBqpJQ/formResponse"
+        entryProgram="entry.574291237"
+        entryName="entry.743630460"
+        entryEmail="entry.2010389936"
+        entryContact="entry.1005238941"
+      />
     </div>
   );
 };

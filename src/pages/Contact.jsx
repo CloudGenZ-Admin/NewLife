@@ -156,11 +156,10 @@ const Contact = () => {
                     <div className="contact-layout-grid">
                         {/* LEFT SIDE: CONTACT CARDS */}
                         <div className="contact-methods-stack">
-                            <div className="contact-method-card">
+                             <div className="contact-method-card">
                                 <h3>Visit Us</h3>
-                                <p><strong>NewLife Project Inc.</strong><br />Head Office<br />Ottawa, Ontario, Canada</p>
-                                <span className="note">(Full address to be added)</span>
-                            </div>
+                                <p><strong>NewLife Project Inc.</strong><br />5-2000 Thurston Drive<br />Ottawa, ON K1G 4K7</p>
+                             </div>
 
                             <div className="contact-method-card highlighting">
                                 <h3>Email Us</h3>
@@ -184,8 +183,12 @@ const Contact = () => {
                                 <h3>Call Us</h3>
                                 <div className="email-links">
                                     <div className="email-item">
-                                        <span>Phone</span>
-                                        <a href="tel:#">(Add phone number)</a>
+                                        <span>Phone 1</span>
+                                        <a href="tel:+16136997205">+1 (613) 699-7205</a>
+                                    </div>
+                                    <div className="email-item">
+                                        <span>Phone 2</span>
+                                        <a href="tel:+18196397417">+1 (819) 639-7417</a>
                                     </div>
                                     <div className="email-item">
                                         <span>Office Hours</span>

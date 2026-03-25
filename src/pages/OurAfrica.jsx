@@ -1,13 +1,15 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitType from 'split-type';
 import '../styles/OurAfrica.css';
+import DonationPopup from '../components/DonationPopup';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const OurAfrica = () => {
   const sectionRef = useRef(null);
+  const [showDonation, setShowDonation] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -92,11 +94,24 @@ const OurAfrica = () => {
               </p>
             </div>
             <div className="africa-hero-visual">
-              <img 
-                src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/Our_Africa.jpg?v=1705192915" 
-                alt="Our Africa Banner" 
-                className="africa-main-banner"
-              />
+              <div className="africa-banner-split">
+                <div className="africa-banner-left">
+                  <h2 className="africa-banner-title">Our work in <em>Africa</em></h2>
+                  <button 
+                    className="gi-btn-arch" 
+                    onClick={() => setShowDonation(true)}
+                  >
+                    Support our work in Africa
+                  </button>
+                </div>
+                <div className="africa-banner-right">
+                  <img 
+                    src="/Our_Africa.jpg" 
+                    alt="Our Africa Banner" 
+                    className="africa-banner-img-v2"
+                  />
+                </div>
+              </div>
               <div className="africa-floating-card africa-floating-img">
                 <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/Violet_and_Green_Lavender_Photo_Collage_Instagram_Post_9a6a3bad-b7da-4420-8e60-0c8122edb6d1.png?v=1746253803" alt="Community Smile" />
               </div>
@@ -171,6 +186,12 @@ const OurAfrica = () => {
             </div>
           </div>
         </div>
+
+        <DonationPopup 
+          show={showDonation} 
+          onClose={() => setShowDonation(false)} 
+          donationUrl="https://www.zeffy.com/en-CA/donation-form/africa-impact-initiative"
+        />
       </section>
     </div>
   );

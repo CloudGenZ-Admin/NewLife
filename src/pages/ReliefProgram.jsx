@@ -1,13 +1,15 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitType from 'split-type';
-import '../styles/Relief.css'; // The new Typography Manifesto CSS
+import '../styles/Relief.css'; 
+import ProgramRegistrationPopup from '../components/ProgramRegistrationPopup';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const ReliefProgram = () => {
   const pageRef = useRef(null);
+  const [showReg, setShowReg] = useState(false);
 
   useEffect(() => {
     let ctx = gsap.context(() => {
@@ -47,7 +49,7 @@ const ReliefProgram = () => {
       });
 
       // Footer Reveal
-      gsap.from('.tp-footer h2, .tp-footer p', {
+      gsap.from('.tp-footer h2, .tp-footer p, .tp-reg-cta', {
         scrollTrigger: { trigger: '.tp-footer', start: 'top 80%' },
         y: 60, opacity: 0, duration: 1.2, stagger: 0.2, ease: 'power3.out'
       });
@@ -145,6 +147,20 @@ const ReliefProgram = () => {
 
       </section>
 
+      {/* REGISTRATION CALL TO ACTION */}
+      <section className="tp-reg-cta" style={{ textAlign: 'center', padding: '100px 20px', background: 'white', borderTop: '1px solid #eee' }}>
+        <div className="container">
+          <span className="preg-label" style={{ display: 'block', marginBottom: '15px' }}>Take the next step</span>
+          <h2 style={{ fontFamily: 'var(--ff)', fontSize: '3.5rem', marginBottom: '30px' }}>Ready to <em>Join?</em></h2>
+          <button 
+            className="preg-submit-btn" 
+            style={{ padding: '20px 60px', fontSize: '1.1rem' }}
+            onClick={() => setShowReg(true)}
+          >
+            Register for this Program
+          </button>
+        </div>
+      </section>
 
       {/* 3. THE CLOSING STATEMENT */}
       <footer className="tp-footer">
@@ -152,6 +168,16 @@ const ReliefProgram = () => {
         <p>When you support the NewLife Project, you are not only making a contribution — you are investing in education, empowerment, and opportunity. Join us in creating pathways to hope, dignity, and lasting transformation.</p>
       </footer>
 
+      <ProgramRegistrationPopup 
+        show={showReg} 
+        onClose={() => setShowReg(false)} 
+        programName="Relief & Diaspora"
+        formAction="https://docs.google.com/forms/d/e/1FAIpQLSdjZ2b2b9-S3-uVmcrw_L7VpewsAHFXxXSI-RH25cicymwFLQ/formResponse"
+        entryProgram="entry.574291237"
+        entryName="entry.743630460"
+        entryEmail="entry.2010389936"
+        entryContact="entry.1005238941"
+      />
     </div>
   );
 };

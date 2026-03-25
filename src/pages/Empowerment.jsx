@@ -1,12 +1,14 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef,useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../styles/Empowerment.css';
+import ProgramRegistrationPopup from '../components/ProgramRegistrationPopup';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Empowerment = () => {
     const pageRef = useRef(null);
+    const [showReg, setShowReg] = useState(false);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -145,6 +147,31 @@ const Empowerment = () => {
                 </div>
             </section>
 
+            {/* REGISTRATION CALL TO ACTION */}
+            <section className="emp-reg-cta" style={{ textAlign: 'center', padding: '100px 20px', background: 'white', borderTop: '1px solid #eee' }}>
+                <div className="container">
+                    <span className="preg-label" style={{ display: 'block', marginBottom: '15px' }}>Take the next step</span>
+                    <h2 style={{ fontFamily: 'var(--ff)', fontSize: '3.5rem', marginBottom: '30px' }}>Ready to <em>Join?</em></h2>
+                    <button 
+                        className="preg-submit-btn" 
+                        style={{ padding: '20px 60px', fontSize: '1.1rem' }}
+                        onClick={() => setShowReg(true)}
+                    >
+                        Register for this Program
+                    </button>
+                </div>
+            </section>
+
+            <ProgramRegistrationPopup 
+                show={showReg} 
+                onClose={() => setShowReg(false)} 
+                programName="Youth & Women Empowerment"
+                formAction="https://docs.google.com/forms/d/e/1FAIpQLSdiA3Cav8ifqBpZObmBDalpXJoj06YP06Sgt9dfuSdjgldwng/formResponse"
+                entryProgram="entry.574291237"
+                entryName="entry.743630460"
+                entryEmail="entry.2010389936"
+                entryContact="entry.1005238941"
+            />
         </div>
     );
 };

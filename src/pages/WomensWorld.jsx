@@ -52,7 +52,7 @@ const WomensWorld = () => {
 
       // Section reveals
       gsap.utils.toArray('.ww-section').forEach((section) => {
-        gsap.fromTo(section, 
+        gsap.fromTo(section,
           { y: 60, opacity: 0 },
           {
             y: 0,
@@ -67,7 +67,7 @@ const WomensWorld = () => {
       });
 
       // Gallery stagger
-      gsap.fromTo('.ww-gallery-item', 
+      gsap.fromTo('.ww-gallery-item',
         { y: 40, opacity: 0 },
         {
           y: 0,
@@ -82,7 +82,7 @@ const WomensWorld = () => {
       );
 
       // Pricing cards stagger
-      gsap.fromTo('.ww-tier-card', 
+      gsap.fromTo('.ww-tier-card',
         { y: 40, opacity: 0 },
         {
           y: 0,
@@ -328,29 +328,6 @@ const WomensWorld = () => {
         </div>
       </section>
 
-      {/* ═══ MEMBERSHIP TIERS ═══ */}
-      <section className="ww-section ww-tiers">
-        <div className="ww-container">
-          <div className="ww-section-header">
-            <span className="ww-label">Membership</span>
-            <h2 className="ww-heading">Join the <em>Forum</em></h2>
-          </div>
-          <div className="ww-tiers-grid">
-            <div className="ww-tier-card ww-tier-founding">
-              <h3>Founding Leaders</h3>
-              <div className="ww-tier-price" style={{ marginBottom: 0 }}>$1,500</div>
-            </div>
-            <div className="ww-tier-card ww-tier-fellows ww-tier-featured">
-              <h3>Fellows</h3>
-              <div className="ww-tier-price" style={{ marginBottom: 0 }}>$1,000</div>
-            </div>
-            <div className="ww-tier-card ww-tier-emerging">
-              <h3>Emerging</h3>
-              <div className="ww-tier-price" style={{ marginBottom: 0 }}>$500</div>
-            </div>
-          </div>
-        </div>
-      </section>
 
 
       {/* ═══ GALLERY ═══ */}
@@ -376,6 +353,24 @@ const WomensWorld = () => {
             <div className="ww-gallery-item">
               <img src={FORUM_IMAGES.forum2} alt="Forum moment 5" />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ MEMBERSHIP TICKETING ═══ */}
+      <section className="ww-section ww-membership">
+        <div className="ww-container">
+          <div className="ww-section-header">
+            <span className="ww-label">Membership</span>
+            <h2 className="ww-heading">Join the <em>Forum</em></h2>
+          </div>
+          <div className="ww-membership-iframe-wrapper">
+            <iframe
+              title="Membership ticketing powered by Zeffy"
+              src="https://www.zeffy.com/en-CA/ticketing/womens-world-memberships"
+              allowTransparency="true"
+              className="ww-membership-iframe"
+            />
           </div>
         </div>
       </section>

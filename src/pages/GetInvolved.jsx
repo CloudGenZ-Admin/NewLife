@@ -11,6 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 const GetInvolved = () => {
     const heroRef = useRef(null);
     const [showDonation, setShowDonation] = useState(false);
+    const [donationUrl, setDonationUrl] = useState("https://www.zeffy.com/en-CA/donation-form/newlife-project");
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -80,7 +81,7 @@ const GetInvolved = () => {
                     ))}
                 </div>
 
-                <div className="architect-decoration gi-decor"></div>
+                <div className="architect-decoration gi-decor" style={{ opacity: 0.05 }}></div>
 
                 <div className="architect-wrapper">
                     <div className="architect-title-group">
@@ -125,22 +126,63 @@ const GetInvolved = () => {
                         <div className="gi-card">
                             <h3>Donate</h3>
                             <p>Your contribution helps provide education support, skills training, mentorship, and empowerment programs for women and youth.</p>
-                            <a href="#" className="gi-btn-arch" onClick={(e) => { e.preventDefault(); setShowDonation(true); }}>Donate Now</a>
-                        </div>
-                        <div className="gi-card">
-                            <h3>Become a Corporate Partner</h3>
-                            <p>Organizations can support NewLife by sponsoring programs, events, or leadership initiatives that create measurable community impact. Corporate partners receive visibility opportunities and play an important role in expanding access to empowerment programs.</p>
-                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf9dSsOqSvfjECakLFVDB84Fa6NtkzVMoy5OlorjRMrDsXj5g/viewform?usp=dialog" className="gi-link" target="_blank" rel="noopener noreferrer">Learn About Corporate Partnerships &rarr;</a>
-                        </div>
-                        <div className="gi-card">
-                            <h3>Legacy Giving</h3>
-                            <p>Support the long-term sustainability of NewLife Project by including the organization in your future giving plans. Legacy giving helps ensure that future generations continue to benefit from education and empowerment opportunities.</p>
-                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdWqBbJbbuDxyA_85ZoXuGJfcZplVPIzH5LqwKADUK2TigRsw/viewform?usp=dialog" className="gi-link" target="_blank" rel="noopener noreferrer">Learn More About Legacy Giving &rarr;</a>
+                            <a 
+                                href="#" 
+                                className="gi-btn-arch" 
+                                onClick={(e) => { 
+                                    e.preventDefault(); 
+                                    setDonationUrl("https://www.zeffy.com/en-CA/donation-form/newlife-project");
+                                    setShowDonation(true); 
+                                }}
+                            >
+                                Donate Now
+                            </a>
                         </div>
                         <div className="gi-card">
                             <h3>Host a Fundraiser</h3>
                             <p>Community members can organize fundraising activities such as cultural events, workplace campaigns, or personal celebrations to support NewLife programs. Hosting a fundraiser is a meaningful way to bring people together while contributing to positive change.</p>
                             <a href="https://docs.google.com/forms/d/e/1FAIpQLSdrL2wrcj_i2U4S4SK54lwaVrzlyM0yXuHOffqtnXcgO_ZqIQ/viewform?usp=dialog" className="gi-btn-arch" target="_blank" rel="noopener noreferrer">Start a Fundraiser</a>
+                        </div>
+                        <div className="gi-card">
+                            <h3>Legacy Giving</h3>
+                            <p>Support the long-term sustainability of NewLife Project by including the organization in your future giving plans.</p>
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdWqBbJbbuDxyA_85ZoXuGJfcZplVPIzH5LqwKADUK2TigRsw/viewform?usp=dialog" className="gi-btn-arch" target="_blank" rel="noopener noreferrer">Legacy Giving Form</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* CORPORATE PARTNERSHIP: FEATURED SECTION */}
+            <section className="gi-arch-section gi-corporate-feature" id="corporate">
+                <div className="container">
+                    <div className="gi-corporate-layout">
+                        <div className="gi-corporate-content">
+                            <span className="gi-label">Partnership</span>
+                            <h2 className="gi-title">Become a <em>Corporate Partner</em></h2>
+                            <div className="gi-corporate-text">
+                                <p>Organizations can partner with NewLife to expand access to education, leadership development, and empowerment programs for women and youth across communities.</p>
+                                <p>Corporate support can take many forms including program sponsorship, event partnership, leadership initiative funding, or direct contributions that help scale impact.</p>
+                                <p>Partners benefit from meaningful brand visibility, employee engagement opportunities, and measurable social impact outcomes.</p>
+                            </div>
+                        </div>
+                        <div className="gi-corporate-cta-box">
+                            <div className="gi-cta-inner">
+                                <h3>How would you like to get involved?</h3>
+                                <div className="gi-cta-actions">
+                                <a href="https://docs.google.com/forms/d/e/1FAIpQLSf9dSsOqSvfjECakLFVDB84Fa6NtkzVMoy5OlorjRMrDsXj5g/viewform?usp=dialog" className="gi-btn-arch" target="_blank" rel="noopener noreferrer">Corporate Partnership Form</a>
+                                    <a 
+                                        href="#" 
+                                        className="gi-btn-arch"
+                                        onClick={(e) => { 
+                                            e.preventDefault(); 
+                                            setDonationUrl("https://www.zeffy.com/en-CA/donation-form/sponsor-a-program-donate-now");
+                                            setShowDonation(true); 
+                                        }}
+                                    >
+                                        Sponsor a Program / Donate Now
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -177,17 +219,17 @@ const GetInvolved = () => {
                         <div className="gi-newsletter-box">
                             <h3>Newsletter</h3>
                             <p>Stay connected with NewLife Project by reading our latest updates, impact stories, and program highlights.</p>
-                            <div className="gi-newsletter-links">
-                                <a href="#" className="gi-link">Read Current Newsletter &rarr;</a>
-                                <a href="#" className="gi-link">View Newsletter Archive &rarr;</a>
-                            </div>
 
                             <h4 style={{ marginTop: '3rem', fontFamily: 'var(--ff)', fontSize: '2rem' }}>Subscribe</h4>
                             <p>Join our mailing list to receive upcoming event announcements, volunteer opportunities, and ways to support our work.</p>
-                            <form className="gi-form" onSubmit={(e) => e.preventDefault()}>
-                                <input type="email" placeholder="email@address.com" required />
-                                <button type="submit">Join</button>
-                            </form>
+                            <div className="gi-newsletter-iframe-wrapper">
+                                <iframe
+                                    title="Signup form powered by Zeffy"
+                                    src="https://www.zeffy.com/en-CA/embed/newsletter-form/sign-up-for-our-newsletter-3095"
+                                    allowTransparency="true"
+                                    className="gi-newsletter-iframe"
+                                />
+                            </div>
                         </div>
                         <div className="gi-calendar-box">
                             <div className="gi-frame">
@@ -206,7 +248,11 @@ const GetInvolved = () => {
                 </div>
             </section>
         </div>
-        <DonationPopup show={showDonation} onClose={() => setShowDonation(false)} />
+        <DonationPopup 
+            show={showDonation} 
+            onClose={() => setShowDonation(false)} 
+            donationUrl={donationUrl}
+        />
         </>
     );
 };

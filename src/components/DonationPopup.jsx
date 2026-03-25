@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-const DonationPopup = ({ show, onClose }) => {
+const DonationPopup = ({ show, onClose, donationUrl = "https://www.zeffy.com/en-CA/donation-form/newlife-project" }) => {
   useEffect(() => {
     if (show) {
       document.body.style.overflow = 'hidden'
@@ -29,7 +29,7 @@ const DonationPopup = ({ show, onClose }) => {
       <div className="donation-modal" onClick={(e) => e.stopPropagation()}>
         <button className="donation-close" onClick={onClose}>&times;</button>
         <iframe
-          src="https://www.zeffy.com/en-CA/donation-form/newlife-project"
+          src={donationUrl}
           title="Donate to NewLife"
           allow="payment"
           style={{ width: '100%', height: '100%', border: 'none' }}
