@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import '../styles/Hero.css'
+import DonationPopup from './DonationPopup'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -13,6 +14,7 @@ const images = [
 
 const Hero = () => {
   const heroRef = useRef(null)
+  const [showDonation, setShowDonation] = useState(false)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -106,7 +108,7 @@ const Hero = () => {
             Our Programs
             <span className="btn-arrow">→</span>
           </a>
-          <a href="https://zeffy.com/en-CA/donation-form/your-donation-link" target="_blank" rel="noopener noreferrer" className="hero-btn outline">
+          <a href="#" className="hero-btn outline" onClick={(e) => { e.preventDefault(); setShowDonation(true); }}>
             Make a Donation
           </a>
         </div>
@@ -118,6 +120,8 @@ const Hero = () => {
           <path d="M12 5v14M5 12l7 7 7-7" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       </div>
+
+      <DonationPopup show={showDonation} onClose={() => setShowDonation(false)} />
     </section>
   )
 }

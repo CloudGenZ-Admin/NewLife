@@ -4,6 +4,7 @@ import { gsap } from 'gsap'
 import { ShoppingCart, User, LogOut, Package } from 'lucide-react'
 import { useCart } from '../context/CartContext'
 import { useAuth } from '../context/AuthContext'
+import DonationPopup from './DonationPopup'
 import '../styles/Navbar.css'
 
 const Navbar = () => {
@@ -13,6 +14,7 @@ const Navbar = () => {
   const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false)
   const [isProgramsDropdownOpen, setIsProgramsDropdownOpen] = useState(false)
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false)
+  const [showDonation, setShowDonation] = useState(false)
   const navRef = useRef(null)
   const aboutDropdownRef = useRef(null)
   const programsDropdownRef = useRef(null)
@@ -228,7 +230,7 @@ const Navbar = () => {
               </span>
             )}
             
-            <a href="" rel="noopener noreferrer" className="nav-donate" onClick={handleLinkClick}>DONATE</a>
+            <a href="#" className="nav-donate" onClick={(e) => { e.preventDefault(); setShowDonation(true); }}>DONATE</a>
           </div>
 
           <button
@@ -301,7 +303,7 @@ const Navbar = () => {
             </Link>
           )}
           
-          <a href="#" target="_blank" rel="noopener noreferrer" className="mobile-donate" onClick={handleLinkClick}>Make a Donation</a>
+          <a href="#" className="mobile-donate" onClick={(e) => { e.preventDefault(); handleLinkClick(); setShowDonation(true); }}>Make a Donation</a>
         </div>
         <div className="mobile-socials">
           <a href="https://www.facebook.com/people/NewLife-Designs/100046505364411/" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
@@ -318,6 +320,8 @@ const Navbar = () => {
           </a>
         </div>
       </div>
+
+      <DonationPopup show={showDonation} onClose={() => setShowDonation(false)} />
     </>
   )
 }

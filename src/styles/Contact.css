@@ -43,7 +43,7 @@
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   gap: 80px;
-  align-items: flex-start;
+  align-items: stretch;
 }
 
 /* CONTACT CARDS */
@@ -124,7 +124,37 @@
 .contact-stay-connected {
   padding: 4rem 0 0;
   border-top: 1px solid var(--cont-border);
-  margin-top: 4rem;
+}
+
+.contact-stay-connected h4 {
+  font-family: var(--ff);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 300;
+}
+
+.contact-stay-connected p {
+  opacity: 0.6;
+  margin-bottom: 1rem;
+}
+
+.contact-newsletter-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.contact-newsletter-iframe {
+  position: absolute;
+  border: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .social-node-link {
@@ -163,6 +193,12 @@
 
 .form-info {
   margin-bottom: 4rem;
+}
+
+.contact-form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .module-title {

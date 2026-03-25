@@ -73,35 +73,16 @@ const Newsletter = () => {
           </div>
         </div>
 
-        {/* Right — form */}
+        {/* Right — Zeffy signup */}
         <div className="newsletter-right">
-          <form className="newsletter-form-centered" onSubmit={handleSubmit}>
-            <label className="newsletter-form-label" htmlFor="newsletter-email">
-              Your email address
-            </label>
-            <div className="input-field-wrapper">
-              <input
-                id="newsletter-email"
-                type="email"
-                placeholder="you@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-              <button type="submit" className="minimal-arrow-btn" aria-label="Subscribe">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M5 12h14M13 5l7 7-7 7" />
-                </svg>
-              </button>
-            </div>
-          </form>
-
-          <p className="newsletter-promise">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            Your privacy is protected. We never share your data.
-          </p>
+          <div className="newsletter-iframe-wrapper">
+            <iframe
+              title="Signup form powered by Zeffy"
+              src="https://www.zeffy.com/en-CA/embed/newsletter-form/sign-up-for-our-newsletter-3095"
+              allowTransparency="true"
+              className="newsletter-iframe"
+            />
+          </div>
         </div>
 
       </div>

@@ -127,7 +127,7 @@ const Contact = () => {
 
                     <div className="architect-meta">
                         <p>At NewLife Project, meaningful change happens through connection. Whether you are looking to learn more about our programs, explore partnership opportunities, volunteer your time, or support our initiatives, our team is here to help.</p>
-                        <p style={{ marginTop: '1rem', opacity: 0.6 }}>We welcome individuals, organizations, educators, community leaders, and supporters who share our vision of empowering women and youth.</p>
+                        <p className="architect-meta-sub">We welcome individuals, organizations, educators, community leaders, and supporters who share our vision of empowering women and youth.</p>
                     </div>
                 </div>
 
@@ -189,7 +189,7 @@ const Contact = () => {
                                     </div>
                                     <div className="email-item">
                                         <span>Office Hours</span>
-                                        <p style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--cont-primary)', marginTop: '0.2rem' }}>
+                                        <p className="office-hours-text">
                                             Monday – Friday <br /> 9:00 AM – 5:00 PM
                                         </p>
                                     </div>
@@ -292,21 +292,15 @@ const Contact = () => {
                             </form>
 
                             <div className="contact-stay-connected">
-                                <h4 style={{ fontFamily: 'var(--ff)', fontSize: '2rem', marginBottom: '1rem', fontWeight: 300 }}>Stay Connected</h4>
-                                <p style={{ opacity: 0.6, marginBottom: '2rem' }}>Follow NewLife Project on social media to stay updated on program activities, upcoming events, and impact stories.</p>
-                                <div className="social-nodes-container" style={{ display: 'flex', gap: '1.5rem' }}>
-                                    <a href="https://www.facebook.com/people/NewLife-Designs/100046505364411/" className="social-node-link" aria-label="Facebook">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                                    </a>
-                                    <a href="https://www.instagram.com/newlifeprojectinc/" className="social-node-link" aria-label="Instagram">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                                    </a>
-                                    <a href="https://www.youtube.com/channel/UCpjnMhG8gsM6jkNxX-S43Eg" className="social-node-link" aria-label="YouTube">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" /></svg>
-                                    </a>
-                                    <a href="https://ca.pinterest.com/newlifeprojectinc/" className="social-node-link" aria-label="Pinterest">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.966 1.406-5.966s-.359-.72-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.261 7.929-7.261 4.162 0 7.398 2.967 7.398 6.93 0 4.135-2.607 7.461-6.223 7.461-1.215 0-2.358-.63-2.75-1.373l-.752 2.86c-.272 1.039-1.012 2.345-1.508 3.162 1.125.348 2.311.537 3.54.537 6.621 0 11.988-5.367 11.988-11.987C24.005 5.367 18.638 0 12.017 0z" /></svg>
-                                    </a>
+                                <h4>Subscribe Now</h4>
+                                <p>Sign up for our newsletter to stay updated on program activities, upcoming events, and impact stories.</p>
+                                <div className="contact-newsletter-wrapper">
+                                    <iframe
+                                        title="Signup form powered by Zeffy"
+                                        src="https://www.zeffy.com/en-CA/embed/newsletter-form/sign-up-for-our-newsletter-3095"
+                                        allowTransparency="true"
+                                        className="contact-newsletter-iframe"
+                                    />
                                 </div>
                             </div>
                         </div>

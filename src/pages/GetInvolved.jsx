@@ -1,14 +1,16 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitType from 'split-type';
 import '../styles/GetInvolved.css';
-import '../styles/ArchitectHero.css'; // Reuse the architectural core
+import '../styles/ArchitectHero.css';
+import DonationPopup from '../components/DonationPopup';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const GetInvolved = () => {
     const heroRef = useRef(null);
+    const [showDonation, setShowDonation] = useState(false);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -65,6 +67,7 @@ const GetInvolved = () => {
     }, []);
 
     return (
+        <>
         <div className="get-involved-page">
             {/* HERO: ARCHITECTURAL MIRROR */}
             <section className="architect-hero gi-hero-theme" ref={heroRef}>
@@ -122,7 +125,7 @@ const GetInvolved = () => {
                         <div className="gi-card">
                             <h3>Donate</h3>
                             <p>Your contribution helps provide education support, skills training, mentorship, and empowerment programs for women and youth.</p>
-                            <a href="https://ext.zeffy.com/en-CA/donation-form/47eb2245-0955-46fd-916c-e093fa5c156f" className="gi-btn-arch" target="_blank" rel="noopener noreferrer">Donate Now</a>
+                            <a href="#" className="gi-btn-arch" onClick={(e) => { e.preventDefault(); setShowDonation(true); }}>Donate Now</a>
                         </div>
                         <div className="gi-card">
                             <h3>Become a Corporate Partner</h3>
@@ -203,6 +206,8 @@ const GetInvolved = () => {
                 </div>
             </section>
         </div>
+        <DonationPopup show={showDonation} onClose={() => setShowDonation(false)} />
+        </>
     );
 };
 
