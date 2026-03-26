@@ -52,10 +52,12 @@ const Navbar = () => {
   useEffect(() => {
     if (isMobileMenuOpen) {
       menuTl.current.play()
-      document.body.style.overflow = 'hidden'
+      // Add class to body to prevent scrolling
+      document.body.classList.add('menu-open')
     } else {
       menuTl.current.reverse()
-      document.body.style.overflow = 'unset'
+      // Remove class from body
+      document.body.classList.remove('menu-open')
       setIsAboutDropdownOpen(false)
       setIsProgramsDropdownOpen(false)
     }
