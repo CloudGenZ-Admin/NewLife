@@ -82,7 +82,7 @@ const Mission = () => {
         <div className="mission-visual-side">
           <div className="pinned-image-wrapper">
             <img
-              src="https://newlifeprojectinc.org/cdn/shop/files/Untitled_design.jpg?v=1705364217"
+              src="./Mission.webp"
               alt="Mission Journey"
               className="cinematic-image"
             />

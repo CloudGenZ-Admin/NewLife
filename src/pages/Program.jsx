@@ -50,7 +50,7 @@ const programsData = [
     title: 'Relief & <em>Diaspora</em>',
     badge: 'IMPACT',
     description: 'Connecting the global diaspora to local needs in West Africa through educational relief and community support.',
-    image: 'https://newlifeprojectinc.org/cdn/shop/files/Untitled_design.jpg?v=1705364217',
+    image: './Mission.webp',
     link: '/programs/relief',
     features: ['School Infrastructure', 'Education Relief', 'Community Care']
   }

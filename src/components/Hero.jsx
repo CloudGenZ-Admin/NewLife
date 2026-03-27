@@ -7,9 +7,9 @@ import DonationPopup from './DonationPopup'
 gsap.registerPlugin(ScrollTrigger)
 
 const images = [
-  { src: "https://newlifeprojectinc.org/cdn/shop/files/2_94ee0891-8aef-40f6-83d8-1c15e2424f5d.jpg?v=1705363525", alt: "Impact Story" },
-  { src: "https://newlifeprojectinc.org/cdn/shop/files/french_3_7dde1af4-b8f9-4ac5-9508-1b3f58b324e4.jpg?v=1705364012", alt: "Growth & Education" },
-  { src: "https://newlifeprojectinc.org/cdn/shop/files/1_f092f01c-826a-4e49-b768-6f3410bdf2c0.jpg?v=1705363525", alt: "Sanctuary" }
+  { src: "./hero_1.webp", alt: "Impact Story" },
+  { src: "./hero_2.webp", alt: "Growth & Education" },
+  { src: "./hero_3.webp", alt: "Sanctuary" }
 ]
 
 const Hero = () => {

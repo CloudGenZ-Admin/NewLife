@@ -19,7 +19,7 @@ const Gallery = () => {
       category: "Fundraising",
       title: "Fundraiser Exhibitions",
       subtitle: "Taste of Africa & Community Events",
-      image: "https://newlifeprojectinc.org/cdn/shop/files/fundraiser_1.png?v=1666309940",
+      image: "./fundraiser_1.webp",
       link: "/fundraiser-exhibitions"
     },
     {
@@ -27,7 +27,7 @@ const Gallery = () => {
       category: "Entrepreneurship",
       title: "NewLife Designs",
       subtitle: "Redesigning soon - Visit our shop",
-      image: "https://newlifeprojectinc.org/cdn/shop/files/fundraiser_1a705eb4-c772-43e8-a300-e90b7d125dad.png?v=1666154809",
+      image: "./fundraiser_1a705eb4-c772-43e8-a300-e90b7d125dad.webp",
       link: "/shop"
     },
     {
@@ -35,7 +35,7 @@ const Gallery = () => {
       category: "Education",
       title: "Education & Vocational Training",
       subtitle: "Sewing, French & Craft Classes",
-      image: "https://newlifeprojectinc.org/cdn/shop/files/2_9e088462-4d09-47e8-bac0-b576b8f135b8.jpg?v=1705279646",
+      image: "./sewing.jpg",
       link: "/vocational-training"
     },
     {
@@ -43,7 +43,7 @@ const Gallery = () => {
       category: "Relief",
       title: "Relief Program",
       subtitle: "Local & International Support",
-      image: "https://newlifeprojectinc.org/cdn/shop/files/fundraiser_1.png?v=1666309940",
+      image: "relieft.webp",
       link: "/programs/relief"
     }
   ]

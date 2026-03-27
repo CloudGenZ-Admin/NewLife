@@ -143,7 +143,7 @@ const Navbar = () => {
       <nav ref={navRef} className={`nav ${isScrolled ? 'scrolled' : ''} ${isVisible ? 'visible' : 'hidden'}`}>
         <div className="nav-inner">
           <Link to="/" className="brand" onClick={handleLinkClick}>
-            <img src="https://newlifeprojectinc.org/cdn/shop/files/newlife-logo_025x-1_140x@2x.png?v=1613631269" alt="NewLife Projects Inc." className="logo" />
+            <img src="./newlife-logo_025x-1_140x@2x.avif" alt="NewLife Projects Inc." className="logo" />
             <span className="brand-text">NewLife Projects Inc.</span>
           </Link>
 
