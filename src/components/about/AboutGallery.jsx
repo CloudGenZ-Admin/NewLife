@@ -12,18 +12,18 @@ const AboutGallery = () => {
   const galleryRef = useRef(null);
 
   const images = [
-    { url: "https://cdn.shopify.com/s/files/1/0506/2515/1173/files/PXL_20260304_175021346.MP.jpg?v=1772708442", caption: "Community Convergence", size: "v-large", depth: 0.1 },
-    { url: "https://cdn.shopify.com/s/files/1/0506/2515/1173/files/sewing_class_pic2.jpg?v=1768777136", caption: "The Craft of Resilience", size: "v-small", depth: 0.2 },
-    { url: "https://cdn.shopify.com/s/files/1/0506/2515/1173/files/IMG_8020.jpg?v=1769304338", caption: "Empowered Voices", size: "v-medium", depth: 0.05 },
-    { url: "https://cdn.shopify.com/s/files/1/0506/2515/1173/files/IMG_7943.jpg?v=1767798002", caption: "Visionary Workshops", size: "v-small", depth: 0.15 },
-    { url: "https://cdn.shopify.com/s/files/1/0506/2515/1173/files/sewing_class_pic.jpg?v=1768777148", caption: "Skillful Horizons", size: "v-medium", depth: 0.08 },
-    { url: "https://cdn.shopify.com/s/files/1/0506/2515/1173/files/french_class_pic.jpg?v=1768777914", caption: "Language of Hope", size: "v-small", depth: 0.25 },
-    { url: "https://cdn.shopify.com/s/files/1/0506/2515/1173/files/IMG_7659.jpg?v=1763398402", caption: "Architects of Change", size: "v-large", depth: 0.12 },
-    { url: "https://cdn.shopify.com/s/files/1/0506/2515/1173/files/IMG_7655.jpg?v=1763399192", caption: "Shared Ambitions", size: "v-small", depth: 0.18 },
-    { url: "https://cdn.shopify.com/s/files/1/0506/2515/1173/files/IMG_7504.jpg?v=1762228985", caption: "Strength in Unity", size: "v-medium", depth: 0.06 },
-    { url: "https://cdn.shopify.com/s/files/1/0506/2515/1173/files/IMG_7236.jpg?v=1759327484", caption: "Cycles of Growth", size: "v-small", depth: 0.22 },
-    { url: "https://cdn.shopify.com/s/files/1/0506/2515/1173/files/IMG_7514.jpg?v=1762228977", caption: "Mentorship Threads", size: "v-medium", depth: 0.1 },
-    { url: "https://cdn.shopify.com/s/files/1/0506/2515/1173/files/sewing_class.jpg?v=1755708914", caption: "Generational Promise", size: "v-small", depth: 0.15 }
+    { url: "/PXL_20260304_175021346.MP.webp", caption: "Community Convergence", size: "v-large", depth: 0.1 },
+    { url: "/sewing_class_pic2.webp", caption: "The Craft of Resilience", size: "v-small", depth: 0.2 },
+    { url: "/IMG_8020.webp", caption: "Empowered Voices", size: "v-medium", depth: 0.05 },
+    { url: "/IMG_7943.webp", caption: "Visionary Workshops", size: "v-small", depth: 0.15 },
+    { url: "/sewing_class_pic.webp", caption: "Skillful Horizons", size: "v-medium", depth: 0.08 },
+    { url: "/french_class_pic.webp", caption: "Language of Hope", size: "v-small", depth: 0.25 },
+    { url: "/IMG_7659.webp", caption: "Architects of Change", size: "v-large", depth: 0.12 },
+    { url: "/IMG_7655.webp", caption: "Shared Ambitions", size: "v-small", depth: 0.18 },
+    { url: "/IMG_7504.webp", caption: "Strength in Unity", size: "v-medium", depth: 0.06 },
+    { url: "/IMG_7236.webp", caption: "Cycles of Growth", size: "v-small", depth: 0.22 },
+    { url: "/IMG_7514.webp", caption: "Mentorship Threads", size: "v-medium", depth: 0.1 },
+    { url: "/sewing_class.webp", caption: "Generational Promise", size: "v-small", depth: 0.15 }
   ];
 
   useEffect(() => {

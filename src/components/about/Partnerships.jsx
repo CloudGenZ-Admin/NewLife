@@ -45,19 +45,19 @@ const Partnerships = () => {
           <div className="partner-logos-grid">
             <div className="partner-logo">
               <img
-                src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/shaver.jpg?v=1705189748"
+                src="./partner_1.webp"
                 alt="Partner Logo"
               />
             </div>
             <div className="partner-logo">
               <img
-                src="https://cdn.shopify.com/s/files/1/0506/2515/1173/t/4/assets/unnamed-1-1648509740521.png?v=1648509741"
+                src="./partner_2.webp"
                 alt="Partner Logo"
               />
             </div>
             <div className="partner-logo">
               <img
-                src="https://cdn.shopify.com/s/files/1/0506/2515/1173/t/4/assets/employmentandsocialdevelopmentcanada_540x-1648509640669.png?v=1648509641"
+                src="./partner_3.webp"
                 alt="Employment and Social Development Canada"
               />
             </div>

@@ -71,7 +71,7 @@ const LanguageTraining = () => {
       {/* 1. FLOATING HERO */}
       <header className="lt-hero">
         <div className="lt-hero-bg">
-          <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/french_class_pic.jpg?v=1768777914" alt="Hero Class" />
+          <img src="/french_class_pic_2.webp" alt="Hero Class" />
         </div>
         
         <div className="lt-hero-content">
@@ -111,7 +111,7 @@ const LanguageTraining = () => {
       <section className="lt-impact-section">
         <div className="lt-impact-flyer">
           {/* Framed perfectly without cropping via CSS */}
-          <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/FRENCH_CLASSES_FLYER_600x600.jpg?v=1704740389" alt="Language Classes Fall Flyer" />
+          <img src="/FRENCH_CLASSES_FLYER_600x600.webp" alt="Language Classes Fall Flyer" />
         </div>
         
         <div className="lt-impact-text">
@@ -136,16 +136,16 @@ const LanguageTraining = () => {
         
         <div className="lt-masonry">
           <div className="lt-masonry-item">
-            <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/1_909d8fe7-bbe8-4dca-9b32-9e3758008ecf.png?v=1754162878" alt="Group Training" />
+            <img src="/1_909d8fe7-bbe8-4dca-9b32-9e3758008ecf.webp" alt="Group Training" />
           </div>
           <div className="lt-masonry-item">
-            <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/review_480x480.png?v=1665509596" alt="Review" style={{ backgroundColor: '#fff' }} />
+            <img src="/review_480x480.webp" alt="Review" style={{ backgroundColor: '#fff' }} />
           </div>
           <div className="lt-masonry-item">
-             <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/french_class_pic.jpg?v=1768777914" alt="Class" />
+             <img src="/french_class_pic_2.webp" alt="Class" />
           </div>
           <div className="lt-masonry-item">
-            <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/IMG_7239.jpg?v=1759331909" alt="Personalized" />
+            <img src="/IMG_7239.webp" alt="Personalized" />
           </div>
         </div>
       </section>

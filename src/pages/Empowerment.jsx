@@ -60,7 +60,7 @@ const Empowerment = () => {
                 {/* Right: Image Panel */}
                 <div className="emp-hero-img-block">
                     <div className="emp-img-pill">
-                        <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/Youth-meeting_600x600.png?v=1704735792" alt="Youth Empowerment" />
+                        <img src="/Youth_meeting.webp" alt="Youth Empowerment" />
                     </div>
                     <div className="emp-img-tag">Est. 2004</div>
                 </div>
@@ -89,11 +89,11 @@ const Empowerment = () => {
             <section className="emp-editorial emp-fade">
                 <div className="editorial-gallery">
                     <div className="gallery-main">
-                        <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/Mentorship_youth_empowerment_program_480x480.jpg?v=1731610890" alt="Mentorship" />
+                        <img src="/Mentorship_youth_empowerment_program_480x480.webp" alt="Mentorship" />
                         <span className="gallery-label">Active Mentorship</span>
                     </div>
                     <div className="gallery-sub">
-                        <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/20190313_103854_600x600.jpg?v=1704992306" alt="Workshop" />
+                        <img src="/20190313_103854_600x600.webp" alt="Workshop" />
                         <span className="gallery-label">Vocational Workshop</span>
                     </div>
                 </div>

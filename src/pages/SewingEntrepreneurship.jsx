@@ -90,7 +90,7 @@ const SewingEntrepreneurship = () => {
             <p>Crafting independence and economic empowerment through vocational excellence. Transforming talents into tools for sustainable growth.</p>
           </div>
           <div className="sew-hero-img-wrap">
-            <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/PXL_20260304_175021346.MP.jpg?v=1772708442" alt="Sewing Workshop" />
+            <img src="/PXL_20260304_175021346.MP.webp" alt="Sewing Workshop" />
           </div>
         </div>
       </header>
@@ -123,27 +123,27 @@ const SewingEntrepreneurship = () => {
         <div className="sew-polaroid-grid">
           {/* Proposal Flyer - Tall */}
           <div className="polaroid tall">
-            <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/Copy_of_Copy_of_Copy_of_Copy_of_Copy_of_Dark_Navy_and_Gold_Modern_Sponsorship_Proposal_-_1_4a3f9bda-40c9-4c37-82d5-e28e37d16c85.png?v=1770631298" alt="Proposal" />
+          <img src="/Copy_of_Copy_of_Copy_of_Copy_of_Copy_of_Dark_Navy_and_Gold_Modern_Sponsorship_Proposal_-_1_4a3f9bda-40c9-4c37-82d5-e28e37d16c85.webp" alt="Proposal" />
           </div>
           
           {/* Classes Flyer - Tall */}
           <div className="polaroid tall" style={{ marginTop: '10vh' }}>
-             <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/Sewing_classes_flyer_2026.png?v=1768777111" alt="Classes" />
+             <img src="/Sewing_classes_flyer_2026.webp" alt="Classes" />
           </div>
 
           {/* Workshop Detail - Square */}
           <div className="polaroid square" style={{ marginTop: '-5vh' }}>
-            <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/15EAE92F-5CF3-474C-A014-E80D86821D9A_480x480.jpg?v=1723462270" alt="Detail" />
+            <img src="/15EAE92F-5CF3-474C-A014-E80D86821D9A_480x480.webp" alt="Detail" />
           </div>
 
           {/* Review Flyer - Tall */}
           <div className="polaroid tall" style={{ marginTop: '5vh' }}>
-            <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/Copy_of_Copy_of_Pink_and_White_Modern_Product_Review_Influencer_Instagram_Story_Instagram_Post_45_.zip_-_1.png?v=1759331418" alt="Review" />
+            <img src="/Copy_of_Copy_of_Pink_and_White_Modern_Product_Review_Influencer_Instagram_Story_Instagram_Post_45_.zip_-_1.webp" alt="Review" />
           </div>
 
           {/* Workshop Wide - Wide */}
           <div className="polaroid wide" style={{ marginTop: '2vh' }}>
-            <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/IMG_8019.jpg?v=1770140798" alt="Workshop" />
+            <img src="/IMG_8019.webp" alt="Workshop" />
           </div>
         </div>
       </section>

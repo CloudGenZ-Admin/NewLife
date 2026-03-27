@@ -59,7 +59,7 @@ const InternshipEngagement = () => {
           </div>
 
           <div className="int-hero-img-card">
-            <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/7D5DE7BE-ABDA-46B0-ACA3-AE88943EBAFE_480x480.jpg?v=1723462433" alt="Internship Placements" />
+            <img src="/7D5DE7BE-ABDA-46B0-ACA3-AE88943EBAFE_480x480.webp" alt="Internship Placements" />
           </div>
 
         </div>
@@ -86,13 +86,13 @@ const InternshipEngagement = () => {
 
           {/* Photo 1 */}
           <div className="int-bento-box bento-img">
-            <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/29B4A0BF-F8C2-4D12-8875-EB84F3ACFF32_600x600.jpg?v=1705500087" alt="Student Presentation" />
+            <img src="/29B4A0BF-F8C2-4D12-8875-EB84F3ACFF32_600x600.webp" alt="Student Presentation" />
             <span className="bento-tag">Student Presentation</span>
           </div>
 
           {/* Photo 2 (Tall) */}
           <div className="int-bento-box bento-img span-row-2">
-            <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/39412436-622C-4CCD-937A-29D3BB3C4A94_600x600.jpg?v=1700303348" alt="Team Work" />
+            <img src="/39412436-622C-4CCD-937A-29D3BB3C4A94_600x600.webp" alt="Team Work" />
             <span className="bento-tag">Team Collaboration</span>
           </div>
 
@@ -104,13 +104,13 @@ const InternshipEngagement = () => {
 
           {/* Photo 3 */}
           <div className="int-bento-box bento-img">
-            <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/linda_a4fdcddc-c7db-4e19-beb7-93eb9d839562_480x480.jpg?v=1704921810" alt="Engagement Session" />
+            <img src="/linda_a4fdcddc-c7db-4e19-beb7-93eb9d839562_480x480.webp" alt="Engagement Session" />
             <span className="bento-tag">Field Work</span>
           </div>
 
           {/* Photo 4 (Wide bottom) */}
           <div className="int-bento-box bento-img span-2">
-            <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/ques_student_480x480.jpg?v=1731609237" alt="Scholar Project" />
+            <img src="/ques_student_480x480.webp" alt="Scholar Project" />
             <span className="bento-tag">QES Scholar Project</span>
           </div>
 

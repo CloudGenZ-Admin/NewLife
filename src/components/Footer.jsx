@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="container">
         <div className="footer-top-row">
           <div className="footer-brand-studio">
-            <img src="./newlife-logo_025x-1_140x@2x.avif" alt="NewLife Projects Inc." className="studio-logo" />
+            <img src="/newlife-logo_025x-1_140x@2x.avif" alt="NewLife Projects Inc." className="studio-logo" />
             <p className="brand-statement">
               Empowering at-risk communities through dedicated education, relief, and sustainable vocational training since 1994.
             </p>

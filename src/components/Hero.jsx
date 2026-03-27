@@ -7,9 +7,9 @@ import DonationPopup from './DonationPopup'
 gsap.registerPlugin(ScrollTrigger)
 
 const images = [
-  { src: "./hero_1.webp", alt: "Impact Story" },
-  { src: "./hero_2.webp", alt: "Growth & Education" },
-  { src: "./hero_3.webp", alt: "Sanctuary" }
+  { src: "/hero_1.webp", alt: "Impact Story" },
+  { src: "/hero_2.webp", alt: "Growth & Education" },
+  { src: "/hero_3.webp", alt: "Sanctuary" }
 ]
 
 const Hero = () => {

@@ -14,7 +14,7 @@ const programsData = [
     title: 'Youth & Women <em>Empowerment</em>',
     badge: 'CORE PILLAR',
     description: 'Providing youth and women with the tools, mentorship, and confidence to lead and succeed in their communities.',
-    image: 'https://cdn.shopify.com/s/files/1/0506/2515/1173/files/Youth-meeting_600x600.png?v=1704735792',
+    image: '/Youth_meeting.webp',
     link: '/programs/empowerment',
     features: ['Active Mentorship', 'Leadership Growth', 'Career Readiness']
   },
@@ -23,7 +23,7 @@ const programsData = [
     title: 'Language <em>Training</em>',
     badge: 'COMMUNICATION',
     description: 'Mastering English and French through personalized ESL/FSL programs designed for professional and social integration.',
-    image: 'https://cdn.shopify.com/s/files/1/0506/2515/1173/files/french_class_pic.jpg?v=1768777914',
+    image: '/french_class_pic.webp',
     link: '/programs/language',
     features: ['Private Tutoring', 'Group Fluency', 'Exam Preparation']
   },
@@ -32,7 +32,7 @@ const programsData = [
     title: 'Sewing & <em>Skills</em>',
     badge: 'VOCATIONAL',
     description: 'Transforming artistry into entrepreneurship through vocational training in garment construction and business management.',
-    image: 'https://cdn.shopify.com/s/files/1/0506/2515/1173/files/PXL_20260304_175021346.MP.jpg?v=1772708442',
+    image: '/PXL_20260304_175021346.MP.webp',
     link: '/programs/sewing',
     features: ['Fabric Design', 'Market Strategy', 'Business Growth']
   },
@@ -41,7 +41,7 @@ const programsData = [
     title: 'Internship <em>Engagement</em>',
     badge: 'EXPERIENTIAL',
     description: 'Bridging academia and community impact through structured internships and professional development modules.',
-    image: 'https://cdn.shopify.com/s/files/1/0506/2515/1173/files/7D5DE7BE-ABDA-46B0-ACA3-AE88943EBAFE_480x480.jpg?v=1723462433',
+    image: '/7D5DE7BE-ABDA-46B0-ACA3-AE88943EBAFE_480x480.webp',
     link: '/programs/internship',
     features: ['Academic Placement', 'Professional COOP', 'Scholar Projects']
   },

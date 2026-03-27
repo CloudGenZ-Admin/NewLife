@@ -55,7 +55,7 @@ const FounderStory = () => {
           <div className="chapter-visual">
             <div className="chapter-image">
               <img
-                src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/2.jpg?v=1705196470"
+                src="./Brenda_Williams.jpg"
                 alt="Brenda Williams - Founder"
               />
               <div className="image-caption">Brenda Williams, Founder</div>
@@ -113,7 +113,7 @@ const FounderStory = () => {
           <div className="chapter-visual">
             <div className="chapter-image">
               <img
-                src="https://cdn.shopify.com/s/files/1/0506/2515/1173/t/4/assets/pfeccddd4abuilding2_1200x-1648492546539.png?v=1648492547"
+                src="./pfeccddd4abuilding2_1200x-1648492546539.webp"
                 alt="NewLife Project Impact"
               />
             </div>
@@ -186,13 +186,13 @@ const FounderStory = () => {
               <div className="board-preview-grid">
                 <div className="board-img-item">
                   <img
-                    src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/3.jpg?v=1705196469"
+                    src="./NewLife_Board_1.webp"
                     alt="NewLife Board Member"
                   />
                 </div>
                 <div className="board-img-item">
                   <img
-                    src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/3.jpg?v=1705196469"
+                    src="./NewLife_Board_1.webp"
                     alt="NewLife Board Member"
                   />
                 </div>

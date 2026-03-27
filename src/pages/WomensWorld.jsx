@@ -7,17 +7,17 @@ import '../styles/ArchitectHero.css';
 gsap.registerPlugin(ScrollTrigger);
 
 const FORUM_IMAGES = {
-  hero: 'https://cdn.shopify.com/s/files/1/0506/2515/1173/files/forum_5.jpg?v=1771352826',
-  poster1: 'https://cdn.shopify.com/s/files/1/0506/2515/1173/files/Pink_Modern_Women_Retreat_Instagram_Post_20260309_163819_0000.png?v=1773099546',
-  poster2: 'https://cdn.shopify.com/s/files/1/0506/2515/1173/files/Yellow_and_Brown_Geometric_Online_Webinar_Flyer.png?v=1772476376',
-  forum1: 'https://cdn.shopify.com/s/files/1/0506/2515/1173/files/forum_1.jpg?v=1771352881',
-  forum2: 'https://cdn.shopify.com/s/files/1/0506/2515/1173/files/forum_2.jpg?v=1771352836',
-  forum3: 'https://cdn.shopify.com/s/files/1/0506/2515/1173/files/forum_3.jpg?v=1771352816',
-  forum7: 'https://cdn.shopify.com/s/files/1/0506/2515/1173/files/forum_7.jpg?v=1771352846',
-  forum9: 'https://cdn.shopify.com/s/files/1/0506/2515/1173/files/forum_9.jpg?v=1771352789',
-  forumOld: 'https://cdn.shopify.com/s/files/1/0506/2515/1173/files/forum_2ddfbf63-f093-4da5-bef8-b113e3214258.jpg?v=1705364593',
-  img7514: 'https://cdn.shopify.com/s/files/1/0506/2515/1173/files/IMG_7514.jpg?v=1762228977',
-  img7508: 'https://cdn.shopify.com/s/files/1/0506/2515/1173/files/IMG_7508_c515294e-db1c-4752-9f9e-a7199d18cc54.jpg?v=1762228781',
+  hero: '/forum_5.webp',
+  poster1: '/Pink_Modern_Women_Retreat_Instagram_Post_20260309_163819_0000.webp',
+  poster2: '/Yellow_and_Brown_Geometric_Online_Webinar_Flyer.webp',
+  forum1: '/forum_1.webp',
+  forum2: '/forum_2.webp',
+  forum3: '/forum_3.webp',
+  forum7:  '/forum_7.webp',
+  forum9: '/forum_9.webp',
+  forumOld: '/forum_2ddfbf63-f093-4da5-bef8-b113e3214258.webp',
+  img7514: '/IMG_7514_2.webp',
+  img7508: '/IMG_7508_c515294e-db1c-4752-9f9e-a7199d18cc54.webp',
 };
 
 const WomensWorld = () => {

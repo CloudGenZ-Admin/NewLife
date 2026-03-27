@@ -52,7 +52,7 @@ const VocationalTraining = () => {
         <div className="gallery-section-block">
           <div className="gallery-image-wrapper">
             <img 
-              src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/6856C4D3-E26C-4686-B29E-9404F7CA1554_480x480.jpg?v=1703235693" 
+              src="/6856C4D3-E26C-4686-B29E-9404F7CA1554_480x480.webp" 
               alt="Sewing Class" 
             />
           </div>
@@ -102,7 +102,7 @@ const VocationalTraining = () => {
         <div className="gallery-section-block reverse">
           <div className="gallery-image-wrapper">
             <img 
-              src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/4D8FC592-8681-40A3-9773-46B4F1E992CB_480x480.jpg?v=1703235716" 
+              src="/FRENCH_CLASSES_FLYER_600x600.webp" 
               alt="French Tutoring" 
             />
           </div>
@@ -156,7 +156,7 @@ const VocationalTraining = () => {
         <div className="gallery-section-block">
           <div className="gallery-image-wrapper">
             <img 
-              src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/B866CACB-B28A-4248-B3D6-2D4E1F5E1367_480x480.jpg?v=1703235962" 
+              src="/B866CACB-B28A-4248-B3D6-2D4E1F5E1367_480x480.webp" 
               alt="Craft Class" 
             />
           </div>

@@ -113,7 +113,7 @@ const OurAfrica = () => {
                 </div>
               </div>
               <div className="africa-floating-card africa-floating-img">
-                <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/Violet_and_Green_Lavender_Photo_Collage_Instagram_Post_9a6a3bad-b7da-4420-8e60-0c8122edb6d1.png?v=1746253803" alt="Community Smile" />
+                <img src="/Violet_and_Green_Lavender_Photo_Collage_Instagram_Post_9a6a3bad-b7da-4420-8e60-0c8122edb6d1.webp" alt="Community Smile" />
               </div>
             </div>
           </div>
@@ -141,8 +141,8 @@ const OurAfrica = () => {
             </div>
             <div className="africa-chapter-visual">
               <div className="visual-grid">
-                <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/sierra_leone_pic_480x480.jpg?v=1705444911" alt="Relief Work" className="main-grid-img" />
-                <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/newlife_sleoe_480x480.jpg?v=1705288572" alt="Relief Work Detail" className="secondary-grid-img africa-floating-img" />
+                <img src="/sierra_leone_pic_480x480.webp" alt="Relief Work" className="main-grid-img" />
+                <img src="/newlife_sleoe_480x480.jpg" alt="Relief Work Detail" className="secondary-grid-img africa-floating-img" />
               </div>
             </div>
           </div>
@@ -153,8 +153,8 @@ const OurAfrica = () => {
           <div className="africa-container split-layout reversed">
             <div className="africa-chapter-visual">
               <div className="visual-stack">
-                <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/thumbnail_480x480.jpg?v=1705289712" alt="Educational Growth" className="stack-img-1" />
-                <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/20201119_091448_1866b413-3b46-4e01-abff-ff5c553b145c_480x480.jpg?v=1705290060" alt="Students in Brookfields" className="stack-img-2 africa-floating-img" />
+                <img src="/thumbnail_480x480.webp" alt="Educational Growth" className="stack-img-1" />
+                <img src="/20201119_091448_1866b413-3b46-4e01-abff-ff5c553b145c_480x480.webp" alt="Students in Brookfields" className="stack-img-2 africa-floating-img" />
               </div>
             </div>
             <div className="africa-chapter-text">
@@ -178,7 +178,7 @@ const OurAfrica = () => {
         <div className="africa-outro">
           <div className="africa-container">
             <div className="outro-card">
-              <img src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/Violet_and_Green_Lavender_Photo_Collage_Instagram_Post.png?v=1746253578" alt="Future Vision" className="outro-bg" />
+              <img src="/Violet_and_Green_Lavender_Photo_Collage_Instagram_Post_9a6a3bad-b7da-4420-8e60-0c8122edb6d1.webp" alt="Future Vision" className="outro-bg" />
               <div className="outro-content">
                 <h3>Expanding the Vision</h3>
                 <p>This year, we continue to support children in Sierra Leone with backpacks and essential school supplies, ensuring no child is left behind in their educational journey.</p>

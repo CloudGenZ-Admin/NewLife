@@ -51,7 +51,7 @@ const FundraiserExhibitions = () => {
         <div className="gallery-section-block">
           <div className="gallery-image-wrapper">
             <img 
-              src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/050F3096-27F4-4B82-BEE7-15F257172D55_600x600.jpg?v=1703233871" 
+              src="/050F3096-27F4-4B82-BEE7-15F257172D55_600x600.webp" 
               alt="Taste of Africa Event" 
             />
           </div>
@@ -71,7 +71,7 @@ const FundraiserExhibitions = () => {
         <div className="gallery-section-block reverse">
           <div className="gallery-image-wrapper">
             <img 
-              src="https://cdn.shopify.com/s/files/1/0506/2515/1173/files/6ba45069-0f04-4aad-bbf2-f3be88846eee_600x600.jpg?v=1704754643" 
+              src="/6ba45069-0f04-4aad-bbf2-f3be88846eee_600x600.webp" 
               alt="Sewing Workshop" 
             />
           </div>
