@@ -142,6 +142,21 @@ const LanguageTraining = () => {
             <img src="/review_480x480.webp" alt="Review" style={{ backgroundColor: '#fff' }} />
           </div>
           <div className="lt-masonry-item">
+            <img src="/language_new_img.jpg" alt="Language Class" />
+          </div>
+          <div className="lt-masonry-item">
+            <img src="/language_new_img3.png" alt="Language Class 3" />
+          </div>
+          <div className="lt-masonry-item">
+            <img src="/language_new_img4.png" alt="Language Class 4" />
+          </div>
+          <div className="lt-masonry-item">
+            <img src="/Sponser_language_1.png" alt="Language Sponsor" />
+          </div>
+          <div className="lt-masonry-item">
+            <img src="/language_new_img2.jpg.png" alt="Language Class 2" />
+          </div>
+          <div className="lt-masonry-item">
              <img src="/french_class_pic_2.webp" alt="Class" />
           </div>
           <div className="lt-masonry-item">

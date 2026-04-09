@@ -61,6 +61,36 @@ const Partnerships = () => {
                 alt="Employment and Social Development Canada"
               />
             </div>
+            <div className="partner-logo">
+              <img
+                src="./sponser_1.png"
+                alt="Sponsor 1"
+              />
+            </div>
+            <div className="partner-logo">
+              <img
+                src="./sponser_2.png"
+                alt="Sponsor 2"
+              />
+            </div>
+            <div className="partner-logo">
+              <img
+                src="./sponser_3.png"
+                alt="Sponsor 3"
+              />
+            </div>
+            <div className="partner-logo">
+              <img
+                src="./sponser_4.png"
+                alt="Sponsor 4"
+              />
+            </div>
+            <div className="partner-logo">
+              <img
+                src="./sponser_5.png"
+                alt="Sponsor 5"
+              />
+            </div>
           </div>
         </div>
 

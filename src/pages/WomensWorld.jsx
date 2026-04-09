@@ -15,9 +15,11 @@ const FORUM_IMAGES = {
   forum3: '/forum_3.webp',
   forum7:  '/forum_7.webp',
   forum9: '/forum_9.webp',
-  forumOld: '/forum_2ddfbf63-f093-4da5-bef8-b113e3214258.webp',
+  forumOld: '/women_world3.jpg',
   img7514: '/IMG_7514_2.webp',
   img7508: '/IMG_7508_c515294e-db1c-4752-9f9e-a7199d18cc54.webp',
+  womenWorld: '/women_world.jpg',
+  womenWorld2: '/women_world2.jpg',
 };
 
 const WomensWorld = () => {
@@ -352,6 +354,12 @@ const WomensWorld = () => {
             </div>
             <div className="ww-gallery-item">
               <img src={FORUM_IMAGES.forum2} alt="Forum moment 5" />
+            </div>
+            <div className="ww-gallery-item ww-gallery-tall-wide">
+              <img src={FORUM_IMAGES.womenWorld} alt="Forum moment 6" />
+            </div>
+            <div className="ww-gallery-item">
+              <img src={FORUM_IMAGES.womenWorld2} alt="Forum moment 7" />
             </div>
           </div>
         </div>

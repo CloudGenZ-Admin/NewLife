@@ -27,7 +27,7 @@ const Gallery = () => {
       category: "Entrepreneurship",
       title: "NewLife Designs",
       subtitle: "Redesigning soon - Visit our shop",
-      image: "./fundraiser_1a705eb4-c772-43e8-a300-e90b7d125dad.webp",
+      image: "./second_program.png",
       link: "/shop"
     },
     {

@@ -109,8 +109,8 @@ const InternshipEngagement = () => {
           </div>
 
           {/* Photo 4 (Wide bottom) */}
-          <div className="int-bento-box bento-img span-2">
-            <img src="/ques_student_480x480.webp" alt="Scholar Project" />
+          <div className="int-bento-box bento-img span-2 span-row-3">
+            <img src="/ques_student_480x480.jpg" alt="Scholar Project" />
             <span className="bento-tag">QES Scholar Project</span>
           </div>
 

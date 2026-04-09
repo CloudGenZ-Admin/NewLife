@@ -23,11 +23,25 @@
   z-index: 0;
 }
 
+/* Only 5th slide (vertical image): black background */
+.hero-modern .carousel-slide-vertical {
+  background: #1a1a1a;
+}
+
 .hero-modern .carousel-slide img {
   width: 100%;
   height: 100%;
   object-fit: fill;
   display: block;
+}
+
+/* Only 5th slide (vertical image): don't stretch, show full image on left */
+.hero-modern .carousel-slide.carousel-slide-vertical img {
+  width: auto !important;
+  max-width: none !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: left center !important;
 }
 
 /* Strong dark overlay for text readability */

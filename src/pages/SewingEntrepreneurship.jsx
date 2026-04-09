@@ -47,20 +47,10 @@ const SewingEntrepreneurship = () => {
         });
       });
 
-      // Polaroid Parallax Scatter Effect
-      const polaroids = gsap.utils.toArray('.polaroid');
-      polaroids.forEach((p, i) => {
-        // Give them random initial rotations and y-offsets for a scattered look
-        const randomRotate = (Math.random() - 0.5) * 15; // -7.5 to 7.5 deg
-        const speed = 1 + (Math.random() * 2); // random parallax speed
-        
-        gsap.set(p, { rotation: randomRotate });
-
-        gsap.from(p, {
-          scrollTrigger: { trigger: '.sew-lookbook-gallery', start: 'top bottom', end: 'bottom top', scrub: speed },
-          y: 200 * speed,
-          ease: 'none'
-        });
+      // Polaroid Parallax Scatter Effect - Replaced with Masonry Gallery
+      gsap.from('.sew-masonry-item', {
+        scrollTrigger: { trigger: '.sew-gallery', start: 'top 70%' },
+        scale: 0.8, opacity: 0, duration: 1, stagger: 0.1, ease: 'back.out(1.2)'
       });
 
       // Skills grid
@@ -116,34 +106,43 @@ const SewingEntrepreneurship = () => {
         </div>
       </section>
 
-      {/* 3. SCATTERED POLAROID GALLERY */}
-      <section className="sew-lookbook-gallery">
-        <h2 className="sew-lookbook-title">Our Creative <em>Stitches</em></h2>
+      {/* 3. MASONRY GALLERY - Same as Language Training */}
+      <section className="sew-gallery">
+        <h2 className="sew-section-title">Our Creative <em>Stitches</em></h2>
         
-        <div className="sew-polaroid-grid">
-          {/* Proposal Flyer - Tall */}
-          <div className="polaroid tall">
-          <img src="/Copy_of_Copy_of_Copy_of_Copy_of_Copy_of_Dark_Navy_and_Gold_Modern_Sponsorship_Proposal_-_1_4a3f9bda-40c9-4c37-82d5-e28e37d16c85.webp" alt="Proposal" />
+        <div className="sew-masonry">
+          <div className="sew-masonry-item">
+            <img src="/Copy_of_Copy_of_Copy_of_Copy_of_Copy_of_Dark_Navy_and_Gold_Modern_Sponsorship_Proposal_-_1_4a3f9bda-40c9-4c37-82d5-e28e37d16c85.webp" alt="Proposal" />
           </div>
-          
-          {/* Classes Flyer - Tall */}
-          <div className="polaroid tall" style={{ marginTop: '10vh' }}>
-             <img src="/Sewing_classes_flyer_2026.webp" alt="Classes" />
+          <div className="sew-masonry-item">
+            <img src="/Sewing_classes_flyer_2026.png" alt="Classes" />
           </div>
-
-          {/* Workshop Detail - Square */}
-          <div className="polaroid square" style={{ marginTop: '-5vh' }}>
+          <div className="sew-masonry-item">
+            <img src="/sewing_class_pic3.webp" alt="Sewing Class 3" />
+          </div>
+          <div className="sew-masonry-item">
+            <img src="/sewing7.png" alt="Sewing 7" />
+          </div>
+          <div className="sew-masonry-item">
             <img src="/15EAE92F-5CF3-474C-A014-E80D86821D9A_480x480.webp" alt="Detail" />
           </div>
-
-          {/* Review Flyer - Tall */}
-          <div className="polaroid tall" style={{ marginTop: '5vh' }}>
+          <div className="sew-masonry-item">
+            <img src="/alteration.png" alt="Alteration Work" />
+          </div>
+          <div className="sew-masonry-item">
+            <img src="/sewing_class4.jpg" alt="Sewing Class 4" />
+          </div>
+          <div className="sew-masonry-item">
             <img src="/Copy_of_Copy_of_Pink_and_White_Modern_Product_Review_Influencer_Instagram_Story_Instagram_Post_45_.zip_-_1.webp" alt="Review" />
           </div>
-
-          {/* Workshop Wide - Wide */}
-          <div className="polaroid wide" style={{ marginTop: '2vh' }}>
+          <div className="sew-masonry-item">
             <img src="/IMG_8019.webp" alt="Workshop" />
+          </div>
+          <div className="sew-masonry-item">
+            <img src="/sewing_class_pic5.webp.jpg" alt="Sewing Class 5" />
+          </div>
+            <div className="sew-masonry-item">
+            <img src="/sewing_class2.webp" alt="Sewing Class" />
           </div>
         </div>
       </section>

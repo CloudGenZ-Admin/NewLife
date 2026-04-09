@@ -7,9 +7,11 @@ import DonationPopup from './DonationPopup'
 gsap.registerPlugin(ScrollTrigger)
 
 const images = [
-  { src: "/hero_1.webp", alt: "Impact Story" },
+  { src: "/First_img_Home.jpg", alt: "Impact Story" },
   { src: "/hero_2.webp", alt: "Growth & Education" },
-  { src: "/hero_3.webp", alt: "Sanctuary" }
+  { src: "/hero_3.webp", alt: "Sanctuary" },
+  { src: "/Bag_img.jpg", alt: "Bag" },
+  { src: "/Left_and_right.jpg", alt: "Community", vertical: true },
 ]
 
 const Hero = () => {
@@ -78,8 +80,14 @@ const Hero = () => {
       {/* Carousel Background */}
       <div className="hero-carousel">
         {images.map((img, i) => (
-          <div className="carousel-slide" key={i}>
-            <img src={img.src} alt={img.alt} />
+          <div className={`carousel-slide ${img.vertical ? 'carousel-slide-vertical' : ''}`} key={i}>
+            {img.vertical ? (
+              <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
+                <img src={img.src} alt={img.alt} style={{ width: 'auto', height: '100%', maxWidth: '100%', objectFit: 'contain' }} />
+              </div>
+            ) : (
+              <img src={img.src} alt={img.alt} />
+            )}
           </div>
         ))}
         <div className="hero-overlay" />

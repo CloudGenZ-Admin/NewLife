@@ -12,7 +12,7 @@ const FounderStory = () => {
     const ctx = gsap.context(() => {
       // Fade in chapters on scroll
       const chapters = gsap.utils.toArray('.story-chapter')
-      chapters.forEach((chapter, i) => {
+      chapters.forEach((chapter) => {
         gsap.from(chapter, {
           scrollTrigger: {
             trigger: chapter,
@@ -27,9 +27,12 @@ const FounderStory = () => {
         })
       })
 
-      // Parallax for chapter images
+      // Parallax for chapter images - Skip the first image (my_profile.jpg)
       const images = gsap.utils.toArray('.chapter-image img')
-      images.forEach((img) => {
+      images.forEach((img, index) => {
+        // Skip the first image (index 0)
+        if (index === 0) return;
+        
         gsap.to(img, {
           scrollTrigger: {
             trigger: img,
@@ -55,10 +58,9 @@ const FounderStory = () => {
           <div className="chapter-visual">
             <div className="chapter-image">
               <img
-                src="./Brenda_Williams.jpg"
+                src="./my_profile.jpg"
                 alt="Brenda Williams - Founder"
               />
-              <div className="image-caption">Brenda Williams, Founder</div>
             </div>
           </div>
           <div className="chapter-content">
@@ -174,7 +176,7 @@ const FounderStory = () => {
             </div>
 
             <div className="founder-signature-block">
-              <div className="signature-text">Brenda Williams</div>
+              <div className="signature-text">Board of Directors</div>
               <div className="founder-awards">
                 Global Community Alliance Achievement • 100 Accomplished Black Canadian Women • BHO Community Builder
               </div>
@@ -187,14 +189,23 @@ const FounderStory = () => {
                 <div className="board-img-item">
                   <img
                     src="./NewLife_Board_1.webp"
-                    alt="NewLife Board Member"
+                    alt="Hervé Some - Board Member"
                   />
+                  <div className="board-member-name">Hervé Some</div>
                 </div>
                 <div className="board-img-item">
                   <img
-                    src="./NewLife_Board_1.webp"
-                    alt="NewLife Board Member"
+                    src="./second_board_of_director.jpg"
+                    alt="Irene Cummings - Board Member"
                   />
+                  <div className="board-member-name">Irene Cummings</div>
+                </div>
+                <div className="board-img-item board-img-tall">
+                  <img
+                    src="./third_board_of_director.jpg"
+                    alt="Abena Beloved Green - Board Member"
+                  />
+                  <div className="board-member-name">ABENA BELOVED GREEN</div>
                 </div>
               </div>
             </div>

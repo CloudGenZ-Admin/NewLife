@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import '../styles/Newsletter.css'
@@ -6,7 +6,6 @@ import '../styles/Newsletter.css'
 gsap.registerPlugin(ScrollTrigger)
 
 const Newsletter = () => {
-  const [email, setEmail] = useState('')
   const sectionRef = useRef(null)
 
   useEffect(() => {
@@ -31,18 +30,11 @@ const Newsletter = () => {
     return () => ctx.revert()
   }, [])
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log('Newsletter signup:', email)
-    setEmail('')
-    alert('Thank you for subscribing!')
-  }
-
   return (
     <section className="newsletter-centered" ref={sectionRef}>
       <div className="newsletter-split">
 
-        {/* Left — messaging */}
+        {/* Left — messaging + Zeffy form */}
         <div className="newsletter-left">
           <span className="newsletter-mini-label">Stay Connected</span>
           <h2 className="newsletter-display-title">
@@ -71,18 +63,39 @@ const Newsletter = () => {
               Monthly digest
             </span>
           </div>
+
+          {/* Zeffy signup form */}
+          <div className="newsletter-iframe-container">
+            <div className="newsletter-iframe-wrapper">
+              <iframe
+                title="Signup form powered by Zeffy"
+                src="https://www.zeffy.com/en-CA/embed/newsletter-form/sign-up-for-our-newsletter-3095"
+                allowTransparency="true"
+                className="newsletter-iframe"
+              />
+            </div>
+          </div>
         </div>
 
-        {/* Right — Zeffy signup */}
+        {/* Right — Virtual Office */}
         <div className="newsletter-right">
-          <div className="newsletter-iframe-wrapper">
-            <iframe
-              title="Signup form powered by Zeffy"
-              src="https://www.zeffy.com/en-CA/embed/newsletter-form/sign-up-for-our-newsletter-3095"
-              allowTransparency="true"
-              className="newsletter-iframe"
-            />
-          </div>
+          <a 
+            href="https://empowered4xoffices.com/virtual-office-in-ottawa/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="virtual-office-card"
+          >
+            <div className="virtual-office-image">
+              <img src="/virtual_img.png" alt="Virtual Office in Ottawa" />
+              <div className="virtual-office-overlay">
+                <span className="virtual-office-cta">Learn More →</span>
+              </div>
+            </div>
+            <div className="virtual-office-content">
+              <span className="virtual-office-label">Virtual Office</span>
+              <h3 className="virtual-office-title">Address in Ottawa</h3>
+            </div>
+          </a>
         </div>
 
       </div>

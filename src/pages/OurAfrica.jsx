@@ -57,20 +57,6 @@ const OurAfrica = () => {
         });
       });
 
-      // Parallax for floating images
-      gsap.utils.toArray('.africa-floating-img').forEach((img) => {
-        gsap.to(img, {
-          scrollTrigger: {
-            trigger: img,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: true,
-          },
-          y: -100,
-          ease: 'none'
-        });
-      });
-
     }, sectionRef);
 
     return () => {
@@ -140,9 +126,9 @@ const OurAfrica = () => {
               </div>
             </div>
             <div className="africa-chapter-visual">
-              <div className="visual-grid">
-                <img src="/sierra_leone_pic_480x480.webp" alt="Relief Work" className="main-grid-img" />
-                <img src="/newlife_sleoe_480x480.jpg" alt="Relief Work Detail" className="secondary-grid-img africa-floating-img" />
+              <div className="visual-grid-stacked">
+                <img src="/Our_Africa2.jpg" alt="Relief Work" className="stacked-img" />
+                <img src="/Our_Africa3.jpg" alt="Relief Work Detail" className="stacked-img" />
               </div>
             </div>
           </div>
