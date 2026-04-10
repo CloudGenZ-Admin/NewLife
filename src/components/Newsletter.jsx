@@ -10,22 +10,28 @@ const Newsletter = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('.newsletter-left > *', {
-        scrollTrigger: { trigger: sectionRef.current, start: 'top 80%' },
-        x: -24,
-        opacity: 0,
-        duration: 0.9,
-        stagger: 0.12,
-        ease: 'power3.out'
-      })
-      gsap.from('.newsletter-right > *', {
-        scrollTrigger: { trigger: sectionRef.current, start: 'top 75%' },
-        x: 24,
-        opacity: 0,
-        duration: 0.9,
-        stagger: 0.1,
-        ease: 'power3.out'
-      })
+      gsap.fromTo('.newsletter-left > *',
+        { x: -24, opacity: 0 },
+        {
+          scrollTrigger: { trigger: sectionRef.current, start: 'top 80%' },
+          x: 0,
+          opacity: 1,
+          duration: 0.9,
+          stagger: 0.12,
+          ease: 'power3.out'
+        }
+      )
+      gsap.fromTo('.newsletter-right > *',
+        { x: 24, opacity: 0 },
+        {
+          scrollTrigger: { trigger: sectionRef.current, start: 'top 75%' },
+          x: 0,
+          opacity: 1,
+          duration: 0.9,
+          stagger: 0.1,
+          ease: 'power3.out'
+        }
+      )
     }, sectionRef)
     return () => ctx.revert()
   }, [])
