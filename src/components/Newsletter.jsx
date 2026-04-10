@@ -99,7 +99,6 @@ const Newsletter = () => {
             </div>
             <div className="virtual-office-content">
               <span className="virtual-office-label">Virtual Office</span>
-              <h3 className="virtual-office-title">Address in Ottawa</h3>
             </div>
           </a>
         </div>
