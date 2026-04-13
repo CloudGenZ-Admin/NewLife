@@ -8,9 +8,8 @@ gsap.registerPlugin(ScrollTrigger)
 
 const images = [
   { src: "/First_img_Home.jpg", alt: "Impact Story" },
-  { src: "/hero_2.webp", alt: "Growth & Education" },
-  { src: "/hero_3.webp", alt: "Sanctuary" },
   { src: "/Bag_img.jpg", alt: "Bag" },
+  { src: "/hero_3.webp", alt: "Sanctuary" },
   { src: "/Left_and_right.jpg", alt: "Community", vertical: true },
 ]
 

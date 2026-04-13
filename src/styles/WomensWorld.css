@@ -412,6 +412,28 @@
   border-top: 1px solid var(--ww-border);
 }
 
+.ww-btn-arch {
+  display: inline-block;
+  background: var(--ww-green);
+  color: white;
+  padding: 1rem 3.5rem;
+  border-radius: 100px;
+  border: none;
+  text-decoration: none;
+  font-family: var(--fb);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.ww-btn-arch:hover {
+  transform: scale(1.05);
+  background: var(--ww-green-dark);
+}
+
 .ww-membership-iframe-wrapper {
   position: relative;
   width: 100%;

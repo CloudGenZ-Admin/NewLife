@@ -144,11 +144,11 @@ const OurAfrica = () => {
               </div>
             </div>
             <div className="africa-chapter-text">
-              <h3 className="chapter-title">Brookfields Learning Centre</h3>
+              <h3 className="chapter-title">Empowering Through Education</h3>
               <div className="africa-reveal-text">
                 <p>
                   One of NewLife's ultimate goals is to empower girls through quality education. We have launched a transformative 
-                  project to establish a sustainable educational infrastructure in the <strong>Brookfields community, Sierra Leone</strong>.
+                  project to establish a sustainable educational infrastructure.
                 </p>
                 <p>
                   This education center will provide a secure environment featuring classrooms, a library, a computer lab, and 
@@ -160,19 +160,7 @@ const OurAfrica = () => {
           </div>
         </div>
 
-        {/* FINAL CALLOUT */}
-        <div className="africa-outro">
-          <div className="africa-container">
-            <div className="outro-card">
-              <img src="/Violet_and_Green_Lavender_Photo_Collage_Instagram_Post_9a6a3bad-b7da-4420-8e60-0c8122edb6d1.webp" alt="Future Vision" className="outro-bg" />
-              <div className="outro-content">
-                <h3>Expanding the Vision</h3>
-                <p>This year, we continue to support children in Sierra Leone with backpacks and essential school supplies, ensuring no child is left behind in their educational journey.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
+        {/* FINAL CALLOUT REMOVED */}
         <DonationPopup 
           show={showDonation} 
           onClose={() => setShowDonation(false)} 

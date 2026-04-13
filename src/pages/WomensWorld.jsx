@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../styles/WomensWorld.css';
 import '../styles/ArchitectHero.css';
+import DonationPopup from '../components/DonationPopup';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,6 +25,8 @@ const FORUM_IMAGES = {
 
 const WomensWorld = () => {
   const heroRef = useRef(null);
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupUrl, setPopupUrl] = useState("https://www.zeffy.com/en-CA/ticketing/womens-world-memberships");
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -372,16 +375,28 @@ const WomensWorld = () => {
             <span className="ww-label">Membership</span>
             <h2 className="ww-heading">Join the <em>Forum</em></h2>
           </div>
-          <div className="ww-membership-iframe-wrapper">
-            <iframe
-              title="Membership ticketing powered by Zeffy"
-              src="https://www.zeffy.com/en-CA/ticketing/womens-world-memberships"
-              allowTransparency="true"
-              className="ww-membership-iframe"
-            />
+          <div className="ww-membership-cta" style={{ textAlign: 'center', marginTop: '3rem' }}>
+            <p style={{ fontFamily: 'var(--fb)', fontSize: '1.1rem', color: 'var(--ww-muted)', marginBottom: '2rem' }}>
+              Become a formal member of this dynamic network and help advance leadership, mentorship, and social impact worldwide.
+            </p>
+            <button 
+              className="ww-btn-arch"
+              onClick={() => {
+                setPopupUrl("https://www.zeffy.com/en-CA/ticketing/womens-world-memberships");
+                setShowPopup(true);
+              }}
+            >
+              Join Now
+            </button>
           </div>
         </div>
       </section>
+
+      <DonationPopup 
+        show={showPopup}
+        onClose={() => setShowPopup(false)}
+        donationUrl={popupUrl}
+      />
     </div>
   );
 };
