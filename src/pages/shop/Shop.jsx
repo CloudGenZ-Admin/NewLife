@@ -349,18 +349,17 @@ export default function Shop() {
                             {categories.map((cat, index) => (
                                 <div
                                     key={cat.id}
-                                    className={`category-tile tile-${(index % 6) + 1} ${['out'].some(k => cat.name.toLowerCase().includes(k))
-                                        ? 'tile-vertical-extra'
-                                        : ['acc', 'jewelry', 'pillow', 'bonnet'].some(k => cat.name.toLowerCase().includes(k))
-                                            ? 'tile-square-extra'
-                                            : ''
-                                        }`}
+                                    className="category-tile"
                                     onClick={() => handleCategoryChange(String(cat.id))}
                                 >
                                     <div className="tile-image-wrapper">
+                                        {!categoryImages[cat.id] && (
+                                            <div className="tile-skeleton"></div>
+                                        )}
                                         <img
                                             src={categoryImages[cat.id] || ''}
                                             alt={cat.name}
+                                            style={{ opacity: categoryImages[cat.id] ? 1 : 0 }}
                                         />
                                         <div className="tile-overlay"></div>
                                     </div>
