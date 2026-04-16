@@ -316,27 +316,85 @@ export default function Blog() {
                   <button
                     disabled={currentPage === 1}
                     onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
-                    className="pagination-btn"
+                    className="pagination-btn pagination-prev"
+                    aria-label="Previous page"
                   >
                     <ChevronLeft size={20} />
                   </button>
 
                   <div className="pagination-numbers">
-                    {[...Array(totalPages)].map((_, i) => (
-                      <button
-                        key={i + 1}
-                        onClick={() => setCurrentPage(i + 1)}
-                        className={`page-number ${currentPage === i + 1 ? 'active' : ''}`}
-                      >
-                        {i + 1}
-                      </button>
-                    ))}
+                    {(() => {
+                      const pages = [];
+                      const showEllipsis = totalPages > 7;
+                      
+                      if (!showEllipsis) {
+                        // Show all pages if 7 or fewer
+                        for (let i = 1; i <= totalPages; i++) {
+                          pages.push(
+                            <button
+                              key={i}
+                              onClick={() => setCurrentPage(i)}
+                              className={`page-number ${currentPage === i ? 'active' : ''}`}
+                            >
+                              {i}
+                            </button>
+                          );
+                        }
+                      } else {
+                        // Show smart pagination with ellipsis
+                        pages.push(
+                          <button
+                            key={1}
+                            onClick={() => setCurrentPage(1)}
+                            className={`page-number ${currentPage === 1 ? 'active' : ''}`}
+                          >
+                            1
+                          </button>
+                        );
+
+                        if (currentPage > 3) {
+                          pages.push(<span key="ellipsis1" className="pagination-ellipsis">...</span>);
+                        }
+
+                        const start = Math.max(2, currentPage - 1);
+                        const end = Math.min(totalPages - 1, currentPage + 1);
+
+                        for (let i = start; i <= end; i++) {
+                          pages.push(
+                            <button
+                              key={i}
+                              onClick={() => setCurrentPage(i)}
+                              className={`page-number ${currentPage === i ? 'active' : ''}`}
+                            >
+                              {i}
+                            </button>
+                          );
+                        }
+
+                        if (currentPage < totalPages - 2) {
+                          pages.push(<span key="ellipsis2" className="pagination-ellipsis">...</span>);
+                        }
+
+                        pages.push(
+                          <button
+                            key={totalPages}
+                            onClick={() => setCurrentPage(totalPages)}
+                            className={`page-number ${currentPage === totalPages ? 'active' : ''}`}
+                          >
+                            {totalPages}
+                          </button>
+                        );
+                      }
+                      
+                      return pages;
+                    })()}
                   </div>
 
                   <button
                     disabled={currentPage === totalPages}
                     onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
-                    className="pagination-btn"
+                    className="pagination-btn pagination-next"
+                    aria-label="Next page"
                   >
                     <ChevronRight size={20} />
                   </button>
