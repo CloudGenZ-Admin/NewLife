@@ -76,12 +76,9 @@ const InternshipEngagement = () => {
             <h3>Academic Partners</h3>
             <p>Since 2012, NewLife Project Inc. has partnered with top-tier universities and colleges to provide students with meaningful experiential learning placements that challenge and grow future leaders.</p>
             
-            <div className="int-tags-container">
-              <span className="int-tag">Laurentian University</span>
-              <span className="int-tag">Carleton University</span>
-              <span className="int-tag">Adler University</span>
-              <span className="int-tag">Centennial College</span>
-            </div>
+            <p style={{ marginTop: '1.5rem', fontStyle: 'italic', color: 'var(--text-gray)' }}>
+              Our partnerships span multiple prestigious institutions across Ontario, creating opportunities for students to engage in community-driven research and hands-on professional development.
+            </p>
           </div>
 
           {/* Photo 1 */}

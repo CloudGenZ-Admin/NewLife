@@ -7,23 +7,23 @@ gsap.registerPlugin(ScrollTrigger);
 
 const AboutGallery = () => {
   const [selectedImg, setSelectedImg] = useState(null);
-  const [decodedImages, setDecodedImages] = useState({});
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const galleryRef = useRef(null);
 
   const images = [
-    { url: "/PXL_20260304_175021346.MP.webp", caption: "Community Convergence", size: "v-large", depth: 0.1 },
-    { url: "/sewing_class_pic2.webp", caption: "The Craft of Resilience", size: "v-small", depth: 0.2 },
-    { url: "/IMG_8020.webp", caption: "Empowered Voices", size: "v-medium", depth: 0.05 },
-    { url: "/IMG_7943.webp", caption: "Visionary Workshops", size: "v-small", depth: 0.15 },
-    { url: "/sewing_class_pic.webp", caption: "Skillful Horizons", size: "v-medium", depth: 0.08 },
-    { url: "/french_class_pic.webp", caption: "Language of Hope", size: "v-small", depth: 0.25 },
-    { url: "/IMG_7659.webp", caption: "Architects of Change", size: "v-large", depth: 0.12 },
-    { url: "/IMG_7655.webp", caption: "Shared Ambitions", size: "v-small", depth: 0.18 },
-    { url: "/IMG_7504.webp", caption: "Strength in Unity", size: "v-medium", depth: 0.06 },
-    { url: "/IMG_7236.webp", caption: "Cycles of Growth", size: "v-small", depth: 0.22 },
-    { url: "/IMG_7514.webp", caption: "Mentorship Threads", size: "v-medium", depth: 0.1 },
-    { url: "/sewing_class.webp", caption: "Generational Promise", size: "v-small", depth: 0.15 }
+    { url: "/PXL_20260304_175021346.MP.webp", caption: "Community Convergence" },
+    { url: "/sewing_class_pic2.webp", caption: "The Craft of Resilience" },
+    { url: "/IMG_8020.webp", caption: "Empowered Voices" },
+    { url: "/IMG_7943.webp", caption: "Visionary Workshops" },
+    { url: "/skillful_horizen.png", caption: "Skillful Horizons" },
+    { url: "/french_class_pic.webp", caption: "Language of Hope" },
+    { url: "/IMG_7659.webp", caption: "Architects of Change" },
+    { url: "/IMG_7655.webp", caption: "Shared Ambitions" },
+    { url: "/IMG_7504.webp", caption: "Strength in Unity" },
+    { url: "/IMG_7236.webp", caption: "Cycles of Growth" },
+    { url: "/IMG_7514.webp", caption: "Mentorship Threads" },
+    { url: "/sewing_class.webp", caption: "Generational Promise" }
   ];
 
   useEffect(() => {
@@ -33,65 +33,17 @@ const AboutGallery = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const items = gsap.utils.toArray('.v2-gallery-item');
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % images.length);
+  };
 
-      items.forEach((item, i) => {
-        const img = item.querySelector('img');
-        const depth = images[i % images.length].depth || 0.1;
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + images.length) % images.length);
+  };
 
-        // Reveal Animation
-        gsap.to(item, {
-          scrollTrigger: {
-            trigger: item,
-            start: isMobile ? 'top 100%' : 'top 92%',
-            toggleActions: 'play none none reverse',
-          },
-          clipPath: 'inset(0% 0% 0% 0%)',
-          opacity: 1,
-          y: 0,
-          duration: isMobile ? 0.3 : 1.5,
-          ease: 'power4.inOut',
-          delay: isMobile ? 0 : (i % 3) * 0.1,
-          onStart: () => {
-            const index = i % images.length;
-            setDecodedImages(prev => ({ ...prev, [index]: true }));
-          }
-        });
-
-        // Floating Parallax (desktop only)
-        if (!isMobile && img) {
-          gsap.to(img, {
-            scrollTrigger: {
-              trigger: item,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: true,
-            },
-            y: (depth * 150),
-            ease: 'none'
-          });
-        }
-      });
-
-      // Header Reveal
-      gsap.from('.v2-gallery-header > *', {
-        scrollTrigger: {
-          trigger: '.v2-gallery-header',
-          start: 'top 85%',
-        },
-        y: 60,
-        opacity: 0,
-        stagger: 0.2,
-        duration: 1.5,
-        ease: 'power4.out'
-      });
-
-    }, galleryRef);
-
-    return () => ctx.revert();
-  }, [isMobile]);
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+  };
 
   const handleLightboxOpen = (url) => {
     setSelectedImg(url);
@@ -116,45 +68,72 @@ const AboutGallery = () => {
           </p>
         </header>
 
-        
-        <div className={`v2-gallery-scroll-wrapper ${isMobile ? 'is-mobile-scroll' : ''}`}>
-          <div className="v2-gallery-asymmetric-grid">
-            {images.map((img, index) => (
-              <div 
-                key={index} 
-                className={`v2-gallery-item ${img.size} ${decodedImages[index] ? 'is-decoded' : ''}`}
-                onClick={() => handleLightboxOpen(img.url)}
-              >
-                <div className="v2-item-inner">
-                  <div className="v2-img-container">
-                    <img src={img.url} alt={img.caption} loading="lazy" />
-                  </div>
-                  <div className="v2-item-card-info">
-                    <div className="v2-info-mask">
-                      <span className="v2-item-number">{(index + 1).toString().padStart(2, '0')}</span>
-                      <h4 className="v2-item-caption">{img.caption}</h4>
+        {!isMobile ? (
+          /* Desktop Carousel */
+          <div className="v2-carousel-wrapper">
+            <div className="v2-carousel-container">
+              <div className="v2-carousel-track" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
+                {images.map((img, index) => (
+                  <div key={index} className="v2-carousel-slide">
+                    <div className="v2-carousel-image" onClick={() => handleLightboxOpen(img.url)}>
+                      <img src={img.url} alt={img.caption} loading="lazy" />
+                      <div className="v2-carousel-caption">
+                        <h4>{img.caption}</h4>
+                      </div>
                     </div>
-                    <div className="v2-card-accent"></div>
                   </div>
-                </div>
+                ))}
               </div>
-            ))}
-            {/* Clone for infinite scroll on mobile */}
-            {isMobile && images.map((img, index) => (
-              <div 
-                key={`clone-${index}`} 
-                className={`v2-gallery-item ${img.size}`}
-                aria-hidden="true"
-              >
-                <div className="v2-item-inner">
-                  <div className="v2-img-container">
-                    <img src={img.url} alt="" loading="lazy" />
-                  </div>
-                </div>
-              </div>
-            ))}
+            </div>
+            
+            <button className="v2-carousel-btn v2-carousel-prev" onClick={prevSlide}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <button className="v2-carousel-btn v2-carousel-next" onClick={nextSlide}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+            
+            <div className="v2-carousel-dots">
+              {images.map((_, index) => (
+                <button
+                  key={index}
+                  className={`v2-carousel-dot ${index === currentSlide ? 'active' : ''}`}
+                  onClick={() => goToSlide(index)}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
-        </div>
+        ) : (
+          /* Mobile Grid - Keep existing design */
+          <div className="v2-gallery-scroll-wrapper is-mobile-scroll">
+            <div className="v2-gallery-asymmetric-grid">
+              {images.map((img, index) => (
+                <div 
+                  key={index} 
+                  className="v2-gallery-item"
+                  onClick={() => handleLightboxOpen(img.url)}
+                >
+                  <div className="v2-item-inner">
+                    <div className="v2-img-container">
+                      <img src={img.url} alt={img.caption} loading="lazy" />
+                    </div>
+                    <div className="v2-item-card-info">
+                      <div className="v2-info-mask">
+                        <span className="v2-item-number">{(index + 1).toString().padStart(2, '0')}</span>
+                        <h4 className="v2-item-caption">{img.caption}</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
       {selectedImg && (

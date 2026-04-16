@@ -102,6 +102,9 @@ const ReliefProgram = () => {
           <div className="tp-section-sticky">
             <h2>Education <em>Relief</em></h2>
             <p>Direct school support empowering the next generation.</p>
+            <div className="tp-section-img">
+              <img src="/Bag_img.jpg" alt="School Supplies" />
+            </div>
           </div>
           <div className="tp-section-content">
             <ul className="tp-list">

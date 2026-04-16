@@ -61,6 +61,7 @@ const FounderStory = () => {
                 src="./my_profile.jpg"
                 alt="Brenda Williams - Founder"
               />
+              <p className="image-caption">Executive Director and Founder</p>
             </div>
           </div>
           <div className="chapter-content">
@@ -186,27 +187,70 @@ const FounderStory = () => {
               <h3>Guided by Vision</h3>
               <p>Supported by a dedicated Board of Directors committed to sustainable community transformation.</p>
               <div className="board-preview-grid">
-                <div className="board-img-item">
-                  <img
-                    src="./NewLife_Board_1.webp"
-                    alt="Hervé Some - Board Member"
-                  />
-                  <div className="board-member-name">Hervé Some</div>
+                
+                {/* Board Member 1 - Hervé Some */}
+                <div className="board-card">
+                  <div className="board-card-image">
+                    <img src="./1.jpg" alt="Hervé Some - Board Member" />
+                  </div>
+                  <div className="board-card-bio-section">
+                    <h4>Hervé Some</h4>
+                    <p className="board-bio">
+                      Hervé Some is a member of the Ontario College of Teachers. He worked as a teacher at La Cité, in several language schools, elementary and secondary schools of the French language school board in Kingston and Ottawa.
+                    </p>
+                    <p className="board-bio">
+                      Stung by the entrepreneurial spirit for several years and passionate about self-directed education, Hervé founded Fast French Formula, Sympatorium, and Idnov Consulting. He has been working on his own since June 2019.
+                    </p>
+                    <p className="board-bio">
+                      Active member of the community, Hervé is, among other things, projects and events coordinator for the Aggregation of Foreign Born or Trained Professionals, responsible for French communication for the Ottawa Book Show, and coordinator of the Ottawa local Panafrican Movement Committee.
+                    </p>
+                    <p className="board-vision">
+                      <strong>Vision for Project:</strong> Bring my expertise and resources to New Life Project to help educate and empower women and children.
+                    </p>
+                  </div>
                 </div>
-                <div className="board-img-item">
-                  <img
-                    src="./second_board_of_director.jpg"
-                    alt="Irene Cummings - Board Member"
-                  />
-                  <div className="board-member-name">Irene Cummings</div>
+
+                {/* Board Member 2 - Irene Cummings */}
+                <div className="board-card">
+                  <div className="board-card-image">
+                    <img src="./2.jpg" alt="Irene Cummings - Board Member" />
+                  </div>
+                  <div className="board-card-bio-section">
+                    <h4>Irene Cummings</h4>
+                    <p className="board-bio">
+                      Irene Cummings is a dedicated professional with nearly 20 years of experience in Human Services and Education. She is currently pursuing a Bachelor's degree in Psychology and holds a Developmental Services Worker diploma.
+                    </p>
+                    <p className="board-bio">
+                      As a Special Needs Educator, Irene supports individuals in overcoming academic, behavioral, and social challenges. Her experience spans schools, residential care, and community programs.
+                    </p>
+                    <p className="board-bio">
+                      She also provides at-home, online, and family support services through her own practice. Irene is passionate about creating safe, inclusive environments that foster growth, independence, and well-being for individuals with special needs.
+                    </p>
+                  </div>
                 </div>
-                <div className="board-img-item board-img-tall">
-                  <img
-                    src="./third_board_of_director.jpg"
-                    alt="Abena Beloved Green - Board Member"
-                  />
-                  <div className="board-member-name">ABENA BELOVED GREEN</div>
+
+                {/* Board Member 3 - Abena Beloved Green */}
+                <div className="board-card">
+                  <div className="board-card-image">
+                    <img src="./3.jpg" alt="Abena Beloved Green - Board Member" />
+                  </div>
+                  <div className="board-card-bio-section">
+                    <h4>Abena Beloved Green</h4>
+                    <p className="board-bio">
+                      Abena Green is a poet, writer, and dancer who seeks to create, engage, and elevate through words and movement. She is the author of "The Way We Hold On" (Pottersfield Press, 2018) and Ode to the Unpraised (Pottersfield Press, 2020).
+                    </p>
+                    <p className="board-bio">
+                      A first-generation Canadian, Abena grew up in Nova Scotia and writes on culture, family, environment, wellness, and personal growth.
+                    </p>
+                    <p className="board-bio">
+                      She has shared her poetry in Ghana, Ethiopia, Rwanda, and in several Canadian locales. Her submission, "The Art of Living", won the Writers' Federation of Nova Scotia's 2016 Atlantic Writing Competition. She was the inaugural H.E.R. Story Writer-in-Residence for YWCA Halifax and Atlantic Publishers Marketing Association from April 2021 to March 2022.
+                    </p>
+                    <p className="board-bio">
+                      Abena believes honest stories build bridges and break walls. She enjoys coaching individuals and groups to produce writing that is clear and compelling.
+                    </p>
+                  </div>
                 </div>
+
               </div>
             </div>
 

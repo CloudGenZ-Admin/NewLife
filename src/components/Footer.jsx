@@ -10,7 +10,7 @@ const Footer = () => {
           <div className="footer-brand-studio">
             <img src="/newlife-logo_025x-1_140x@2x.avif" alt="NewLife Projects Inc." className="studio-logo" />
             <p className="brand-statement">
-              Empowering at-risk communities through dedicated education, relief, and sustainable vocational training since 1994.
+              The NewLife Project is a Not-for-profit Organization working to transform the lives of women through education, empowerment forums & entrepreneurship programs. Our goal is to inspire, educate, and empower women and children through various support systems.
             </p>
           </div>
 
@@ -43,7 +43,7 @@ const Footer = () => {
             <div className="nav-col">
               <h5 className="nav-title">Follow Us</h5>
               <div className="footer-social-icons">
-                <a href="https://www.facebook.com/people/NewLife-Designs/100046505364411/" className="footer-social-icon" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.facebook.com/people/NewLife-Project-Inc/100064480878851/" className="footer-social-icon" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                   <img src="https://cdn.simpleicons.org/facebook/ffffff" alt="Facebook" />
                 </a>
                 <a href="https://www.instagram.com/newlifeprojectinc/" className="footer-social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
@@ -54,6 +54,9 @@ const Footer = () => {
                 </a>
                 <a href="https://ca.pinterest.com/newlifeprojectinc/" className="footer-social-icon" aria-label="Pinterest" target="_blank" rel="noopener noreferrer">
                   <img src="https://cdn.simpleicons.org/pinterest/ffffff" alt="Pinterest" />
+                </a>
+                <a href="https://www.linkedin.com/company/new-life-project-inc/" className="footer-social-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/linkedin.svg" alt="LinkedIn" style={{ width: '30px', height: '30px', filter: 'brightness(0) invert(1)' }} />
                 </a>
               </div>
             </div>

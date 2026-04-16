@@ -19,7 +19,7 @@ const Gallery = () => {
       category: "Fundraising",
       title: "Fundraiser Exhibitions",
       subtitle: "Taste of Africa & Community Events",
-      image: "./fundraiser_1.webp",
+      image: "./Fundraiser.png",
       link: "/fundraiser-exhibitions"
     },
     {
@@ -35,7 +35,7 @@ const Gallery = () => {
       category: "Education",
       title: "Education & Vocational Training",
       subtitle: "Sewing, French & Craft Classes",
-      image: "./sewing.jpg",
+      image: "./Education.png",
       link: "/vocational-training"
     },
     {

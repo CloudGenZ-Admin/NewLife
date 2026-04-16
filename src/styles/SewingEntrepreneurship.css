@@ -70,9 +70,8 @@
 .sew-hero-text h1 em {
   font-style: italic;
   font-weight: 300;
-  display: block;
-  margin-left: 2rem;
   color: var(--sew-accent);
+  white-space: nowrap;
 }
 
 .sew-hero-text p {
@@ -297,5 +296,19 @@
   
   .sew-section-title {
     font-size: 3rem;
+  }
+  
+  .sew-hero-text h1 {
+    font-size: 3rem;
+  }
+  
+  .sew-hero-text h1 em {
+    white-space: normal;
+    display: block;
+  }
+  
+  .sew-hero-text p {
+    margin-left: 0;
+    font-size: 1rem;
   }
 }

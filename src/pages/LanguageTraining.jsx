@@ -111,7 +111,7 @@ const LanguageTraining = () => {
       <section className="lt-impact-section">
         <div className="lt-impact-flyer">
           {/* Framed perfectly without cropping via CSS */}
-          <img src="/FRENCH_CLASSES_FLYER_600x600.webp" alt="Language Classes Fall Flyer" />
+          <img src="/FRENCH_CLASSES_FLYER_600x600.png" alt="Language Classes Fall Flyer" />
         </div>
         
         <div className="lt-impact-text">

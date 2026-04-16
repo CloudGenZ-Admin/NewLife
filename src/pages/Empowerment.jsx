@@ -60,9 +60,8 @@ const Empowerment = () => {
                 {/* Right: Image Panel */}
                 <div className="emp-hero-img-block">
                     <div className="emp-img-pill">
-                        <img src="/Youth_meeting.webp" alt="Youth Empowerment" />
+                        <img src="/Picture6.jpg" alt="Youth Empowerment" />
                     </div>
-                    <div className="emp-img-tag">Est. 2004</div>
                 </div>
             </section>
 

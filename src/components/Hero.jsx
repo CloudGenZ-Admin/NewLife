@@ -7,10 +7,10 @@ import DonationPopup from './DonationPopup'
 gsap.registerPlugin(ScrollTrigger)
 
 const images = [
-  { src: "/First_img_Home.jpg", alt: "Impact Story" },
-  { src: "/Bag_img.jpg", alt: "Bag" },
-  { src: "/hero_3.webp", alt: "Sanctuary" },
+  { src: "/Home_1.jpg", alt: "Impact Story" },
   { src: "/Left_and_right.jpg", alt: "Community", vertical: true },
+  { src: "/women_world.jpg", alt: "Bag" },
+  { src: "/language_new_img2.jpg.png", alt: "Sanctuary" },
 ]
 
 const Hero = () => {
@@ -106,8 +106,7 @@ const Hero = () => {
         </h1>
 
         <p className="hero-desc">
-          Dedicated to bringing new life to at-risk women and children across Sierra Leone,
-          Côte d'Ivoire, Ghana, and Canada through education, health, and vocational training.
+        Dedicated to bringing new life to women and children across Sierra Leone, Côte d'Ivoire, and Canada through education, health, and vocational training.
         </p>
 
         <div className="hero-actions">

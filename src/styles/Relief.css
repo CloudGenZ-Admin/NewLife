@@ -142,6 +142,25 @@
   line-height: 1.6;
 }
 
+.tp-section-img {
+  margin-top: 2rem;
+  max-width: 500px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.tp-section-img:hover {
+  transform: scale(1.05);
+}
+
+.tp-section-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 .tp-section-content {
   display: flex;
   flex-direction: column;

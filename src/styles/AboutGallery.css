@@ -359,3 +359,134 @@
     display: none;
   }
 }
+
+/* CAROUSEL STYLES FOR DESKTOP */
+.v2-carousel-wrapper {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 80px;
+}
+
+.v2-carousel-container {
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+}
+
+.v2-carousel-track {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.v2-carousel-slide {
+  min-width: 100%;
+  flex-shrink: 0;
+}
+
+.v2-carousel-image {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.v2-carousel-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.v2-carousel-image:hover img {
+  transform: scale(1.05);
+}
+
+.v2-carousel-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  padding: 40px 30px 30px;
+  color: white;
+}
+
+.v2-carousel-caption h4 {
+  font-family: var(--ff);
+  font-size: 2rem;
+  font-weight: 300;
+  color: white;
+  margin: 0;
+}
+
+/* Carousel Navigation Buttons */
+.v2-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  z-index: 10;
+  color: var(--dark-gray);
+}
+
+.v2-carousel-btn:hover {
+  background: var(--primary-green);
+  color: white;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.v2-carousel-prev {
+  left: 0;
+}
+
+.v2-carousel-next {
+  right: 0;
+}
+
+/* Carousel Dots */
+.v2-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.v2-carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border-light);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.v2-carousel-dot:hover {
+  background: var(--text-gray);
+  transform: scale(1.2);
+}
+
+.v2-carousel-dot.active {
+  background: var(--primary-green);
+  width: 30px;
+  border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .v2-carousel-wrapper {
+    display: none;
+  }
+}
