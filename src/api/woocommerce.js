@@ -11,7 +11,6 @@ const CONSUMER_SECRET = import.meta.env.VITE_WC_CONSUMER_SECRET;
 async function wooFetch(endpoint, options = {}) {
   const { headers: callerHeaders, ...restOptions } = options;
   const url = `${WOOCOMMERCE_URL}/wp-json/wc/v3${endpoint}`;
-  console.log("🌐 wooFetch calling:", url);
   
   const res = await fetch(url, {
     ...restOptions,
@@ -30,7 +29,6 @@ async function wooFetch(endpoint, options = {}) {
     throw new Error(`Server returned non-JSON response (${res.status})`);
   }
   
-  console.log("📦 wooFetch response for", endpoint, ":", data);
 
   if (!res.ok) {
     const CODE_MAP = {
@@ -293,14 +291,9 @@ export async function loginCustomer(email, password) {
     // Fetch full customer data from WooCommerce if customer ID exists
     if (result.woocommerce_customer_id) {
       try {
-        console.log("🔍 Fetching WooCommerce customer ID:", result.woocommerce_customer_id);
         // Add cache-busting parameter to force fresh data from database
         const cacheBuster = `_=${Date.now()}`;
         const customerData = await wooFetch(`/customers/${result.woocommerce_customer_id}?${cacheBuster}`);
-        console.log("✅ WooCommerce customer data fetched:");
-        console.log("  - billing.phone:", customerData.billing?.phone);
-        console.log("  - shipping.phone:", customerData.shipping?.phone);
-        console.log("  - Full billing:", customerData.billing);
         
         // Merge WooCommerce customer data with auth data
         const mergedData = {
@@ -310,9 +303,6 @@ export async function loginCustomer(email, password) {
           avatar_url: customerData.avatar_url || '',
         };
         
-        console.log("🔀 Merged data:");
-        console.log("  - billing.phone:", mergedData.billing?.phone);
-        console.log("  - Full merged:", mergedData);
         
         return mergedData;
       } catch (e) {
@@ -332,13 +322,11 @@ export async function loginCustomer(email, password) {
 
 export async function updateCustomer(customerId, data) {
   if (!customerId) throw new Error("Not signed in.");
-  console.log("🔄 Updating customer", customerId, "with data:", data);
   try {
     const result = await wooFetch(`/customers/${customerId}`, {
       method: "PUT",
       body: JSON.stringify(data),
     });
-    console.log("✅ Customer updated successfully:", result);
     return result;
   } catch (e) {
     console.error("❌ updateCustomer error:", e);

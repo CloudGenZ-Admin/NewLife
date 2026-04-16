@@ -110,13 +110,11 @@ export default function StripePaymentForm({ orderData, pendingOrder, finalTotal,
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ payment_intent_id: paymentIntent.id }),
                     });
-                    console.log("zoro",cardDetailsResponse);
                     
                     if (cardDetailsResponse.ok) {
                         const cardDetails = await cardDetailsResponse.json();
                         cardBrand = cardDetails.cardBrand || 'UNKNOWN';
                         cardLast4 = cardDetails.cardLast4 || '';
-                        console.log('💳 Retrieved Card Details:', cardDetails);
                     }
                 } catch (cardError) {
                     console.error('Failed to retrieve card details:', cardError);

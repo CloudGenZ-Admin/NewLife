@@ -91,6 +91,12 @@ const Partnerships = () => {
                 alt="Sponsor 5"
               />
             </div>
+            <div className="partner-logo">
+              <img
+                src="./CCMC.png"
+                alt="Sponsor 6"
+              />
+            </div>
           </div>
         </div>
 

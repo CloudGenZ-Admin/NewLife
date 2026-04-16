@@ -94,5 +94,4 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  console.log('NewLife Project - Design2 loaded successfully!');
 });

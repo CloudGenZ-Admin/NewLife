@@ -122,7 +122,6 @@ export default function Shop() {
                             if (reviews.length > 0) {
                                 const totalRating = reviews.reduce((sum, review) => sum + (review.rating || 0), 0);
                                 ratings[product.id] = totalRating / reviews.length;
-                                console.log(`Product ${product.id} (${product.name}): ${reviews.length} reviews, avg rating: ${ratings[product.id]}`);
                             } else {
                                 ratings[product.id] = 0;
                             }
