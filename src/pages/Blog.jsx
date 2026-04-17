@@ -163,8 +163,15 @@ export default function Blog() {
   };
 
   const getFeaturedImage = (post) => {
-    return post._embedded?.['wp:featuredmedia']?.[0]?.source_url ||
-      'https://via.placeholder.com/800x500?text=Blog+Post';
+    const featuredImage = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
+    
+    // If there's a featured image, use it
+    if (featuredImage) {
+      return featuredImage;
+    }
+    
+    // Otherwise, use a default blog placeholder image
+    return 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNTzHGlWJqlA-xTAXmameKY25C-acNzU0HZg&s';
   };
 
   const getAuthorName = (post) => {
