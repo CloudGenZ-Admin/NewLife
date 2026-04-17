@@ -256,24 +256,6 @@
 .category-tile:hover .tile-btn {
   gap: 12px;
 }
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.category-tile:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-}
-
-.category-tile:hover .tile-image-wrapper img {
-  transform: scale(1.05);
-}
-
-.category-tile:hover .tile-btn {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 /* NAV ACTIONS */
 .shop-nav-actions {
@@ -807,7 +789,6 @@
   .products-grid {
     grid-template-columns: 1fr;
   }
-}
 
   .product-actions {
     opacity: 1;
