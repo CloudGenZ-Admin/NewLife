@@ -187,10 +187,6 @@ const Contact = () => {
                                         <a href="tel:+16136997205">+1 (613) 699-7205</a>
                                     </div>
                                     <div className="email-item">
-                                        <span>Phone 2</span>
-                                        <a href="tel:+18196397417">+1 (819) 639-7417</a>
-                                    </div>
-                                    <div className="email-item">
                                         <span>Office Hours</span>
                                         <p className="office-hours-text">
                                             Monday – Friday <br /> 9:00 AM – 5:00 PM

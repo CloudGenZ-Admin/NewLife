@@ -3,28 +3,28 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitType from 'split-type';
 import '../styles/Relief.css'; 
-import ProgramRegistrationPopup from '../components/ProgramRegistrationPopup';
+import DonationPopup from '../components/DonationPopup';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const ReliefProgram = () => {
   const pageRef = useRef(null);
-  const [showReg, setShowReg] = useState(false);
+  const [showDonate, setShowDonate] = useState(false);
 
   useEffect(() => {
     let ctx = gsap.context(() => {
       
       // Massive Hero Typography Animation
       const heroTitleSplit = new SplitType('.tp-hero h1', { types: 'words, chars' });
-      const heroIntroSplit = new SplitType('.tp-hero p.lead', { types: 'lines, words' });
+      const heroIntroSplit = new SplitType('.tp-hero p.lead', { types: 'words' });
 
       gsap.from(heroTitleSplit.chars, {
         opacity: 0, y: 100, rotateX: -90,
         stagger: 0.02, duration: 1.2, ease: 'back.out(1.5)', delay: 0.2
       });
 
-      gsap.from(heroIntroSplit.lines, {
-        opacity: 0, y: 30, stagger: 0.1, duration: 1.2, ease: 'power3.out', delay: 0.8
+      gsap.from(heroIntroSplit.words, {
+        opacity: 0, y: 20, stagger: 0.02, duration: 0.8, ease: 'power3.out', delay: 0.8
       });
 
       gsap.from('.tp-hero-intro', {
@@ -158,9 +158,9 @@ const ReliefProgram = () => {
           <button 
             className="preg-submit-btn" 
             style={{ padding: '20px 60px', fontSize: '1.1rem' }}
-            onClick={() => setShowReg(true)}
+            onClick={() => setShowDonate(true)}
           >
-            Register for this Program
+            Donate Now
           </button>
         </div>
       </section>
@@ -171,15 +171,10 @@ const ReliefProgram = () => {
         <p>When you support the NewLife Project, you are not only making a contribution — you are investing in education, empowerment, and opportunity. Join us in creating pathways to hope, dignity, and lasting transformation.</p>
       </footer>
 
-      <ProgramRegistrationPopup 
-        show={showReg} 
-        onClose={() => setShowReg(false)} 
-        programName="Relief & Diaspora"
-        formAction="https://docs.google.com/forms/d/e/1FAIpQLSdjZ2b2b9-S3-uVmcrw_L7VpewsAHFXxXSI-RH25cicymwFLQ/formResponse"
-        entryProgram="entry.574291237"
-        entryName="entry.743630460"
-        entryEmail="entry.2010389936"
-        entryContact="entry.1005238941"
+      <DonationPopup
+        show={showDonate}
+        onClose={() => setShowDonate(false)}
+        donationUrl="https://www.zeffy.com/en-CA/donation-form/africa-impact-initiative"
       />
     </div>
   );

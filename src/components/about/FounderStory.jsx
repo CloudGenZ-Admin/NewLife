@@ -61,8 +61,8 @@ const FounderStory = () => {
                 src="./my_profile.jpg"
                 alt="Brenda Williams - Founder"
               />
-              <p className="image-caption">Executive Director and Founder</p>
             </div>
+            <p className="image-caption">Executive Director and Founder</p>
           </div>
           <div className="chapter-content">
             <h2 className="chapter-title">The Promise.</h2>
