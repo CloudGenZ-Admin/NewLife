@@ -10,6 +10,9 @@
         ],
         "stage-site": [
           "newlife-stage-cloudgenz"
+        ],
+        "prod-site": [
+          "newlife-cloudgenz"
         ]
       }
     }
