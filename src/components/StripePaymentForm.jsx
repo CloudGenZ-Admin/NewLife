@@ -47,6 +47,7 @@ export default function StripePaymentForm({ orderData, pendingOrder, finalTotal,
         try {
             const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
             const amountInCents = Math.round(parseFloat(finalTotal) * 100);
+
             
             const paymentIntentResponse = await fetch(`${apiUrl}/stripe/create-payment-intent`, {
                 method: 'POST',
