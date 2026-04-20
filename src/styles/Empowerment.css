@@ -260,6 +260,8 @@
   position: relative;
   border-radius: 16px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .gallery-main {
@@ -272,21 +274,19 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  flex: 1;
+  min-height: 0;
 }
 
 .gallery-label {
-  position: absolute;
-  bottom: 12px;
-  left: 12px;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(8px);
+  background: var(--green-light);
   font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  padding: 0.4rem 0.9rem;
-  border-radius: 100px;
+  padding: 0.5rem 1rem;
   color: var(--em-dark);
+  text-align: center;
 }
 
 .editorial-text {
