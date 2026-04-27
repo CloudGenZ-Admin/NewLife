@@ -213,7 +213,7 @@ const FounderStory = () => {
                 {/* Board Member 2 - Irene Cummings */}
                 <div className="board-card">
                   <div className="board-card-image">
-                    <img src="./2.jpg" alt="Irene Cummings - Board Member" />
+                    <img src="./3.jpg" alt="Irene Cummings - Board Member" />
                   </div>
                   <div className="board-card-bio-section">
                     <h4>Irene Cummings</h4>
@@ -232,7 +232,7 @@ const FounderStory = () => {
                 {/* Board Member 3 - Abena Beloved Green */}
                 <div className="board-card">
                   <div className="board-card-image">
-                    <img src="./3.jpg" alt="Abena Beloved Green - Board Member" />
+                    <img src="./2.jpg" alt="Abena Beloved Green - Board Member" />
                   </div>
                   <div className="board-card-bio-section">
                     <h4>Abena Beloved Green</h4>
