@@ -57,6 +57,9 @@ export default function Checkout() {
     const [couponError, setCouponError] = useState('');
     const [couponLoading, setCouponLoading] = useState(false);
 
+    const [shippingMethods, setShippingMethods] = useState([]);
+    const [selectedShipping, setSelectedShipping] = useState(null);
+
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -81,6 +84,13 @@ export default function Checkout() {
                 replace: true
             });
             return;
+        }
+
+        // Get shipping method from Cart navigation state
+        const shippingFromCart = location.state?.shippingMethod;
+        if (shippingFromCart) {
+            setSelectedShipping(shippingFromCart);
+            setShippingMethods([shippingFromCart]);
         }
 
         // Populate form with user data
@@ -204,7 +214,12 @@ export default function Checkout() {
         return parseFloat(coupon.amount) || 0;
     };
 
-    const getFinalTotal = () => Math.max(0, getCurrentTotal() - getDiscount());
+    const getShippingCost = () => {
+        if (!selectedShipping) return 0;
+        return parseFloat(selectedShipping.cost || 0);
+    };
+
+    const getFinalTotal = () => Math.max(0, getCurrentTotal() - getDiscount() + getShippingCost());
 
     const handleCoupon = async () => {
         if (!couponCode.trim()) return;
@@ -328,6 +343,15 @@ export default function Checkout() {
             orderData.coupon_lines = [{ code: couponCode }];
         }
 
+        // Add shipping method if selected
+        if (selectedShipping) {
+            orderData.shipping_lines = [{
+                method_id: selectedShipping.method_id,
+                method_title: selectedShipping.label,
+                total: selectedShipping.cost.toString()
+            }];
+        }
+
         return orderData;
     };
 
@@ -423,7 +447,7 @@ export default function Checkout() {
         <div className="checkout-page">
             <div className="checkout-container">
                 {!pendingOrder ? (
-                    <Link to="/cart" className="back-link">
+                    <Link to="/shop/cart" className="back-link">
                         <ArrowLeft size={14} /> Return to Cart
                     </Link>
                 ) : (
@@ -617,9 +641,11 @@ export default function Checkout() {
                                         <span>-${getDiscount().toFixed(2)}</span>
                                     </div>
                                 )}
-                                <div className="total-row">
+                                <div className="total-row" style={{ paddingTop: '1rem', borderTop: '1px solid var(--border-color)' }}>
                                     <span>Shipping</span>
-                                    <span style={{ color: 'var(--primary-green)', fontWeight: 'bold' }}>Free</span>
+                                    <span className="summary-value" style={{ fontWeight: 'bold' }}>
+                                        {selectedShipping ? `$${getShippingCost().toFixed(2)}` : 'TBD'}
+                                    </span>
                                 </div>
                                 <div className="total-row grand-total">
                                     <span>Total</span>

@@ -1,12 +1,47 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
+import { calculateShipping } from '../../api/woocommerce';
 import { ArrowLeft, ArrowRight, Minus, Plus, Trash2, ShoppingBag, ShieldCheck } from 'lucide-react';
 import '../../styles/shop/Cart.css';
 
 export default function Cart() {
     const { cart, removeFromCart, updateQuantity, getCartTotal } = useCart();
     const navigate = useNavigate();
+    
+    const [selectedShipping, setSelectedShipping] = useState(null);
+    const [shippingLoading, setShippingLoading] = useState(false);
+
+    // Fetch shipping cost when cart changes
+    useEffect(() => {
+        if (cart.length > 0) {
+            fetchShippingCost();
+        } else {
+            setSelectedShipping(null);
+        }
+    }, [cart]);
+
+    const fetchShippingCost = async () => {
+        setShippingLoading(true);
+        try {
+            const shippingMethod = await calculateShipping(cart);
+            setSelectedShipping(shippingMethod);
+        } catch (err) {
+            console.error('Error calculating shipping:', err);
+            setSelectedShipping(null);
+        } finally {
+            setShippingLoading(false);
+        }
+    };
+
+    const getShippingCost = () => {
+        if (!selectedShipping) return 0;
+        return parseFloat(selectedShipping.cost || 0);
+    };
+
+    const getFinalTotal = () => {
+        return getCartTotal() + getShippingCost();
+    };
 
     if (cart.length === 0) {
         return (
@@ -99,23 +134,45 @@ export default function Cart() {
                             <span>Subtotal ({cart.reduce((t, i) => t + i.quantity, 0)} items)</span>
                             <span className="summary-value">${getCartTotal().toFixed(2)}</span>
                         </div>
-                        
-                        <div className="summary-row">
+     
+                        <div className="summary-row" style={{ paddingTop: '1rem', borderTop: '1px solid var(--border-color)' }}>
                             <span>Shipping</span>
-                            <span className="summary-value">Free</span>
+                            <span className="summary-value">
+                                {shippingLoading ? (
+                                    <div className="spinner" style={{ width: '16px', height: '16px', borderWidth: '2px' }} />
+                                ) : selectedShipping ? (
+                                    `$${getShippingCost().toFixed(2)}`
+                                ) : (
+                                    'TBD'
+                                )}
+                            </span>
                         </div>
-                        
+
                         <div className="summary-row total">
-                            <span>Total</span>
-                            <span className="summary-value">${getCartTotal().toFixed(2)}</span>
+                            <span>Estimated Total</span>
+                            <span className="summary-value">${getFinalTotal().toFixed(2)}</span>
                         </div>
 
                         <button
-                            onClick={() => navigate('/shop/checkout')}
+                            onClick={() => navigate('/shop/checkout', { 
+                                state: { 
+                                    shippingMethod: selectedShipping 
+                                } 
+                            })}
                             className="checkout-btn"
+                            disabled={shippingLoading || !selectedShipping}
                         >
-                            Proceed to Checkout
-                            <ArrowRight size={18} />
+                            {shippingLoading ? (
+                                <>
+                                    <div className="spinner" style={{ width: '18px', height: '18px', borderWidth: '2px' }} />
+                                    Calculating shipping...
+                                </>
+                            ) : (
+                                <>
+                                    Proceed to Checkout
+                                    <ArrowRight size={18} />
+                                </>
+                            )}
                         </button>
 
                         <Link to="/shop" className="continue-shopping-link">

@@ -327,9 +327,8 @@ export async function updateCustomer(customerId, data) {
       method: "PUT",
       body: JSON.stringify(data),
     });
-    return result;
   } catch (e) {
-    console.error("❌ updateCustomer error:", e);
+    console.error("updateCustomer error:", e);
     throw e;
   }
 }
@@ -359,5 +358,118 @@ export async function fetchShippingZones() {
   } catch (e) {
     console.error("fetchShippingZones:", e);
     return [];
+  }
+}
+
+export async function fetchShippingMethods(zoneId) {
+  try {
+    return await wooFetch(`/shipping/zones/${zoneId}/methods`);
+  } catch (e) {
+    console.error("fetchShippingMethods:", e);
+    return [];
+  }
+}
+
+export async function fetchShippingClasses() {
+  try {
+    return await wooFetch("/products/shipping_classes?per_page=100");
+  } catch (e) {
+    console.error("fetchShippingClasses:", e);
+    return [];
+  }
+}
+
+export async function calculateShipping(cartItems) {
+  try {
+    const zones = await fetchShippingZones();
+    let flatRateMethod = null;
+
+    // Fetch all zone methods in parallel to avoid N+1 problem
+    const zoneMethodsPromises = [];
+    
+    if (zones && zones.length > 0) {
+      // Create array of promises for all zones
+      zoneMethodsPromises.push(...zones.map(zone => 
+        fetchShippingMethods(zone.id).then(methods => ({ zone, methods }))
+      ));
+    }
+    
+    // Also check default "Rest of the World" zone (ID 0)
+    zoneMethodsPromises.push(
+      fetchShippingMethods(0).then(methods => ({ zone: { id: 0, name: 'Rest of the World' }, methods }))
+    );
+
+    // Fetch all zone methods at once
+    const allZoneMethods = await Promise.all(zoneMethodsPromises);
+
+    // Find first enabled flat_rate method
+    for (const { methods } of allZoneMethods) {
+      const foundFlatRate = methods.find(m => m.method_id === 'flat_rate' && m.enabled);
+      if (foundFlatRate) {
+        flatRateMethod = foundFlatRate;
+        break;
+      }
+    }
+
+    if (!flatRateMethod) {
+      throw new Error('Flat rate shipping not configured');
+    }
+
+    // Fetch shipping classes
+    const shippingClasses = await fetchShippingClasses();
+    const shippingRates = {};
+
+    // Build shipping rates map from flat rate settings
+    if (flatRateMethod.settings) {
+      shippingClasses.forEach(shippingClass => {
+        const classKey = `class_cost_${shippingClass.id}`;
+        if (flatRateMethod.settings[classKey]?.value) {
+          const cost = parseFloat(flatRateMethod.settings[classKey].value);
+          if (cost > 0) {
+            shippingRates[shippingClass.slug] = {
+              label: shippingClass.name,
+              cost: cost
+            };
+          }
+        }
+      });
+    }
+
+    if (Object.keys(shippingRates).length === 0) {
+      throw new Error('No shipping class costs configured');
+    }
+
+    // Find highest shipping cost from cart items
+    let highestCost = 0;
+    let shippingMethod = null;
+
+    cartItems.forEach(item => {
+      const shippingClass = item.shipping_class || '';
+      if (shippingRates[shippingClass] && shippingRates[shippingClass].cost > highestCost) {
+        highestCost = shippingRates[shippingClass].cost;
+        shippingMethod = {
+          id: `flat_rate_${shippingClass}`,
+          method_id: 'flat_rate',
+          label: shippingRates[shippingClass].label,
+          cost: shippingRates[shippingClass].cost
+        };
+      }
+    });
+
+    // Use base flat rate cost if no shipping class matched
+    if (!shippingMethod) {
+      const baseCost = parseFloat(flatRateMethod.settings?.cost?.value || 0);
+      shippingMethod = {
+        id: 'flat_rate_default',
+        method_id: 'flat_rate',
+        label: flatRateMethod.title || 'Flat Rate',
+        cost: baseCost
+      };
+    }
+
+    return shippingMethod;
+  } catch (e) {
+    console.error("calculateShipping:", e);
+    throw e;
   }
 }
