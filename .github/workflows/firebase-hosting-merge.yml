@@ -6,13 +6,34 @@ on:
   push:
     branches:
       - dev
-      - stage
+      - master  # Production branch
 
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      # DEV Environment Variables (using existing secrets without prefix)
+      - name: Create .env file
+        if: github.ref == 'refs/heads/dev'
+        run: |
+          echo "VITE_WC_URL=${{ secrets.VITE_WC_URL }}" >> .env
+          echo "VITE_WC_CONSUMER_KEY=${{ secrets.VITE_WC_CONSUMER_KEY }}" >> .env
+          echo "VITE_WC_CONSUMER_SECRET=${{ secrets.VITE_WC_CONSUMER_SECRET }}" >> .env
+          echo "VITE_STRIPE_PUBLISHABLE_KEY=${{ secrets.VITE_STRIPE_PUBLISHABLE_KEY }}" >> .env
+          echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" >> .env
+
+      # PRODUCTION Environment Variables (using PROD_ prefix)
+      - name: Set Production Environment Variables
+        if: github.ref == 'refs/heads/master'
+        run: |
+          echo "VITE_WC_URL=${{ secrets.PROD_WC_URL }}" >> .env
+          echo "VITE_WC_CONSUMER_KEY=${{ secrets.PROD_WC_CONSUMER_KEY }}" >> .env
+          echo "VITE_WC_CONSUMER_SECRET=${{ secrets.PROD_WC_CONSUMER_SECRET }}" >> .env
+          echo "VITE_STRIPE_PUBLISHABLE_KEY=${{ secrets.PROD_STRIPE_PUBLISHABLE_KEY }}" >> .env
+          echo "VITE_API_URL=${{ secrets.PROD_API_URL }}" >> .env
+      
       - name: Install & Build
         run: |
           npm ci
@@ -27,11 +48,11 @@ jobs:
           target: dev-site
           channelId: live
 
-      - name: Deploy to Stage
-        if: github.ref == 'refs/heads/stage'
+      - name: Deploy to Production
+        if: github.ref == 'refs/heads/master'
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_NEWLIFE_CLOUDGENZ }}'
-          target: stage-site
+          target: prod-site
           channelId: live

@@ -1,0 +1,181 @@
+.preg-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.preg-modal {
+  background: white;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 24px;
+  position: relative;
+  padding: 50px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+  animation: pregOpening 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes pregOpening {
+  from { opacity: 0; transform: scale(0.9) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.preg-close {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  background: none;
+  border: none;
+  font-size: 32px;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  line-height: 1;
+}
+
+.preg-close:hover {
+  color: #1a1a1a;
+}
+
+.preg-header {
+  margin-bottom: 35px;
+}
+
+.preg-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--primary-green);
+  margin-bottom: 12px;
+}
+
+.preg-header h2 {
+  font-family: var(--ff);
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin-bottom: 15px;
+}
+
+.preg-header h2 em {
+  font-style: italic;
+  color: var(--primary-green);
+}
+
+.preg-header p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+.preg-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.preg-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.preg-field label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #1a1a1a;
+}
+
+.preg-field input {
+  padding: 14px 20px;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  font-family: var(--fb);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: #f9f9f9;
+}
+
+.preg-field input:focus {
+  outline: none;
+  border-color: var(--primary-green);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.1);
+}
+
+.preg-input-disabled {
+  background: #eeeeee !important;
+  color: #888;
+  cursor: not-allowed;
+  border-color: #ddd !important;
+}
+
+.preg-submit-btn {
+  background: var(--primary-green);
+  color: white;
+  padding: 16px;
+  border-radius: 100px;
+  border: none;
+  font-family: var(--fb);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.preg-submit-btn:hover {
+  background: #388e3c;
+  transform: translateY(-2px);
+}
+
+/* SUCCESS STATE */
+.preg-success {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.preg-success-icon {
+  width: 80px;
+  height: 80px;
+  background: #e8f5e9;
+  color: #4caf50;
+  font-size: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px;
+}
+
+.preg-success h2 {
+  font-family: var(--ff);
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+}
+
+.preg-success p {
+  color: #666;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .preg-modal {
+    padding: 35px 25px;
+  }
+}

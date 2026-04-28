@@ -1,0 +1,202 @@
+/* src/styles/Program.css */
+.programs-page {
+  background: var(--white);
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+/* Animations Overrides */
+.programs-page .grid-line {
+  display: block;
+  background: var(--border-light);
+  position: absolute;
+  z-index: 1;
+}
+
+.prog-decor {
+  background: var(--primary-green) !important;
+  opacity: 0.04 !important;
+}
+
+.programs-hero-theme {
+  min-height: 70vh !important;
+  padding-bottom: 4rem !important;
+}
+
+.programs-container-listing {
+  padding: 40px 5% 120px;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 30px;
+}
+
+/* HIGH FIDELITY CARD DESIGN - FINAL THEME ALIGNMENT */
+.program-card-premium {
+  background: #FFFFFF;
+  border-radius: 40px;
+  padding: 50px 40px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s var(--ease-out);
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.015);
+  height: 100%;
+}
+
+.program-card-premium:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+}
+
+.card-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 25px;
+}
+
+.card-img-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  border: 4px solid var(--white);
+}
+
+.card-badge-tag {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green-dark);
+  background: var(--green-light);
+  padding: 6px 14px;
+  border-radius: 30px;
+}
+
+.card-title-text {
+  font-family: var(--ff); /* Serif Font */
+  font-size: 2.5rem;
+  line-height: 1.1;
+  color: var(--dark-gray);
+  margin-bottom: 18px;
+  font-weight: 400;
+}
+
+.card-title-text em {
+  font-style: italic;
+  font-family: var(--ff);
+}
+
+.card-summary {
+  font-size: 1rem;
+  color: var(--text-gray);
+  line-height: 1.6;
+  margin-bottom: 30px;
+  flex-grow: 1;
+}
+
+.card-features-area {
+  margin-bottom: 35px;
+}
+
+.area-label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #BBB;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.features-stack {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feature-pill {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.check-container {
+  width: 20px;
+  height: 20px;
+  background: var(--green-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-green);
+  flex-shrink: 0;
+}
+
+.feature-title-bold {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--dark-gray);
+}
+
+.card-main-action {
+  width: 100%;
+  padding: 18px 20px;
+  border-radius: 14px;
+  border: none;
+  font-family: var(--fb);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  background: var(--primary-green); /* Follow Website Color Theme */
+  box-shadow: 0 8px 15px rgba(76, 175, 80, 0.2);
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.card-main-action:hover {
+  background: var(--green-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(56, 142, 60, 0.3);
+}
+
+/* Subtle border color variations for cards based on site theme if needed */
+.card-p-1 { border-left: 6px solid #4CAF50; }
+.card-p-2 { border-left: 6px solid #2E7D32; }
+.card-p-3 { border-left: 6px solid #81C784; }
+.card-p-4 { border-left: 6px solid #66BB6A; }
+.card-p-5 { border-left: 6px solid #388E3C; }
+
+@media (max-width: 1024px) {
+  .programs-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .programs-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .card-title-text {
+    font-size: 2.2rem;
+  }
+}

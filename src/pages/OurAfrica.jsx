@@ -1,0 +1,174 @@
+import React, { useEffect, useRef, useState } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import SplitType from 'split-type';
+import '../styles/OurAfrica.css';
+import DonationPopup from '../components/DonationPopup';
+
+gsap.registerPlugin(ScrollTrigger);
+
+const OurAfrica = () => {
+  const sectionRef = useRef(null);
+  const [showDonation, setShowDonation] = useState(false);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Split text for cinematic reveals
+      const titleLines = new SplitType('.africa-hero-title', { types: 'lines' });
+      const revealTexts = new SplitType('.africa-reveal-text', { types: 'lines' });
+
+      // Title reveal
+      gsap.from(titleLines.lines, {
+        opacity: 0,
+        y: 100,
+        stagger: 0.1,
+        duration: 1.2,
+        ease: 'power4.out',
+        delay: 0.5
+      });
+
+      // Chapter reveals
+      const chapters = gsap.utils.toArray('.africa-chapter');
+      chapters.forEach((chapter) => {
+        const lines = chapter.querySelectorAll('.africa-reveal-text .line');
+        const visual = chapter.querySelector('.africa-chapter-visual');
+
+        gsap.from(lines, {
+          scrollTrigger: {
+            trigger: chapter,
+            start: 'top 85%',
+          },
+          y: 40,
+          opacity: 0,
+          stagger: 0.05,
+          duration: 1,
+          ease: 'power3.out'
+        });
+
+        gsap.from(visual, {
+          scrollTrigger: {
+            trigger: chapter,
+            start: 'top 80%',
+          },
+          scale: 1.1,
+          opacity: 0,
+          duration: 1.5,
+          ease: 'power2.out'
+        });
+      });
+
+    }, sectionRef);
+
+    return () => {
+      ctx.revert();
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    }
+  }, []);
+
+  return (
+    <div className="our-africa-page">
+      <section className="our-africa-section" ref={sectionRef} id="our-africa">
+        {/* HERO INTRO */}
+        <div className="africa-hero-section">
+          <div className="africa-container">
+            <div className="africa-hero-content">
+              <span className="africa-label">Our Africa Initiative</span>
+              <h2 className="africa-hero-title">A Journey of <br /> <em>Sustainable Change</em>.</h2>
+              <p className="africa-hero-intro africa-reveal-text">
+                Welcome to Newlife Project's dedicated mission in Africa. We are committed to creating lasting change, 
+                uplifting communities, and improving lives through education, relief, and unwavering support.
+              </p>
+            </div>
+            <div className="africa-hero-visual">
+              <div className="africa-banner-split">
+                <div className="africa-banner-left">
+                  <h2 className="africa-banner-title">Our work in <em>Africa</em></h2>
+                  <button 
+                    className="gi-btn-arch" 
+                    onClick={() => setShowDonation(true)}
+                  >
+                    Support our work in Africa
+                  </button>
+                </div>
+                <div className="africa-banner-right">
+                  <img 
+                    src="/Our_Africa.jpg" 
+                    alt="Our Africa Banner" 
+                    className="africa-banner-img-v2"
+                  />
+                </div>
+              </div>
+              <div className="africa-floating-card africa-floating-img">
+                <img src="/Violet_and_Green_Lavender_Photo_Collage_Instagram_Post_9a6a3bad-b7da-4420-8e60-0c8122edb6d1.webp" alt="Community Smile" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* CHAPTER 1: RELIEF PROGRAM */}
+        <div className="africa-chapter africa-chapter-left">
+          <div className="africa-container split-layout">
+            <div className="africa-chapter-text">
+              <h3 className="chapter-title">The Relief Program</h3>
+              <div className="africa-reveal-text">
+                <p>
+                  For the past four years, NewLife Project Inc. has been meeting the needs of at-risk women and youth in 
+                  <strong> Sierra Leone, Côte d’Ivoire, and Ghana</strong> through its Relief Program.
+                </p>
+                <p>
+                  We organize clothing, backpack, and household good drives within the Ottawa community, directing generous 
+                  donations to students in need. These resources provide vital school supplies and financial sponsorship for 
+                  education in Freetown and Grand Lahou.
+                </p>
+                <div className="impact-quote">
+                  "We extend our financial assistance to Women’s Rehabilitation Centers, helping them regain their social and economical footing."
+                </div>
+              </div>
+            </div>
+            <div className="africa-chapter-visual">
+              <div className="visual-grid-stacked">
+                <img src="/Our_Africa2.jpg" alt="Relief Work" className="stacked-img" />
+                <img src="/Our_Africa3.jpg" alt="Relief Work Detail" className="stacked-img" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* CHAPTER 2: LEARNING CENTRE */}
+        <div className="africa-chapter africa-chapter-right">
+          <div className="africa-container split-layout reversed">
+            <div className="africa-chapter-visual">
+              <div className="visual-stack">
+                <img src="/thumbnail_480x480.webp" alt="Educational Growth" className="stack-img-1" />
+                <img src="/20201119_091448_1866b413-3b46-4e01-abff-ff5c553b145c_480x480.webp" alt="Students in Brookfields" className="stack-img-2 africa-floating-img" />
+              </div>
+            </div>
+            <div className="africa-chapter-text">
+              <h3 className="chapter-title">Empowering Through Education</h3>
+              <div className="africa-reveal-text">
+                <p>
+                  One of NewLife's ultimate goals is to empower girls through quality education. We have launched a transformative 
+                  project to establish a sustainable educational infrastructure.
+                </p>
+                <p>
+                  This education center will provide a secure environment featuring classrooms, a library, a computer lab, and 
+                  administrative offices—designed to be suitable for all-weather conditions.
+                </p>
+                <div className="highlight-tag">Giving Back to the Community that inspired NewLife</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* FINAL CALLOUT REMOVED */}
+        <DonationPopup 
+          show={showDonation} 
+          onClose={() => setShowDonation(false)} 
+          donationUrl="https://www.zeffy.com/en-CA/donation-form/africa-impact-initiative"
+        />
+      </section>
+    </div>
+  );
+};
+
+export default OurAfrica;
