@@ -31,7 +31,7 @@ const Contact = () => {
         const formDataToSend = new FormData(form);
 
         // Submit to FormSubmit.co
-        fetch('https://formsubmit.co/dev.cloudgenz.growth91@gmail.com', {
+        fetch('https://formsubmit.co/newlifeprojectinc@gmail.com', {
             method: 'POST',
             body: formDataToSend,
             headers: {
