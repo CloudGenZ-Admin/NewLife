@@ -357,7 +357,7 @@ export default function OrderDetails() {
                                     <div className="shipping-method">
                                         <p className="shipping-method-label">Method</p>
                                         <p className="shipping-method-value">
-                                            {order.shipping_lines[0].method_title}
+                                            Shipping
                                             {parseFloat(order.shipping_lines[0].total) > 0 && (
                                                 <span className="shipping-cost">${parseFloat(order.shipping_lines[0].total).toFixed(2)}</span>
                                             )}
